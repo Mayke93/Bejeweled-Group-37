@@ -1,11 +1,13 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
@@ -18,6 +20,7 @@ public class Board extends JPanel {
 	//All the board from the board
 	private Tile[][] board;
 	private List<Tile> swaptiles;
+	private Point focus = null;
 
     public Board() {
     	this.setBackground(Color.black);
@@ -28,17 +31,14 @@ public class Board extends JPanel {
         mouseHandler = new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
-            	if(swaptiles.size() == 2){
-            		swaptiles.clear();
-            	}
             	Point loc = getColAndRow(e.getX(),e.getY());
             	int col = loc.x, row = loc.y;
 
-                System.out.println("Mouse Dragged: (" + col + ", " + row + ")");
-                System.out.println(swaptiles.size());
                 if(!swaptiles.contains(board[col][row])){
+                	System.out.println("Mouse Dragged: (" + col + ", " + row + ")");
+                	System.out.println(swaptiles.size());
                 	swaptiles.add(board[col][row]);
-                	if(swaptiles.size() == 2){
+                	if(swaptiles.size() >= 2){
                 		swap();
                 	}
                 }
@@ -51,8 +51,26 @@ public class Board extends JPanel {
         		Point loc = Board.getColAndRow(e.getX(),e.getY());
         		int col = loc.x, row = loc.y;
         		System.out.println("Mouse Clicked: (" + col + ", " + row + ") " + Tile.colors[board[col][row].getIndex()]);
+        		
+        		setFocus(loc);
+        		
+                if(!swaptiles.contains(board[col][row])){
+                	System.out.println("Mouse Clicked: (" + col + ", " + row + ")");
+                	System.out.println(swaptiles.size());
+                	swaptiles.add(board[col][row]);
+                	if(swaptiles.size() >= 2){
+                		swap();
+                	}
+                }
         	}
         });
+    }
+    
+    private void setFocus(Point loc){
+    	int x = loc.x*55+160;
+    	int y = loc.y*55+60;
+    	focus = new Point(x,y);
+    	repaint();
     }
     
     public static Point getColAndRow(int x,int y){
@@ -66,18 +84,28 @@ public class Board extends JPanel {
     public void swap(){
     	System.out.println(swaptiles.get(0).getX() + "," + swaptiles.get(0).getY());
     	System.out.println(swaptiles.get(1).getX() + "," + swaptiles.get(1).getY());
+    	
+    	Tile t0 = board[swaptiles.get(0).getX()][swaptiles.get(0).getY()];
+    	Tile t1 = board[swaptiles.get(1).getX()][swaptiles.get(1).getY()];
     	Tile temp = board[swaptiles.get(0).getX()][swaptiles.get(0).getY()];
+    	
     	board[swaptiles.get(0).getX()][swaptiles.get(0).getY()] = board[swaptiles.get(1).getX()][swaptiles.get(1).getY()];
     	board[swaptiles.get(1).getX()][swaptiles.get(1).getY()] = temp;
+
+    	int x = t0.getX();
+    	t0.setX(t1.getX());
+    	t1.setX(x);
+
+    	int y = t0.getY();
+    	t0.setY(t1.getY());
+    	t1.setY(y);
+
+    	swaptiles.clear();
     	repaint();
     }
     
     public void initBoard(){
     	generateRandomBoard();
-    }
-    
-    public void mousePressed(MouseEvent e) {
-    	System.out.println("mousePressed");
     }
 
     public void generateRandomBoard(){
@@ -135,5 +163,11 @@ public class Board extends JPanel {
         	}
         	y += space;
         }
+        
+        if(focus != null){
+        	ImageIcon ii = new ImageIcon("src/img/focus.png");
+        	g.drawImage(ii.getImage(), focus.x, focus.y, null);
+        }
+        
     }
 }

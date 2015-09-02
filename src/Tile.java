@@ -10,20 +10,12 @@ public class Tile {
     private ImageIcon image;
     private int i,j;
 
-	private static final String[] paths = {"src/img/gemBlue.png",
-							  			   "src/img/gemGreen.png",
-							  			   "src/img/gemOrange.png",
-							  			   "src/img/gemPurple.png",
-							  			   "src/img/gemRed.png",
-							  			   "src/img/gemWhite.png",
+	private static final String[] paths = {"src/img/gemBlue.png", "src/img/gemGreen.png",
+							  			   "src/img/gemOrange.png", "src/img/gemPurple.png",
+							  			   "src/img/gemRed.png", "src/img/gemWhite.png",
 							  			   "src/img/gemYellow.png"};
-	public static final String[] colors = {"Blue",
-							  			   "Green",
-							  			   "Orange",
-							  			   "Purple",
-							  			   "Red",
-							  			   "White",
-							  			   "Yellow"};
+	public static final String[] colors = {"Blue", "Green", "Orange", "Purple",
+							  			   "Red", "White", "Yellow"};
 
 	
 	public Tile(int i, int j){
@@ -55,4 +47,6 @@ public class Tile {
 	
 	public int getX(){ return this.i; }
 	public int getY(){ return this.j; }
+	public void setX(int x){ this.i = x; }
+	public void setY(int y){ this.j = y; }
 }
