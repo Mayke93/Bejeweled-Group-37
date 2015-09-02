@@ -19,6 +19,8 @@ public class Board extends JPanel {
 	public static final int SPACEX = 65;
 	public static final int SPACEY = 65;
 	private static final String FOCUS = "src/img/focus.png";
+	//private ImageIcon board
+	//private ImageIcon focus
 
 	private Tile[][] board;
 	private List<Tile> swaptiles;
@@ -37,9 +39,10 @@ public class Board extends JPanel {
             	Point loc = getColAndRow(e.getX(),e.getY());
             	int col = loc.x, row = loc.y;
 
+                if(!withinBoundaries(col) || !withinBoundaries(row))
+                	return;
                 if(!swaptiles.contains(board[col][row])){
                 	System.out.println("Mouse Dragged: (" + col + ", " + row + ")");
-                	System.out.println(swaptiles.size());
                 	swaptiles.add(board[col][row]);
                 	setFocus(loc);
                 	if(swaptiles.size() == 2){
@@ -54,12 +57,13 @@ public class Board extends JPanel {
         		System.out.println(frame.getSize().getWidth() + "," + frame.getSize().getHeight());
         		Point loc = getColAndRow(e.getX(),e.getY());
         		int col = loc.x, row = loc.y;
-        		System.out.println("Mouse Clicked: (" + col + ", " + row + ") " + Tile.colors[board[col][row].getIndex()]);
+                
+                if(!withinBoundaries(col) || !withinBoundaries(row))
+                	return;
                 setFocus(loc);
-        		
+        		System.out.println("Mouse Clicked: (" + col + ", " + row + ") " + Tile.colors[board[col][row].getIndex()]);
                 if(!swaptiles.contains(board[col][row])){
                 	System.out.println("Mouse Clicked: (" + col + ", " + row + ")");
-                	System.out.println(swaptiles.size());
                 	swaptiles.add(board[col][row]);
                 	if(swaptiles.size() == 2){
                 		swap();
@@ -72,6 +76,10 @@ public class Board extends JPanel {
         		swaptiles.clear();
             }
         });
+    }
+    
+    private boolean withinBoundaries(int x){
+    	return (x >= 0 && x <= SIZE);
     }
     
     private void setFocus(Point loc){

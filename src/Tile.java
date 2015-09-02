@@ -10,6 +10,11 @@ public class Tile {
     private ImageIcon image;
     private int i,j;
 
+    public static enum State{
+    	NORMAL,FLAME,HYPERCUBE,STAR;
+    }
+    private State state;
+
 	private static final String[] paths = {"src/img/gemBlue.png", "src/img/gemGreen.png",
 							  			   "src/img/gemOrange.png", "src/img/gemPurple.png",
 							  			   "src/img/gemRed.png", "src/img/gemWhite.png",
@@ -20,11 +25,12 @@ public class Tile {
 	
 	public Tile(int i, int j){
     	setRandomTile();
+    	state = State.NORMAL;
     	this.i = i;
     	this.j = j;
 	}
 	
-	public void setRandomTile(){
+	public void setRandomTile(){ 
     	random = new Random();
 		index = random.nextInt(paths.length);
 		image = new ImageIcon(paths[index]);
@@ -46,7 +52,9 @@ public class Tile {
 	}
 	
 	public int getX(){ return this.i; }
-	public int getY(){ return this.j; }
 	public void setX(int x){ this.i = x; }
+	public int getY(){ return this.j; }
 	public void setY(int y){ this.j = y; }
+	public State getState(){ return this.state; }
+	public void setState(State state){ this.state = state; }
 }
