@@ -26,9 +26,11 @@ public class Board extends JPanel {
 	private List<Tile> swaptiles;
 	private Point focus = null;
 	private final JFrame frame;
+	private StatusPanel panel;
 
-    public Board(final JFrame frame) {
+    public Board(final JFrame frame,StatusPanel panel) {
     	this.frame = frame;
+    	this.panel = panel;
     	this.setBackground(Color.black);
         initBoard();
         swaptiles = new ArrayList<Tile>();
@@ -130,6 +132,7 @@ public class Board extends JPanel {
     	t1.setY(y);
 
     	swaptiles.clear();
+    	panel.setScore(2);
     	repaint();
     }
     

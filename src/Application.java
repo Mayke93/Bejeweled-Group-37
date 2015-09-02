@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
 public class Application extends JFrame {
-	private StatusPanel sPanel;
+	public StatusPanel sPanel;
 
     public Application() {
         initUI();
@@ -14,10 +14,10 @@ public class Application extends JFrame {
     private void initUI() {
     	setLayout(new BorderLayout());
 
-    	Board board = new Board(this);
+    	sPanel = new StatusPanel();
+    	Board board = new Board(this,sPanel);
     	board.setLayout(new BorderLayout());
 
-    	sPanel = new StatusPanel();
     	board.add(sPanel,BorderLayout.WEST);
     	add(board);
     	
