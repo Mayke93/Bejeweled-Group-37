@@ -1,9 +1,7 @@
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Image;
+import java.awt.event.MouseEvent;
 
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
@@ -23,12 +21,16 @@ public class Board extends JPanel {
     public void initBoard(){
     	generateRandomBoard();
     }
+    
+    public void mousePressed(MouseEvent e) {
+    	System.out.println("mousePressed");
+    }
 
     public void generateRandomBoard(){
     	board = new Tile[Board.SIZE][Board.SIZE]; 
     	for(int i = 0; i < Board.SIZE; i++){
     		for(int j = 0; j < Board.SIZE; j++){
-    			board[i][j] = new Tile();
+    			board[i][j] = new Tile(i,j);
     		}
 
     		//Dit zorgt ervoor dat er geen rijen van 3 of meer jewels zijn

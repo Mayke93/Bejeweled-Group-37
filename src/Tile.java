@@ -8,6 +8,7 @@ public class Tile {
     private Random random;
     private int index;
     private ImageIcon image;
+    private int i,j;
 
 	private static final String[] paths = {"src/img/gemBlue.png",
 							  			   "src/img/gemGreen.png",
@@ -17,12 +18,14 @@ public class Tile {
 							  			   "src/img/gemWhite.png",
 							  			   "src/img/gemYellow.png"};
 	
-	public Tile(){
-    	random = new Random();
+	public Tile(int i, int j){
     	setRandomTile();
+    	this.i = i;
+    	this.j = j;
 	}
 	
 	public void setRandomTile(){
+    	random = new Random();
 		index = random.nextInt(paths.length);
 		image = new ImageIcon(paths[index]);
 	}
