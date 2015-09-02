@@ -17,6 +17,14 @@ public class Tile {
 							  			   "src/img/gemRed.png",
 							  			   "src/img/gemWhite.png",
 							  			   "src/img/gemYellow.png"};
+	public static final String[] colors = {"Blue",
+							  			   "Green",
+							  			   "Orange",
+							  			   "Purple",
+							  			   "Red",
+							  			   "White",
+							  			   "Yellow"};
+
 	
 	public Tile(int i, int j){
     	setRandomTile();
