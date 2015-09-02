@@ -13,12 +13,11 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class Board extends JPanel {
 
-	//Board size is 8x8
-	public static final int SIZE = 8;
-	public static final Point LOCATION = new Point(232,38);
+	public static final int SIZE = 8; //Board size is 8x8
+	public static final Point LOCATION = new Point(240,39);
 	public static final int SPACE = 60;
-	public static final int SPACEX = 72;
-	public static final int SPACEY = 62;
+	public static final int SPACEX = 65;
+	public static final int SPACEY = 65;
 	private static final String FOCUS = "src/img/focus.png";
 
 	private Tile[][] board;
@@ -79,8 +78,8 @@ public class Board extends JPanel {
     }
     
     private void setFocus(Point loc){
-    	int x = loc.x*SPACEX+LOCATION.x;
-    	int y = loc.y*SPACEY+LOCATION.y;
+    	int x = loc.x * SPACEX + LOCATION.x;
+    	int y = loc.y * SPACEY + LOCATION.y;
     	focus = new Point(x,y);
     	repaint();
     }
@@ -99,7 +98,8 @@ public class Board extends JPanel {
     	
     	Tile t0 = board[swaptiles.get(0).getX()][swaptiles.get(0).getY()];
     	Tile t1 = board[swaptiles.get(1).getX()][swaptiles.get(1).getY()];
-
+    	
+    	//Kijk of de tiles naast elkaar zijn
     	int s = 0;
     	int d = t0.getX()-t1.getX();
     	s += (d < 0 ? -d : d); 

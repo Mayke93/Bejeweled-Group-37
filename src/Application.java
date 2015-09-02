@@ -47,12 +47,13 @@ public class Application extends JFrame {
     	
     	add(board);
     	
-        setSize(800, 600);
+        setSize(800, 619);
         getContentPane().setBackground(Color.black);
         
         setTitle("Bejeweled");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        setVisible(true);
     }    
     
     public static void main(String[] args) {
