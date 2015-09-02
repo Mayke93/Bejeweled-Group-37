@@ -55,16 +55,13 @@ public class Board extends JPanel {
         		Point loc = getColAndRow(e.getX(),e.getY());
         		int col = loc.x, row = loc.y;
         		System.out.println("Mouse Clicked: (" + col + ", " + row + ") " + Tile.colors[board[col][row].getIndex()]);
-        		
-        		System.out.println();
-        		setFocus(loc);
+                setFocus(loc);
         		
                 if(!swaptiles.contains(board[col][row])){
                 	System.out.println("Mouse Clicked: (" + col + ", " + row + ")");
                 	System.out.println(swaptiles.size());
                 	swaptiles.add(board[col][row]);
-                	setFocus(loc);
-                	if(swaptiles.size() >= 2){
+                	if(swaptiles.size() == 2){
                 		swap();
                 	}
                 }
@@ -174,6 +171,7 @@ public class Board extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
+    	super.paintComponent(g);
     	setOpaque(true);
     	g.drawImage(new ImageIcon("src/img/board.png").getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
     	int ix = LOCATION.x,iy = LOCATION.y;
