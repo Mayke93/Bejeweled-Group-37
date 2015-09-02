@@ -1,6 +1,5 @@
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -8,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
@@ -15,21 +15,23 @@ public class Board extends JPanel {
 
 	//Board size is 8x8
 	public static final int SIZE = 8;
-	public static final Point LOCATION = new Point(160,60);
+	public static final Point LOCATION = new Point(218,40);
+	public static final int SPACE = 60;
+	public static final int SPACEX = 59;
+	public static final int SPACEY = 62;
 	private static final String FOCUS = "src/img/focus.png";
 
 	//All the board from the board
 	private Tile[][] board;
 	private List<Tile> swaptiles;
-	private Tile tile1;
-	private Tile tile2;
 	private Point focus = null;
+	private final JFrame frame;
 
-    public Board() {
+    public Board(final JFrame frame) {
+    	this.frame = frame;
     	this.setBackground(Color.black);
         initBoard();
         swaptiles = new ArrayList<Tile>();
-        tile1 = tile2 = null;
         
         MouseAdapter mouseHandler;
         mouseHandler = new MouseAdapter() {
@@ -42,6 +44,7 @@ public class Board extends JPanel {
                 	System.out.println("Mouse Dragged: (" + col + ", " + row + ")");
                 	System.out.println(swaptiles.size());
                 	swaptiles.add(board[col][row]);
+                	setFocus(loc);
                 	if(swaptiles.size() == 2){
                 		swap();
                 	}
@@ -52,10 +55,12 @@ public class Board extends JPanel {
         this.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
-        		Point loc = Board.getColAndRow(e.getX(),e.getY());
+        		System.out.println(frame.getSize().getWidth() + "," + frame.getSize().getHeight());
+        		Point loc = getColAndRow(e.getX(),e.getY());
         		int col = loc.x, row = loc.y;
         		System.out.println("Mouse Clicked: (" + col + ", " + row + ") " + Tile.colors[board[col][row].getIndex()]);
         		
+        		System.out.println();
         		setFocus(loc);
         		
                 if(!swaptiles.contains(board[col][row])){
@@ -77,8 +82,8 @@ public class Board extends JPanel {
     }
     
     private void setFocus(Point loc){
-    	int x = loc.x*55+160+5;
-    	int y = loc.y*55+60+5;
+    	int x = loc.x*SPACEX+LOCATION.x;
+    	int y = loc.y*SPACEY+LOCATION.y;
     	focus = new Point(x,y);
     	repaint();
     }
@@ -86,8 +91,8 @@ public class Board extends JPanel {
     public static Point getColAndRow(int x,int y){
     	x -= LOCATION.x;
     	y -= LOCATION.y;
-        int col = x/55;
-        int row = y/55;
+        int col = x/SPACEX;
+        int row = y/SPACEY;
         return new Point(col,row);
     }
     
@@ -104,7 +109,10 @@ public class Board extends JPanel {
     	
     	d = t0.getY()-t1.getY();
     	s += (d < 0 ? -d : d);
-    	if(s != 1) return;
+    	if(s != 1) {
+    		System.out.println("s != 1");
+    		return;
+    	}
 
     	Tile temp = board[swaptiles.get(0).getX()][swaptiles.get(0).getY()];
     	
@@ -170,20 +178,22 @@ public class Board extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
     	setOpaque(true);
-    	int ix = 160,iy = 60;
-        int space = 55;
+    	g.drawImage(new ImageIcon("src/img/board.png").getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
+    	int ix = LOCATION.x,iy = LOCATION.y;
+        int spacex = 59;
+        int spacey = 62;
 
         for(int i = 0,x = ix, y = iy; i < SIZE; i++){
         	x = ix;
-        	for(int j = 0; j < SIZE; j++, x += space){
+        	for(int j = 0; j < SIZE; j++, x += spacex){
                 g.drawImage(board[j][i].getImage(), x, y, null);
         	}
-        	y += space;
+        	y += spacey;
         }
         
         if(focus != null){
         	ImageIcon ii = new ImageIcon(FOCUS);
-        	g.drawImage(ii.getImage(), focus.x, focus.y,55,55, null);
+        	g.drawImage(ii.getImage(), focus.x, focus.y,SPACE,SPACE, null);
         }
     }
 }

@@ -21,13 +21,8 @@ public class Application extends JFrame {
     	label.setForeground(Color.white);
     	label2.setForeground(Color.white);
         initUI();
-        /*try {
-    		setContentPane(new JLabel(new Icon(ImageIO.read(new File("test.jpg")))));
-    	} catch (IOException e) {
-    		e.printStackTrace();
-    	}*/
     }
-
+    
     private void initUI() {
     	leftPane.setLayout(new GridBagLayout());
     	leftPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -37,11 +32,12 @@ public class Application extends JFrame {
     	leftPane.add(box);
     	box.add(label);
     	box.add(label2);
-    	Board board = new Board();
+    	Board board = new Board(this);
     	
     	add(board);
     	
-        setSize(800, 600);
+        setSize(797, 597);
+        //797.0,597.0
         leftPane.setBackground(Color.black);
         getContentPane().setBackground(Color.black);
         

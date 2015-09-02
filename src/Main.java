@@ -17,9 +17,9 @@ public class Main extends JFrame{
          //Game newGame = new Game(sPanel);
          //ControlPanel cPanel = new ControlPanel(newGame);
          //content.add(newGame,BorderLayout.CENTER);
-         Board board = new Board();
-         content.setBackground(Color.black);
-         content.add(board,BorderLayout.CENTER);
+         //Board board = new Board();
+         //content.setBackground(Color.black);
+         //content.add(board,BorderLayout.CENTER);
          //content.add(cPanel,BorderLayout.SOUTH);
          
          //set visible
