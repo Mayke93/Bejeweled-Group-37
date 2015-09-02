@@ -37,7 +37,9 @@ public class Application extends JFrame {
     	leftPane.add(box);
     	box.add(label);
     	box.add(label2);
-    	add(new Board());
+    	Board board = new Board();
+    	
+    	add(board);
     	
         setSize(800, 600);
         leftPane.setBackground(Color.black);

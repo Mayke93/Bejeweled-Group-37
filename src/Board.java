@@ -16,16 +16,20 @@ public class Board extends JPanel {
 	//Board size is 8x8
 	public static final int SIZE = 8;
 	public static final Point LOCATION = new Point(160,60);
+	private static final String FOCUS = "src/img/focus.png";
 
 	//All the board from the board
 	private Tile[][] board;
 	private List<Tile> swaptiles;
+	private Tile tile1;
+	private Tile tile2;
 	private Point focus = null;
 
     public Board() {
     	this.setBackground(Color.black);
         initBoard();
         swaptiles = new ArrayList<Tile>();
+        tile1 = tile2 = null;
         
         MouseAdapter mouseHandler;
         mouseHandler = new MouseAdapter() {
@@ -38,7 +42,7 @@ public class Board extends JPanel {
                 	System.out.println("Mouse Dragged: (" + col + ", " + row + ")");
                 	System.out.println(swaptiles.size());
                 	swaptiles.add(board[col][row]);
-                	if(swaptiles.size() >= 2){
+                	if(swaptiles.size() == 2){
                 		swap();
                 	}
                 }
@@ -58,11 +62,17 @@ public class Board extends JPanel {
                 	System.out.println("Mouse Clicked: (" + col + ", " + row + ")");
                 	System.out.println(swaptiles.size());
                 	swaptiles.add(board[col][row]);
+                	setFocus(loc);
                 	if(swaptiles.size() >= 2){
                 		swap();
                 	}
                 }
         	}
+        	@Override
+        	public void mouseReleased(MouseEvent m)
+            {
+        		swaptiles.clear();
+            }
         });
     }
     
@@ -87,6 +97,15 @@ public class Board extends JPanel {
     	
     	Tile t0 = board[swaptiles.get(0).getX()][swaptiles.get(0).getY()];
     	Tile t1 = board[swaptiles.get(1).getX()][swaptiles.get(1).getY()];
+
+    	int s = 0;
+    	int d = t0.getX()-t1.getX();
+    	s += (d < 0 ? -d : d); 
+    	
+    	d = t0.getY()-t1.getY();
+    	s += (d < 0 ? -d : d);
+    	if(s != 1) return;
+
     	Tile temp = board[swaptiles.get(0).getX()][swaptiles.get(0).getY()];
     	
     	board[swaptiles.get(0).getX()][swaptiles.get(0).getY()] = board[swaptiles.get(1).getX()][swaptiles.get(1).getY()];
@@ -140,9 +159,6 @@ public class Board extends JPanel {
 
     			if(s == 2){
     				System.out.println("i,j: " + i + "," + j);
-    				System.out.println(board[i][j].getIndex());
-    				System.out.println(board[i-1][j].getIndex());
-    				System.out.println(board[i-2][j].getIndex());
     				i--;
     				break;
     			}
@@ -153,6 +169,7 @@ public class Board extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
+    	setOpaque(true);
     	int ix = 160,iy = 60;
         int space = 55;
 
@@ -165,11 +182,8 @@ public class Board extends JPanel {
         }
         
         if(focus != null){
-        	ImageIcon ii = new ImageIcon("src/img/focus.png");
-        	System.out.println(ii.getIconWidth());
-        	System.out.println(ii.getIconHeight());
+        	ImageIcon ii = new ImageIcon(FOCUS);
         	g.drawImage(ii.getImage(), focus.x, focus.y,55,55, null);
         }
-        
     }
 }
