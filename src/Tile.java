@@ -44,4 +44,7 @@ public class Tile {
 		Tile tile = (Tile)obj;
 		return (this.index == tile.index);
 	}
+	
+	public int getX(){ return this.i; }
+	public int getY(){ return this.j; }
 }
