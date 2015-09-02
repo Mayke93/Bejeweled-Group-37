@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 public class Board extends JPanel {
 
 	public static final int SIZE = 8; //Board size is 8x8
-	public static final Point LOCATION = new Point(240,39);
+	public static final Point LOCATION = new Point(241,40);
 	public static final int SPACE = 60;
 	public static final int SPACEX = 65;
 	public static final int SPACEY = 65;
@@ -190,7 +190,7 @@ public class Board extends JPanel {
         
         if(focus != null){
         	ImageIcon ii = new ImageIcon(FOCUS);
-        	g.drawImage(ii.getImage(), focus.x, focus.y,SPACE,SPACE, null);
+        	g.drawImage(ii.getImage(), focus.x, focus.y,SPACEX,SPACEY, null);
         }
     }
 }
