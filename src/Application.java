@@ -1,18 +1,20 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 
 @SuppressWarnings("serial")
 public class Application extends JFrame {
     
+	private JLabel label = new JLabel("Score: 0", JLabel.LEFT);
+	private JPanel leftPane = new JPanel();
+	
     public Application() {
-    	JLabel f = new JLabel();
-    	//f.mouseDrag(I, x, y)
-    	f.setBackground(Color.black);
-    	
+    	label.setForeground(Color.white);
         initUI();
         /*try {
     		setContentPane(new JLabel(new Icon(ImageIO.read(new File("test.jpg")))));
@@ -22,9 +24,13 @@ public class Application extends JFrame {
     }
 
     private void initUI() {
-        add(new Board());
+    	add(leftPane, BorderLayout.WEST);
+    	leftPane.add(label);
+    	add(new Board());
         setSize(800, 600);
-        this.setBackground(Color.black);
+        leftPane.setBackground(Color.black);
+        getContentPane().setBackground(Color.black);
+        
         setTitle("Bejeweled");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
