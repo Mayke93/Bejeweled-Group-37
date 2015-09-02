@@ -1,8 +1,8 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +13,7 @@ public class Board extends JPanel {
 
 	//Board size is 8x8
 	public static final int SIZE = 8;
+	public static final Point LOCATION = new Point(160,60);
 
 	//All the board from the board
 	private Tile[][] board;
@@ -22,16 +23,19 @@ public class Board extends JPanel {
     	this.setBackground(Color.black);
         initBoard();
         swaptiles = new ArrayList<Tile>();
+        
         MouseAdapter mouseHandler;
         mouseHandler = new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
-            	int x = e.getX()-160;
-                int y = e.getY()-60;
-                int col = x/55;
-                int row = y/55;
+            	if(swaptiles.size() == 2){
+            		swaptiles.clear();
+            	}
+            	Point loc = getColAndRow(e.getX(),e.getY());
+            	int col = loc.x, row = loc.y;
 
                 System.out.println("Mouse Dragged: (" + col + ", " + row + ")");
+                System.out.println(swaptiles.size());
                 if(!swaptiles.contains(board[col][row])){
                 	swaptiles.add(board[col][row]);
                 	if(swaptiles.size() == 2){
@@ -41,15 +45,31 @@ public class Board extends JPanel {
             }
         };
         addMouseMotionListener(mouseHandler);
-        this.addMouseListener(new CustomMouseListener());
+        this.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		Point loc = Board.getColAndRow(e.getX(),e.getY());
+        		int col = loc.x, row = loc.y;
+        		System.out.println("Mouse Clicked: (" + col + ", " + row + ") " + Tile.colors[board[col][row].getIndex()]);
+        	}
+        });
+    }
+    
+    public static Point getColAndRow(int x,int y){
+    	x -= LOCATION.x;
+    	y -= LOCATION.y;
+        int col = x/55;
+        int row = y/55;
+        return new Point(col,row);
     }
     
     public void swap(){
+    	System.out.println(swaptiles.get(0).getX() + "," + swaptiles.get(0).getY());
+    	System.out.println(swaptiles.get(1).getX() + "," + swaptiles.get(1).getY());
     	Tile temp = board[swaptiles.get(0).getX()][swaptiles.get(0).getY()];
     	board[swaptiles.get(0).getX()][swaptiles.get(0).getY()] = board[swaptiles.get(1).getX()][swaptiles.get(1).getY()];
     	board[swaptiles.get(1).getX()][swaptiles.get(1).getY()] = temp;
     	repaint();
-    	swaptiles.clear();
     }
     
     public void initBoard(){
@@ -111,31 +131,9 @@ public class Board extends JPanel {
         for(int i = 0,x = ix, y = iy; i < SIZE; i++){
         	x = ix;
         	for(int j = 0; j < SIZE; j++, x += space){
-                g.drawImage(board[i][j].getImage(), x, y, null);
-                
+                g.drawImage(board[j][i].getImage(), x, y, null);
         	}
         	y += space;
         }
     }
 }
-class CustomMouseListener implements MouseListener{
-    public void mouseClicked(MouseEvent e) {
-    	int x = e.getX()-160;
-    	int y = e.getY()-60;
-    	int col = x/55;
-    	int row = y/55;
-    	System.out.println("Mouse Clicked: (" + col + ", " + row + ")");
-    }
-
-    public void mousePressed(MouseEvent e) {
-    }
-
-    public void mouseReleased(MouseEvent e) {
-    }
-
-    public void mouseEntered(MouseEvent e) {
-    }
-
-    public void mouseExited(MouseEvent e) {
-    }
- }
