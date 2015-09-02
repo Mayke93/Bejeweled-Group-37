@@ -15,13 +15,12 @@ public class Board extends JPanel {
 
 	//Board size is 8x8
 	public static final int SIZE = 8;
-	public static final Point LOCATION = new Point(218,40);
+	public static final Point LOCATION = new Point(232,38);
 	public static final int SPACE = 60;
-	public static final int SPACEX = 59;
+	public static final int SPACEX = 72;
 	public static final int SPACEY = 62;
 	private static final String FOCUS = "src/img/focus.png";
 
-	//All the board from the board
 	private Tile[][] board;
 	private List<Tile> swaptiles;
 	private Point focus = null;
@@ -33,8 +32,7 @@ public class Board extends JPanel {
         initBoard();
         swaptiles = new ArrayList<Tile>();
         
-        MouseAdapter mouseHandler;
-        mouseHandler = new MouseAdapter() {
+        addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
             	Point loc = getColAndRow(e.getX(),e.getY());
@@ -50,8 +48,7 @@ public class Board extends JPanel {
                 	}
                 }
             }
-        };
-        addMouseMotionListener(mouseHandler);
+        });
         this.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
@@ -180,8 +177,8 @@ public class Board extends JPanel {
     	setOpaque(true);
     	g.drawImage(new ImageIcon("src/img/board.png").getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
     	int ix = LOCATION.x,iy = LOCATION.y;
-        int spacex = 59;
-        int spacey = 62;
+        int spacex = SPACEX;
+        int spacey = SPACEY;
 
         for(int i = 0,x = ix, y = iy; i < SIZE; i++){
         	x = ix;
