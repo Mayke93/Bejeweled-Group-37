@@ -67,8 +67,8 @@ public class Board extends JPanel {
     }
     
     private void setFocus(Point loc){
-    	int x = loc.x*55+160;
-    	int y = loc.y*55+60;
+    	int x = loc.x*55+160+5;
+    	int y = loc.y*55+60+5;
     	focus = new Point(x,y);
     	repaint();
     }
@@ -166,7 +166,9 @@ public class Board extends JPanel {
         
         if(focus != null){
         	ImageIcon ii = new ImageIcon("src/img/focus.png");
-        	g.drawImage(ii.getImage(), focus.x, focus.y, null);
+        	System.out.println(ii.getIconWidth());
+        	System.out.println(ii.getIconHeight());
+        	g.drawImage(ii.getImage(), focus.x, focus.y,55,55, null);
         }
         
     }
