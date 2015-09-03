@@ -8,6 +8,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
+/**
+ * Class for diplaying the status of the game.
+ * @author samuelsital
+ *
+ */
 class StatusPanel extends JPanel{
 	private JLabel scoreLabel = new JLabel("Score: ");
 	private JLabel levelLabel = new JLabel("Level:");

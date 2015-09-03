@@ -1,4 +1,5 @@
 import java.awt.Image;
+import java.awt.Point;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
@@ -8,7 +9,7 @@ public class Tile {
     private Random random;
     private int index;
     private ImageIcon image;
-    private int i,j;
+    private Point loc;
 
     public static enum State{
     	NORMAL,FLAME,HYPERCUBE,STAR;
@@ -23,13 +24,20 @@ public class Tile {
 							  			   "Red", "White", "Yellow"};
 
 	
+	/**
+	 * Initalize tile with location and a random color and set state to NORMAL.
+	 * @param i location of Tile on the board
+	 * @param j location of Tile on the board
+	 */
 	public Tile(int i, int j){
     	setRandomTile();
     	state = State.NORMAL;
-    	this.i = i;
-    	this.j = j;
+    	this.loc = new Point(i,j);
 	}
 	
+	/**
+	 * Give tile random color.
+	 */
 	public void setRandomTile(){ 
     	random = new Random();
 		index = random.nextInt(paths.length);
@@ -51,10 +59,16 @@ public class Tile {
 		return (this.index == tile.index);
 	}
 	
-	public int getX(){ return this.i; }
-	public void setX(int x){ this.i = x; }
-	public int getY(){ return this.j; }
-	public void setY(int y){ this.j = y; }
+	public int getX(){ return this.loc.x; }
+	public int getY(){ return this.loc.y; }
+	public Point getLoc(){ return this.loc;}
+	public void setLoc(Point loc){
+		this.loc = loc;
+	}
+	public void setLoc(int x, int y){
+		this.loc = new Point(x,y);
+	}
+
 	public State getState(){ return this.state; }
 	public void setState(State state){ this.state = state; }
 }

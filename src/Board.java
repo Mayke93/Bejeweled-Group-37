@@ -28,6 +28,11 @@ public class Board extends JPanel {
 	private final JFrame frame;
 	private StatusPanel panel;
 
+	/**
+	 * Initialize the board and create the mouse event listeners.
+	 * @param frame JFrame of the game
+	 * @param panel JPanel with the labels to display the status of the game
+	 */
     public Board(final JFrame frame,StatusPanel panel) {
     	this.frame = frame;
     	this.panel = panel;
@@ -65,25 +70,34 @@ public class Board extends JPanel {
                 setFocus(loc);
         		System.out.println("Mouse Clicked: (" + col + ", " + row + ") " + Tile.colors[board[col][row].getIndex()]);
                 if(!swaptiles.contains(board[col][row])){
-                	System.out.println("Mouse Clicked: (" + col + ", " + row + ")");
+                	//System.out.println("Mouse Clicked: (" + col + ", " + row + ")");
                 	swaptiles.add(board[col][row]);
                 	if(swaptiles.size() == 2){
                 		swap();
                 	}
                 }
+                System.out.println("(" + board[col][row].getX() + "," + board[col][row].getY() + ")");
         	}
         	@Override
-        	public void mouseReleased(MouseEvent m)
-            {
+        	public void mouseReleased(MouseEvent m) {
         		swaptiles.clear();
             }
         });
     }
     
+    /**
+     * Check if index x is within the boundaries of the board.
+     * @param x index to check
+     * @return
+     */
     private boolean withinBoundaries(int x){
     	return (x >= 0 && x <= SIZE);
     }
     
+    /**
+     * Get the index of the focused jewel based on the coordinated of the mouse event.
+     * @param loc location of the mouse event
+     */
     private void setFocus(Point loc){
     	int x = loc.x * SPACEX + LOCATION.x;
     	int y = loc.y * SPACEY + LOCATION.y;
@@ -91,6 +105,12 @@ public class Board extends JPanel {
     	repaint();
     }
     
+    /**
+     * Get the col and row index based on the coordinates on the screen.
+     * @param x x-coordinate of the mouse event
+     * @param y y-coordinate of the mouse event
+     * @return
+     */
     public static Point getColAndRow(int x,int y){
     	x -= LOCATION.x;
     	y -= LOCATION.y;
@@ -99,6 +119,13 @@ public class Board extends JPanel {
         return new Point(col,row);
     }
     
+    /**
+     * Check if two tiles can be swapped and
+     * what kind of jewel should be created based on the size of the found sequence.
+     * @param t0 first tile to swap
+     * @param t1 second tile to swap
+     * @return
+     */
     public String checktype(Tile t0, Tile t1) {
     	String res = null;
     	
@@ -109,9 +136,12 @@ public class Board extends JPanel {
     	
     	for(int i=1;i<3;i++){
     		
-    		Tile temp = board[swaptiles.get(0).getX()][swaptiles.get(0).getY()];
+    		/*Tile temp = board[swaptiles.get(0).getX()][swaptiles.get(0).getY()];
     		board[swaptiles.get(0).getX()][swaptiles.get(0).getY()] = board[swaptiles.get(1).getX()][swaptiles.get(1).getY()];
-        	board[swaptiles.get(1).getX()][swaptiles.get(1).getY()] = temp;
+        	board[swaptiles.get(1).getX()][swaptiles.get(1).getY()] = temp;*/
+
+    		//Niet alleen het object maar de attribute 'loc' moet verwisseld worden
+    		swapTiles(t0,t1); 
     		
     		if(i==1) {tile=t0; color = c2;}
     		if(i==2) {tile=t1; color = c1;}
@@ -133,9 +163,10 @@ public class Board extends JPanel {
     			else{break;}
     		}
     		if(s<3) {
-    			temp = board[swaptiles.get(0).getX()][swaptiles.get(0).getY()];
+    			/*temp = board[swaptiles.get(0).getX()][swaptiles.get(0).getY()];
     			board[swaptiles.get(1).getX()][swaptiles.get(1).getY()] = board[swaptiles.get(1).getX()][swaptiles.get(1).getY()];
-    			board[swaptiles.get(0).getX()][swaptiles.get(0).getY()] = temp;
+    			board[swaptiles.get(0).getX()][swaptiles.get(0).getY()] = temp;*/
+                swapTiles(t0,t1);
     		}
     		if(s==3) {res="normal";}
     		if(s==4) {res="flame";}
@@ -158,9 +189,10 @@ public class Board extends JPanel {
     			else{break;}
     		}
     		if(s<3) {
-    			temp = board[swaptiles.get(0).getX()][swaptiles.get(0).getY()];
+    			/*temp = board[swaptiles.get(0).getX()][swaptiles.get(0).getY()];
     			board[swaptiles.get(1).getX()][swaptiles.get(1).getY()] = board[swaptiles.get(1).getX()][swaptiles.get(1).getY()];
-    			board[swaptiles.get(0).getX()][swaptiles.get(0).getY()] = temp;
+    			board[swaptiles.get(0).getX()][swaptiles.get(0).getY()] = temp;*/
+                swapTiles(t0,t1);
     		}
     		if(s==3) {res="normal";}
     		if(s==4) {res="flame";}
@@ -170,6 +202,24 @@ public class Board extends JPanel {
     	return res;
     }
     
+    /**
+     * Switch tile t0 and t1 on the board.
+     * @param t0 first tile to swap
+     * @param t1 second tile to swap
+     */
+    private void swapTiles(Tile t0, Tile t1){
+    	Tile temp = board[t0.getX()][t0.getY()];
+    	board[t0.getX()][t0.getY()] = board[t1.getX()][t1.getY()];
+        board[t1.getX()][t1.getY()] = temp;
+
+    	Point t = (Point) t0.getLoc().clone();
+    	t0.setLoc(t1.getX(),t1.getY());
+    	t1.setLoc(t);
+    }
+
+    /**
+     * Swap two tiles if it result in a sequence of 3 of more tiles with the same color.
+     */
     public void swap(){
     	System.out.println(swaptiles.get(0).getX() + "," + swaptiles.get(0).getY());
     	System.out.println(swaptiles.get(1).getX() + "," + swaptiles.get(1).getY());
@@ -194,28 +244,23 @@ public class Board extends JPanel {
     		return;
     	}
 
-    	Tile temp = board[swaptiles.get(0).getX()][swaptiles.get(0).getY()];
-    	
-    	board[swaptiles.get(0).getX()][swaptiles.get(0).getY()] = board[swaptiles.get(1).getX()][swaptiles.get(1).getY()];
-    	board[swaptiles.get(1).getX()][swaptiles.get(1).getY()] = temp;
-
-    	int x = t0.getX();
-    	t0.setX(t1.getX());
-    	t1.setX(x);
-
-    	int y = t0.getY();
-    	t0.setY(t1.getY());
-    	t1.setY(y);
+    	swapTiles(t0,t1);
 
     	swaptiles.clear();
     	panel.setScore(2);
     	repaint();
     }
     
+    /**
+     * Initalize the board array.
+     */
     public void initBoard(){
     	generateRandomBoard();
     }
 
+    /**
+     * Create a board of random jewels without a sequence of 3 or more tiles with the same color.
+     */
     public void generateRandomBoard(){
     	board = new Tile[Board.SIZE][Board.SIZE]; 
     	for(int i = 0; i < Board.SIZE; i++){
@@ -256,6 +301,9 @@ public class Board extends JPanel {
     	}
     }
 
+    /**
+     * Draw board on the screen.
+     */
     @Override
     public void paintComponent(Graphics g) {
     	super.paintComponent(g);
