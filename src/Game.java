@@ -147,6 +147,208 @@ public class Game {
     	return res;
     }
     
+/*    public List<List<Object>> getCombinations() {
+    	List<List<Object>> allcombinations = new ArrayList<List<Object>>();
+    	Tile t0 = null;
+    	Tile t1 = null;
+    	List<Object> combi = new ArrayList<Object>();
+    	
+    	//check combinations in x direction
+    	for(int i=0;i<8;i++) {
+    		for(int j=0;j<7;j++) {
+    			t0 = board[j][i];
+    			t1 = board[j+1][i];
+    			if(swappable(t0,t1)) {
+    				combi.add(getSingleCombination(t0,t1));
+    			}
+    		}
+    	}
+    	
+    	//check combinations in y direction
+    	for(int i=0;i<8;i++) {
+    		for(int j=0;j<7;j++) {
+    			t0 = board[i][j];
+    			t1 = board[i][j+1];
+    			if(swappable(t0,t1)) {
+    				combi.add(getSingleCombination(t));
+    			}
+    		}
+    	}
+    	return allcombinations;
+    }*/
+    
+    /**
+     * Returns a list, which contains lists with 2 objects: (State,List of tiles), eg. (Tile.State.NORMAL,List(t1,t2,t3)).
+     * This is a list of all the valid combinations on the board at this time.
+     */
+    public List<List<Object>> getAllCombinationsOnBoard() {
+    	List<List<Object>> allcombinations = new ArrayList<List<Object>>();
+    	
+    	for(int i = 0; i < SIZE; i++) {			//for every tile on the board
+    		for(int j = 0; j < SIZE; j++) {
+    			if(!getSingleCombinationX(board[i][j]).isEmpty()){
+    				allcombinations.add(getSingleCombinationX(board[i][j]));
+    			}
+    			if(!getSingleCombinationY(board[i][j]).isEmpty()){
+    				allcombinations.add(getSingleCombinationY(board[i][j]));
+    			}
+    		}
+    	}
+    	return allcombinations;
+    }
+    
+    /**
+     * Sees whether 
+     * @param t
+     * makes a valid combination in x direction on the board,
+     * @return a list with first the state of the combination, and second the list of tiles in de combi.
+     */
+    public List<Object> getSingleCombinationX(Tile t) {
+    	List combi = new ArrayList<Object>();
+    	List tiles = new ArrayList<Tile>();
+  
+    	//check x direction
+		int s = 1;
+		for(int q = t.getX() + 1; q < SIZE; q++) {	//check to the right
+			if(board[q][t.getY()].equals(t)) {
+				s++;
+				tiles.add(board[q][t.getY()]);
+			}
+			else{break;}
+		}
+		for(int q = t.getX()-1; q >= 0; q--) {		//check to the left
+			if(board[q][t.getY()].equals(t)) {
+				s++;
+				tiles.add(board[q][t.getY()]);
+			}
+			else{break;}
+		}	
+		if(tiles.size() < 2) {						//less than 3 in a row
+			tiles.clear();
+    	}
+		else{
+			tiles.add(t);
+			if(tiles.size() == 3) {
+				List<Tile> l = findLTshapeX(tiles);	// check for T and L shapes
+				if(l.isEmpty()) {combi.add(Tile.State.NORMAL);}
+				else{
+					tiles.addAll(l);
+					combi.add(Tile.State.STAR);
+				}
+			}
+			if(tiles.size() == 4) {combi.add(Tile.State.FLAME);}
+			if(tiles.size() == 5) {combi.add(Tile.State.HYPERCUBE);}
+			combi.add(tiles);
+		}
+    	return combi;
+    }
+    
+    /**
+     * Sees whether 
+     * @param t
+     * makes a valid combination in y direction on the board,
+     * @return a list with first the state of the combination, and second the list of tiles in de combi.
+     */
+    public List<Object> getSingleCombinationY(Tile t) {
+    	List combi = new ArrayList<Object>();
+    	List tiles = new ArrayList<Tile>();
+  
+    	//check y direction
+		int s = 1;
+		for(int q = t.getX() + 1; q < SIZE; q++) {	//check down
+			if(board[t.getX()][q].equals(t)) {
+				s++;
+				tiles.add(board[t.getX()][q]);
+			}
+			else{break;}
+		}
+		for(int q = t.getX()-1; q >= 0; q--) {		//check up
+			if(board[t.getX()][q].equals(t)) {
+				s++;
+				tiles.add(board[t.getX()][q]);
+			}
+			else{break;}
+		}	
+		if(tiles.size() < 2) {						//less than 3 in a row
+			tiles.clear();
+    	}
+		else{
+			tiles.add(t);
+			if(tiles.size() == 3) {
+				List<Tile> l = findLTshapeY(tiles);	// check for T and L shapes
+				if(l.isEmpty()) {combi.add(Tile.State.NORMAL);}
+				else{
+					tiles.addAll(l);
+					combi.add(Tile.State.STAR);
+				}
+			}
+			if(tiles.size() == 4) {combi.add(Tile.State.FLAME);}
+			if(tiles.size() == 5) {combi.add(Tile.State.HYPERCUBE);}
+			combi.add(tiles);
+		}
+    	return combi;
+    }
+    
+    /**
+     * Given
+     * @param tiles, three tiles of the same color in a row in x direction
+     * the method looks wheter these three tiles are part of an L or T shape.
+     * @return the list of tiles which are added if an L or T shape is present.
+     */
+    public List<Tile> findLTshapeX(List<Tile> tiles) {
+    	List<Tile> newtiles = new ArrayList<Tile>();
+    	for(Tile t : tiles) {
+    		if(board[t.getX()][t.getY()+1].equals(t)) {
+    			if(board[t.getX()][t.getY()+2].equals(t)) {		// 2 erboven
+        			newtiles.add(board[t.getX()][t.getY()+1]);
+        			newtiles.add(board[t.getX()][t.getY()+2]);
+        			break;
+        		}
+    			if(board[t.getX()][t.getY()-1].equals(t)) {		// 1 erboven, 1 beneden
+        			newtiles.add(board[t.getX()][t.getY()+1]);
+        			newtiles.add(board[t.getX()][t.getY()-1]);
+        			break;
+        		}
+    		}
+    		if(board[t.getX()][t.getY()-1].equals(t) && board[t.getX()][t.getY()-2].equals(t)) {		// 2 beneden
+    			newtiles.add(board[t.getX()][t.getY()-1]);
+    			newtiles.add(board[t.getX()][t.getY()-2]);
+    			break;
+    		}
+    	}
+    	return newtiles;
+    }
+    
+    /**
+     * Given
+     * @param tiles, three tiles of the same color in a row in y direction
+     * the method looks wheter these three tiles are part of an L or T shape.
+     * @return the list of tiles which are added if an L or T shape is present.
+     */
+    public List<Tile> findLTshapeY(List<Tile> tiles) {
+    	List<Tile> newtiles = new ArrayList<Tile>();
+    	for(Tile t : tiles) {
+    		if(board[t.getX()+1][t.getY()].equals(t)) {
+    			if(board[t.getX()+2][t.getY()].equals(t)) {		// 2 rechts
+        			newtiles.add(board[t.getX()+1][t.getY()]);
+        			newtiles.add(board[t.getX()+2][t.getY()]);
+        			break;
+        		}
+    			if(board[t.getX()-1][t.getY()].equals(t)) {		// 1 rechts, 1 links
+        			newtiles.add(board[t.getX()+1][t.getY()]);
+        			newtiles.add(board[t.getX()-1][t.getY()]);
+        			break;
+        		}
+    		}
+    		if(board[t.getX()-1][t.getY()].equals(t) && board[t.getX()-2][t.getY()].equals(t)) {		// 2 links
+    			newtiles.add(board[t.getX()-1][t.getY()]);
+    			newtiles.add(board[t.getX()-2][t.getY()]);
+    			break;
+    		}
+    	}
+    	return newtiles;
+    }
+    
     /**
      * Switch tile t0 and t1 on the board.
      * @param t0 first tile to swap
