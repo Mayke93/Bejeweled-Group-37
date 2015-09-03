@@ -19,10 +19,13 @@ public class Board extends JPanel {
 	public static final int SPACEy = 65;
 	private static ImageIcon boardImage  = new ImageIcon("src/img/board.png");
 	private static ImageIcon focusImage = new ImageIcon("src/img/focus.png");
-
 	private Point focus = null;
+
 	private final JFrame frame;
+	
+	//Panel with score label and level label
 	private StatusPanel panel;
+	
 	private Game game;
 
 	/**
@@ -34,10 +37,7 @@ public class Board extends JPanel {
     	this.frame = frame;
     	this.panel = panel;
     	game = new Game(this,panel);
-
     	setOpaque(true);
-        //initBoard();
-        swaptiles = new ArrayList<Tile>();
         
         addMouseMotionListener(new MouseAdapter() {
             @Override
@@ -49,14 +49,6 @@ public class Board extends JPanel {
                 	return;
                 
                 game.addTile(loc);
-                /*if(!swaptiles.contains(board[col][row])){
-                	System.out.println("Mouse Dragged: (" + col + ", " + row + ")");
-                	swaptiles.add(board[col][row]);
-                	setFocus(loc);
-                	if(swaptiles.size() == 2){                		
-                		swap();
-                	}
-                }*/
             }
         });
         this.addMouseListener(new MouseAdapter() {
@@ -69,16 +61,7 @@ public class Board extends JPanel {
                 if(!withinBoundaries(col) || !withinBoundaries(row))
                 	return;
                 setFocus(loc);
-        		/*System.out.println("Mouse Clicked: (" + col + ", " + row + ") " + Tile.colors[board[col][row].getIndex()]);
-                if(!swaptiles.contains(board[col][row])){
-                	//System.out.println("Mouse Clicked: (" + col + ", " + row + ")");
-                	swaptiles.add(board[col][row]);
-                	if(swaptiles.size() == 2){
-                		swap();
-                	}
-                }
-                System.out.println("(" + board[col][row].getX() + "," + board[col][row].getY() + ")");
-                */
+        		System.out.println("Mouse Clicked: (" + col + ", " + row + ") " + Tile.colors[game.getBoard()[col][row].getIndex()]);
         	}
         	@Override
         	public void mouseReleased(MouseEvent m) {

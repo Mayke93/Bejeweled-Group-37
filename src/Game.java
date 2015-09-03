@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Game {
 	private Tile[][] board;
-	private List<Tile> swaptiles;
+	private List<Tile> swapTiles;
 	private int score = 0;
 	private Board boardPanel;
 	private StatusPanel panel;
@@ -13,17 +13,21 @@ public class Game {
 	public Game(Board boardPanel,StatusPanel panel){
 		this.boardPanel = boardPanel;
 		this.panel = panel;
-		swaptiles = new ArrayList<Tile>();
+		swapTiles = new ArrayList<Tile>();
 		generateRandomBoard();
 	}
 	
+	/**
+	 * Add tile to swapTiles bases on location from a mouseEvent.
+	 * @param loc location of tile
+	 */
 	public void addTile(Point loc){
 		int col = loc.x, row = loc.y;
-        if(!swaptiles.contains(board[col][row])){
+        if(!swapTiles.contains(board[col][row])){
         	System.out.println("Mouse Dragged: (" + col + ", " + row + ")");
-        	swaptiles.add(board[col][row]);
+        	swapTiles.add(board[col][row]);
         	boardPanel.setFocus(loc);
-        	if(swaptiles.size() == 2){                		
+        	if(swapTiles.size() == 2){                		
         		swap();
         	}
         }
@@ -159,11 +163,11 @@ public class Game {
      * Swap two tiles if it result in a sequence of 3 of more tiles with the same color.
      */
     public void swap(){
-    	System.out.println(swaptiles.get(0).getX() + "," + swaptiles.get(0).getY());
-    	System.out.println(swaptiles.get(1).getX() + "," + swaptiles.get(1).getY());
+    	System.out.println(swapTiles.get(0).getX() + "," + swapTiles.get(0).getY());
+    	System.out.println(swapTiles.get(1).getX() + "," + swapTiles.get(1).getY());
     	
-    	Tile t0 = board[swaptiles.get(0).getX()][swaptiles.get(0).getY()];
-    	Tile t1 = board[swaptiles.get(1).getX()][swaptiles.get(1).getY()];
+    	Tile t0 = board[swapTiles.get(0).getX()][swapTiles.get(0).getY()];
+    	Tile t1 = board[swapTiles.get(1).getX()][swapTiles.get(1).getY()];
     	
     	Tile.State type = checktype(t0,t1);
     	if(type == null) {
@@ -184,11 +188,15 @@ public class Game {
 
     	swapTiles(t0,t1);
 
-    	swaptiles.clear();
+    	swapTiles.clear();
     	updateScore(type);
     	boardPanel.repaint();
     }
     
+    /**
+     * Update score in the view.
+     * @param type
+     */
     private void updateScore(Tile.State type){
     	int score = 0;
     	switch(type){
@@ -211,10 +219,20 @@ public class Game {
     	panel.setScore(this.score);
     }
 	
+    /**
+     * Reset game
+     */
+	public void Reset(){
+		this.score = 0;
+		swapTiles = new ArrayList<Tile>();
+		generateRandomBoard();
+		boardPanel.repaint();
+	}
+	
 	public Tile[][] getBoard(){
 		return this.board;
 	}
 	public List<Tile> getSwaptiles(){
-		return this.swaptiles;
+		return this.swapTiles;
 	}
 }
