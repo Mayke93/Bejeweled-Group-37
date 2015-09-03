@@ -12,7 +12,7 @@ public class Tile {
     private Point loc;
 
     public static enum State{
-    	NORMAL,FLAME,HYPERCUBE,STAR;
+    	DEFAULT,NORMAL,FLAME,HYPERCUBE,STAR;
     }
     private State state;
 
@@ -31,7 +31,7 @@ public class Tile {
 	 */
 	public Tile(int i, int j){
     	setRandomTile();
-    	state = State.NORMAL;
+    	this.state = State.NORMAL;
     	this.loc = new Point(i,j);
 	}
 	
@@ -39,9 +39,9 @@ public class Tile {
 	 * Give tile random color.
 	 */
 	public void setRandomTile(){ 
-    	random = new Random();
-		index = random.nextInt(paths.length);
-		image = new ImageIcon(paths[index]);
+    	this.random = new Random();
+		this.index = random.nextInt(paths.length);
+		this.image = new ImageIcon(paths[index]);
 	}
 	
 	public Image getImage(){

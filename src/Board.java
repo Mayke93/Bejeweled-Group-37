@@ -16,11 +16,10 @@ public class Board extends JPanel {
 	public static final int SIZE = 8; //Board size is 8x8
 	public static final Point LOCATION = new Point(241,40);
 	public static final int SPACE = 60;
-	public static final int SPACEX = 65;
-	public static final int SPACEY = 65;
-	private static final String FOCUS = "src/img/focus.png";
-	//private ImageIcon board
-	//private ImageIcon focus
+	public static final int SPACEx = 65;
+	public static final int SPACEy = 65;
+	private static ImageIcon boardImage  = new ImageIcon("src/img/board.png");
+	private static ImageIcon focusImage = new ImageIcon("src/img/focus.png");
 
 	private Tile[][] board;
 	private List<Tile> swaptiles;
@@ -91,7 +90,7 @@ public class Board extends JPanel {
      * @return
      */
     private boolean withinBoundaries(int x){
-    	return (x >= 0 && x <= SIZE);
+    	return (x >= 0 && x < SIZE);
     }
     
     /**
@@ -99,8 +98,8 @@ public class Board extends JPanel {
      * @param loc location of the mouse event
      */
     private void setFocus(Point loc){
-    	int x = loc.x * SPACEX + LOCATION.x;
-    	int y = loc.y * SPACEY + LOCATION.y;
+    	int x = loc.x * SPACEx + LOCATION.x;
+    	int y = loc.y * SPACEy + LOCATION.y;
     	focus = new Point(x,y);
     	repaint();
     }
@@ -112,10 +111,8 @@ public class Board extends JPanel {
      * @return
      */
     public static Point getColAndRow(int x,int y){
-    	x -= LOCATION.x;
-    	y -= LOCATION.y;
-        int col = x/SPACEX;
-        int row = y/SPACEY;
+        int col = (x - LOCATION.x) / SPACEx;
+        int row = (y - LOCATION.y) / SPACEy;
         return new Point(col,row);
     }
     
@@ -126,8 +123,8 @@ public class Board extends JPanel {
      * @param t1 second tile to swap
      * @return
      */
-    public String checktype(Tile t0, Tile t1) {
-    	String res = null;
+    public Tile.State checktype(Tile t0, Tile t1) {
+    	Tile.State res = null;
     	String c1 = Tile.colors[board[t0.getX()][t0.getY()].getIndex()];
     	String c2 = Tile.colors[board[t1.getX()][t1.getY()].getIndex()];
     	Tile tile = null;
@@ -142,14 +139,14 @@ public class Board extends JPanel {
     		
     		//check x direction
     		int s = 1;
-    		for(int q = tile.getX()+1; q<=7; q++) {
+    		for(int q = tile.getX()+1; q < SIZE; q++) {
     			if(Tile.colors[board[q][tile.getY()].getIndex()].equals(color)) {
     				s++;
     				System.out.println("1e " + s);
     			}
     			else{break;}
     		}
-    		for(int q = tile.getX()-1; q>=0; q--) {
+    		for(int q = tile.getX()-1; q >= 0; q--) {
     			if(Tile.colors[board[q][tile.getY()].getIndex()].equals(color)) {
     				s++;
     				System.out.println("2e " + s);
@@ -157,20 +154,20 @@ public class Board extends JPanel {
     			else{break;}
     		}
     		
-    		if(s==3) {res="normal";}
-    		if(s==4) {res="flame";}
-    		if(s==5) {res="hypercube";}
+    		if(s==3) {res=Tile.State.NORMAL;}
+    		if(s==4) {res=Tile.State.FLAME;}
+    		if(s==5) {res=Tile.State.HYPERCUBE;}
     		
     		//check y direction
     		s = 1;
-    		for(int q = tile.getY()+1; q<=7; q++) {
+    		for(int q = tile.getY()+1; q < SIZE; q++) {
     			if(Tile.colors[board[tile.getX()][q].getIndex()].equals(color)) {
     				s++;
     				System.out.println("3e " + s);
     			}
     			else{break;}
     		}
-    		for(int q = tile.getY()-1; q>=0; q--) {
+    		for(int q = tile.getY()-1; q >= 0; q--) {
     			if(Tile.colors[board[tile.getX()][q].getIndex()].equals(color)) {
     				s++;
     				System.out.println("4e " + s);
@@ -178,9 +175,9 @@ public class Board extends JPanel {
     			else{break;}
     		}
     		
-    		if(s==3) {res="normal";}
-    		if(s==4) {res="flame";}
-    		if(s==5) {res="hypercube";}
+    		if(s==3) {res=Tile.State.NORMAL;}
+    		if(s==4) {res=Tile.State.FLAME;}
+    		if(s==5) {res=Tile.State.HYPERCUBE;}
     	}
     	//swap the tiles back to original position
     	swapTiles(t0,t1);
@@ -213,7 +210,7 @@ public class Board extends JPanel {
     	Tile t0 = board[swaptiles.get(0).getX()][swaptiles.get(0).getY()];
     	Tile t1 = board[swaptiles.get(1).getX()][swaptiles.get(1).getY()];
     	
-    	String type = checktype(t0,t1);
+    	Tile.State type = checktype(t0,t1);
     	if(type == null) {
     		return;
     	}
@@ -294,10 +291,10 @@ public class Board extends JPanel {
     public void paintComponent(Graphics g) {
     	super.paintComponent(g);
     	setOpaque(true);
-    	g.drawImage(new ImageIcon("src/img/board.png").getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
+    	g.drawImage(boardImage.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
     	int ix = LOCATION.x,iy = LOCATION.y;
-        int spacex = SPACEX;
-        int spacey = SPACEY;
+        int spacex = SPACEx;
+        int spacey = SPACEy;
 
         for(int i = 0,x = ix, y = iy; i < SIZE; i++){
         	x = ix;
@@ -308,8 +305,7 @@ public class Board extends JPanel {
         }
         
         if(focus != null){
-        	ImageIcon ii = new ImageIcon(FOCUS);
-        	g.drawImage(ii.getImage(), focus.x, focus.y,SPACEX,SPACEY, null);
+        	g.drawImage(focusImage.getImage(), focus.x, focus.y,SPACEx,SPACEy, null);
         }
     }
 }
