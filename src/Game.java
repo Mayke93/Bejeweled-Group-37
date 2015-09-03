@@ -4,17 +4,17 @@ import java.util.List;
 
 public class Game {
 	private Tile[][] board;
-	private List<Tile> swapTiles;
+	public List<Tile> swapTiles;
 	private int score = 0;
 	private Board boardPanel;
 	private StatusPanel panel;
 	private static final int SIZE = Board.SIZE;
-	private Animation anim;
+	private Animation animations;
 	
 	public Game(Board boardPanel,StatusPanel panel){
 		this.boardPanel = boardPanel;
 		this.panel = panel;
-		this.anim = new Animation(this,boardPanel);
+		this.animations = new Animation(this,boardPanel);
 		swapTiles = new ArrayList<Tile>();
 		generateRandomBoard();
 	}
@@ -29,9 +29,9 @@ public class Game {
         	System.out.println("Mouse Dragged: (" + col + ", " + row + ")");
         	swapTiles.add(board[col][row]);
         	boardPanel.setFocus(loc);
-        	if(swapTiles.size() == 2){                		
-        		//swap();
-        		anim.swap(swapTiles.get(0), swapTiles.get(1));
+        	if(swapTiles.size() == 2 && canSwap()){                		
+        		animations.swap(swapTiles.get(0), swapTiles.get(1));
+        		swapTiles.clear();
         	}
         }
 	}
@@ -165,7 +165,7 @@ public class Game {
     /**
      * Swap two tiles if it result in a sequence of 3 of more tiles with the same color.
      */
-    public void swap(){
+    public boolean canSwap(){
     	System.out.println(swapTiles.get(0).getX() + "," + swapTiles.get(0).getY());
     	System.out.println(swapTiles.get(1).getX() + "," + swapTiles.get(1).getY());
     	
@@ -174,7 +174,7 @@ public class Game {
     	
     	Tile.State type = checktype(t0,t1);
     	if(type == null) {
-    		return;
+    		return false;
     	}
     	
     	//Kijk of de tiles naast elkaar zijn
@@ -186,14 +186,11 @@ public class Game {
     	s += (d < 0 ? -d : d);
     	if(s != 1) {
     		System.out.println("s != 1");
-    		return;
+    		return false;
     	}
 
-    	swapTiles(t0,t1);
-
-    	swapTiles.clear();
     	updateScore(type);
-    	boardPanel.repaint();
+    	return true;
     }
     
     /**

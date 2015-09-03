@@ -28,8 +28,8 @@ public class Animation implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		frame++;
-		int speed = 3;
-        if (frame > 22) {endSwap();}
+		int speed = 4;
+        if (frame > 16) {endSwap();}
         else {
             int direction = 1;
             if (t0.getX() == t1.getX()){
