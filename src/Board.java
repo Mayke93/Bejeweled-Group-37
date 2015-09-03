@@ -26,6 +26,7 @@ public class Board extends JPanel {
 	private Point focus = null;
 	private final JFrame frame;
 	private StatusPanel panel;
+	private int score = 0;
 
 	/**
 	 * Initialize the board and create the mouse event listeners.
@@ -230,8 +231,30 @@ public class Board extends JPanel {
     	swapTiles(t0,t1);
 
     	swaptiles.clear();
-    	panel.setScore(2);
+    	updateScore(type);
     	repaint();
+    }
+    
+    private void updateScore(Tile.State type){
+    	int score = 0;
+    	switch(type){
+    	case NORMAL:
+    		score = 50;
+    		break;
+    	case FLAME:
+    		score = 150;
+    		break;
+    	case HYPERCUBE:
+    		score = 500;
+    		break;
+    	case STAR:
+    		score = 150;
+    		break;
+		default:
+			break;
+    	}
+    	this.score += score;
+    	panel.setScore(this.score);
     }
     
     /**
