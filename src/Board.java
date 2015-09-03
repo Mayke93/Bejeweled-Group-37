@@ -128,7 +128,6 @@ public class Board extends JPanel {
      */
     public String checktype(Tile t0, Tile t1) {
     	String res = null;
-    	
     	String c1 = Tile.colors[board[t0.getX()][t0.getY()].getIndex()];
     	String c2 = Tile.colors[board[t1.getX()][t1.getY()].getIndex()];
     	Tile tile = null;
@@ -157,12 +156,7 @@ public class Board extends JPanel {
     			}
     			else{break;}
     		}
-    		if(s<3) {
-    			/*temp = board[swaptiles.get(0).getX()][swaptiles.get(0).getY()];
-    			board[swaptiles.get(1).getX()][swaptiles.get(1).getY()] = board[swaptiles.get(1).getX()][swaptiles.get(1).getY()];
-    			board[swaptiles.get(0).getX()][swaptiles.get(0).getY()] = temp;*/
-                //swapTiles(t0,t1);
-    		}
+    		
     		if(s==3) {res="normal";}
     		if(s==4) {res="flame";}
     		if(s==5) {res="hypercube";}
@@ -183,16 +177,10 @@ public class Board extends JPanel {
     			}
     			else{break;}
     		}
-    		if(s<3) {
-    			/*temp = board[swaptiles.get(0).getX()][swaptiles.get(0).getY()];
-    			board[swaptiles.get(1).getX()][swaptiles.get(1).getY()] = board[swaptiles.get(1).getX()][swaptiles.get(1).getY()];
-    			board[swaptiles.get(0).getX()][swaptiles.get(0).getY()] = temp;*/
-          //      swapTiles(t0,t1);
-    		}
+    		
     		if(s==3) {res="normal";}
     		if(s==4) {res="flame";}
     		if(s==5) {res="hypercube";}
-    		
     	}
     	//swap the tiles back to original position
     	swapTiles(t0,t1);
