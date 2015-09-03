@@ -47,7 +47,7 @@ public class Board extends JPanel {
                 	System.out.println("Mouse Dragged: (" + col + ", " + row + ")");
                 	swaptiles.add(board[col][row]);
                 	setFocus(loc);
-                	if(swaptiles.size() == 2){
+                	if(swaptiles.size() == 2){                		
                 		swap();
                 	}
                 }
@@ -99,12 +99,88 @@ public class Board extends JPanel {
         return new Point(col,row);
     }
     
+    public String checktype(Tile t0, Tile t1) {
+    	String res = null;
+    	
+    	String c1 = Tile.colors[board[t0.getX()][t0.getY()].getIndex()];
+    	String c2 = Tile.colors[board[t1.getX()][t1.getY()].getIndex()];
+    	Tile tile = null;
+    	String color = null;
+    	
+    	for(int i=1;i<3;i++){
+    		
+    		Tile temp = board[swaptiles.get(0).getX()][swaptiles.get(0).getY()];
+    		board[swaptiles.get(0).getX()][swaptiles.get(0).getY()] = board[swaptiles.get(1).getX()][swaptiles.get(1).getY()];
+        	board[swaptiles.get(1).getX()][swaptiles.get(1).getY()] = temp;
+    		
+    		if(i==1) {tile=t0; color = c2;}
+    		if(i==2) {tile=t1; color = c1;}
+    		
+    		//check x direction
+    		int s = 1;
+    		for(int q = tile.getX()+1; q<=7; q++) {
+    			if(Tile.colors[board[q][tile.getY()].getIndex()].equals(color)) {
+    				s++;
+    				System.out.println("1e " + s);
+    			}
+    			else{break;}
+    		}
+    		for(int q = tile.getX()-1; q>=0; q--) {
+    			if(Tile.colors[board[q][tile.getY()].getIndex()].equals(color)) {
+    				s++;
+    				System.out.println("2e " + s);
+    			}
+    			else{break;}
+    		}
+    		if(s<3) {
+    			temp = board[swaptiles.get(0).getX()][swaptiles.get(0).getY()];
+    			board[swaptiles.get(1).getX()][swaptiles.get(1).getY()] = board[swaptiles.get(1).getX()][swaptiles.get(1).getY()];
+    			board[swaptiles.get(0).getX()][swaptiles.get(0).getY()] = temp;
+    		}
+    		if(s==3) {res="normal";}
+    		if(s==4) {res="flame";}
+    		if(s==5) {res="hypercube";}
+    		
+    		//check y direction
+    		s = 1;
+    		for(int q = tile.getY()+1; q<=7; q++) {
+    			if(Tile.colors[board[tile.getX()][q].getIndex()].equals(color)) {
+    				s++;
+    				System.out.println("3e " + s);
+    			}
+    			else{break;}
+    		}
+    		for(int q = tile.getY()-1; q>=0; q--) {
+    			if(Tile.colors[board[tile.getX()][q].getIndex()].equals(color)) {
+    				s++;
+    				System.out.println("4e " + s);
+    			}
+    			else{break;}
+    		}
+    		if(s<3) {
+    			temp = board[swaptiles.get(0).getX()][swaptiles.get(0).getY()];
+    			board[swaptiles.get(1).getX()][swaptiles.get(1).getY()] = board[swaptiles.get(1).getX()][swaptiles.get(1).getY()];
+    			board[swaptiles.get(0).getX()][swaptiles.get(0).getY()] = temp;
+    		}
+    		if(s==3) {res="normal";}
+    		if(s==4) {res="flame";}
+    		if(s==5) {res="hypercube";}
+    		
+    	}
+    	return res;
+    }
+    
     public void swap(){
     	System.out.println(swaptiles.get(0).getX() + "," + swaptiles.get(0).getY());
     	System.out.println(swaptiles.get(1).getX() + "," + swaptiles.get(1).getY());
     	
     	Tile t0 = board[swaptiles.get(0).getX()][swaptiles.get(0).getY()];
     	Tile t1 = board[swaptiles.get(1).getX()][swaptiles.get(1).getY()];
+    	
+    	String type = checktype(t0,t1);
+    	if(type == null) {
+    		return;
+    	}
     	
     	//Kijk of de tiles naast elkaar zijn
     	int s = 0;
