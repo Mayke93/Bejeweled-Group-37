@@ -38,7 +38,14 @@ public class Tile {
 	}
 	
 	public void updateTranslation(int dx, int dy){
-		this.d.setLocation(this.d.x + dx, this.d.y + dy);
+		int sx = this.d.x + dx;
+		if(sx == 64) sx = 65;
+		if(sx == -64) sx = -65;
+		
+		int sy = this.d.y + dy;
+		if(sy == 64) sy = 65;
+		if(sy == -64) sy = -65;
+		this.d.setLocation(sx,sy);
 	}
 	public void resetD(){
 		this.d = new Point(0,0);
