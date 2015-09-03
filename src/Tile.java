@@ -10,6 +10,7 @@ public class Tile {
     private int index;
     private ImageIcon image;
     private Point loc;
+    public Point d;
 
     public static enum State{
     	DEFAULT,NORMAL,FLAME,HYPERCUBE,STAR;
@@ -33,6 +34,14 @@ public class Tile {
     	setRandomTile();
     	this.state = State.NORMAL;
     	this.loc = new Point(i,j);
+    	this.d = new Point(0,0);
+	}
+	
+	public void updateTranslation(int dx, int dy){
+		this.d.setLocation(this.d.x + dx, this.d.y + dy);
+	}
+	public void resetD(){
+		this.d = new Point(0,0);
 	}
 	
 	/**
