@@ -111,11 +111,13 @@ public class Board extends JPanel {
     	Tile[][] board = game.getBoard();
     	g.drawImage(boardImage.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
     	int ix = LOCATION.x,iy = LOCATION.y;
+    	Tile tile = null;
 
         for(int i = 0,x = ix, y = iy; i < SIZE; i++){
         	x = ix;
         	for(int j = 0; j < SIZE; j++, x += SPACEx){
-                g.drawImage(board[j][i].getImage(), x, y, null);
+        		tile = board[j][i];
+                g.drawImage(tile.getImage(), x + tile.d.x , y + tile.d.y, null);
         	}
         	y += SPACEy;
         }

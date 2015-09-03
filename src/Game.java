@@ -9,16 +9,18 @@ public class Game {
 	private Board boardPanel;
 	private StatusPanel panel;
 	private static final int SIZE = Board.SIZE;
+	private Animation anim;
 	
 	public Game(Board boardPanel,StatusPanel panel){
 		this.boardPanel = boardPanel;
 		this.panel = panel;
+		this.anim = new Animation(this,boardPanel);
 		swapTiles = new ArrayList<Tile>();
 		generateRandomBoard();
 	}
 	
 	/**
-	 * Add tile to swapTiles bases on location from a mouseEvent.
+	 * Add tile to swapTiles bases on location from the mouseEvent.
 	 * @param loc location of tile
 	 */
 	public void addTile(Point loc){
@@ -28,7 +30,8 @@ public class Game {
         	swapTiles.add(board[col][row]);
         	boardPanel.setFocus(loc);
         	if(swapTiles.size() == 2){                		
-        		swap();
+        		//swap();
+        		anim.swap(swapTiles.get(0), swapTiles.get(1));
         	}
         }
 	}
@@ -351,7 +354,7 @@ public class Game {
      * @param t0 first tile to swap
      * @param t1 second tile to swap
      */
-    private void swapTiles(Tile t0, Tile t1){
+    public void swapTiles(Tile t0, Tile t1){
     	Tile temp = board[t0.getX()][t0.getY()];
     	board[t0.getX()][t0.getY()] = board[t1.getX()][t1.getY()];
         board[t1.getX()][t1.getY()] = temp;
