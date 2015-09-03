@@ -133,18 +133,13 @@ public class Board extends JPanel {
     	String c2 = Tile.colors[board[t1.getX()][t1.getY()].getIndex()];
     	Tile tile = null;
     	String color = null;
+    	//swap tiles to look in the rows where the tile will be in case it can be switched
+    	swapTiles(t0,t1);
     	
     	for(int i=1;i<3;i++){
-    		
-    		/*Tile temp = board[swaptiles.get(0).getX()][swaptiles.get(0).getY()];
-    		board[swaptiles.get(0).getX()][swaptiles.get(0).getY()] = board[swaptiles.get(1).getX()][swaptiles.get(1).getY()];
-        	board[swaptiles.get(1).getX()][swaptiles.get(1).getY()] = temp;*/
-
-    		//Niet alleen het object maar de attribute 'loc' moet verwisseld worden
-    		swapTiles(t0,t1); 
-    		
-    		if(i==1) {tile=t0; color = c2;}
-    		if(i==2) {tile=t1; color = c1;}
+   
+    		if(i==1) {tile=t0; color = c1;}
+    		if(i==2) {tile=t1; color = c2;}
     		
     		//check x direction
     		int s = 1;
@@ -166,7 +161,7 @@ public class Board extends JPanel {
     			/*temp = board[swaptiles.get(0).getX()][swaptiles.get(0).getY()];
     			board[swaptiles.get(1).getX()][swaptiles.get(1).getY()] = board[swaptiles.get(1).getX()][swaptiles.get(1).getY()];
     			board[swaptiles.get(0).getX()][swaptiles.get(0).getY()] = temp;*/
-                swapTiles(t0,t1);
+                //swapTiles(t0,t1);
     		}
     		if(s==3) {res="normal";}
     		if(s==4) {res="flame";}
@@ -192,13 +187,16 @@ public class Board extends JPanel {
     			/*temp = board[swaptiles.get(0).getX()][swaptiles.get(0).getY()];
     			board[swaptiles.get(1).getX()][swaptiles.get(1).getY()] = board[swaptiles.get(1).getX()][swaptiles.get(1).getY()];
     			board[swaptiles.get(0).getX()][swaptiles.get(0).getY()] = temp;*/
-                swapTiles(t0,t1);
+          //      swapTiles(t0,t1);
     		}
     		if(s==3) {res="normal";}
     		if(s==4) {res="flame";}
     		if(s==5) {res="hypercube";}
     		
     	}
+    	//swap the tiles back to original position
+    	swapTiles(t0,t1);
+    	System.out.println(res);
     	return res;
     }
     
