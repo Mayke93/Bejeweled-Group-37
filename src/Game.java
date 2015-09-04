@@ -11,12 +11,10 @@ public class Game {
 	private Board boardPanel;
 	private StatusPanel panel;
 	private static final int SIZE = Board.SIZE;
-	private Animation animations;
 	
 	public Game(Board boardPanel,StatusPanel panel){
 		this.boardPanel = boardPanel;
 		this.panel = panel;
-		this.animations = new Animation(this,boardPanel);
 		swapTiles = new ArrayList<Tile>();
 		generateRandomBoard();
 	}
@@ -32,7 +30,7 @@ public class Game {
         	swapTiles.add(board[col][row]);
         	boardPanel.setFocus(loc);
         	if(swapTiles.size() == 2 && canSwap()){                		
-        		animations.swap(swapTiles.get(0), swapTiles.get(1));
+        		boardPanel.swapTiles(swapTiles);
         		swapTiles.clear();
         	}
         }

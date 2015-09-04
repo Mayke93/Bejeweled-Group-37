@@ -22,6 +22,7 @@ public class Board extends JPanel {
 	private Point focus = null;
 
 	private final JFrame frame;
+	private Animation animations;
 	
 	//Panel with score label and level label
 	private StatusPanel panel;
@@ -37,6 +38,7 @@ public class Board extends JPanel {
     	this.frame = frame;
     	this.panel = panel;
     	game = new Game(this,panel);
+    	animations = new Animation(game,this);
     	setOpaque(true);
         
         addMouseMotionListener(new MouseAdapter() {
@@ -68,6 +70,10 @@ public class Board extends JPanel {
         		game.getSwaptiles().clear();
             }
         });
+    }
+    
+    public void swapTiles(List<Tile> swapTiles){
+    	animations.swap(swapTiles.get(0), swapTiles.get(1));
     }
     
     /**
