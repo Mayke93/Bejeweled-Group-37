@@ -26,17 +26,38 @@ public class Game {
 	public void addTile(Point loc){
 		int col = loc.x, row = loc.y;
         if(!swapTiles.contains(board[col][row])){
-        	System.out.println("Mouse Dragged: (" + col + ", " + row + ")");
+        	//System.out.println("Mouse Dragged: (" + col + ", " + row + ")");
         	swapTiles.add(board[col][row]);
         	boardPanel.setFocus(loc);
         	if(swapTiles.size() == 2 && canSwap()){                		
         		boardPanel.swapTiles(swapTiles);
         		swapTiles.clear();
+        		printCombinations();
         	}
         }
 	}
 
-    /**
+    private void printCombinations() {
+    	List<List<Object>> res = getAllCombinationsOnBoard();
+    	System.out.println("chains: " + res.size());
+    	for(int i = 0; i < res.size(); i++){
+    		System.out.println("Combination " + (i+1));
+    		for(int j = 0; j < res.get(i).size(); j++){
+    			Object obj = res.get(i).get(j);
+    			if(j == 0){
+    				System.out.println("\tType: " + obj);
+    			}
+    			else{
+    				System.out.println("\t" + obj);
+    			}
+    		}
+    	}
+    	
+    }
+
+
+
+	/**
      * Create a board of random jewels without a sequence of 3 or more tiles with the same color.
      */
     public void generateRandomBoard(){

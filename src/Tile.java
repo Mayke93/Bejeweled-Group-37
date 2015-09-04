@@ -87,4 +87,7 @@ public class Tile {
 
 	public State getState(){ return this.state; }
 	public void setState(State state){ this.state = state; }
+	public String toString(){
+		return "(" + Integer.toString(this.loc.x) + "," + Integer.toString(this.loc.y) + ") " + colors[this.index];
+	}
 }
