@@ -314,7 +314,7 @@ public class Game {
     	List<Tile> newtiles = new ArrayList<Tile>();
     	for(Tile t : tiles) {
     		if(t.getY()+1 < 8 && board[t.getX()][t.getY()+1].equals(t)) {
-    			if(t. getY()+2 < 8 && board[t.getX()][t.getY()+2].equals(t)) {		// 2 erboven
+    			if(t.getY()+2 < 8 && board[t.getX()][t.getY()+2].equals(t)) {		// 2 erboven
         			newtiles.add(board[t.getX()][t.getY()+1]);
         			newtiles.add(board[t.getX()][t.getY()+2]);
         			break;
@@ -401,15 +401,15 @@ public class Game {
     		type = (Tile.State) l1.get(0);
     		System.out.println("in1");
     	}
-    	if(!l2.isEmpty()) {
+    	else if(!l2.isEmpty()) {
     		type = (Tile.State) l2.get(0);
     		System.out.println("in2");
     	}
-    	if(!l3.isEmpty()) {
+    	else if(!l3.isEmpty()) {
     		type = (Tile.State) l3.get(0);
     		System.out.println("in3");
     	}
-    	if(!l4.isEmpty()) {
+    	else if(!l4.isEmpty()) {
     		type = (Tile.State) l4.get(0);
     		System.out.println("in4");
        	}
