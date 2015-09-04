@@ -2,6 +2,8 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
+//import Tile.State;
+
 public class Game {
 	private Tile[][] board;
 	public List<Tile> swapTiles;
@@ -147,35 +149,38 @@ public class Game {
     	return res;
     }
     
-/*    public List<List<Object>> getCombinations() {
-    	List<List<Object>> allcombinations = new ArrayList<List<Object>>();
+    /**
+     * Method to check whether there are possible moves left in the game
+     * @return true if there are possible moves, false if there are none.
+     */
+    public boolean possibleMoves() {
+    	boolean possiblemove = false;
     	Tile t0 = null;
     	Tile t1 = null;
-    	List<Object> combi = new ArrayList<Object>();
     	
     	//check combinations in x direction
-    	for(int i=0;i<8;i++) {
-    		for(int j=0;j<7;j++) {
+    	for(int i = 0; i < SIZE; i++) {
+    		for(int j = 0; j < 7; j++) {
     			t0 = board[j][i];
     			t1 = board[j+1][i];
-    			if(swappable(t0,t1)) {
-    				combi.add(getSingleCombination(t0,t1));
+    			if(!(checktype(t0,t1) == null)) {
+    				possiblemove = true;
     			}
     		}
     	}
     	
     	//check combinations in y direction
-    	for(int i=0;i<8;i++) {
-    		for(int j=0;j<7;j++) {
+    	for(int i = 0; i < SIZE; i++) {
+    		for(int j = 0; j < 7; j++) {
     			t0 = board[i][j];
     			t1 = board[i][j+1];
-    			if(swappable(t0,t1)) {
-    				combi.add(getSingleCombination(t));
+    			if(!(checktype(t0,t1) == null)) {
+    				possiblemove = true;
     			}
     		}
     	}
-    	return allcombinations;
-    }*/
+    	return possiblemove;
+    }
     
     /**
      * Returns a list, which contains lists with 2 objects: (State,List of tiles), eg. (Tile.State.NORMAL,List(t1,t2,t3)).
@@ -298,19 +303,19 @@ public class Game {
     public List<Tile> findLTshapeX(List<Tile> tiles) {
     	List<Tile> newtiles = new ArrayList<Tile>();
     	for(Tile t : tiles) {
-    		if(board[t.getX()][t.getY()+1].equals(t)) {
-    			if(board[t.getX()][t.getY()+2].equals(t)) {		// 2 erboven
+    		if(t.getY()+1 < 8 && board[t.getX()][t.getY()+1].equals(t)) {
+    			if(t. getY()+2 < 8 && board[t.getX()][t.getY()+2].equals(t)) {		// 2 erboven
         			newtiles.add(board[t.getX()][t.getY()+1]);
         			newtiles.add(board[t.getX()][t.getY()+2]);
         			break;
         		}
-    			if(board[t.getX()][t.getY()-1].equals(t)) {		// 1 erboven, 1 beneden
+    			if(t.getY()-1 >= 0 && board[t.getX()][t.getY()-1].equals(t)) {		// 1 erboven, 1 beneden
         			newtiles.add(board[t.getX()][t.getY()+1]);
         			newtiles.add(board[t.getX()][t.getY()-1]);
         			break;
         		}
     		}
-    		if(board[t.getX()][t.getY()-1].equals(t) && board[t.getX()][t.getY()-2].equals(t)) {		// 2 beneden
+    		if(t.getY()-2 >= 0 && board[t.getX()][t.getY()-1].equals(t) && board[t.getX()][t.getY()-2].equals(t)) {		// 2 beneden
     			newtiles.add(board[t.getX()][t.getY()-1]);
     			newtiles.add(board[t.getX()][t.getY()-2]);
     			break;
@@ -328,19 +333,19 @@ public class Game {
     public List<Tile> findLTshapeY(List<Tile> tiles) {
     	List<Tile> newtiles = new ArrayList<Tile>();
     	for(Tile t : tiles) {
-    		if(board[t.getX()+1][t.getY()].equals(t)) {
-    			if(board[t.getX()+2][t.getY()].equals(t)) {		// 2 rechts
+    		if(t.getX() < 8 && board[t.getX()+1][t.getY()].equals(t)) {
+    			if(t.getY()+2 < 8 && board[t.getX()+2][t.getY()].equals(t)) {		// 2 rechts
         			newtiles.add(board[t.getX()+1][t.getY()]);
         			newtiles.add(board[t.getX()+2][t.getY()]);
         			break;
         		}
-    			if(board[t.getX()-1][t.getY()].equals(t)) {		// 1 rechts, 1 links
+    			if(t.getX()-1 >= 0 && board[t.getX()-1][t.getY()].equals(t)) {		// 1 rechts, 1 links
         			newtiles.add(board[t.getX()+1][t.getY()]);
         			newtiles.add(board[t.getX()-1][t.getY()]);
         			break;
         		}
     		}
-    		if(board[t.getX()-1][t.getY()].equals(t) && board[t.getX()-2][t.getY()].equals(t)) {		// 2 links
+    		if(t.getX()-2 >= 0 && board[t.getX()-1][t.getY()].equals(t) && board[t.getX()-2][t.getY()].equals(t)) {		// 2 links
     			newtiles.add(board[t.getX()-1][t.getY()]);
     			newtiles.add(board[t.getX()-2][t.getY()]);
     			break;
@@ -374,7 +379,33 @@ public class Game {
     	Tile t0 = board[swapTiles.get(0).getX()][swapTiles.get(0).getY()];
     	Tile t1 = board[swapTiles.get(1).getX()][swapTiles.get(1).getY()];
     	
-    	Tile.State type = checktype(t0,t1);
+    	swapTiles(t0,t1);
+    	List<Object> l1 = getSingleCombinationX(t0);
+    	List<Object> l2 = getSingleCombinationX(t1);
+    	List<Object> l3 = getSingleCombinationY(t0);
+    	List<Object> l4 = getSingleCombinationY(t1);
+    	swapTiles(t0,t1);
+    	
+    	Tile.State type = null;
+    	if(!l1.isEmpty()) {
+    		type = (Tile.State) l1.get(0);
+    		System.out.println("in1");
+    	}
+    	if(!l2.isEmpty()) {
+    		type = (Tile.State) l2.get(0);
+    		System.out.println("in2");
+    	}
+    	if(!l3.isEmpty()) {
+    		type = (Tile.State) l3.get(0);
+    		System.out.println("in3");
+    	}
+    	if(!l4.isEmpty()) {
+    		type = (Tile.State) l4.get(0);
+    		System.out.println("in4");
+       	}
+    	
+    	//Tile.State type = checktype(t0,t1);
+    	
     	if(type == null) {
     		return false;
     	}
@@ -390,7 +421,7 @@ public class Game {
     		System.out.println("s != 1");
     		return false;
     	}
-
+    	System.out.println(type);
     	updateScore(type);
     	return true;
     }
