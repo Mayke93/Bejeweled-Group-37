@@ -317,18 +317,18 @@ public class Game {
     	List<Tile> newtiles = new ArrayList<Tile>();
     	for(Tile t : tiles) {
     		if(t.getY()+1 < 8 && board[t.getX()][t.getY()+1].equals(t)) {
-    			if(t. getY()+2 < 8 && board[t.getX()][t.getY()+2].equals(t)) {		// 2 erboven
+    			if(t.getY()+2 < 8 && board[t.getX()][t.getY()+2].equals(t)) {		// 2 erboven
         			newtiles.add(board[t.getX()][t.getY()+1]);
         			newtiles.add(board[t.getX()][t.getY()+2]);
         			break;
         		}
-    			if(t.getY()-1 >= 0 && board[t.getX()][t.getY()-1].equals(t)) {		// 1 erboven, 1 beneden
+    			else if(t.getY()-1 >= 0 && board[t.getX()][t.getY()-1].equals(t)) {		// 1 erboven, 1 beneden
         			newtiles.add(board[t.getX()][t.getY()+1]);
         			newtiles.add(board[t.getX()][t.getY()-1]);
         			break;
         		}
     		}
-    		if(t.getY()-2 >= 0 && board[t.getX()][t.getY()-1].equals(t) && board[t.getX()][t.getY()-2].equals(t)) {		// 2 beneden
+    		else if(t.getY()-2 >= 0 && board[t.getX()][t.getY()-1].equals(t) && board[t.getX()][t.getY()-2].equals(t)) {		// 2 beneden
     			newtiles.add(board[t.getX()][t.getY()-1]);
     			newtiles.add(board[t.getX()][t.getY()-2]);
     			break;
@@ -352,13 +352,13 @@ public class Game {
         			newtiles.add(board[t.getX()+2][t.getY()]);
         			break;
         		}
-    			if(t.getX()-1 >= 0 && board[t.getX()-1][t.getY()].equals(t)) {		// 1 rechts, 1 links
+    			else if(t.getX()-1 >= 0 && board[t.getX()-1][t.getY()].equals(t)) {		// 1 rechts, 1 links
         			newtiles.add(board[t.getX()+1][t.getY()]);
         			newtiles.add(board[t.getX()-1][t.getY()]);
         			break;
         		}
     		}
-    		if(t.getX()-2 >= 0 && board[t.getX()-1][t.getY()].equals(t) && board[t.getX()-2][t.getY()].equals(t)) {		// 2 links
+    		else if(t.getX()-2 >= 0 && board[t.getX()-1][t.getY()].equals(t) && board[t.getX()-2][t.getY()].equals(t)) {		// 2 links
     			newtiles.add(board[t.getX()-1][t.getY()]);
     			newtiles.add(board[t.getX()-2][t.getY()]);
     			break;
@@ -404,15 +404,15 @@ public class Game {
     		type = (Tile.State) l1.get(0);
     		System.out.println("in1");
     	}
-    	if(!l2.isEmpty()) {
+    	else if(!l2.isEmpty()) {
     		type = (Tile.State) l2.get(0);
     		System.out.println("in2");
     	}
-    	if(!l3.isEmpty()) {
+    	else if(!l3.isEmpty()) {
     		type = (Tile.State) l3.get(0);
     		System.out.println("in3");
     	}
-    	if(!l4.isEmpty()) {
+    	else if(!l4.isEmpty()) {
     		type = (Tile.State) l4.get(0);
     		System.out.println("in4");
        	}
