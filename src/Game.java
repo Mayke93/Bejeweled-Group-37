@@ -319,13 +319,13 @@ public class Game {
         			newtiles.add(board[t.getX()][t.getY()+2]);
         			break;
         		}
-    			if(t.getY()-1 >= 0 && board[t.getX()][t.getY()-1].equals(t)) {		// 1 erboven, 1 beneden
+    			else if(t.getY()-1 >= 0 && board[t.getX()][t.getY()-1].equals(t)) {		// 1 erboven, 1 beneden
         			newtiles.add(board[t.getX()][t.getY()+1]);
         			newtiles.add(board[t.getX()][t.getY()-1]);
         			break;
         		}
     		}
-    		if(t.getY()-2 >= 0 && board[t.getX()][t.getY()-1].equals(t) && board[t.getX()][t.getY()-2].equals(t)) {		// 2 beneden
+    		else if(t.getY()-2 >= 0 && board[t.getX()][t.getY()-1].equals(t) && board[t.getX()][t.getY()-2].equals(t)) {		// 2 beneden
     			newtiles.add(board[t.getX()][t.getY()-1]);
     			newtiles.add(board[t.getX()][t.getY()-2]);
     			break;
@@ -349,13 +349,13 @@ public class Game {
         			newtiles.add(board[t.getX()+2][t.getY()]);
         			break;
         		}
-    			if(t.getX()-1 >= 0 && board[t.getX()-1][t.getY()].equals(t)) {		// 1 rechts, 1 links
+    			else if(t.getX()-1 >= 0 && board[t.getX()-1][t.getY()].equals(t)) {		// 1 rechts, 1 links
         			newtiles.add(board[t.getX()+1][t.getY()]);
         			newtiles.add(board[t.getX()-1][t.getY()]);
         			break;
         		}
     		}
-    		if(t.getX()-2 >= 0 && board[t.getX()-1][t.getY()].equals(t) && board[t.getX()-2][t.getY()].equals(t)) {		// 2 links
+    		else if(t.getX()-2 >= 0 && board[t.getX()-1][t.getY()].equals(t) && board[t.getX()-2][t.getY()].equals(t)) {		// 2 links
     			newtiles.add(board[t.getX()-1][t.getY()]);
     			newtiles.add(board[t.getX()-2][t.getY()]);
     			break;
