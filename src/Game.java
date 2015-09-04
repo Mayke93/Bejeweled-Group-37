@@ -270,14 +270,14 @@ public class Game {
   
     	//check y direction
 		int s = 1;
-		for(int q = t.getX() + 1; q < SIZE; q++) {	//check down
+		for(int q = t.getY() + 1; q < SIZE; q++) {	//check down
 			if(board[t.getX()][q].equals(t)) {
 				s++;
 				tiles.add(board[t.getX()][q]);
 			}
 			else{break;}
 		}
-		for(int q = t.getX()-1; q >= 0; q--) {		//check up
+		for(int q = t.getY()-1; q >= 0; q--) {		//check up
 			if(board[t.getX()][q].equals(t)) {
 				s++;
 				tiles.add(board[t.getX()][q]);
