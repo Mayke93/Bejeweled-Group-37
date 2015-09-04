@@ -62,6 +62,7 @@ public class Game {
      */
     private boolean hasSequence(int i){
 		int s = 0;
+		//Find sequence in row i
 		for(int j = 1; j < Board.SIZE; j++){
 			if(board[i][j].equals(board[i][j-1])){
 				s++;
@@ -75,8 +76,10 @@ public class Game {
 			}
 		}
 
-		if(i <= 1) return false;
+        //If there are only 1 or 2 rows created, don't check for horizontal sequences
+		if(i <= 1) return false; 
 
+		//Find horizonal sequences
 		for(int j = 0; j < Board.SIZE; j++){
 			s = 0;
 			s += (board[i-1][j].equals(board[i][j]) ? 1 : 0);
@@ -219,8 +222,8 @@ public class Game {
      * @return a list with first the state of the combination, and second the list of tiles in de combi.
      */
     public List<Object> getSingleCombinationX(Tile t) {
-    	List combi = new ArrayList<Object>();
-    	List tiles = new ArrayList<Tile>();
+    	List<Object> combi = new ArrayList<Object>();
+    	List<Tile> tiles = new ArrayList<Tile>();
   
     	//check x direction
 		int s = 1;
@@ -265,8 +268,8 @@ public class Game {
      * @return a list with first the state of the combination, and second the list of tiles in de combi.
      */
     public List<Object> getSingleCombinationY(Tile t) {
-    	List combi = new ArrayList<Object>();
-    	List tiles = new ArrayList<Tile>();
+    	List<Object> combi = new ArrayList<Object>();
+    	List<Tile> tiles = new ArrayList<Tile>();
   
     	//check y direction
 		int s = 1;
@@ -343,7 +346,7 @@ public class Game {
     public List<Tile> findLTshapeY(List<Tile> tiles) {
     	List<Tile> newtiles = new ArrayList<Tile>();
     	for(Tile t : tiles) {
-    		if(t.getX() < 8 && board[t.getX()+1][t.getY()].equals(t)) {
+    		if(t.getX()+1 < 8 && board[t.getX()+1][t.getY()].equals(t)) {
     			if(t.getY()+2 < 8 && board[t.getX()+2][t.getY()].equals(t)) {		// 2 rechts
         			newtiles.add(board[t.getX()+1][t.getY()]);
         			newtiles.add(board[t.getX()+2][t.getY()]);
@@ -436,8 +439,8 @@ public class Game {
      * @return
      */
     public boolean isNeighbour(Tile t0, Tile t1){
-    	System.out.println(t0.getX() + "," + t0.getY());
-    	System.out.println(t1.getX() + "," + t1.getY());
+    	/*System.out.println(t0.getX() + "," + t0.getY());
+    	System.out.println(t1.getX() + "," + t1.getY());*/
     	if(Math.abs(t0.getX() - t1.getX()) == 1 && Math.abs(t0.getY() - t1.getY()) == 0)
     		return true;
     	if(Math.abs(t0.getX() - t1.getX()) == 0 && Math.abs(t0.getY() - t1.getY()) == 1)
