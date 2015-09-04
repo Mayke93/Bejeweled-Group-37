@@ -48,36 +48,46 @@ public class Game {
     			board[i][j] = new Tile(i,j);
     		}
 
-    		//Dit zorgt ervoor dat er geen rijen van 3 of meer jewels zijn
-    		int s = 0;
-    		for(int j = 1; j < Board.SIZE; j++){
-    			if(board[i][j].equals(board[i][j-1])){
-    				s++;
-    			}
-    			else{
-    				s = 0;
-    			}
-
-    			if(s >= 2){
-    				i--;
-    				break;
-    			}
-    		}
-
-    		if(i <= 1) continue;
-
-    		for(int j = 0; j < Board.SIZE; j++){
-    			s = 0;
-    			s += (board[i-1][j].equals(board[i][j]) ? 1 : 0);
-    			s += (board[i-2][j].equals(board[i][j]) ? 1 : 0);
-
-    			if(s == 2){
-    				System.out.println("i,j: " + i + "," + j);
-    				i--;
-    				break;
-    			}
-    		}
+    		//Redo column if a sequence has been detected
+            if(hasSequence(i)){
+                    i--;
+            }
     	}
+    }
+    
+    /**
+     * Checks if column i that just has been added doesn't create a sequence of 3 or more colours/
+     * @param i column to check for sequences.
+     * @return
+     */
+    private boolean hasSequence(int i){
+		int s = 0;
+		for(int j = 1; j < Board.SIZE; j++){
+			if(board[i][j].equals(board[i][j-1])){
+				s++;
+			}
+			else{
+				s = 0;
+			}
+
+			if(s >= 2){
+				return true;
+			}
+		}
+
+		if(i <= 1) return false;
+
+		for(int j = 0; j < Board.SIZE; j++){
+			s = 0;
+			s += (board[i-1][j].equals(board[i][j]) ? 1 : 0);
+			s += (board[i-2][j].equals(board[i][j]) ? 1 : 0);
+
+			if(s == 2){
+				System.out.println("i,j: " + i + "," + j);
+				return true;
+			}
+		}
+		return false;
     }
     
     /**
@@ -241,8 +251,8 @@ public class Game {
 					combi.add(Tile.State.STAR);
 				}
 			}
-			if(tiles.size() == 4) {combi.add(Tile.State.FLAME);}
-			if(tiles.size() == 5) {combi.add(Tile.State.HYPERCUBE);}
+			else if(tiles.size() == 4) {combi.add(Tile.State.FLAME);}
+			else if(tiles.size() == 5) {combi.add(Tile.State.HYPERCUBE);}
 			combi.add(tiles);
 		}
     	return combi;
@@ -287,8 +297,8 @@ public class Game {
 					combi.add(Tile.State.STAR);
 				}
 			}
-			if(tiles.size() == 4) {combi.add(Tile.State.FLAME);}
-			if(tiles.size() == 5) {combi.add(Tile.State.HYPERCUBE);}
+			else if(tiles.size() == 4) {combi.add(Tile.State.FLAME);}
+			else if(tiles.size() == 5) {combi.add(Tile.State.HYPERCUBE);}
 			combi.add(tiles);
 		}
     	return combi;
@@ -373,8 +383,8 @@ public class Game {
      * Swap two tiles if it result in a sequence of 3 of more tiles with the same color.
      */
     public boolean canSwap(){
-    	System.out.println(swapTiles.get(0).getX() + "," + swapTiles.get(0).getY());
-    	System.out.println(swapTiles.get(1).getX() + "," + swapTiles.get(1).getY());
+    	/*System.out.println(swapTiles.get(0).getX() + "," + swapTiles.get(0).getY());
+    	System.out.println(swapTiles.get(1).getX() + "," + swapTiles.get(1).getY());*/
     	
     	Tile t0 = board[swapTiles.get(0).getX()][swapTiles.get(0).getY()];
     	Tile t1 = board[swapTiles.get(1).getX()][swapTiles.get(1).getY()];
@@ -410,20 +420,29 @@ public class Game {
     		return false;
     	}
     	
-    	//Kijk of de tiles naast elkaar zijn
-    	int s = 0;
-    	int d = t0.getX()-t1.getX();
-    	s += (d < 0 ? -d : d); 
-    	
-    	d = t0.getY()-t1.getY();
-    	s += (d < 0 ? -d : d);
-    	if(s != 1) {
-    		System.out.println("s != 1");
+    	if(!isNeighbour(t0,t1)) {
+    		System.out.println("t0 and t1 are no neighbours.");
     		return false;
     	}
     	System.out.println(type);
     	updateScore(type);
     	return true;
+    }
+    
+    /**
+     * Return true if t0 and t1 are neighbours.
+     * @param t0
+     * @param t1
+     * @return
+     */
+    public boolean isNeighbour(Tile t0, Tile t1){
+    	System.out.println(t0.getX() + "," + t0.getY());
+    	System.out.println(t1.getX() + "," + t1.getY());
+    	if(Math.abs(t0.getX() - t1.getX()) == 1 && Math.abs(t0.getY() - t1.getY()) == 0)
+    		return true;
+    	if(Math.abs(t0.getX() - t1.getX()) == 0 && Math.abs(t0.getY() - t1.getY()) == 1)
+    		return true;
+    	return false;
     }
     
     /**

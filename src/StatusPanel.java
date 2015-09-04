@@ -17,7 +17,7 @@ class StatusPanel extends JPanel{
 	private JLabel scoreLabel = new JLabel("Score: ");
 	private JLabel levelLabel = new JLabel("Level:");
 
-	private static final Font font = new Font("Serif", Font.BOLD, 40);
+	private static final Font font = new Font("Serif", Font.BOLD, 35);
 
 	public StatusPanel(){
 		setLayout(new GridBagLayout());
