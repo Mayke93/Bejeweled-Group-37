@@ -346,7 +346,7 @@ public class Game {
     public List<Tile> findLTshapeY(List<Tile> tiles) {
     	List<Tile> newtiles = new ArrayList<Tile>();
     	for(Tile t : tiles) {
-    		if(t.getX() < 8 && board[t.getX()+1][t.getY()].equals(t)) {
+    		if(t.getX()+1 < 8 && board[t.getX()+1][t.getY()].equals(t)) {
     			if(t.getY()+2 < 8 && board[t.getX()+2][t.getY()].equals(t)) {		// 2 rechts
         			newtiles.add(board[t.getX()+1][t.getY()]);
         			newtiles.add(board[t.getX()+2][t.getY()]);
