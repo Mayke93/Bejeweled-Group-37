@@ -185,7 +185,7 @@ public class Game {
      * Method to check whether there are possible moves left in the game
      * @return true if there are possible moves, false if there are none.
      */
-    public boolean possibleMoves() {
+    public boolean possibleMove() {
     	boolean possiblemove = false;
     	Tile t0 = null;
     	Tile t1 = null;
@@ -224,14 +224,27 @@ public class Game {
     	for(int i = 0; i < SIZE; i++) {			//for every tile on the board
     		for(int j = 0; j < SIZE; j++) {
     			if(!getSingleCombinationX(board[i][j]).isEmpty()){
-    				allcombinations.add(getSingleCombinationX(board[i][j]));
+    				if(!sameCombination(allcombinations, getSingleCombinationX(board[i][j]))) {
+        				allcombinations.add(getSingleCombinationX(board[i][j]));
+    				}
     			}
-    			if(!getSingleCombinationY(board[i][j]).isEmpty()){
+    			if(!sameCombination(allcombinations, getSingleCombinationX(board[i][j]))){
     				allcombinations.add(getSingleCombinationY(board[i][j]));
     			}
     		}
     	}
     	return allcombinations;
+    }
+    
+    public boolean sameCombination(List<List<Object>> allcombinations, List<Object> singlecombination) {
+    	boolean same = false;
+    	
+    	for(List<Object> list : allcombinations) {
+			if(list.containsAll(singlecombination)) {
+				same = true;
+			}
+		} 
+    	return same;
     }
     
     /**
