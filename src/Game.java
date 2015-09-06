@@ -37,22 +37,31 @@ public class Game {
         }
 	}
 
+//    private void printCombinations() {
+//    	List<Combination> res = getAllCombinationsOnBoard();
+//    	System.out.println("chains: " + res.size());
+//    	for(int i = 0; i < res.size(); i++){
+//    		System.out.println("Combination " + (i+1));
+//    		for(int j = 0; j < res.get(i).size(); j++){
+//    			Object obj = res.get(i).get(j);
+//    			if(j == 0){
+//    				System.out.println("\tType: " + obj);
+//    			}
+//    			else{
+//    				System.out.println("\t" + obj);
+//    			}
+//    		}
+//    	}
+//    	
+//    }
+    
     private void printCombinations() {
-    	List<List<Object>> res = getAllCombinationsOnBoard();
+    	List<Combination> res = getAllCombinationsOnBoard();
     	System.out.println("chains: " + res.size());
-    	for(int i = 0; i < res.size(); i++){
-    		System.out.println("Combination " + (i+1));
-    		for(int j = 0; j < res.get(i).size(); j++){
-    			Object obj = res.get(i).get(j);
-    			if(j == 0){
-    				System.out.println("\tType: " + obj);
-    			}
-    			else{
-    				System.out.println("\t" + obj);
-    			}
-    		}
+    	for(Combination combi : res) {
+    		System.out.println("\tType: " + combi.getState());
+    		System.out.println("\t" + combi.getTiles());
     	}
-    	
     }
 
 
@@ -218,12 +227,12 @@ public class Game {
      * Returns a list, which contains lists with 2 objects: (State,List of tiles), eg. (Tile.State.NORMAL,List(t1,t2,t3)).
      * This is a list of all the valid combinations on the board at this time.
      */
-    public List<List<Object>> getAllCombinationsOnBoard() {
-    	List<List<Object>> allcombinations = new ArrayList<List<Object>>();
+    public List<Combination> getAllCombinationsOnBoard() {
+    	List<Combination> allcombinations = new ArrayList<Combination>();
     	
     	for(int i = 0; i < SIZE; i++) {			//for every tile on the board
     		for(int j = 0; j < SIZE; j++) {
-    			if(!getSingleCombinationX(board[i][j]).isEmpty()){
+    			if(!getSingleCombinationX(board[i][j]).getTiles().isEmpty()){
     				if(!sameCombination(allcombinations, getSingleCombinationX(board[i][j]))) {
         				allcombinations.add(getSingleCombinationX(board[i][j]));
     				}
@@ -236,11 +245,11 @@ public class Game {
     	return allcombinations;
     }
     
-    public boolean sameCombination(List<List<Object>> allcombinations, List<Object> singlecombination) {
+    public boolean sameCombination(List<Combination> allcombinations, Combination singlecombination) {
     	boolean same = false;
     	
-    	for(List<Object> list : allcombinations) {
-			if(list.containsAll(singlecombination)) {
+    	for(Combination combi : allcombinations) {
+			if(combi.getTiles().containsAll(singlecombination.getTiles())) {
 				same = true;
 			}
 		} 
@@ -253,8 +262,8 @@ public class Game {
      * makes a valid combination in x direction on the board,
      * @return a list with first the state of the combination, and second the list of tiles in de combi.
      */
-    public List<Object> getSingleCombinationX(Tile t) {
-    	List<Object> combi = new ArrayList<Object>();
+    public Combination getSingleCombinationX(Tile t) {
+    	Combination combi = new Combination();
     	List<Tile> tiles = new ArrayList<Tile>();
   
     	//check x direction
@@ -280,15 +289,15 @@ public class Game {
 			tiles.add(t);
 			if(tiles.size() == 3) {
 				List<Tile> l = findLTshapeX(tiles);	// check for T and L shapes
-				if(l.isEmpty()) {combi.add(Tile.State.NORMAL);}
+				if(l.isEmpty()) {combi.setState(Tile.State.NORMAL);}
 				else{
 					tiles.addAll(l);
-					combi.add(Tile.State.STAR);
+					combi.setState(Tile.State.STAR);
 				}
 			}
-			else if(tiles.size() == 4) {combi.add(Tile.State.FLAME);}
-			else if(tiles.size() == 5) {combi.add(Tile.State.HYPERCUBE);}
-			combi.add(tiles);
+			else if(tiles.size() == 4) {combi.setState(Tile.State.FLAME);}
+			else if(tiles.size() == 5) {combi.setState(Tile.State.HYPERCUBE);}
+			combi.setTiles(tiles);
 		}
     	return combi;
     }
@@ -299,8 +308,8 @@ public class Game {
      * makes a valid combination in y direction on the board,
      * @return a list with first the state of the combination, and second the list of tiles in de combi.
      */
-    public List<Object> getSingleCombinationY(Tile t) {
-    	List<Object> combi = new ArrayList<Object>();
+    public Combination getSingleCombinationY(Tile t) {
+    	Combination combi = new Combination();
     	List<Tile> tiles = new ArrayList<Tile>();
   
     	//check y direction
@@ -326,15 +335,15 @@ public class Game {
 			tiles.add(t);
 			if(tiles.size() == 3) {
 				List<Tile> l = findLTshapeY(tiles);	// check for T and L shapes
-				if(l.isEmpty()) {combi.add(Tile.State.NORMAL);}
+				if(l.isEmpty()) {combi.setState(Tile.State.NORMAL);}
 				else{
 					tiles.addAll(l);
-					combi.add(Tile.State.STAR);
+					combi.setState(Tile.State.STAR);
 				}
 			}
-			else if(tiles.size() == 4) {combi.add(Tile.State.FLAME);}
-			else if(tiles.size() == 5) {combi.add(Tile.State.HYPERCUBE);}
-			combi.add(tiles);
+			else if(tiles.size() == 4) {combi.setState(Tile.State.FLAME);}
+			else if(tiles.size() == 5) {combi.setState(Tile.State.HYPERCUBE);}
+			combi.setTiles(tiles);
 		}
     	return combi;
     }
@@ -425,27 +434,27 @@ public class Game {
     	Tile t1 = board[swapTiles.get(1).getX()][swapTiles.get(1).getY()];
     	
     	swapTiles(t0,t1);
-    	List<Object> l1 = getSingleCombinationX(t0);
-    	List<Object> l2 = getSingleCombinationX(t1);
-    	List<Object> l3 = getSingleCombinationY(t0);
-    	List<Object> l4 = getSingleCombinationY(t1);
+    	Combination l1 = getSingleCombinationX(t0);
+    	Combination l2 = getSingleCombinationX(t1);
+    	Combination l3 = getSingleCombinationY(t0);
+    	Combination l4 = getSingleCombinationY(t1);
     	swapTiles(t0,t1);
     	
     	Tile.State type = null;
-    	if(!l1.isEmpty()) {
-    		type = (Tile.State) l1.get(0);
+    	if(!l1.getTiles().isEmpty()) {
+    		type = l1.getState();
     		System.out.println("in1");
     	}
-    	else if(!l2.isEmpty()) {
-    		type = (Tile.State) l2.get(0);
+    	else if(!l2.getTiles().isEmpty()) {
+    		type = l2.getState();
     		System.out.println("in2");
     	}
-    	else if(!l3.isEmpty()) {
-    		type = (Tile.State) l3.get(0);
+    	else if(!l3.getTiles().isEmpty()) {
+    		type = l3.getState();
     		System.out.println("in3");
     	}
-    	else if(!l4.isEmpty()) {
-    		type = (Tile.State) l4.get(0);
+    	else if(!l4.getTiles().isEmpty()) {
+    		type = l4.getState();
     		System.out.println("in4");
        	}
     	
