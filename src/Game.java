@@ -461,6 +461,7 @@ public class Game {
     	}
     	System.out.println(type);
     	updateScore(type);
+    	updateLevel();
     	return true;
     }
     
@@ -504,6 +505,21 @@ public class Game {
     	}
     	this.score += score;
     	panel.setScore(this.score);
+    }
+    
+    private void updateLevel() {
+    	if(this.score >= 1000 && this.score < 3500) {
+    		panel.setLevel(2);
+    	}
+    	if(this.score >= 3500 && this.score < 5500) {
+    		panel.setLevel(3);
+    	}
+    	if(this.score >= 5500 && this.score < 8000) {
+    		panel.setLevel(4);
+    	}
+    	if(this.score >= 8000 && this.score < 11000) {
+    		panel.setLevel(5);
+    	}
     }
 	
     /**
