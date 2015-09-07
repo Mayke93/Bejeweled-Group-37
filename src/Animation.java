@@ -1,5 +1,8 @@
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
+
 import javax.swing.Timer;
 
 public class Animation implements ActionListener{
@@ -9,6 +12,11 @@ public class Animation implements ActionListener{
 	private int frame;
 	private Tile t0;
 	private Tile t1;
+	private List<Tile> tiles;
+	public static enum Type{
+		SWAP,REMOVE,DROP;
+	}
+	private Type type;
 	
 	public Animation(Game game, Board board) {
 		this.game = game;
@@ -17,6 +25,8 @@ public class Animation implements ActionListener{
 		this.frame = 0;
 		this.t0 = null;
 		this.t1 = null;
+		this.tiles = null;
+		this.type = Type.SWAP;
 	}
 	
 	public void swap(Tile t0, Tile t1){
@@ -24,28 +34,61 @@ public class Animation implements ActionListener{
 		this.t1 = t1;
 		timer.start();
 	}
+	
+	public void startRemove(List<Tile> tiles){
+		this.tiles = tiles;
+		for(Tile t: this.tiles){
+			t.d = new Point(0,0);
+			t.size = 0;
+		}
+		timer.start();
+		timer.setDelay(90);
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		frame++;
-		int speed = 4;
-        if (frame > 16) {endSwap();}
-        else {
-            int direction = 1;
-            if (t0.getX() == t1.getX()){
-                if (t0.getY() < t1.getY()) { direction = 1;}
-                else { direction = -1;}
-                t0.updateTranslation(0,speed*direction);
-                t1.updateTranslation(0,-speed*direction);
-            }
-            else {                
-                if (t0.getX() < t1.getX()) { direction = 1;}
-                else { direction = -1;}
-                t0.updateTranslation(speed*direction, 0);
-                t1.updateTranslation(-speed*direction, 0);
-            }
-            board.repaint();
-        }	
+		if(this.type == Type.SWAP){
+			frame++;
+			int speed = 4;
+	        if (frame > 16) {endSwap();}
+	        else {
+	            int direction = 1;
+	            if (t0.getX() == t1.getX()){
+	                if (t0.getY() < t1.getY()) { direction = 1;}
+	                else { direction = -1;}
+	                t0.updateTranslation(0,speed*direction);
+	                t1.updateTranslation(0,-speed*direction);
+	            }
+	            else {                
+	                if (t0.getX() < t1.getX()) { direction = 1;}
+	                else { direction = -1;}
+	                t0.updateTranslation(speed*direction, 0);
+	                t1.updateTranslation(-speed*direction, 0);
+	            }
+	        }	
+	        board.repaint();
+		}
+		else if(this.type == Type.REMOVE){
+			frame++;
+			int speed = 1;
+			if(frame > 32) { endRemove(); }
+			else{
+				for(Tile t: this.tiles){
+					t.d.x += speed;
+					t.d.y += speed;
+					//t.size += speed;
+				}
+			}
+			board.repaint();
+		}
+		else if(this.type == Type.DROP){
+			
+		}
+	}
+	
+	private void endRemove(){
+		this.timer.stop();
+		this.frame = 0;
 	}
 
 	private void endSwap() {
@@ -57,5 +100,17 @@ public class Animation implements ActionListener{
 		game.swapTiles(t0,t1);
 		game.deleteTiles();
 		game.printCombinations();
+	}
+	
+	public void setTiles(List<Tile> tiles){
+		this.tiles = tiles;
+	}
+
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
 	}
 }

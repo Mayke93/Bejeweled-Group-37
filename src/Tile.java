@@ -11,6 +11,7 @@ public class Tile {
     private ImageIcon image;
     private Point loc;
     public Point d;
+    public int size;
     private int level;
     public boolean remove;
 
@@ -39,6 +40,7 @@ public class Tile {
     	this.d = new Point(0,0);
     	this.level = 0;
     	this.remove = false;
+    	this.size = 0;
 	}
 
 	public void updateTranslation(int dx, int dy){

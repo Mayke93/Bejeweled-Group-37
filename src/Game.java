@@ -2,6 +2,7 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
+
 //import Tile.State;
 
 public class Game {
@@ -54,25 +55,29 @@ public class Game {
 
     			if(containsTile(board[col][row],chains)) {
     				board[col][row].remove = true;
+    				tiles.add(board[col][row]);
     				for(int i = row-1; i >= 0; i--){
     					board[col][i].increaseLevel();
-    					tiles.add(board[col][i]);
     				}
     			}
 
     		}
     	}
      	
-     	Tile r = null;
+     	/*Tile r = null;
      	for(int i= 0; i < SIZE; i++){
      		for(int j = 0; j < SIZE; j++){
      			r = board[j][i];
      			System.out.print(r.getLevel() + " ");
      		}
      		System.out.println();
-     	}
-     	dropTiles(tiles);
-     	boardPanel.repaint();
+     	}*/
+
+     	boardPanel.animations.setType(Animation.Type.REMOVE);
+     	boardPanel.animations.startRemove(tiles);
+
+     	//dropTiles(tiles);
+     	//boardPanel.repaint();
     }
     
     private void dropTiles(List<Tile> tiles){
@@ -83,6 +88,8 @@ public class Game {
     			if(level > 0){
     				board[col][row+level] = board[col][row].clone(col,row+level);
     				board[col][row+level].setLevel(0);
+    				if(!board[col][row+level].remove)
+    					board[col][row+level].setRandomTile();
     			}
     		}
      	}

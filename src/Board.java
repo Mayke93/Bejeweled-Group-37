@@ -22,7 +22,7 @@ public class Board extends JPanel {
 	private Point focus = null;
 
 	private final JFrame frame;
-	private Animation animations;
+	public Animation animations;
 	
 	//Panel with score label and level label
 	private StatusPanel panel;
@@ -114,6 +114,7 @@ public class Board extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
     	super.paintComponent(g);
+
     	Tile[][] board = game.getBoard();
     	g.drawImage(boardImage.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
     	int ix = LOCATION.x,iy = LOCATION.y;
@@ -123,8 +124,8 @@ public class Board extends JPanel {
         	x = ix;
         	for(int j = 0; j < SIZE; j++, x += SPACEx){
         		tile = board[j][i];
-        		if(board[j][i].remove) continue;
-                g.drawImage(tile.getImage(), x + tile.d.x , y + tile.d.y,SPACEx,SPACEy, null);
+        		if(tile.remove) continue;
+                g.drawImage(tile.getImage(), x + tile.d.x , y + tile.d.y,SPACEx - tile.size,SPACEy - tile.size, null);
         	}
         	y += SPACEy;
         }
