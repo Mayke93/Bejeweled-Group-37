@@ -44,7 +44,29 @@ public class Game {
     		System.out.println("\t" + combi.getTiles());
     	}
     }
-
+    
+    
+    private void deleteTiles(){
+    	List<Combination> chains = getAllCombinationsOnBoard();
+    	for(int row = SIZE-1; row >= 0; row--){
+    		for(int col = 0; col < SIZE; col++){
+    			if(containsTile(board[col][row],chains)) {
+    				for(int i = row; i >= 0; i--){
+    					board[col][i].increaseLevel();
+    				}
+    			}
+    		}
+    	}
+    }
+    
+    private boolean containsTile(Tile t, List<Combination> chains){
+    	for(Combination c: chains){
+    		if(c.getTiles().contains(t)){
+    			return true;
+    		}
+    	}
+    	return false;
+    }
 
 
 	/**

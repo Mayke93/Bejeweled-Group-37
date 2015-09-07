@@ -11,6 +11,7 @@ public class Tile {
     private ImageIcon image;
     private Point loc;
     public Point d;
+    private int level;
 
     public static enum State{
     	DEFAULT,NORMAL,FLAME,HYPERCUBE,STAR;
@@ -35,8 +36,14 @@ public class Tile {
     	this.state = State.NORMAL;
     	this.loc = new Point(i,j);
     	this.d = new Point(0,0);
+    	this.level = 0;
 	}
 	
+	
+	
+
+
+
 	public void updateTranslation(int dx, int dy){
 		int sx = this.d.x + dx;
 		if(sx == 64) sx = 65;
@@ -84,6 +91,9 @@ public class Tile {
 	public void setLoc(int x, int y){
 		this.loc = new Point(x,y);
 	}
+	public int getLevel() { return level; }
+	public void setLevel(int level) { this.level = level; }
+	public void increaseLevel(){ this.level++; }
 
 	public State getState(){ return this.state; }
 	public void setState(State state){ this.state = state; }
