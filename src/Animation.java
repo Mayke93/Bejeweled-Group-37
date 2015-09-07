@@ -37,12 +37,14 @@ public class Animation implements ActionListener{
 	
 	public void startRemove(List<Tile> tiles){
 		this.tiles = tiles;
+		this.frame = 0;
+		System.out.println(tiles.size());
 		for(Tile t: this.tiles){
 			t.d = new Point(0,0);
 			t.size = 0;
 		}
 		timer.start();
-		timer.setDelay(90);
+		timer.setDelay(5);
 	}
 
 	@Override
@@ -76,7 +78,7 @@ public class Animation implements ActionListener{
 				for(Tile t: this.tiles){
 					t.d.x += speed;
 					t.d.y += speed;
-					//t.size += speed;
+					t.size += 2*speed;
 				}
 			}
 			board.repaint();
@@ -89,12 +91,18 @@ public class Animation implements ActionListener{
 	private void endRemove(){
 		this.timer.stop();
 		this.frame = 0;
+		for(Tile t: this.tiles){
+			t.remove = true;
+		}
+		this.tiles = null;
+		board.repaint();
 	}
 
 	private void endSwap() {
 		this.timer.stop();
 		this.frame = 0;
-		
+		System.out.println("end");
+
 		t0.resetD();
 		t1.resetD();
 		game.swapTiles(t0,t1);

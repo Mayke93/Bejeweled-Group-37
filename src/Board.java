@@ -73,6 +73,7 @@ public class Board extends JPanel {
     }
     
     public void swapTiles(List<Tile> swapTiles){
+    	animations.setType(Animation.Type.SWAP);
     	animations.swap(swapTiles.get(0), swapTiles.get(1));
     }
     

@@ -54,7 +54,7 @@ public class Game {
     		for(int col = 0; col < SIZE; col++){
 
     			if(containsTile(board[col][row],chains)) {
-    				board[col][row].remove = true;
+    				//board[col][row].remove = true;
     				tiles.add(board[col][row]);
     				for(int i = row-1; i >= 0; i--){
     					board[col][i].increaseLevel();
