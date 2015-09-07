@@ -12,6 +12,7 @@ public class Tile {
     private Point loc;
     public Point d;
     private int level;
+    public boolean remove;
 
     public static enum State{
     	DEFAULT,NORMAL,FLAME,HYPERCUBE,STAR;
@@ -37,12 +38,8 @@ public class Tile {
     	this.loc = new Point(i,j);
     	this.d = new Point(0,0);
     	this.level = 0;
+    	this.remove = false;
 	}
-	
-	
-	
-
-
 
 	public void updateTranslation(int dx, int dy){
 		int sx = this.d.x + dx;
@@ -87,6 +84,15 @@ public class Tile {
 			return false;
 		Tile tile = (Tile)obj;		
 		return (this.index == tile.index);
+	}
+	
+	public Tile clone(int i, int j){
+		Tile t = new Tile(i,j);
+		t.index = this.index;
+		t.image = this.image;
+		t.loc = this.loc;
+		t.d = this.d;
+		return t;
 	}
 	
 	public int getX(){ return this.loc.x; }

@@ -46,17 +46,46 @@ public class Game {
     }
     
     
-    private void deleteTiles(){
+    public void deleteTiles(){
     	List<Combination> chains = getAllCombinationsOnBoard();
-    	for(int row = SIZE-1; row >= 0; row--){
+    	List<Tile> tiles = new ArrayList<Tile>();
+     	for(int row = SIZE-1; row >= 0; row--){
     		for(int col = 0; col < SIZE; col++){
+
     			if(containsTile(board[col][row],chains)) {
-    				for(int i = row; i >= 0; i--){
+    				board[col][row].remove = true;
+    				for(int i = row-1; i >= 0; i--){
     					board[col][i].increaseLevel();
+    					tiles.add(board[col][i]);
     				}
     			}
+
     		}
     	}
+     	
+     	Tile r = null;
+     	for(int i= 0; i < SIZE; i++){
+     		for(int j = 0; j < SIZE; j++){
+     			r = board[j][i];
+     			System.out.print(r.getLevel() + " ");
+     		}
+     		System.out.println();
+     	}
+     	dropTiles(tiles);
+     	boardPanel.repaint();
+    }
+    
+    private void dropTiles(List<Tile> tiles){
+    	int level = 0;
+     	for(int row = SIZE-1; row >= 0; row--){
+    		for(int col = 0; col < SIZE; col++){
+    			level = board[col][row].getLevel();
+    			if(level > 0){
+    				board[col][row+level] = board[col][row].clone(col,row+level);
+    				board[col][row+level].setLevel(0);
+    			}
+    		}
+     	}
     }
     
     private boolean containsTile(Tile t, List<Combination> chains){
