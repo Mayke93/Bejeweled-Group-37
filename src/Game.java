@@ -237,8 +237,10 @@ public class Game {
         				allcombinations.add(getSingleCombinationX(board[i][j]));
     				}
     			}
-    			if(!sameCombination(allcombinations, getSingleCombinationX(board[i][j]))){
-    				allcombinations.add(getSingleCombinationY(board[i][j]));
+    			if(!getSingleCombinationY(board[i][j]).getTiles().isEmpty()){
+    				if(!sameCombination(allcombinations, getSingleCombinationY(board[i][j]))){
+        				allcombinations.add(getSingleCombinationY(board[i][j]));
+        			}
     			}
     		}
     	}
