@@ -63,7 +63,7 @@ public class Board extends JPanel {
                 if(!withinBoundaries(col) || !withinBoundaries(row))
                 	return;
                 setFocus(loc);
-        		System.out.println("Mouse Clicked: (" + col + ", " + row + ") " + Tile.colors[game.getBoard()[col][row].getIndex()]);
+        		System.out.println("Mouse Clicked: (" + game.getBoard()[col][row].getLoc().x + ", " + game.getBoard()[col][row].getLoc().y + ") " + Tile.colors[game.getBoard()[col][row].getIndex()]);
         	}
         	@Override
         	public void mouseReleased(MouseEvent m) {

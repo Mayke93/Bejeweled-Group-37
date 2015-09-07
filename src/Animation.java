@@ -32,6 +32,7 @@ public class Animation implements ActionListener{
 	public void swap(Tile t0, Tile t1){
 		this.t0 = t0;
 		this.t1 = t1;
+		timer.setDelay(10);
 		timer.start();
 	}
 	
@@ -43,8 +44,8 @@ public class Animation implements ActionListener{
 			t.d = new Point(0,0);
 			t.size = 0;
 		}
+		timer.setDelay(2);
 		timer.start();
-		timer.setDelay(5);
 	}
 
 	@Override
@@ -93,9 +94,10 @@ public class Animation implements ActionListener{
 		this.frame = 0;
 		for(Tile t: this.tiles){
 			t.remove = true;
+			t.d = new Point(0,0);
+			t.size = 0;
 		}
-		this.tiles = null;
-		board.repaint();
+		game.dropTiles();
 	}
 
 	private void endSwap() {
@@ -107,7 +109,6 @@ public class Animation implements ActionListener{
 		t1.resetD();
 		game.swapTiles(t0,t1);
 		game.deleteTiles();
-		game.printCombinations();
 	}
 	
 	public void setTiles(List<Tile> tiles){

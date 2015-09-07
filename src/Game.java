@@ -54,7 +54,7 @@ public class Game {
     		for(int col = 0; col < SIZE; col++){
 
     			if(containsTile(board[col][row],chains)) {
-    				//board[col][row].remove = true;
+
     				tiles.add(board[col][row]);
     				for(int i = row-1; i >= 0; i--){
     					board[col][i].increaseLevel();
@@ -63,6 +63,9 @@ public class Game {
 
     		}
     	}
+     	boardPanel.animations.setType(Animation.Type.REMOVE);
+     	boardPanel.animations.startRemove(tiles);
+		printCombinations();
      	
      	/*Tile r = null;
      	for(int i= 0; i < SIZE; i++){
@@ -73,14 +76,12 @@ public class Game {
      		System.out.println();
      	}*/
 
-     	boardPanel.animations.setType(Animation.Type.REMOVE);
-     	boardPanel.animations.startRemove(tiles);
 
      	//dropTiles(tiles);
      	//boardPanel.repaint();
     }
     
-    private void dropTiles(List<Tile> tiles){
+    public void dropTiles(){
     	int level = 0;
      	for(int row = SIZE-1; row >= 0; row--){
     		for(int col = 0; col < SIZE; col++){
@@ -88,11 +89,22 @@ public class Game {
     			if(level > 0){
     				board[col][row+level] = board[col][row].clone(col,row+level);
     				board[col][row+level].setLevel(0);
-    				if(!board[col][row+level].remove)
-    					board[col][row+level].setRandomTile();
+    				board[col][row].setLevel(0);
+    				board[col][row].setState(Tile.State.DEFAULT);
     			}
     		}
      	}
+     	for(int row = SIZE-1; row >= 0; row--){
+    		for(int col = 0; col < SIZE; col++){
+    			if(board[col][row].getState() == Tile.State.DEFAULT){
+    				board[col][row].setRandomTile();
+    			}
+    			if(board[col][row].remove)
+    				board[col][row].remove = false;
+    		}
+     	}
+     	boardPanel.repaint();
+
     }
     
     private boolean containsTile(Tile t, List<Combination> chains){

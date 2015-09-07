@@ -62,6 +62,7 @@ public class Tile {
 	 */
 	public void setRandomTile(){ 
     	this.random = new Random();
+    	this.state = State.NORMAL;
 		this.index = random.nextInt(paths.length);
 		this.image = new ImageIcon(paths[index]);
 	}
@@ -90,10 +91,9 @@ public class Tile {
 	
 	public Tile clone(int i, int j){
 		Tile t = new Tile(i,j);
+    	t.state = State.NORMAL;
 		t.index = this.index;
-		t.image = this.image;
-		t.loc = this.loc;
-		t.d = this.d;
+		t.image = new ImageIcon(paths[index]);
 		return t;
 	}
 	
