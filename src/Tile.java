@@ -71,7 +71,14 @@ public class Tile {
 	public boolean equals(Object obj){
 		if(!(obj instanceof Tile))
 			return false;
-		Tile tile = (Tile)obj;
+		Tile tile = (Tile)obj;		
+		return (this.index == tile.index && tile.getX() == this.getX() && tile.getY() == this.getY());
+	}
+	
+	public boolean equalsColor(Object obj){
+		if(!(obj instanceof Tile))
+			return false;
+		Tile tile = (Tile)obj;		
 		return (this.index == tile.index);
 	}
 	

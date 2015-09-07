@@ -92,7 +92,7 @@ public class Game {
 		int s = 0;
 		//Find sequence in row i
 		for(int j = 1; j < Board.SIZE; j++){
-			if(board[i][j].equals(board[i][j-1])){
+			if(board[i][j].equalsColor(board[i][j-1])){
 				s++;
 			}
 			else{
@@ -110,8 +110,8 @@ public class Game {
 		//Find horizonal sequences
 		for(int j = 0; j < Board.SIZE; j++){
 			s = 0;
-			s += (board[i-1][j].equals(board[i][j]) ? 1 : 0);
-			s += (board[i-2][j].equals(board[i][j]) ? 1 : 0);
+			s += (board[i-1][j].equalsColor(board[i][j]) ? 1 : 0);
+			s += (board[i-2][j].equalsColor(board[i][j]) ? 1 : 0);
 
 			if(s == 2){
 				System.out.println("i,j: " + i + "," + j);
@@ -271,14 +271,14 @@ public class Game {
     	//check x direction
 		int s = 1;
 		for(int q = t.getX() + 1; q < SIZE; q++) {	//check to the right
-			if(board[q][t.getY()].equals(t)) {
+			if(board[q][t.getY()].equalsColor(t)) {
 				s++;
 				tiles.add(board[q][t.getY()]);
 			}
 			else{break;}
 		}
 		for(int q = t.getX()-1; q >= 0; q--) {		//check to the left
-			if(board[q][t.getY()].equals(t)) {
+			if(board[q][t.getY()].equalsColor(t)) {
 				s++;
 				tiles.add(board[q][t.getY()]);
 			}
@@ -317,14 +317,14 @@ public class Game {
     	//check y direction
 		int s = 1;
 		for(int q = t.getY() + 1; q < SIZE; q++) {	//check down
-			if(board[t.getX()][q].equals(t)) {
+			if(board[t.getX()][q].equalsColor(t)) {
 				s++;
 				tiles.add(board[t.getX()][q]);
 			}
 			else{break;}
 		}
 		for(int q = t.getY()-1; q >= 0; q--) {		//check up
-			if(board[t.getX()][q].equals(t)) {
+			if(board[t.getX()][q].equalsColor(t)) {
 				s++;
 				tiles.add(board[t.getX()][q]);
 			}
@@ -359,19 +359,19 @@ public class Game {
     public List<Tile> findLTshapeX(List<Tile> tiles) {
     	List<Tile> newtiles = new ArrayList<Tile>();
     	for(Tile t : tiles) {
-    		if(t.getY()+1 < 8 && board[t.getX()][t.getY()+1].equals(t)) {
-    			if(t.getY()+2 < 8 && board[t.getX()][t.getY()+2].equals(t)) {		// 2 erboven
+    		if(t.getY()+1 < 8 && board[t.getX()][t.getY()+1].equalsColor(t)) {
+    			if(t.getY()+2 < 8 && board[t.getX()][t.getY()+2].equalsColor(t)) {		// 2 erboven
         			newtiles.add(board[t.getX()][t.getY()+1]);
         			newtiles.add(board[t.getX()][t.getY()+2]);
         			break;
         		}
-    			else if(t.getY()-1 >= 0 && board[t.getX()][t.getY()-1].equals(t)) {		// 1 erboven, 1 beneden
+    			else if(t.getY()-1 >= 0 && board[t.getX()][t.getY()-1].equalsColor(t)) {		// 1 erboven, 1 beneden
         			newtiles.add(board[t.getX()][t.getY()+1]);
         			newtiles.add(board[t.getX()][t.getY()-1]);
         			break;
         		}
     		}
-    		else if(t.getY()-2 >= 0 && board[t.getX()][t.getY()-1].equals(t) && board[t.getX()][t.getY()-2].equals(t)) {		// 2 beneden
+    		else if(t.getY()-2 >= 0 && board[t.getX()][t.getY()-1].equalsColor(t) && board[t.getX()][t.getY()-2].equalsColor(t)) {		// 2 beneden
     			newtiles.add(board[t.getX()][t.getY()-1]);
     			newtiles.add(board[t.getX()][t.getY()-2]);
     			break;
@@ -389,19 +389,19 @@ public class Game {
     public List<Tile> findLTshapeY(List<Tile> tiles) {
     	List<Tile> newtiles = new ArrayList<Tile>();
     	for(Tile t : tiles) {
-    		if(t.getX()+1 < 8 && board[t.getX()+1][t.getY()].equals(t)) {
-    			if(t.getX()+2 < 8 && board[t.getX()+2][t.getY()].equals(t)) {		// 2 rechts
+    		if(t.getX()+1 < 8 && board[t.getX()+1][t.getY()].equalsColor(t)) {
+    			if(t.getX()+2 < 8 && board[t.getX()+2][t.getY()].equalsColor(t)) {		// 2 rechts
         			newtiles.add(board[t.getX()+1][t.getY()]);
         			newtiles.add(board[t.getX()+2][t.getY()]);
         			break;
         		}
-    			else if(t.getX()-1 >= 0 && board[t.getX()-1][t.getY()].equals(t)) {		// 1 rechts, 1 links
+    			else if(t.getX()-1 >= 0 && board[t.getX()-1][t.getY()].equalsColor(t)) {		// 1 rechts, 1 links
         			newtiles.add(board[t.getX()+1][t.getY()]);
         			newtiles.add(board[t.getX()-1][t.getY()]);
         			break;
         		}
     		}
-    		else if(t.getX()-2 >= 0 && board[t.getX()-1][t.getY()].equals(t) && board[t.getX()-2][t.getY()].equals(t)) {		// 2 links
+    		else if(t.getX()-2 >= 0 && board[t.getX()-1][t.getY()].equalsColor(t) && board[t.getX()-2][t.getY()].equalsColor(t)) {		// 2 links
     			newtiles.add(board[t.getX()-1][t.getY()]);
     			newtiles.add(board[t.getX()-2][t.getY()]);
     			break;
