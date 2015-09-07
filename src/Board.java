@@ -133,4 +133,20 @@ public class Board extends JPanel {
         	g.drawImage(focusImage.getImage(), focus.x, focus.y,SPACEx,SPACEy, null);
         }
     }
+    
+    /**
+     * empties a square on the board
+     */
+	public void removeTile(int x, int y){
+		
+	}
+	
+	/**
+	 * checks if a square is empty
+	 * @param x x-coordinate of square
+	 * @param y y-coordinate of square
+	 */
+	public void isSquareEmpty(int x, int y){
+		
+	}
 }
