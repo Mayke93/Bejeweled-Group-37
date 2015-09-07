@@ -32,30 +32,11 @@ public class Game {
         	if(swapTiles.size() == 2 && canSwap()){                		
         		boardPanel.swapTiles(swapTiles);
         		swapTiles.clear();
-        		printCombinations();
         	}
         }
 	}
 
-//    private void printCombinations() {
-//    	List<Combination> res = getAllCombinationsOnBoard();
-//    	System.out.println("chains: " + res.size());
-//    	for(int i = 0; i < res.size(); i++){
-//    		System.out.println("Combination " + (i+1));
-//    		for(int j = 0; j < res.get(i).size(); j++){
-//    			Object obj = res.get(i).get(j);
-//    			if(j == 0){
-//    				System.out.println("\tType: " + obj);
-//    			}
-//    			else{
-//    				System.out.println("\t" + obj);
-//    			}
-//    		}
-//    	}
-//    	
-//    }
-    
-    private void printCombinations() {
+    public void printCombinations() {
     	List<Combination> res = getAllCombinationsOnBoard();
     	System.out.println("chains: " + res.size());
     	for(Combination combi : res) {
@@ -229,17 +210,20 @@ public class Game {
      */
     public List<Combination> getAllCombinationsOnBoard() {
     	List<Combination> allcombinations = new ArrayList<Combination>();
-    	
+    	Combination t = null;
     	for(int i = 0; i < SIZE; i++) {			//for every tile on the board
     		for(int j = 0; j < SIZE; j++) {
-    			if(!getSingleCombinationX(board[i][j]).getTiles().isEmpty()){
-    				if(!sameCombination(allcombinations, getSingleCombinationX(board[i][j]))) {
-        				allcombinations.add(getSingleCombinationX(board[i][j]));
+    			t = getSingleCombinationX(board[i][j]);
+    			if(!t.getTiles().isEmpty()){
+    				if(!sameCombination(allcombinations, t)) {
+        				allcombinations.add(t);
     				}
     			}
-    			if(!getSingleCombinationY(board[i][j]).getTiles().isEmpty()){
-    				if(!sameCombination(allcombinations, getSingleCombinationY(board[i][j]))){
-        				allcombinations.add(getSingleCombinationY(board[i][j]));
+    			
+    			t = getSingleCombinationY(board[i][j]);
+    			if(!t.getTiles().isEmpty()){
+    				if(!sameCombination(allcombinations, t)){
+        				allcombinations.add(t);
         			}
     			}
     		}

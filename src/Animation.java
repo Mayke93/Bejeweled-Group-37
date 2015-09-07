@@ -55,5 +55,7 @@ public class Animation implements ActionListener{
 		t0.resetD();
 		t1.resetD();
 		game.swapTiles(t0,t1);
+		
+		game.printCombinations();
 	}
 }
