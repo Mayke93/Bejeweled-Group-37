@@ -301,6 +301,11 @@ public class Game {
     	return allcombinations;
     }
     
+    /**
+     * @param allcombinations : All combinations already in the list
+     * @param singlecombination : Combination to be compared
+     * @return true if singlecombination is already in allcombinations
+     */
     public boolean sameCombination(List<Combination> allcombinations, Combination singlecombination) {
     	boolean same = false;
     	
