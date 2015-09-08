@@ -1,3 +1,5 @@
+package bejeweled37;
+
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
@@ -609,63 +611,4 @@ public class Game {
 		return this.swapTiles;
 	}
 	
-
-	/**
-	 * removes jewels from the board
-	 */
-	public void remove() {
-		List<Combination> combo = getAllCombinationsOnBoard();
-		for(int i = 0; i < combo.size(); i++){
-			//in de lijst zit en lijst met de state en een lijst met tiles can de combinatie
-			//special stones niet verwijderen
-			//type eruithalen en evt. meerdere stenen verwijderen
-    		Combination a = combo.get(i);
-    		//which tile changes into special stone?
-    		Tile test = new Tile(-1,-1);
-    			
-    		List<Tile> tileList = a.getTiles();
-    			if(tileList.size() > 3){
-    				switch(tileList.size()){
-    					case 4 : setToSpecial(test, Tile.State.FLAME);
-    						break;
-    					case 5 : setToSpecial(test, Tile.State.HYPERCUBE);
-						break;
-    					//case LT shape? : setToSpecial(test, Tile.State.STAR);
-						//break;
-						default:
-							break;
-    				}
-    			}
-    			
-    		for(int j = 0; j < tileList.size(); j++){
-    			Tile tile = tileList.get(j);
-    			if(tile.getState() == Tile.State.NORMAL){
-    				boardPanel.removeTile(tile.getX(), tile.getY());
-    			}
-    		}
-		}
-		fallDown();
-	}
-	
-	/**
-	 * adds a special stone in case of a combo of 4 or more
-	 */
-	public void setToSpecial(Tile T, Tile.State newState) {
-		T.setState(newState);
-	}
-	
-	/**
-	 * decides which stones should go where after a combo is made, and fills up empty squares
-	 */
-	public void fallDown() {
-		
-	}
-	
-	public List<Tile> getAllSameColor(){
-		List<Tile> res = new ArrayList<Tile>();
-		//for(){
-		//loop through board and list all tiles	
-		//}
-		return res;
-	}
 }
