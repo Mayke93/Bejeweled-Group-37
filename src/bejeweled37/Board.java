@@ -17,8 +17,8 @@ public class Board extends JPanel {
 
 	public static final int SIZE = 8; //Board size is 8x8
 	public static final Point LOCATION = new Point(241,40);
-	public static final int SPACEx = 65;
-	public static final int SPACEy = 65;
+	public static final int SPACE_X = 65;
+	public static final int SPACE_Y = 65;
 	private static ImageIcon boardImage  = new ImageIcon("src/img/board.png");
 	private static ImageIcon focusImage = new ImageIcon("src/img/focus.png");
 	private Point focus = null;
@@ -93,8 +93,8 @@ public class Board extends JPanel {
      * @param loc location of the mouse event
      */
     public void setFocus(Point loc){
-    	int x = loc.x * SPACEx + LOCATION.x;
-    	int y = loc.y * SPACEy + LOCATION.y;
+    	int x = loc.x * SPACE_X + LOCATION.x;
+    	int y = loc.y * SPACE_Y + LOCATION.y;
     	focus = new Point(x,y);
     	repaint();
     }
@@ -106,8 +106,8 @@ public class Board extends JPanel {
      * @return
      */
     public static Point getColAndRow(int x,int y){
-        int col = (x - LOCATION.x) / SPACEx;
-        int row = (y - LOCATION.y) / SPACEy;
+        int col = (x - LOCATION.x) / SPACE_X;
+        int row = (y - LOCATION.y) / SPACE_Y;
         return new Point(col,row);
     }
     
@@ -125,16 +125,16 @@ public class Board extends JPanel {
 
         for(int i = 0,x = ix, y = iy; i < SIZE; i++){
         	x = ix;
-        	for(int j = 0; j < SIZE; j++, x += SPACEx){
+        	for(int j = 0; j < SIZE; j++, x += SPACE_X){
         		tile = board[j][i];
         		if(tile.remove) continue;
-                g.drawImage(tile.getImage(), x + tile.d.x , y + tile.d.y,SPACEx - tile.size,SPACEy - tile.size, null);
+                g.drawImage(tile.getImage(), x + tile.d.x , y + tile.d.y,SPACE_X - tile.size,SPACE_Y - tile.size, null);
         	}
-        	y += SPACEy;
+        	y += SPACE_Y;
         }
         
         if(focus != null){
-        	g.drawImage(focusImage.getImage(), focus.x, focus.y,SPACEx,SPACEy, null);
+        	g.drawImage(focusImage.getImage(), focus.x, focus.y,SPACE_X,SPACE_Y, null);
         }
     }
 }
