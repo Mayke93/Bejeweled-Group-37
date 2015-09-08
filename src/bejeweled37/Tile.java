@@ -69,14 +69,24 @@ public class Tile {
 		this.image = new ImageIcon(paths[index]);
 	}
 	
+	/**
+	 * @return the Image image
+	 */
 	public Image getImage(){
 		return image.getImage();
 	}
 	
+	/**
+	 * @return the index
+	 */
 	public int getIndex(){
 		return this.index;
 	}
 	
+	/**
+	 * Returns true iff the compared with object is a tile
+	 * and has the same index, X-co and Y-co
+	 */
 	public boolean equals(Object obj){
 		if(!(obj instanceof Tile))
 			return false;
@@ -84,6 +94,9 @@ public class Tile {
 		return (this.index == tile.index && tile.getX() == this.getX() && tile.getY() == this.getY());
 	}	
 	
+	/**
+	 * Returns true iff the compared with object is a Tile and has the same color.
+	 */
 	public boolean equalsColor(Object obj){
 		if(!(obj instanceof Tile))
 			return false;
