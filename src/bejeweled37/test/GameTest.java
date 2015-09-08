@@ -3,6 +3,7 @@ package bejeweled37.test;
 
 import org.junit.Test;
 
+
 /**
  * Simple basic test for class Game.
  * @author Mayke Kloppenburg
@@ -10,9 +11,14 @@ import org.junit.Test;
  */
 public class GameTest {
 
-  @Test
-  public void test() {
- 
-  }
+// TODO mock game?
+//  /**
+//   * Test for constructor Game
+//   */
+//  @Test
+//  public void testgame() {
+// 
+//  }
+  
 
 }
