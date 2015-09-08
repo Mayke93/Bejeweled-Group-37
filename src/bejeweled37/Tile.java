@@ -117,4 +117,9 @@ public class Tile {
 	public String toString(){
 		return "(" + Integer.toString(this.loc.x) + "," + Integer.toString(this.loc.y) + ") " + colors[this.index];
 	}
+	
+	public String getColor() {
+		String color = colors[index];
+		return color;
+	}
 }
