@@ -15,7 +15,12 @@ public class Game {
   private StatusPanel panel;
   private static final int SIZE = Board.SIZE;
 
-  public Game(Board boardPanel,StatusPanel panel){
+  /**
+   * 
+   * @param boardPanel
+   * @param panel
+   */
+  public Game(Board boardPanel,StatusPanel panel) {
     this.boardPanel = boardPanel;
     this.panel = panel;
     swapTiles = new ArrayList<Tile>();
@@ -26,13 +31,14 @@ public class Game {
    * Add tile to swapTiles bases on location from the mouseEvent.
    * @param loc location of tile
    */
-  public void addTile(Point loc){
-    int col = loc.x, row = loc.y;
-    if(!swapTiles.contains(board[col][row])){
+  public void addTile(Point loc) {
+    int col = loc.x;
+    int row = loc.y;
+    if (!swapTiles.contains(board[col][row])) {
       //System.out.println("Mouse Dragged: (" + col + ", " + row + ")");
       swapTiles.add(board[col][row]);
       boardPanel.setFocus(loc);
-      if(swapTiles.size() == 2 && canSwap()){                		
+      if (swapTiles.size() == 2 && canSwap()) {              
         boardPanel.swapTiles(swapTiles);
         swapTiles.clear();
       }
@@ -40,27 +46,30 @@ public class Game {
   }
 
   /**
-   * Prints the combinations obtained by getAllCombinationsOnBoard()
+   * Prints the combinations obtained by getAllCombinationsOnBoard().
    */
   public void printCombinations() {
     List<Combination> res = getAllCombinationsOnBoard();
     System.out.println("chains: " + res.size());
-    for(Combination combi : res) {
+    for (Combination combi : res) {
       System.out.println("\tType: " + combi.getState());
       System.out.println("\t" + combi.getTiles());
     }
   }
 
-  public void deleteTiles(){
+  /**
+   * Delete all tiles that form a combination on the current board.
+   */
+  public void deleteTiles() {
     List<Combination> chains = getAllCombinationsOnBoard();
     List<Tile> tiles = new ArrayList<Tile>();
-    for(int row = SIZE-1; row >= 0; row--){
-      for(int col = 0; col < SIZE; col++){
+    for (int row = SIZE - 1; row >= 0; row-- ) {
+      for (int col = 0; col < SIZE; col++) {
 
-        if(containsTile(board[col][row],chains)) {
+        if (containsTile(board[col][row], chains)) {
 
           tiles.add(board[col][row]);
-          for(int i = row-1; i >= 0; i--){
+          for (int i = row - 1; i >= 0; i--) {
             board[col][i].increaseLevel();
           }
         }
@@ -72,48 +81,58 @@ public class Game {
     printCombinations();
 
     /*Tile r = null;
-     	for(int i= 0; i < SIZE; i++){
-     		for(int j = 0; j < SIZE; j++){
-     			r = board[j][i];
-     			System.out.print(r.getLevel() + " ");
-     		}
-     		System.out.println();
-     	}*/
+    for(int i= 0; i < SIZE; i++){
+       for(int j = 0; j < SIZE; j++){
+       r = board[j][i];
+       System.out.print(r.getLevel() + " ");
+      }
+      System.out.println();
+    }*/
 
 
     //dropTiles(tiles);
     //boardPanel.repaint();
   }
 
-  public void dropTiles(){
+  /**
+   * If there are empty spaces, this method 'drops' the tile above this space into this space.
+   */
+  public void dropTiles() {
     int level = 0;
-    for(int row = SIZE-1; row >= 0; row--){
-      for(int col = 0; col < SIZE; col++){
+    for (int row = SIZE - 1; row >= 0; row--) {
+      for (int col = 0; col < SIZE; col++) {
         level = board[col][row].getLevel();
-        if(level > 0){
-          board[col][row+level] = board[col][row].clone(col,row+level);
-          board[col][row+level].setLevel(0);
+        if (level > 0) {
+          board[col][row + level] = board[col][row].clone(col, row + level);
+          board[col][row + level].setLevel(0);
           board[col][row].setLevel(0);
           board[col][row].setState(Tile.State.DEFAULT);
         }
       }
     }
-    for(int row = SIZE-1; row >= 0; row--){
-      for(int col = 0; col < SIZE; col++){
-        if(board[col][row].getState() == Tile.State.DEFAULT){
+    for (int row = SIZE - 1; row >= 0; row--) {
+      for (int col = 0; col < SIZE; col++) {
+        if (board[col][row].getState() == Tile.State.DEFAULT) {
           board[col][row].setRandomTile();
         }
-        if(board[col][row].remove)
+        if (board[col][row].remove) {
           board[col][row].remove = false;
+        }
       }
     }
     boardPanel.repaint();
 
   }
 
-  private boolean containsTile(Tile t, List<Combination> chains){
-    for(Combination c: chains){
-      if(c.getTiles().contains(t)){
+  /**
+   * 
+   * @param t
+   * @param chains
+   * @return
+   */
+  private boolean containsTile(Tile t, List<Combination> chains) {
+    for (Combination c: chains) {
+      if (c.getTiles().contains(t)) {
         return true;
       }
     }
@@ -124,37 +143,37 @@ public class Game {
   /**
    * Create a board of random jewels without a sequence of 3 or more tiles with the same color.
    */
-  public void generateRandomBoard(){
+  public void generateRandomBoard() {
     board = new Tile[Board.SIZE][Board.SIZE]; 
-    for(int i = 0; i < Board.SIZE; i++){
-      for(int j = 0; j < Board.SIZE; j++){
+    for (int i = 0; i < Board.SIZE; i++) {
+      for (int j = 0; j < Board.SIZE; j++) {
         board[i][j] = new Tile(i,j);
       }
 
       //Redo column if a sequence has been detected
-      if(hasSequence(i)){
+      if (hasSequence(i)) {
         i--;
       }
     }
   }
 
   /**
-   * Checks if column i that just has been added doesn't create a sequence of 3 or more colours/
+   * Checks if column i that just has been added doesn't create a sequence of 3 or more colours.
    * @param i column to check for sequences.
    * @return
    */
-  private boolean hasSequence(int i){
+  private boolean hasSequence(int i) {
     int s = 0;
     //Find sequence in row i
-    for(int j = 1; j < Board.SIZE; j++){
-      if(board[i][j].equalsColor(board[i][j-1])){
+    for (int j = 1; j < Board.SIZE; j++) {
+      if (board[i][j].equalsColor(board[i][j - 1])) {
         s++;
       }
-      else{
+      else {
         s = 0;
       }
 
-      if(s >= 2){
+      if (s >= 2) {
         return true;
       }
     }
