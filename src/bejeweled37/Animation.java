@@ -43,7 +43,7 @@ public class Animation implements ActionListener{
     this.frame = 0;
     System.out.println(tiles.size());
     for(Tile t: this.tiles){
-      t.d = new Point(0,0);
+      t.translation = new Point(0,0);
       t.size = 0;
     }
     timer.setDelay(2);
@@ -79,8 +79,8 @@ public class Animation implements ActionListener{
       if(frame > 32) { endRemove(); }
       else{
         for(Tile t: this.tiles){
-          t.d.x += speed;
-          t.d.y += speed;
+          t.translation.x += speed;
+          t.translation.y += speed;
           t.size += 2*speed;
         }
       }
@@ -96,7 +96,7 @@ public class Animation implements ActionListener{
     this.frame = 0;
     for(Tile t: this.tiles){
       t.remove = true;
-      t.d = new Point(0,0);
+      t.translation = new Point(0,0);
       t.size = 0;
     }
     game.dropTiles();

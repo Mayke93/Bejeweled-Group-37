@@ -128,7 +128,7 @@ public class Board extends JPanel {
       for(int j = 0; j < SIZE; j++, x += SPACE_X){
         tile = board[j][i];
         if(tile.remove) continue;
-        g.drawImage(tile.getImage(), x + tile.d.x , y + tile.d.y,SPACE_X - tile.size,SPACE_Y - tile.size, null);
+        g.drawImage(tile.getImage(), x + tile.translation.x , y + tile.translation.y,SPACE_X - tile.size,SPACE_Y - tile.size, null);
       }
       y += SPACE_Y;
     }
