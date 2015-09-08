@@ -39,6 +39,9 @@ public class Game {
         }
 	}
 
+	/**
+	 * Prints the combinations obtained by getAllCombinationsOnBoard()
+	 */
     public void printCombinations() {
     	List<Combination> res = getAllCombinationsOnBoard();
     	System.out.println("chains: " + res.size());
@@ -47,7 +50,6 @@ public class Game {
     		System.out.println("\t" + combi.getTiles());
     	}
     }
-    
     
     public void deleteTiles(){
     	List<Combination> chains = getAllCombinationsOnBoard();
@@ -579,6 +581,9 @@ public class Game {
     	panel.setScore(this.score);
     }
     
+    /**
+     * Increase the levelnumber when a certain score is reached
+     */
     private void updateLevel() {
     	if(this.score >= 1000 && this.score < 3500) {
     		panel.setLevel(2);
@@ -604,9 +609,16 @@ public class Game {
 		boardPanel.repaint();
 	}
 	
+	/**
+	 * @return the board
+	 */
 	public Tile[][] getBoard(){
 		return this.board;
 	}
+	
+	/**
+	 * @return the list swapTiles
+	 */
 	public List<Tile> getSwaptiles(){
 		return this.swapTiles;
 	}

@@ -82,7 +82,7 @@ public class Tile {
 			return false;
 		Tile tile = (Tile)obj;		
 		return (this.index == tile.index && tile.getX() == this.getX() && tile.getY() == this.getY());
-	}
+	}	
 	
 	public boolean equalsColor(Object obj){
 		if(!(obj instanceof Tile))
@@ -90,7 +90,7 @@ public class Tile {
 		Tile tile = (Tile)obj;		
 		return (this.index == tile.index);
 	}
-	
+
 	public Tile clone(int i, int j){
 		Tile t = new Tile(i,j);
     	t.state = State.NORMAL;
