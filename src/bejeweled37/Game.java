@@ -4,6 +4,8 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JLabel;
+
 
 //import Tile.State;
 
@@ -616,6 +618,15 @@ public class Game {
     if(this.score >= 8000 && this.score < 11000) {
       panel.setLevel(5);
     }
+  }
+  public void endGame(){
+  	JLabel label1 = new JLabel ("No possible combination",JLabel.CENTER);
+  	label1.setVerticalTextPosition(JLabel.TOP);
+	label1.setHorizontalTextPosition(JLabel.CENTER);
+  	if(!(possibleMove())){
+  		this.boardPanel.add(label1);
+  		return;
+  	}
   }
 
   /**
