@@ -50,7 +50,7 @@ public class Animation implements ActionListener{
 		timer.start();
 	}
 
-	@Override
+	//@Override
 	public void actionPerformed(ActionEvent e) {
 		if(this.type == Type.SWAP){
 			frame++;
