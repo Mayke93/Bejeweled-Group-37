@@ -1,14 +1,15 @@
 package nl.group37.bejeweled.model;
 
+import nl.group37.bejeweled.view.Animation;
+import nl.group37.bejeweled.view.Board;
+import nl.group37.bejeweled.view.StatusPanel;
+
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JLabel;
 
-import nl.group37.bejeweled.view.Animation;
-import nl.group37.bejeweled.view.Board;
-import nl.group37.bejeweled.view.StatusPanel;
 
 
 //import Tile.State;
