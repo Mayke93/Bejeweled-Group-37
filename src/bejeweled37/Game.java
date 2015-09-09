@@ -18,9 +18,9 @@ public class Game {
   private static final int SIZE = Board.SIZE;
 
   /**
-   * 
-   * @param boardPanel
-   * @param panel
+   * Create game object.
+   * @param boardPanel object for GUI.
+   * @param panel object for updating the labels.
    */
   public Game(Board boardPanel,StatusPanel panel) {
     this.boardPanel = boardPanel;
@@ -127,14 +127,14 @@ public class Game {
   }
 
   /**
-   * 
-   * @param t
-   * @param chains
-   * @return
+   * Check if chains contains the tile t.
+   * @param tile tile to check for in chains.
+   * @param chains this list of combinatians.
+   * @return true if chains contains tile.
    */
-  private boolean containsTile(Tile t, List<Combination> chains) {
+  private boolean containsTile(Tile tile, List<Combination> chains) {
     for (Combination c: chains) {
-      if (c.getTiles().contains(t)) {
+      if (c.getTiles().contains(tile)) {
         return true;
       }
     }
@@ -161,36 +161,37 @@ public class Game {
 
   /**
    * Checks if column i that just has been added doesn't create a sequence of 3 or more colours.
-   * @param i column to check for sequences.
-   * @return
+   * @param row column to check for sequences.
+   * @return true iff there is found a sequence of three or more jewels.
    */
-  private boolean hasSequence(int i) {
-    int s = 0;
+  private boolean hasSequence(int row) {
+    int sum = 0;
     //Find sequence in row i
     for (int j = 1; j < Board.SIZE; j++) {
-      if (board[i][j].equalsColor(board[i][j - 1])) {
-        s++;
-      }
-      else {
-        s = 0;
+      if (board[row][j].equalsColor(board[row][j - 1])) {
+        sum++;
+      } else {
+        sum = 0;
       }
 
-      if (s >= 2) {
+      if (sum >= 2) {
         return true;
       }
     }
 
     //If there are only 1 or 2 rows created, don't check for horizontal sequences
-    if(i <= 1) return false; 
+    if (row <= 1) {
+      return false; 
+    }
 
     //Find horizonal sequences
-    for(int j = 0; j < Board.SIZE; j++){
-      s = 0;
-      s += (board[i-1][j].equalsColor(board[i][j]) ? 1 : 0);
-      s += (board[i-2][j].equalsColor(board[i][j]) ? 1 : 0);
+    for (int j = 0; j < Board.SIZE; j++) {
+      sum = 0;
+      sum += (board[row - 1][j].equalsColor(board[row][j]) ? 1 : 0);
+      sum += (board[row - 2][j].equalsColor(board[row][j]) ? 1 : 0);
 
-      if(s == 2){
-        System.out.println("i,j: " + i + "," + j);
+      if (sum == 2) {
+        System.out.println("i,j: " + row + "," + j);
         return true;
       }
     }
@@ -202,7 +203,7 @@ public class Game {
    * what kind of jewel should be created based on the size of the found sequence.
    * @param t0 first tile to swap
    * @param t1 second tile to swap
-   * @return
+   * @return true iff swapping tiles t0 and t1 results in a valid combination.
    */
   public Tile.State checktype(Tile t0, Tile t1) {
     Tile.State res = null;
@@ -213,52 +214,74 @@ public class Game {
     //swap tiles to look in the rows where the tile will be in case it can be switched
     swapTiles(t0,t1);
 
-    for(int i=1;i<3;i++){
+    for (int i = 1; i < 3; i++) {
 
-      if(i==1) {tile=t0; color = c1;}
-      if(i==2) {tile=t1; color = c2;}
+      if (i == 1) {
+        tile = t0;
+        color = c1;
+      }
+      if (i == 2) {
+        tile = t1;
+        color = c2;
+      }
 
       //check x direction
-      int s = 1;
-      for(int q = tile.getX()+1; q < SIZE; q++) {
-        if(Tile.colors[board[q][tile.getY()].getIndex()].equals(color)) {
-          s++;
-          System.out.println("1e " + s);
+      int sum = 1;
+      for (int q = tile.getX() + 1; q < SIZE; q++) {
+        if (Tile.colors[board[q][tile.getY()].getIndex()].equals(color)) {
+          sum++;
+          System.out.println("1e " + sum);
+        } else {
+          break;
         }
-        else{break;}
       }
-      for(int q = tile.getX()-1; q >= 0; q--) {
-        if(Tile.colors[board[q][tile.getY()].getIndex()].equals(color)) {
-          s++;
-          System.out.println("2e " + s);
+      for (int q = tile.getX() - 1; q >= 0; q--) {
+        if (Tile.colors[board[q][tile.getY()].getIndex()].equals(color)) {
+          sum++;
+          System.out.println("2e " + sum);
+        } else {
+          break;
         }
-        else{break;}
       }
 
-      if(s==3) {res=Tile.State.NORMAL;}
-      if(s==4) {res=Tile.State.FLAME;}
-      if(s==5) {res=Tile.State.HYPERCUBE;}
+      if (sum == 3) {
+        res = Tile.State.NORMAL;
+      }
+      if (sum == 4) {
+        res = Tile.State.FLAME;
+      }
+      if (sum == 5) {
+        res = Tile.State.HYPERCUBE;
+      }
 
       //check y direction
-      s = 1;
-      for(int q = tile.getY()+1; q < SIZE; q++) {
-        if(Tile.colors[board[tile.getX()][q].getIndex()].equals(color)) {
-          s++;
-          System.out.println("3e " + s);
+      sum = 1;
+      for (int q = tile.getY() + 1; q < SIZE; q++) {
+        if (Tile.colors[board[tile.getX()][q].getIndex()].equals(color)) {
+          sum++;
+          System.out.println("3e " + sum);
+        } else{
+          break;
         }
-        else{break;}
       }
-      for(int q = tile.getY()-1; q >= 0; q--) {
-        if(Tile.colors[board[tile.getX()][q].getIndex()].equals(color)) {
-          s++;
-          System.out.println("4e " + s);
+      for (int q = tile.getY() - 1; q >= 0; q--) {
+        if (Tile.colors[board[tile.getX()][q].getIndex()].equals(color)) {
+          sum++;
+          System.out.println("4e " + sum);
+        } else {
+          break;
         }
-        else{break;}
       }
 
-      if(s==3) {res=Tile.State.NORMAL;}
-      if(s==4) {res=Tile.State.FLAME;}
-      if(s==5) {res=Tile.State.HYPERCUBE;}
+      if (sum == 3) {
+        res = Tile.State.NORMAL;
+      }
+      if (sum == 4) {
+        res = Tile.State.FLAME;
+      }
+      if (sum == 5) {
+        res = Tile.State.HYPERCUBE;
+      }
     }
     //swap the tiles back to original position
     swapTiles(t0,t1);
@@ -276,22 +299,22 @@ public class Game {
     Tile t1 = null;
 
     //check combinations in x direction
-    for(int i = 0; i < SIZE; i++) {
-      for(int j = 0; j < 7; j++) {
+    for (int i = 0; i < SIZE; i++) {
+      for (int j = 0; j < 7; j++) {
         t0 = board[j][i];
-        t1 = board[j+1][i];
-        if(!(checktype(t0,t1) == null)) {
+        t1 = board[j + 1][i];
+        if (!(checktype(t0,t1) == null)) {
           possiblemove = true;
         }
       }
     }
 
     //check combinations in y direction
-    for(int i = 0; i < SIZE; i++) {
-      for(int j = 0; j < 7; j++) {
+    for (int i = 0; i < SIZE; i++) {
+      for (int j = 0; j < 7; j++) {
         t0 = board[i][j];
-        t1 = board[i][j+1];
-        if(!(checktype(t0,t1) == null)) {
+        t1 = board[i][j + 1];
+        if (!(checktype(t0,t1) == null)) {
           possiblemove = true;
         }
       }
@@ -300,25 +323,26 @@ public class Game {
   }
 
   /**
-   * Returns a list, which contains lists with 2 objects: (State,List of tiles), eg. (Tile.State.NORMAL,List(t1,t2,t3)).
+   * Returns a list, which contains lists with 2 objects: (State,List of tiles),
+   * eg. (Tile.State.NORMAL,List(t1,t2,t3)).
    * This is a list of all the valid combinations on the board at this time.
    */
   public List<Combination> getAllCombinationsOnBoard() {
     List<Combination> allcombinations = new ArrayList<Combination>();
-    Combination t = null;
-    for(int i = 0; i < SIZE; i++) {			//for every tile on the board
-      for(int j = 0; j < SIZE; j++) {
-        t = getSingleCombinationX(board[i][j]);
-        if(!t.getTiles().isEmpty()){
-          if(!sameCombination(allcombinations, t)) {
-            allcombinations.add(t);
+    Combination tile = null;
+    for (int i = 0; i < SIZE; i++) {      //for every tile on the board
+      for (int j = 0; j < SIZE; j++) {
+        tile = getSingleCombinationX(board[i][j]);
+        if (!tile.getTiles().isEmpty()) {
+          if (!sameCombination(allcombinations, tile)) {
+            allcombinations.add(tile);
           }
         }
 
-        t = getSingleCombinationY(board[i][j]);
-        if(!t.getTiles().isEmpty()){
-          if(!sameCombination(allcombinations, t)){
-            allcombinations.add(t);
+        tile = getSingleCombinationY(board[i][j]);
+        if (!tile.getTiles().isEmpty()) {
+          if (!sameCombination(allcombinations, tile)) {
+            allcombinations.add(tile);
           }
         }
       }
@@ -327,6 +351,7 @@ public class Game {
   }
 
   /**
+   * Checks is combination already exists.
    * @param allcombinations : All combinations already in the list
    * @param singlecombination : Combination to be compared
    * @return true if singlecombination is already in allcombinations
@@ -334,8 +359,8 @@ public class Game {
   public boolean sameCombination(List<Combination> allcombinations, Combination singlecombination) {
     boolean same = false;
 
-    for(Combination combi : allcombinations) {
-      if(combi.getTiles().containsAll(singlecombination.getTiles())) {
+    for (Combination combi : allcombinations) {
+      if (combi.getTiles().containsAll(singlecombination.getTiles())) {
         same = true;
       }
     } 
@@ -344,45 +369,51 @@ public class Game {
 
   /**
    * Sees whether 
-   * @param t
+   * @param tile
    * makes a valid combination in x direction on the board,
-   * @return a list with first the state of the combination, and second the list of tiles in de combi.
+   * @return a list with first the state of the combination,
+   *      and second the list of tiles in de combi.
    */
-  public Combination getSingleCombinationX(Tile t) {
+  public Combination getSingleCombinationX(Tile tile) {
     Combination combi = new Combination();
     List<Tile> tiles = new ArrayList<Tile>();
 
     //check x direction
-    int s = 1;
-    for(int q = t.getX() + 1; q < SIZE; q++) {	//check to the right
-      if(board[q][t.getY()].equalsColor(t)) {
-        s++;
-        tiles.add(board[q][t.getY()]);
+    int sum = 1;
+    for (int q = tile.getX() + 1; q < SIZE; q++) { //check to the right
+      if (board[q][tile.getY()].equalsColor(tile)) {
+        sum++;
+        tiles.add(board[q][tile.getY()]);
+      } else {
+        break;
       }
-      else{break;}
     }
-    for(int q = t.getX()-1; q >= 0; q--) {		//check to the left
-      if(board[q][t.getY()].equalsColor(t)) {
-        s++;
-        tiles.add(board[q][t.getY()]);
+    for (int q = tile.getX() - 1; q >= 0; q--) {    //check to the left
+      if (board[q][tile.getY()].equalsColor(tile)) {
+        sum++;
+        tiles.add(board[q][tile.getY()]);
+      } else {
+        break;
       }
-      else{break;}
-    }	
-    if(tiles.size() < 2) {						//less than 3 in a row
+    }
+    
+    if (tiles.size() < 2) {                   //less than 3 in a row
       tiles.clear();
-    }
-    else{
-      tiles.add(t);
-      if(tiles.size() == 3) {
-        List<Tile> l = findLTshapeX(tiles);	// check for T and L shapes
-        if(l.isEmpty()) {combi.setState(Tile.State.NORMAL);}
-        else{
-          tiles.addAll(l);
+    } else {
+      tiles.add(tile);
+      if (tiles.size() == 3) {
+        List<Tile> specialShape = findLTshapeX(tiles);   // check for T and L shapes
+        if (specialShape.isEmpty()) {
+          combi.setState(Tile.State.NORMAL);
+        } else {
+          tiles.addAll(specialShape);
           combi.setState(Tile.State.STAR);
         }
+      } else if (tiles.size() == 4) {
+        combi.setState(Tile.State.FLAME);
+      } else if (tiles.size() == 5) {
+        combi.setState(Tile.State.HYPERCUBE);
       }
-      else if(tiles.size() == 4) {combi.setState(Tile.State.FLAME);}
-      else if(tiles.size() == 5) {combi.setState(Tile.State.HYPERCUBE);}
       combi.setTiles(tiles);
     }
     return combi;
@@ -390,45 +421,50 @@ public class Game {
 
   /**
    * Sees whether 
-   * @param t
+   * @param tile
    * makes a valid combination in y direction on the board,
-   * @return a list with first the state of the combination, and second the list of tiles in de combi.
+   * @return a list with first the state of the combination,
+   *     and second the list of tiles in de combi.
    */
-  public Combination getSingleCombinationY(Tile t) {
+  public Combination getSingleCombinationY(Tile tile) {
     Combination combi = new Combination();
     List<Tile> tiles = new ArrayList<Tile>();
 
     //check y direction
-    int s = 1;
-    for(int q = t.getY() + 1; q < SIZE; q++) {	//check down
-      if(board[t.getX()][q].equalsColor(t)) {
-        s++;
-        tiles.add(board[t.getX()][q]);
+    int sum = 1;
+    for (int q = tile.getY() + 1; q < SIZE; q++) {   //check down
+      if (board[tile.getX()][q].equalsColor(tile)) {
+        sum++;
+        tiles.add(board[tile.getX()][q]);
+      } else {
+        break;
       }
-      else{break;}
     }
-    for(int q = t.getY()-1; q >= 0; q--) {		//check up
-      if(board[t.getX()][q].equalsColor(t)) {
-        s++;
-        tiles.add(board[t.getX()][q]);
+    for (int q = tile.getY() - 1; q >= 0; q--) {      //check up
+      if (board[tile.getX()][q].equalsColor(tile)) {
+        sum++;
+        tiles.add(board[tile.getX()][q]);
+      } else {
+        break;
       }
-      else{break;}
-    }	
-    if(tiles.size() < 2) {						//less than 3 in a row
+    }
+    if (tiles.size() < 2) {           //less than 3 in a row
       tiles.clear();
-    }
-    else{
-      tiles.add(t);
-      if(tiles.size() == 3) {
-        List<Tile> l = findLTshapeY(tiles);	// check for T and L shapes
-        if(l.isEmpty()) {combi.setState(Tile.State.NORMAL);}
-        else{
-          tiles.addAll(l);
+    } else {
+      tiles.add(tile);
+      if (tiles.size() == 3) {
+        List<Tile> specialShape = findLTshapeY(tiles);   // check for T and L shapes
+        if (specialShape.isEmpty()) {
+          combi.setState(Tile.State.NORMAL);
+        } else {
+          tiles.addAll(specialShape);
           combi.setState(Tile.State.STAR);
         }
+      } else if (tiles.size() == 4) {
+        combi.setState(Tile.State.FLAME);
+      } else if (tiles.size() == 5) {
+        combi.setState(Tile.State.HYPERCUBE);
       }
-      else if(tiles.size() == 4) {combi.setState(Tile.State.FLAME);}
-      else if(tiles.size() == 5) {combi.setState(Tile.State.HYPERCUBE);}
       combi.setTiles(tiles);
     }
     return combi;
@@ -436,28 +472,28 @@ public class Game {
 
   /**
    * Given
-   * @param tiles, three tiles of the same color in a row in x direction
-   * the method looks wheter these three tiles are part of an L or T shape.
+   * @param tiles three tiles of the same color in a row in x direction
+   *        the method looks wheter these three tiles are part of an L or T shape.
    * @return the list of tiles which are added if an L or T shape is present.
    */
   public List<Tile> findLTshapeX(List<Tile> tiles) {
     List<Tile> newtiles = new ArrayList<Tile>();
-    for(Tile t : tiles) {
-      if(t.getY()+1 < 8 && board[t.getX()][t.getY()+1].equalsColor(t)) {
-        if(t.getY()+2 < 8 && board[t.getX()][t.getY()+2].equalsColor(t)) {		// 2 erboven
-          newtiles.add(board[t.getX()][t.getY()+1]);
-          newtiles.add(board[t.getX()][t.getY()+2]);
+    for (Tile t : tiles) {
+      if (t.getY() + 1 < 8 && board[t.getX()][t.getY() + 1].equalsColor(t)) {
+        if (t.getY() + 2 < 8 && board[t.getX()][t.getY() + 2].equalsColor(t)) {      // 2 erboven
+          newtiles.add(board[t.getX()][t.getY() + 1]);
+          newtiles.add(board[t.getX()][t.getY() + 2]);
+          break;
+        } else if (t.getY() - 1 >= 0 && board[t.getX()][t.getY() - 1].equalsColor(t)) {
+          // 1 erboven, 1 beneden
+          newtiles.add(board[t.getX()][t.getY() + 1]);
+          newtiles.add(board[t.getX()][t.getY() - 1]);
           break;
         }
-        else if(t.getY()-1 >= 0 && board[t.getX()][t.getY()-1].equalsColor(t)) {		// 1 erboven, 1 beneden
-          newtiles.add(board[t.getX()][t.getY()+1]);
-          newtiles.add(board[t.getX()][t.getY()-1]);
-          break;
-        }
-      }
-      else if(t.getY()-2 >= 0 && board[t.getX()][t.getY()-1].equalsColor(t) && board[t.getX()][t.getY()-2].equalsColor(t)) {		// 2 beneden
-        newtiles.add(board[t.getX()][t.getY()-1]);
-        newtiles.add(board[t.getX()][t.getY()-2]);
+      } else if (t.getY() - 2 >= 0 && board[t.getX()][t.getY() - 1].equalsColor(t) 
+          && board[t.getX()][t.getY() - 2].equalsColor(t)) {    // 2 beneden
+        newtiles.add(board[t.getX()][t.getY() - 1]);
+        newtiles.add(board[t.getX()][t.getY() - 2]);
         break;
       }
     }
@@ -466,28 +502,28 @@ public class Game {
 
   /**
    * Given
-   * @param tiles, three tiles of the same color in a row in y direction
-   * the method looks wheter these three tiles are part of an L or T shape.
+   * @param tiles three tiles of the same color in a row in y direction
+   *      the method looks wheter these three tiles are part of an L or T shape.
    * @return the list of tiles which are added if an L or T shape is present.
    */
   public List<Tile> findLTshapeY(List<Tile> tiles) {
     List<Tile> newtiles = new ArrayList<Tile>();
-    for(Tile t : tiles) {
-      if(t.getX()+1 < 8 && board[t.getX()+1][t.getY()].equalsColor(t)) {
-        if(t.getX()+2 < 8 && board[t.getX()+2][t.getY()].equalsColor(t)) {		// 2 rechts
-          newtiles.add(board[t.getX()+1][t.getY()]);
-          newtiles.add(board[t.getX()+2][t.getY()]);
+    for (Tile t : tiles) {
+      if (t.getX() + 1 < 8 && board[t.getX() + 1][t.getY()].equalsColor(t)) {
+        if (t.getX() + 2 < 8 && board[t.getX() + 2][t.getY()].equalsColor(t)) {    // 2 rechts
+          newtiles.add(board[t.getX() + 1][t.getY()]);
+          newtiles.add(board[t.getX() + 2][t.getY()]);
+          break;
+        } else if (t.getX() - 1 >= 0 
+            && board[t.getX() - 1][t.getY()].equalsColor(t)) {     // 1 rechts, 1 links
+          newtiles.add(board[t.getX() + 1][t.getY()]);
+          newtiles.add(board[t.getX() - 1][t.getY()]);
           break;
         }
-        else if(t.getX()-1 >= 0 && board[t.getX()-1][t.getY()].equalsColor(t)) {		// 1 rechts, 1 links
-          newtiles.add(board[t.getX()+1][t.getY()]);
-          newtiles.add(board[t.getX()-1][t.getY()]);
-          break;
-        }
-      }
-      else if(t.getX()-2 >= 0 && board[t.getX()-1][t.getY()].equalsColor(t) && board[t.getX()-2][t.getY()].equalsColor(t)) {		// 2 links
-        newtiles.add(board[t.getX()-1][t.getY()]);
-        newtiles.add(board[t.getX()-2][t.getY()]);
+      } else if (t.getX() - 2 >= 0 && board[t.getX() - 1][t.getY()].equalsColor(t) 
+          && board[t.getX() - 2][t.getY()].equalsColor(t)) {      // 2 links
+        newtiles.add(board[t.getX() - 1][t.getY()]);
+        newtiles.add(board[t.getX() - 2][t.getY()]);
         break;
       }
     }
@@ -499,22 +535,22 @@ public class Game {
    * @param t0 first tile to swap
    * @param t1 second tile to swap
    */
-  public void swapTiles(Tile t0, Tile t1){
+  public void swapTiles(Tile t0, Tile t1) {
     Tile temp = board[t0.getX()][t0.getY()];
     board[t0.getX()][t0.getY()] = board[t1.getX()][t1.getY()];
     board[t1.getX()][t1.getY()] = temp;
 
-    Point t = (Point) t0.getLoc().clone();
+    Point tiles = (Point) t0.getLoc().clone();
     t0.setLoc(t1.getX(),t1.getY());
-    t1.setLoc(t);
+    t1.setLoc(tiles);
   }
 
   /**
    * Swap two tiles if it result in a sequence of 3 of more tiles with the same color.
    */
-  public boolean canSwap(){
+  public boolean canSwap() {
     /*System.out.println(swapTiles.get(0).getX() + "," + swapTiles.get(0).getY());
-    	System.out.println(swapTiles.get(1).getX() + "," + swapTiles.get(1).getY());*/
+      System.out.println(swapTiles.get(1).getX() + "," + swapTiles.get(1).getY());*/
 
     Tile t0 = board[swapTiles.get(0).getX()][swapTiles.get(0).getY()];
     Tile t1 = board[swapTiles.get(1).getX()][swapTiles.get(1).getY()];
@@ -527,30 +563,27 @@ public class Game {
     swapTiles(t0,t1);
 
     Tile.State type = null;
-    if(!l1.getTiles().isEmpty()) {
+    if (!l1.getTiles().isEmpty()) {
       type = l1.getState();
       System.out.println("in1");
-    }
-    else if(!l2.getTiles().isEmpty()) {
+    } else if (!l2.getTiles().isEmpty()) {
       type = l2.getState();
       System.out.println("in2");
-    }
-    else if(!l3.getTiles().isEmpty()) {
+    } else if (!l3.getTiles().isEmpty()) {
       type = l3.getState();
       System.out.println("in3");
-    }
-    else if(!l4.getTiles().isEmpty()) {
+    } else if (!l4.getTiles().isEmpty()) {
       type = l4.getState();
       System.out.println("in4");
     }
 
     //Tile.State type = checktype(t0,t1);
 
-    if(type == null) {
+    if (type == null) {
       return false;
     }
 
-    if(!isNeighbour(t0,t1)) {
+    if (!isNeighbour(t0,t1)) {
       System.out.println("t0 and t1 are no neighbours.");
       return false;
     }
@@ -562,77 +595,83 @@ public class Game {
 
   /**
    * Return true if t0 and t1 are neighbours.
-   * @param t0
-   * @param t1
-   * @return
+   * @param t0 tile 1.
+   * @param t1 tile 2.
+   * @return true if t0 and t1 are next to each other.
    */
-  public boolean isNeighbour(Tile t0, Tile t1){
+  public boolean isNeighbour(Tile t0, Tile t1) {
     /*System.out.println(t0.getX() + "," + t0.getY());
-    	System.out.println(t1.getX() + "," + t1.getY());*/
-    if(Math.abs(t0.getX() - t1.getX()) == 1 && Math.abs(t0.getY() - t1.getY()) == 0)
+      System.out.println(t1.getX() + "," + t1.getY());*/
+    if (Math.abs(t0.getX() - t1.getX()) == 1 && Math.abs(t0.getY() - t1.getY()) == 0) {
       return true;
-    if(Math.abs(t0.getX() - t1.getX()) == 0 && Math.abs(t0.getY() - t1.getY()) == 1)
+    }
+    if (Math.abs(t0.getX() - t1.getX()) == 0 && Math.abs(t0.getY() - t1.getY()) == 1) {
       return true;
+    }
     return false;
   }
 
   /**
    * Update score in the view.
-   * @param type
+   * @param type change score based on the value of type.
    */
-  private void updateScore(Tile.State type){
+  private void updateScore(Tile.State type) {
     int score = 0;
-    switch(type){
-    case NORMAL:
-      score = 50;
-      break;
-    case FLAME:
-      score = 150;
-      break;
-    case HYPERCUBE:
-      score = 500;
-      break;
-    case STAR:
-      score = 150;
-      break;
-    default:
-      break;
+    switch (type) {
+      case NORMAL:
+        score = 50;
+        break;
+      case FLAME:
+        score = 150;
+        break;
+      case HYPERCUBE:
+        score = 500;
+        break;
+      case STAR:
+        score = 150;
+        break;
+      default:
+        break;
     }
     this.score += score;
     panel.setScore(this.score);
   }
 
   /**
-   * Increase the levelnumber when a certain score is reached
+   * Increase the levelnumber when a certain score is reached.
    */
   private void updateLevel() {
-    if(this.score >= 1000 && this.score < 3500) {
+    if (this.score >= 1000 && this.score < 3500) {
       panel.setLevel(2);
     }
-    if(this.score >= 3500 && this.score < 5500) {
+    if (this.score >= 3500 && this.score < 5500) {
       panel.setLevel(3);
     }
-    if(this.score >= 5500 && this.score < 8000) {
+    if (this.score >= 5500 && this.score < 8000) {
       panel.setLevel(4);
     }
-    if(this.score >= 8000 && this.score < 11000) {
+    if (this.score >= 8000 && this.score < 11000) {
       panel.setLevel(5);
     }
   }
-  public void endGame(){
-  	JLabel label1 = new JLabel ("No possible combination",JLabel.CENTER);
-  	label1.setVerticalTextPosition(JLabel.TOP);
-	label1.setHorizontalTextPosition(JLabel.CENTER);
-  	if(!(possibleMove())){
-  		this.boardPanel.add(label1);
-  		return;
-  	}
+  
+  /**
+   * End game if there is no possible combination.
+   */
+  public void endGame() {
+    JLabel label1 = new JLabel("No possible combination",JLabel.CENTER);
+    label1.setVerticalTextPosition(JLabel.TOP);
+    label1.setHorizontalTextPosition(JLabel.CENTER);
+    if (!(possibleMove())) {
+      this.boardPanel.add(label1);
+      return;
+    }
   }
 
   /**
-   * Reset game
+   * Reset game.
    */
-  public void Reset(){
+  public void reset() {
     this.score = 0;
     swapTiles = new ArrayList<Tile>();
     generateRandomBoard();
@@ -640,16 +679,18 @@ public class Game {
   }
 
   /**
+   * Get board object.
    * @return the board
    */
-  public Tile[][] getBoard(){
+  public Tile[][] getBoard() {
     return this.board;
   }
 
   /**
+   * Get the list with the selected tiles to swap.
    * @return the list swapTiles
    */
-  public List<Tile> getSwaptiles(){
+  public List<Tile> getSwaptiles() {
     return this.swapTiles;
   }
 

@@ -15,11 +15,18 @@ public class Animation implements ActionListener{
   private Tile t0;
   private Tile t1;
   private List<Tile> tiles;
+
   public static enum Type{
     SWAP,REMOVE,DROP;
   }
+
   private Type type;
 
+  /**
+   * Create animation object for animations.
+   * @param game game object.
+   * @param board board(GUI) object.
+   */
   public Animation(Game game, Board board) {
     this.game = game;
     this.board = board;
@@ -31,18 +38,27 @@ public class Animation implements ActionListener{
     this.type = Type.SWAP;
   }
 
-  public void swap(Tile t0, Tile t1){
+  /**
+   * Switch two tiles on the board.
+   * @param t0 tile 1.
+   * @param t1 tile 2.
+   */
+  public void swap(Tile t0, Tile t1) {
     this.t0 = t0;
     this.t1 = t1;
     timer.setDelay(10);
     timer.start();
   }
 
-  public void startRemove(List<Tile> tiles){
+  /**
+   * Start animation for removing tiles on the board.
+   * @param tiles list of tiles to remove.
+   */
+  public void startRemove(List<Tile> tiles) {
     this.tiles = tiles;
     this.frame = 0;
     System.out.println(tiles.size());
-    for(Tile t: this.tiles){
+    for (Tile t: this.tiles) {
       t.translation = new Point(0,0);
       t.size = 0;
     }
@@ -51,50 +67,59 @@ public class Animation implements ActionListener{
   }
 
   //@Override
-  public void actionPerformed(ActionEvent e) {
-    if(this.type == Type.SWAP){
+  /**
+   * Mouse event listeners.
+   */
+  public void actionPerformed(ActionEvent event) {
+    if (this.type == Type.SWAP) {
       frame++;
       int speed = 4;
-      if (frame > 16) {endSwap();}
-      else {
+      if (frame > 16) {
+        endSwap();
+      } else {
         int direction = 1;
-        if (t0.getX() == t1.getX()){
-          if (t0.getY() < t1.getY()) { direction = 1;}
-          else { direction = -1;}
-          t0.updateTranslation(0,speed*direction);
-          t1.updateTranslation(0,-speed*direction);
-        }
-        else {                
-          if (t0.getX() < t1.getX()) { direction = 1;}
-          else { direction = -1;}
-          t0.updateTranslation(speed*direction, 0);
-          t1.updateTranslation(-speed*direction, 0);
+        if (t0.getX() == t1.getX()) {
+          if (t0.getY() < t1.getY()) { 
+            direction = 1; 
+          } else { 
+            direction = -1;
+          }
+          t0.updateTranslation(0,speed * direction);
+          t1.updateTranslation(0,-speed * direction);
+        } else {                
+          if (t0.getX() < t1.getX()) { 
+            direction = 1;
+          } else {
+            direction = -1;
+          }
+          t0.updateTranslation(speed * direction, 0);
+          t1.updateTranslation(-speed * direction, 0);
         }
       }    
       board.repaint();
-    }
-    else if(this.type == Type.REMOVE){
+    } else if (this.type == Type.REMOVE) {
       frame++;
       int speed = 1;
-      if(frame > 32) { endRemove(); }
-      else{
-        for(Tile t: this.tiles){
+      if (frame > 32) {
+        endRemove(); 
+      } else {
+        for (Tile t: this.tiles) {
           t.translation.x += speed;
           t.translation.y += speed;
-          t.size += 2*speed;
+          t.size += 2 * speed;
         }
       }
       board.repaint();
     }
-    else if(this.type == Type.DROP){
+    /*else if (this.type == Type.DROP) {
 
-    }
+    }*/
   }
 
-  private void endRemove(){
+  private void endRemove() {
     this.timer.stop();
     this.frame = 0;
-    for(Tile t: this.tiles){
+    for (Tile t: this.tiles) {
       t.remove = true;
       t.translation = new Point(0,0);
       t.size = 0;
@@ -113,7 +138,7 @@ public class Animation implements ActionListener{
     game.deleteTiles();
   }
 
-  public void setTiles(List<Tile> tiles){
+  public void setTiles(List<Tile> tiles) {
     this.tiles = tiles;
   }
 

@@ -31,7 +31,7 @@ public class TileTest {
 		Tile t = new Tile(1,1);
 		t.updateTranslation(2, 2);
 		Point p = new Point(2, 2);
-		assertEquals(t.d, p);
+		assertEquals(t.translation, p);
 	}
 	
 	@Test
@@ -39,10 +39,10 @@ public class TileTest {
 		Tile t = new Tile(1,1);
 		t.updateTranslation(2, 2);
 		Point p = new Point(2, 2);
-		assertEquals(t.d, p);
+		assertEquals(t.translation, p);
 		Point q = new Point(0, 0);
 		t.resetD();
-		assertEquals(t.d, q);
+		assertEquals(t.translation, q);
 		
 	}
 	

@@ -45,36 +45,43 @@ public class Board extends JPanel {
 
     addMouseMotionListener(new MouseAdapter() {
       @Override
-      public void mouseDragged(MouseEvent e) {
-        Point loc = getColAndRow(e.getX(),e.getY());
-        int col = loc.x, row = loc.y;
+      public void mouseDragged(MouseEvent event) {
+        Point loc = getColAndRow(event.getX(),event.getY());
+        int col = loc.x;
+        int row = loc.y;
 
-        if(!withinBoundaries(col) || !withinBoundaries(row))
+        if (!withinBoundaries(col) || !withinBoundaries(row)) {
           return;
+        }
 
         game.addTile(loc);
       }
     });
     this.addMouseListener(new MouseAdapter() {
       @Override
-      public void mouseClicked(MouseEvent e) {
+      public void mouseClicked(MouseEvent event) {
         System.out.println(frame.getSize().getWidth() + "," + frame.getSize().getHeight());
-        Point loc = getColAndRow(e.getX(),e.getY());
-        int col = loc.x, row = loc.y;
+        Point loc = getColAndRow(event.getX(),event.getY());
+        int col = loc.x;
+        int row = loc.y;
 
-        if(!withinBoundaries(col) || !withinBoundaries(row))
-          return;
+        if (!withinBoundaries(col) || !withinBoundaries(row)) {
+          return; 
+        }
         setFocus(loc);
-        System.out.println("Mouse Clicked: (" + game.getBoard()[col][row].getLoc().x + ", " + game.getBoard()[col][row].getLoc().y + ") " + Tile.colors[game.getBoard()[col][row].getIndex()]);
+        System.out.println("Mouse Clicked: (" + game.getBoard()[col][row].getLoc().x + ", " 
+            + game.getBoard()[col][row].getLoc().y + ") " 
+            + Tile.colors[game.getBoard()[col][row].getIndex()]);
       }
+
       @Override
-      public void mouseReleased(MouseEvent m) {
+      public void mouseReleased(MouseEvent event) {
         game.getSwaptiles().clear();
       }
     });
   }
 
-  public void swapTiles(List<Tile> swapTiles){
+  public void swapTiles(List<Tile> swapTiles) {
     animations.setType(Animation.Type.SWAP);
     animations.swap(swapTiles.get(0), swapTiles.get(1));
   }
@@ -82,32 +89,32 @@ public class Board extends JPanel {
   /**
    * Check if index x is within the boundaries of the board.
    * @param x index to check
-   * @return
+   * @return true iff x is inside the boundaries.
    */
-  private boolean withinBoundaries(int x){
-    return (x >= 0 && x < SIZE);
+  private boolean withinBoundaries(int ix) {
+    return (ix >= 0 && ix < SIZE);
   }
 
   /**
    * Get the index of the focused jewel based on the coordinated of the mouse event.
    * @param loc location of the mouse event
    */
-  public void setFocus(Point loc){
-    int x = loc.x * SPACE_X + LOCATION.x;
-    int y = loc.y * SPACE_Y + LOCATION.y;
-    focus = new Point(x,y);
+  public void setFocus(Point loc) {
+    int ix = loc.x * SPACE_X + LOCATION.x;
+    int iy = loc.y * SPACE_Y + LOCATION.y;
+    focus = new Point(ix,iy);
     repaint();
   }
 
   /**
    * Get the col and row index based on the coordinates on the screen.
-   * @param x x-coordinate of the mouse event
-   * @param y y-coordinate of the mouse event
-   * @return
+   * @param ix x-coordinate of the mouse event
+   * @param iy y-coordinate of the mouse event
+   * @return point calculated based on the x,y coordinates from x and y.
    */
-  public static Point getColAndRow(int x,int y){
-    int col = (x - LOCATION.x) / SPACE_X;
-    int row = (y - LOCATION.y) / SPACE_Y;
+  public static Point getColAndRow(int ix,int iy) {
+    int col = (ix - LOCATION.x) / SPACE_X;
+    int row = (iy - LOCATION.y) / SPACE_Y;
     return new Point(col,row);
   }
 
@@ -115,26 +122,30 @@ public class Board extends JPanel {
    * Draw board on the screen.
    */
   @Override
-  public void paintComponent(Graphics g) {
-    super.paintComponent(g);
+  public void paintComponent(Graphics graphics) {
+    super.paintComponent(graphics);
 
     Tile[][] board = game.getBoard();
-    g.drawImage(boardImage.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
-    int ix = LOCATION.x,iy = LOCATION.y;
+    graphics.drawImage(boardImage.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
+    int ix = LOCATION.x;
+    int iy = LOCATION.y;
     Tile tile = null;
 
-    for(int i = 0,x = ix, y = iy; i < SIZE; i++){
+    for (int i = 0,x = ix, y = iy; i < SIZE; i++) {
       x = ix;
-      for(int j = 0; j < SIZE; j++, x += SPACE_X){
+      for (int j = 0; j < SIZE; j++, x += SPACE_X) {
         tile = board[j][i];
-        if(tile.remove) continue;
-        g.drawImage(tile.getImage(), x + tile.translation.x , y + tile.translation.y,SPACE_X - tile.size,SPACE_Y - tile.size, null);
+        if (tile.remove) {
+          continue;
+        }
+        graphics.drawImage(tile.getImage(), x + tile.translation.x , 
+            y + tile.translation.y,SPACE_X - tile.size,SPACE_Y - tile.size, null);
       }
       y += SPACE_Y;
     }
 
-    if(focus != null){
-      g.drawImage(focusImage.getImage(), focus.x, focus.y,SPACE_X,SPACE_Y, null);
+    if (focus != null) {
+      graphics.drawImage(focusImage.getImage(), focus.x, focus.y,SPACE_X,SPACE_Y, null);
     }
   }
 }

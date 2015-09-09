@@ -21,7 +21,7 @@ class StatusPanel extends JPanel{
 
   private static final Font font = new Font("Serif", Font.BOLD, 35);
 
-  public StatusPanel(){
+  public StatusPanel() {
     setLayout(new GridBagLayout());
     setBorder(BorderFactory.createEmptyBorder(10, 40, 10, 10));
     setOpaque(false);
@@ -43,10 +43,11 @@ class StatusPanel extends JPanel{
     setLevel(1);
   }
 
-  public void setScore(int score){
+  public void setScore(int score) {
     this.scoreLabel.setText("Score: " + Integer.toString(score));
   }
-  public void setLevel(int level){
+
+  public void setLevel(int level) {
     this.levelLabel.setText("Level: " + Integer.toString(level));
   }
 }
