@@ -48,42 +48,12 @@ public class Board extends JPanel {
     animations = new Animation(game,this);
     setOpaque(true);
 
-    addMouseMotionListener(new MouseAdapter() {
-      @Override
-      public void mouseDragged(MouseEvent event) {
-        Point loc = getColAndRow(event.getX(),event.getY());
-        int col = loc.x;
-        int row = loc.y;
+    this.addMouseListener(new MouseListener(this));
+    this.addMouseMotionListener(new MouseMotionListener(this));
+  }
 
-        if (!withinBoundaries(col) || !withinBoundaries(row)) {
-          return;
-        }
-
-        game.addTile(loc);
-      }
-    });
-    this.addMouseListener(new MouseAdapter() {
-      @Override
-      public void mouseClicked(MouseEvent event) {
-        System.out.println(frame.getSize().getWidth() + "," + frame.getSize().getHeight());
-        Point loc = getColAndRow(event.getX(),event.getY());
-        int col = loc.x;
-        int row = loc.y;
-
-        if (!withinBoundaries(col) || !withinBoundaries(row)) {
-          return; 
-        }
-        setFocus(loc);
-        System.out.println("Mouse Clicked: (" + game.getBoard()[col][row].getLoc().x + ", " 
-            + game.getBoard()[col][row].getLoc().y + ") " 
-            + Tile.colors[game.getBoard()[col][row].getIndex()]);
-      }
-
-      @Override
-      public void mouseReleased(MouseEvent event) {
-        game.getSwaptiles().clear();
-      }
-    });
+  public Game getGame() {
+    return game;
   }
 
   public void swapTiles(List<Tile> swapTiles) {
@@ -96,7 +66,7 @@ public class Board extends JPanel {
    * @param x index to check
    * @return true iff x is inside the boundaries.
    */
-  private boolean withinBoundaries(int ix) {
+  public static boolean withinBoundaries(int ix) {
     return (ix >= 0 && ix < SIZE);
   }
 
