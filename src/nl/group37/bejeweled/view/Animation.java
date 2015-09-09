@@ -1,4 +1,4 @@
-package bejeweled37;
+package nl.group37.bejeweled.view;
 
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -6,6 +6,9 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.Timer;
+
+import nl.group37.bejeweled.model.Game;
+import nl.group37.bejeweled.model.Tile;
 
 public class Animation implements ActionListener{
   private Game game;

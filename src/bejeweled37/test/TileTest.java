@@ -7,9 +7,9 @@ import static org.junit.Assert.*;
 
 import java.awt.Point;
 
-import org.junit.Test;
+import nl.group37.bejeweled.model.Tile;
 
-import bejeweled37.Tile;
+import org.junit.Test;
 
 /**
  * @author Mayke

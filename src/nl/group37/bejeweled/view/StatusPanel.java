@@ -1,4 +1,4 @@
-package bejeweled37;
+package nl.group37.bejeweled.view;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -15,12 +15,15 @@ import javax.swing.JPanel;
  * @author samuelsital
  *
  */
-class StatusPanel extends JPanel{
+public class StatusPanel extends JPanel{
   private JLabel scoreLabel = new JLabel("Score: ");
   private JLabel levelLabel = new JLabel("Level:");
 
   private static final Font font = new Font("Serif", Font.BOLD, 35);
 
+  /**
+   * Create labels for displaying the status of the game.
+   */
   public StatusPanel() {
     setLayout(new GridBagLayout());
     setBorder(BorderFactory.createEmptyBorder(10, 40, 10, 10));

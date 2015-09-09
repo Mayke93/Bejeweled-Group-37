@@ -1,4 +1,4 @@
-package bejeweled37;
+package nl.group37.bejeweled.view;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -11,6 +11,10 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import nl.group37.bejeweled.model.Game;
+import nl.group37.bejeweled.model.Tile;
+import nl.group37.bejeweled.view.Animation.Type;
 
 @SuppressWarnings("serial")
 public class Board extends JPanel {

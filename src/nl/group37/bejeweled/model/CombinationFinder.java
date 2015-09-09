@@ -1,7 +1,9 @@
-package bejeweled37;
+package nl.group37.bejeweled.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import nl.group37.bejeweled.view.Board;
 
 public class CombinationFinder {
   private static final int SIZE = Board.SIZE;

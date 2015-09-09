@@ -1,8 +1,9 @@
-package bejeweled37;
+package nl.group37.bejeweled.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 
 @SuppressWarnings("serial")

@@ -4,12 +4,12 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import nl.group37.bejeweled.model.Combination;
+import nl.group37.bejeweled.model.Tile;
+
 import org.junit.Test;
 
 import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
-
-import bejeweled37.Combination;
-import bejeweled37.Tile;
 
 /**
  * @author Mayke
