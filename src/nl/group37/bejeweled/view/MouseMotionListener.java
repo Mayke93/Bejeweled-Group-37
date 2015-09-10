@@ -5,19 +5,19 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class MouseMotionListener extends MouseAdapter{
-  private Board board;
+  private Main board;
   
-  public MouseMotionListener(Board board) {
+  public MouseMotionListener(Main board) {
     this.board = board;
   }
   
   @Override
   public void mouseDragged(MouseEvent event) {
-    Point loc = Board.getColAndRow(event.getX(),event.getY());
+    Point loc = Main.getColAndRow(event.getX(),event.getY());
     int col = loc.x;
     int row = loc.y;
 
-    if (!Board.withinBoundaries(col) || !Board.withinBoundaries(row)) {
+    if (!Main.withinBoundaries(col) || !Main.withinBoundaries(row)) {
       return;
     }
     board.getGame().addTile(loc);

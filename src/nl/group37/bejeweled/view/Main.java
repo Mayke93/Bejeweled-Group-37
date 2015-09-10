@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 
 
 @SuppressWarnings("serial")
-public class Board extends JPanel {
+public class Main extends JPanel {
 
   public static final int SIZE = 8; //Board size is 8x8
   public static final Point LOCATION = new Point(241,40);
@@ -41,7 +41,7 @@ public class Board extends JPanel {
    * @param frame JFrame of the game
    * @param panel JPanel with the labels to display the status of the game
    */
-  public Board(final JFrame frame,StatusPanel panel) {
+  public Main(final JFrame frame,StatusPanel panel) {
     this.frame = frame;
     this.panel = panel;
     game = new Game(this,panel);

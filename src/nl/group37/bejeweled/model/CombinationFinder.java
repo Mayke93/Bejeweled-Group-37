@@ -1,13 +1,13 @@
 package nl.group37.bejeweled.model;
 
-import nl.group37.bejeweled.view.Board;
+import nl.group37.bejeweled.view.Main;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class CombinationFinder {
-  private static final int SIZE = Board.SIZE;
+  private static final int SIZE = Main.SIZE;
   private Tile[][] board;
 
   public  CombinationFinder(Tile[][] board) {

@@ -13,7 +13,7 @@ import javax.swing.Timer;
 
 public class Animation implements ActionListener{
   private Game game;
-  private Board board;
+  private Main board;
   private Timer timer;
   private int frame;
   private Tile t0;
@@ -31,7 +31,7 @@ public class Animation implements ActionListener{
    * @param game game object.
    * @param board board(GUI) object.
    */
-  public Animation(Game game, Board board) {
+  public Animation(Game game, Main board) {
     this.game = game;
     this.board = board;
     this.timer = new Timer(10,this);

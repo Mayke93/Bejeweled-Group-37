@@ -9,18 +9,18 @@ import java.awt.event.MouseEvent;
 
 public class MouseListener extends MouseAdapter{
 
-  private Board board;
+  private Main board;
 
-  public MouseListener(Board board) {
+  public MouseListener(Main board) {
     this.board = board;
   }
 
   @Override
   public void mouseClicked(MouseEvent event) {
-    Point loc = Board.getColAndRow(event.getX(),event.getY());
+    Point loc = Main.getColAndRow(event.getX(),event.getY());
     int col = loc.x;
     int row = loc.y;
-    if (!Board.withinBoundaries(col) || !Board.withinBoundaries(row)) {
+    if (!Main.withinBoundaries(col) || !Main.withinBoundaries(row)) {
       return;
     }
     board.setFocus(loc);

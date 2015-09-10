@@ -17,7 +17,7 @@ public class Application extends JFrame {
     setLayout(new BorderLayout());
 
     statusPanel = new StatusPanel();
-    Board board = new Board(this,statusPanel);
+    Main board = new Main(this,statusPanel);
     board.setLayout(new BorderLayout());
 
     board.add(statusPanel,BorderLayout.WEST);

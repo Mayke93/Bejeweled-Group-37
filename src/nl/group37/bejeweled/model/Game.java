@@ -1,7 +1,7 @@
 package nl.group37.bejeweled.model;
 
 import nl.group37.bejeweled.view.Animation;
-import nl.group37.bejeweled.view.Board;
+import nl.group37.bejeweled.view.Main;
 import nl.group37.bejeweled.view.StatusPanel;
 
 import java.awt.Point;
@@ -18,17 +18,17 @@ public class Game {
   private Tile[][] board;
   public List<Tile> swapTiles;
   private int score = 0;
-  private Board boardPanel;
+  private Main boardPanel;
   private StatusPanel panel;
   private CombinationFinder finder;
-  private static final int SIZE = Board.SIZE;
+  private static final int SIZE = Main.SIZE;
 
   /**
    * Create game object.
    * @param boardPanel object for GUI.
    * @param panel object for updating the labels.
    */
-  public Game(Board boardPanel,StatusPanel panel) {
+  public Game(Main boardPanel,StatusPanel panel) {
     this.boardPanel = boardPanel;
     this.panel = panel;
     this.finder = new CombinationFinder(board);
@@ -88,15 +88,14 @@ public class Game {
     boardPanel.animations.startRemove(tiles);
     printCombinations();
 
-    /*Tile r = null;
-    for(int i= 0; i < SIZE; i++){
-       for(int j = 0; j < SIZE; j++){
-       r = board[j][i];
-       System.out.print(r.getLevel() + " ");
+    Tile tile = null;
+    for (int i = 0; i < SIZE; i++) {
+      for (int j = 0; j < SIZE; j++) {
+        tile = board[j][i];
+        System.out.print(tile.getLevel() + " ");
       }
       System.out.println();
-    }*/
-
+    }
 
     //dropTiles(tiles);
     //boardPanel.repaint();
@@ -151,9 +150,9 @@ public class Game {
    * Create a board of random jewels without a sequence of 3 or more tiles with the same color.
    */
   public void generateRandomBoard() {
-    board = new Tile[Board.SIZE][Board.SIZE]; 
-    for (int i = 0; i < Board.SIZE; i++) {
-      for (int j = 0; j < Board.SIZE; j++) {
+    board = new Tile[Main.SIZE][Main.SIZE]; 
+    for (int i = 0; i < Main.SIZE; i++) {
+      for (int j = 0; j < Main.SIZE; j++) {
         board[i][j] = new Tile(i,j);
       }
 
@@ -173,7 +172,7 @@ public class Game {
   private boolean hasSequence(int row) {
     int sum = 0;
     //Find sequence in row i
-    for (int j = 1; j < Board.SIZE; j++) {
+    for (int j = 1; j < Main.SIZE; j++) {
       if (board[row][j].equalsColor(board[row][j - 1])) {
         sum++;
       } else {
@@ -191,7 +190,7 @@ public class Game {
     }
 
     //Find horizonal sequences
-    for (int j = 0; j < Board.SIZE; j++) {
+    for (int j = 0; j < Main.SIZE; j++) {
       sum = 0;
       sum += (board[row - 1][j].equalsColor(board[row][j]) ? 1 : 0);
       sum += (board[row - 2][j].equalsColor(board[row][j]) ? 1 : 0);
