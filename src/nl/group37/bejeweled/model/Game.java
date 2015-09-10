@@ -82,7 +82,6 @@ public class Game {
             board[col][i].increaseLevel();
           }
         }
-
       }
     }
     boardPanel.animations.setType(Animation.Type.REMOVE);
@@ -130,7 +129,6 @@ public class Game {
       }
     }
     boardPanel.repaint();
-
   }
 
   /**
@@ -497,5 +495,13 @@ public class Game {
   public List<Tile> getSwaptiles() {
     return this.swapTiles;
   }
-
+  
+  /**
+   * Get the CombinationFinder of the game
+   * @return CombinationFinder
+   */
+  public CombinationFinder getFinder() {
+    return finder;
+  }
+  
 }

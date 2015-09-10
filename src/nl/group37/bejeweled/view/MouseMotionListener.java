@@ -20,7 +20,6 @@ public class MouseMotionListener extends MouseAdapter{
     if (!Board.withinBoundaries(col) || !Board.withinBoundaries(row)) {
       return;
     }
-
     board.getGame().addTile(loc);
   }
 }
