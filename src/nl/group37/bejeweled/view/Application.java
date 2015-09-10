@@ -1,26 +1,26 @@
-package bejeweled37;
+package nl.group37.bejeweled.view;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
 public class Application extends JFrame {
-  public StatusPanel sPanel;
+  public StatusPanel statusPanel;
 
   public Application() {
-    initUI();
+    initUi();
   }
 
-  private void initUI() {
+  private void initUi() {
     setLayout(new BorderLayout());
 
-    sPanel = new StatusPanel();
-    Board board = new Board(this,sPanel);
+    statusPanel = new StatusPanel();
+    Board board = new Board(this,statusPanel);
     board.setLayout(new BorderLayout());
 
-    board.add(sPanel,BorderLayout.WEST);
+    board.add(statusPanel,BorderLayout.WEST);
     add(board);
 
     setSize(800, 619);
@@ -31,6 +31,10 @@ public class Application extends JFrame {
     setVisible(true);
   }    
 
+  /**
+   * Start application.
+   * @param args parameters passed to this application.
+   */
   public static void main(String[] args) {
 
     EventQueue.invokeLater(new Runnable() {

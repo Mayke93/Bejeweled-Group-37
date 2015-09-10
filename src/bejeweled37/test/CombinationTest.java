@@ -1,14 +1,14 @@
 package bejeweled37.test;
-//TODO ordering of imports?!
-import org.junit.Test;
-
-import bejeweled37.Combination;
-import bejeweled37.Tile;
-
-import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+
+import nl.group37.bejeweled.model.Combination;
+import nl.group37.bejeweled.model.Tile;
+
+import java.util.ArrayList;
+
+import org.junit.Test;
 
 /**
  * Simple basic tests for class Combination. 

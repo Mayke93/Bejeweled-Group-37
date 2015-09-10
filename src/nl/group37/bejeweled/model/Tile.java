@@ -1,4 +1,4 @@
-package bejeweled37;
+package nl.group37.bejeweled.model;
 
 import java.awt.Image;
 import java.awt.Point;
@@ -190,4 +190,7 @@ public class Tile {
     return color;
   }
   
+  public Point getTranslation() {
+    return translation;
+  }
 }

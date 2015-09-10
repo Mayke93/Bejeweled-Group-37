@@ -4,9 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import java.awt.Point;
 
-import org.junit.Test;
+import nl.group37.bejeweled.model.Tile;
 
-import bejeweled37.Tile;
+import org.junit.Test;
 
 /**
  * Simple test class for Tile
@@ -34,7 +34,7 @@ public class TileTest {
     Tile t1 = new Tile(1,1);
     t1.updateTranslation(2, 2);
     Point p1 = new Point(2, 2);
-    assertEquals(t1.d, p1);
+    assertEquals(t1.getTranslation(), p1);
   }
 
   /**
@@ -45,10 +45,10 @@ public class TileTest {
     Tile t1 = new Tile(1,1);
     t1.updateTranslation(2, 2);
     Point p1 = new Point(2, 2);
-    assertEquals(t1.d, p1);
+    assertEquals(t1.getTranslation(), p1);
     Point q1 = new Point(0, 0);
     t1.resetD();
-    assertEquals(t1.d, q1);
+    assertEquals(t1.getTranslation(), q1);
 
   }
 
@@ -60,14 +60,35 @@ public class TileTest {
   public void testsetRandomTile() {
 
   }
+  @Test
+  public void testgetXY() {
+    Tile t = new Tile(1,1);
+    assertEquals(t.getX(), 1);
+    assertEquals(t.getY(), 1);
+  }
+
+  @Test
+  public void testUpdateTranslation() {
+    Tile t = new Tile(1,1);
+    t.updateTranslation(2, 2);
+    Point p = new Point(2, 2);
+    assertEquals(t.translation, p);
+  }
+
+
+  /*Not possible? Maybe later
+   * @Test
+  public void testsetRandomTile() {
+
+  }
    */
 
   /*No setter (yet)?
    * @Test
+<<<<<<< HEAD
   public void testGetImage() {
    fail("Not yet implemented");
   }*/
-
   /*This needs to be tested when Tile class has been changed.
    * As if now, all tiles are random colors.
    * 
@@ -160,5 +181,10 @@ public class TileTest {
     Tile t1 = new Tile(1,1);
     assertEquals(t1.toString(), "(1,1) " + t1.getColor());
   }
+
+//	public void testEqualsColor() {
+//		fail("Not yet implemented");
+//	}
+//   */
 
 }
