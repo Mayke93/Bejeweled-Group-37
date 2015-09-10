@@ -1,4 +1,4 @@
-package bejeweled37.test;
+package nl.group37.bejeweled.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
