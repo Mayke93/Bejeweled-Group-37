@@ -107,6 +107,7 @@ public class Tile {
    * Returns true iff the compared with object is a tile
    * and has the same index, X-co and Y-co.
    */
+  @Override
   public boolean equals(Object obj) {
     if (!(obj instanceof Tile)) {
       return false;
@@ -114,7 +115,7 @@ public class Tile {
     Tile tile = (Tile)obj;
     return (this.index == tile.index && tile.getX() == this.getX() && tile.getY() == this.getY());
   }
-
+  
   /**
    * Returns true iff the compared with object is a Tile and has the same color.
    */
@@ -124,6 +125,23 @@ public class Tile {
     }
     Tile tile = (Tile)obj;
     return (this.index == tile.index);
+  }
+
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((image == null) ? 0 : image.hashCode());
+    result = prime * result + index;
+    result = prime * result + level;
+    result = prime * result + ((loc == null) ? 0 : loc.hashCode());
+    result = prime * result + ((random == null) ? 0 : random.hashCode());
+    result = prime * result + (remove ? 1231 : 1237);
+    result = prime * result + size;
+    result = prime * result + ((state == null) ? 0 : state.hashCode());
+    result = prime * result
+        + ((translation == null) ? 0 : translation.hashCode());
+    return result;
   }
 
   /**
@@ -193,4 +211,6 @@ public class Tile {
   public Point getTranslation() {
     return translation;
   }
+  
+  
 }
