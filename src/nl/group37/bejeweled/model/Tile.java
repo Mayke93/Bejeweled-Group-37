@@ -190,4 +190,7 @@ public class Tile {
     return color;
   }
   
+  public Point getTranslation() {
+    return translation;
+  }
 }
