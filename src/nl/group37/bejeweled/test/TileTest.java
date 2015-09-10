@@ -1,12 +1,12 @@
-package bejeweled37.test;
-
-import static org.junit.Assert.assertEquals;
-
-import java.awt.Point;
+package nl.group37.bejeweled.test;
 
 import nl.group37.bejeweled.model.Tile;
 
+import java.awt.Point;
+
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Simple test class for Tile
