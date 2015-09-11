@@ -6,9 +6,9 @@ import static org.junit.Assert.assertNotNull;
 import nl.group37.bejeweled.model.Combination;
 import nl.group37.bejeweled.model.Tile;
 
-import java.util.ArrayList;
-
 import org.junit.Test;
+
+import java.util.ArrayList;
 
 /**
  * Simple basic tests for class Combination. 

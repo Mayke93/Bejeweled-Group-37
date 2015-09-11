@@ -2,14 +2,15 @@ package nl.group37.bejeweled.view;
 
 import nl.group37.bejeweled.model.Game;
 import nl.group37.bejeweled.model.Tile;
-import nl.group37.bejeweled.view.Animation.Type;
+//import nl.group37.bejeweled.view.Animation.Type;
 
-import java.awt.Color;
+//import java.awt.Color;
 import java.awt.Graphics;
+
 import java.awt.Point;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
+//import java.awt.event.MouseAdapter;
+//import java.awt.event.MouseEvent;
+//import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
