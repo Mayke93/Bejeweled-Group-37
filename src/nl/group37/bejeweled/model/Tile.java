@@ -6,6 +6,11 @@ import java.util.Random;
 
 import javax.swing.ImageIcon;
 
+/**
+ * Class for initialising a gem on the board.
+ * @author Group 37
+ *
+ */
 public class Tile {
 
   private Random random;
@@ -106,6 +111,8 @@ public class Tile {
   /**
    * Returns true iff the compared with object is a tile
    * and has the same index, X-co and Y-co.
+   * @param obj an objet to be compared
+   * @return a boolean, true iff the two objects are the same.
    */
   @Override
   public boolean equals(Object obj) {
@@ -118,6 +125,8 @@ public class Tile {
   
   /**
    * Returns true iff the compared with object is a Tile and has the same color.
+   * @param obj an object to be compared
+   * @return a boolean, true iff the two objects have the same color.
    */
   public boolean equalsColor(Object obj) {
     if (!(obj instanceof Tile)) {
@@ -127,6 +136,10 @@ public class Tile {
     return (this.index == tile.index);
   }
 
+  /**
+   * overrides standard hashcode, because we have overwritten the equals method.
+   * @return an integer hashcode
+   */
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -158,56 +171,104 @@ public class Tile {
     return tile;
   }
 
+  /**
+   * get X value from the location of the tile.
+   * @return integer value of X coordinate.
+   */
   public int getX() { 
     return this.loc.x; 
   }
-
+  
+  /**
+   * get Y value from the location of the tile.
+   * @return integer value of Y coordinate.
+   */
   public int getY() { 
     return this.loc.y; 
   }
 
+  /**
+   * gets the location of a tile.
+   * @return a point that is the location
+   */
   public Point getLoc() {
     return this.loc;
   }
 
+  /**
+   * sets the location of a tile.
+   */
   public void setLoc(Point loc) {
     this.loc = loc;
   }
 
+  /**
+   * set the location of a tile, with coordinates.
+   */
   public void setLoc(int coordinateX, int coordinateY) {
     this.loc = new Point(coordinateX,coordinateY);
   }
 
+  /**
+   * get how many levels the tile should drop.
+   * @return an integer that represents the level
+   */
   public int getLevel() {
     return level; 
   }
 
+  /**
+   * set how many levels the tile should drop.
+   */
   public void setLevel(int level) {
     this.level = level; 
   }
 
+  /**
+   *  increases set how many levels the tile should drop.
+   */
   public void increaseLevel() { 
     this.level++; 
   }
 
+  /**
+   * get the state of the tile.
+   * @return the state as a State
+   */
   public State getState() {
     return this.state; 
   }
 
+  /**
+   * sets the state of the tile.
+   * @param state State of a tile
+   */
   public void setState(State state) {
     this.state = state; 
   }
 
+  /**
+   * Method to representthe llcation and the color of a tile in a string.
+   * @return a string witn the loaction and the color
+   */
   public String toString() {
     return "(" + Integer.toString(this.loc.x) + "," 
            + Integer.toString(this.loc.y) + ") " + colors[this.index];
   }
 
+  /**
+   * gets the color of a tile.
+   * @return the color of a tile in a string
+   */
   public String getColor() {
     String color = colors[index];
     return color;
   }
   
+  /**
+   * get the traslation of a tile.
+   * @return the translation of a tile as a Point
+   */
   public Point getTranslation() {
     return translation;
   }
