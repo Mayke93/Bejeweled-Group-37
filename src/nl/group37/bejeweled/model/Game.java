@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 //import Tile.State;
 
 public class Game {
-  private Tile[][] board;
+  private Tile[][] board = null;
   public List<Tile> swapTiles;
   private int score = 0;
   private Main boardPanel;
@@ -496,7 +496,7 @@ public class Game {
   }
   
   /**
-   * Get the CombinationFinder of the game
+   * Get the CombinationFinder of the game.
    * @return CombinationFinder
    */
   public CombinationFinder getFinder() {

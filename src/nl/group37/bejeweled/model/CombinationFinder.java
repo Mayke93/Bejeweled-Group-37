@@ -58,10 +58,8 @@ public class CombinationFinder {
     List<Tile> tiles = new ArrayList<Tile>();
 
     //check x direction
-    int sum = 1;
     for (int q = tile.getX() + 1; q < SIZE; q++) { //check to the right
       if (board[q][tile.getY()].equalsColor(tile)) {
-        sum++;
         tiles.add(board[q][tile.getY()]);
       } else {
         break;
@@ -69,7 +67,6 @@ public class CombinationFinder {
     }
     for (int q = tile.getX() - 1; q >= 0; q--) {    //check to the left
       if (board[q][tile.getY()].equalsColor(tile)) {
-        sum++;
         tiles.add(board[q][tile.getY()]);
       } else {
         break;
@@ -110,10 +107,8 @@ public class CombinationFinder {
     List<Tile> tiles = new ArrayList<Tile>();
 
     //check y direction
-    int sum = 1;
     for (int q = tile.getY() + 1; q < SIZE; q++) {   //check down
       if (board[tile.getX()][q].equalsColor(tile)) {
-        sum++;
         tiles.add(board[tile.getX()][q]);
       } else {
         break;
@@ -121,7 +116,6 @@ public class CombinationFinder {
     }
     for (int q = tile.getY() - 1; q >= 0; q--) {      //check up
       if (board[tile.getX()][q].equalsColor(tile)) {
-        sum++;
         tiles.add(board[tile.getX()][q]);
       } else {
         break;
