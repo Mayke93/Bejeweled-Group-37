@@ -4,9 +4,24 @@ import nl.group37.bejeweled.model.Game;
 import nl.group37.bejeweled.model.Tile;
 //import nl.group37.bejeweled.view.Animation.Type;
 
+
+
+
+
+
+
+
+
+
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Font;
 //import java.awt.Color;
 import java.awt.Graphics;
-
+import java.awt.GridLayout;
 import java.awt.Point;
 //import java.awt.event.MouseAdapter;
 //import java.awt.event.MouseEvent;
@@ -14,8 +29,12 @@ import java.awt.Point;
 import java.util.List;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 
 @SuppressWarnings("serial")
@@ -92,6 +111,37 @@ public class Main extends JPanel {
     int col = (ix - LOCATION.x) / SPACE_X;
     int row = (iy - LOCATION.y) / SPACE_Y;
     return new Point(col,row);
+  }
+  /**
+   * This shows the text that will end the game 
+   * 
+   */
+  public void endGame() {
+    this.frame.setLayout(new BorderLayout());
+    JPanel pl = new JPanel(new GridLayout(4,1));
+    pl.setBackground(Color.BLACK);
+
+    JButton button = new JButton();
+    Border thickBorder = new LineBorder(Color.BLACK, 12);
+    //button.setBorder(thickBorder);
+    button.setText("New Game");
+    button.setSize(400, 50);
+    button.setMinimumSize(new Dimension(400,200));
+    button.setFont(new Font("Serif",Font.BOLD, 45)); 
+    button.setForeground(Color.BLACK);
+    button.addActionListener(new ButtonListener());
+
+    JLabel label = new JLabel("Game over frown-emoticon",JLabel.CENTER);
+    label.setForeground(Color.WHITE);
+    label.setVerticalTextPosition(JLabel.TOP);
+    label.setHorizontalTextPosition(JLabel.CENTER);
+    label.setFont(new Font("Serif",Font.BOLD, 45)); 
+
+    pl.setAlignmentX(Component.CENTER_ALIGNMENT);
+    pl.add(label);
+    pl.add(button);
+    this.frame.setContentPane(pl);
+    this.frame.setVisible(true);
   }
 
   /**
