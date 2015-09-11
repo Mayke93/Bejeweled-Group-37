@@ -1,7 +1,7 @@
 package nl.group37.bejeweled.test;
 
 
-import org.junit.Test;
+//import org.junit.Test;
 
 
 /**

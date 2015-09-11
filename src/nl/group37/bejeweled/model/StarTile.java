@@ -1,7 +1,7 @@
 package nl.group37.bejeweled.model;
 
 /**
- * Class StarTile, object for a Star gem on the board
+ * Class StarTile, object for a Star gem on the board.
  * @author Mayke
  *
  */
