@@ -2,30 +2,15 @@ package nl.group37.bejeweled.view;
 
 import nl.group37.bejeweled.model.Game;
 import nl.group37.bejeweled.model.Tile;
-//import nl.group37.bejeweled.view.Animation.Type;
-
-
-
-
-
-
-
-
-
-
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
-//import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Point;
-//import java.awt.event.MouseAdapter;
-//import java.awt.event.MouseEvent;
-//import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -112,6 +97,7 @@ public class Main extends JPanel {
     int row = (iy - LOCATION.y) / SPACE_Y;
     return new Point(col,row);
   }
+   
   /**
    * This shows the text that will end the game 
    * 
