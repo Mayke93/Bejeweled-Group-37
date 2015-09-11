@@ -10,7 +10,11 @@ import java.util.List;
 
 import javax.swing.Timer;
 
-
+/**
+ * Class that carries out the disappearing of combinations,
+ * gems falling down and new gems filling the board.
+ * @author group37
+ */
 public class Animation implements ActionListener{
   private Game game;
   private Main board;
@@ -70,7 +74,6 @@ public class Animation implements ActionListener{
     timer.start();
   }
 
-  //@Override
   /**
    * Mouse event listeners.
    */
@@ -120,6 +123,9 @@ public class Animation implements ActionListener{
     }*/
   }
 
+  /**
+   * Ends the remove action.
+   */
   private void endRemove() {
     this.timer.stop();
     this.frame = 0;
@@ -134,6 +140,9 @@ public class Animation implements ActionListener{
     }
   }
 
+  /**
+   * Ends the swap action.
+   */
   private void endSwap() {
     this.timer.stop();
     this.frame = 0;
@@ -145,14 +154,26 @@ public class Animation implements ActionListener{
     game.deleteTiles();
   }
 
+  /**
+   * Method to set the list of tiles.
+   * @param tiles, the list of tiles to be set.
+   */
   public void setTiles(List<Tile> tiles) {
     this.tiles = tiles;
   }
 
+  /**
+   * Gets the type of the animation.
+   * @return type, the type of the animation.
+   */
   public Type getType() {
     return type;
   }
 
+  /**
+   * Sets the type of an animation.
+   * @param type, the type to be set.
+   */
   public void setType(Type type) {
     this.type = type;
   }

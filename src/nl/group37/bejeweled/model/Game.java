@@ -8,12 +8,13 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JLabel;
-
-
-
+//import javax.swing.JLabel;
 //import Tile.State;
 
+/**
+ * Class that represents the current game.
+ * @author group37
+ */
 public class Game {
   private Tile[][] board = null;
   public List<Tile> swapTiles;
@@ -333,10 +334,6 @@ public class Game {
     }
     return possiblemove;
   }
-
-  
-
-  
 
   /**
    * Switch tile t0 and t1 on the board.

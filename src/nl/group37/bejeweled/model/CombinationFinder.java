@@ -5,15 +5,27 @@ import nl.group37.bejeweled.view.Main;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * This class can be used to find the type and tiles of combinations on the board
+ * at that specific moment.
+ * @author group37
+ */
 public class CombinationFinder {
   private static final int SIZE = Main.SIZE;
   private Tile[][] board;
 
-  public  CombinationFinder(Tile[][] board) {
+  /**
+   * The constructor for the combinationfinder.
+   * @param board, the current board.
+   */
+  public CombinationFinder(Tile[][] board) {
     this.board = board;
   }
   
+  /**
+   * This method provides the possibility to set the board.
+   * @param board, the board to be set.
+   */
   public void setBoard(Tile[][] board) {
     this.board = board;
   }

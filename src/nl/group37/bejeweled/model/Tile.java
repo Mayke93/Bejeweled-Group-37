@@ -9,7 +9,6 @@ import javax.swing.ImageIcon;
 /**
  * Class for initialising a gem on the board.
  * @author Group 37
- *
  */
 public class Tile {
 

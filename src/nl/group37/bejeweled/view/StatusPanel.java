@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 /**
  * Class for diplaying the status of the game.
- * @author samuelsital
+ * @author group37
  *
  */
 public class StatusPanel extends JPanel{

@@ -13,7 +13,7 @@ import java.awt.Point;
  * Simple test class for Tile
  * as if 08-09-2015 not complete as tile class 
  * may be split or changed.
- * @author Mayke Kloppenburg
+ * @author group37
  */
 public class TileTest {
 
@@ -183,9 +183,9 @@ public class TileTest {
     assertEquals(t1.toString(), "(1,1) " + t1.getColor());
   }
 
-//	public void testEqualsColor() {
-//		fail("Not yet implemented");
-//	}
-//   */
+  //  public void testEqualsColor() {
+  //    fail("Not yet implemented");
+  //  }
+  //   */
 
 }

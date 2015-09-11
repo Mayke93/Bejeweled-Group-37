@@ -6,13 +6,25 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
+
+/**
+ * Class that is responsible for setting up the application.
+ * @author group37
+ */
 public class Application extends JFrame {
   public StatusPanel statusPanel;
 
+  /**
+   * Constructor of the application.
+   * Starts the setting up of the GUI.
+   */
   public Application() {
     initUi();
   }
 
+  /**
+   * Setting up the GUI.
+   */
   private void initUi() {
     setLayout(new BorderLayout());
 

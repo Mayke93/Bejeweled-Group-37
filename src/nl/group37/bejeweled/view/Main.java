@@ -18,11 +18,16 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
+//import javax.swing.border.Border;
+//import javax.swing.border.LineBorder;
 
 
 @SuppressWarnings("serial")
+
+/**
+ * Class that is responsible for the frames, images and text in the GUI.
+ * @author group37
+ */
 public class Main extends JPanel {
 
   public static final int SIZE = 8; //Board size is 8x8
@@ -57,10 +62,18 @@ public class Main extends JPanel {
     this.addMouseMotionListener(new MouseMotionListener(this));
   }
 
+  /**
+   * Gets the game.
+   * @return game, the game.
+   */
   public Game getGame() {
     return game;
   }
 
+  /**
+   * swap the tiles in the list.
+   * @param swapTiles, the list of (two) tiles that should be swapped.
+   */
   public void swapTiles(List<Tile> swapTiles) {
     animations.setType(Animation.Type.SWAP);
     animations.swap(swapTiles.get(0), swapTiles.get(1));
