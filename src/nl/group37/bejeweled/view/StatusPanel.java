@@ -46,11 +46,23 @@ public class StatusPanel extends JPanel{
     setLevel(1);
   }
 
+  /**
+   * Gives the game appropriate values as the score and displays
+   * it on the screen.
+   * @param score a value that increases by finding the right combinations.
+   */
   public void setScore(int score) {
     this.scoreLabel.setText("Score: " + Integer.toString(score));
+   
   }
 
+  /**
+   * Gives the game an appropriate value as its level and displays
+   * it on the screen.
+   * @param level the value of the level the player is currently playing.
+   */
   public void setLevel(int level) {
     this.levelLabel.setText("Level: " + Integer.toString(level));
+    
   }
 }
