@@ -99,7 +99,7 @@ public class Main extends JPanel {
   }
    
   /**
-   * This shows the text that will end the game 
+   * This shows the text that will end the game.
    * 
    */
   public void endGame() {
@@ -109,7 +109,6 @@ public class Main extends JPanel {
 
     JButton button = new JButton();
     Border thickBorder = new LineBorder(Color.BLACK, 12);
-    //button.setBorder(thickBorder);
     button.setText("New Game");
     button.setSize(400, 50);
     button.setMinimumSize(new Dimension(400,200));
