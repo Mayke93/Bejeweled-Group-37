@@ -53,7 +53,6 @@ public class StatusPanel extends JPanel{
    */
   public void setScore(int score) {
     this.scoreLabel.setText("Score: " + Integer.toString(score));
-   
   }
 
   /**
@@ -63,6 +62,22 @@ public class StatusPanel extends JPanel{
    */
   public void setLevel(int level) {
     this.levelLabel.setText("Level: " + Integer.toString(level));
-    
   }
+
+  /**
+   * Get the scoreLabel
+   * @return scoreLabel, the label that contains a string with the score.
+   */
+  public JLabel getScoreLabel() {
+    return scoreLabel;
+  }
+
+  /**
+   * Get the level label
+   * @return levelLabel, the label with a string with the level number.
+   */
+  public JLabel getLevelLabel() {
+    return levelLabel;
+  }
+  
 }

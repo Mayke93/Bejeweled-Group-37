@@ -463,18 +463,18 @@ public class Game {
     }
   }
   
-  /**
-   * End game if there is no possible combination.
-   */
-  public void endGame() {
-    JLabel label1 = new JLabel("No possible combination",JLabel.CENTER);
-    label1.setVerticalTextPosition(JLabel.TOP);
-    label1.setHorizontalTextPosition(JLabel.CENTER);
-    if (!(possibleMove())) {
-      this.boardPanel.add(label1);
-      return;
-    }
-  }
+//  /**
+//   * End game if there is no possible combination.
+//   */
+//  public void endGame() {
+//    JLabel label1 = new JLabel("No possible combination",JLabel.CENTER);
+//    label1.setVerticalTextPosition(JLabel.TOP);
+//    label1.setHorizontalTextPosition(JLabel.CENTER);
+//    if (!(possibleMove())) {
+//      this.boardPanel.add(label1);
+//      return;
+//    }
+//  }
 
   /**
    * Reset game.

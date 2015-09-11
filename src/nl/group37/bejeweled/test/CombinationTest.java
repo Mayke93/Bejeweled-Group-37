@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 /**
  * Simple basic tests for class Combination. 
- * Not all methods tested yet, because random colors are assignes to Tiles.
+ * Not all methods tested yet, because random colors are assigned to Tiles.
  * @author Mayke Kloppenburg
  */
 public class CombinationTest {

@@ -129,6 +129,9 @@ public class Animation implements ActionListener{
       t.size = 0;
     }
     game.dropTiles();
+    if (!game.possibleMove()) {
+      board.endGame();
+    }
   }
 
   private void endSwap() {

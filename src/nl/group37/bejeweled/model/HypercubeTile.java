@@ -1,7 +1,7 @@
 package nl.group37.bejeweled.model;
 
 /**
- * Class HypercubeTile, object for a hypercube gem on the board
+ * Class HypercubeTile, object for a hypercube gem on the board.
  * @author Mayke
  *
  */

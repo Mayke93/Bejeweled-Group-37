@@ -108,7 +108,7 @@ public class Main extends JPanel {
     pl.setBackground(Color.BLACK);
 
     JButton button = new JButton();
-    Border thickBorder = new LineBorder(Color.BLACK, 12);
+    //Border thickBorder = new LineBorder(Color.BLACK, 12);
     button.setText("New Game");
     button.setSize(400, 50);
     button.setMinimumSize(new Dimension(400,200));
