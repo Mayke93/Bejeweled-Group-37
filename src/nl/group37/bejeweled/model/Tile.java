@@ -16,6 +16,7 @@ public class Tile {
   public int size;
   private int level;
   public boolean remove;
+  public boolean delete;
 
   public static enum State{
     DEFAULT,NORMAL,FLAME,HYPERCUBE,STAR;
@@ -43,6 +44,7 @@ public class Tile {
     this.translation = new Point(0,0);
     this.level = 0;
     this.remove = false;
+    this.delete = false;
     this.size = 0;
   }
 

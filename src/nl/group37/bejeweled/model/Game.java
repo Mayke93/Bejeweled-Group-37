@@ -76,7 +76,7 @@ public class Game {
       for (int col = 0; col < SIZE; col++) {
 
         if (containsTile(board[col][row], chains)) {
-
+          board[col][row].delete = true;
           tiles.add(board[col][row]);
           for (int i = row - 1; i >= 0; i--) {
             board[col][i].increaseLevel();
@@ -119,8 +119,10 @@ public class Game {
     }
     for (int row = SIZE - 1; row >= 0; row--) {
       for (int col = 0; col < SIZE; col++) {
-        if (board[col][row].getState() == Tile.State.DEFAULT) {
+        if (board[col][row].getState() == Tile.State.DEFAULT || board[col][row].delete) {
           board[col][row].setRandomTile();
+          board[col][row].setState(Tile.State.NORMAL);
+          board[col][row].delete = false;
         }
         if (board[col][row].remove) {
           board[col][row].remove = false;
@@ -128,6 +130,11 @@ public class Game {
       }
     }
     boardPanel.repaint();
+    
+    List<Combination> chains = finder.getAllCombinationsOnBoard();
+    if (chains.size() != 0) {
+      deleteTiles();
+    }
   }
 
   /**
@@ -496,7 +503,7 @@ public class Game {
   }
   
   /**
-   * Get the CombinationFinder of the game
+   * Get the CombinationFinder of the game.
    * @return CombinationFinder
    */
   public CombinationFinder getFinder() {
