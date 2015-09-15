@@ -8,7 +8,7 @@ import java.util.Date;
 
 public class Logger {
   private static final String LOG_FILE = "log.txt";
-  private static FileWriter write = null;
+  private static FileWriter fileWriter = null;
   private static PrintWriter writer = null;
   public static boolean consoleLog = true;
   private static DateFormat dateFormat = new SimpleDateFormat("dd-MM-yy HH:mm:ss.SSS");
@@ -18,22 +18,30 @@ public class Logger {
    */
   public static void init() {
     try {
-      if (write == null) {
-        write = new FileWriter(LOG_FILE,true);
-        writer = new PrintWriter(write);
+      if (fileWriter == null) {
+        fileWriter = new FileWriter(LOG_FILE,true);
+        writer = new PrintWriter(fileWriter);
       }
     } catch (Exception ex) {
       System.out.println("Can't open log file");
       return;
     }
   }
+  
+  /**
+   * Write warning to log file.
+   * @param error String with error message.
+   */
+  public static synchronized void error(String error) {
+    log("ERROR: " + error);
+  }
 
   /**
    * Write content to log file.
    * @param message to log.
    */
-  public static void log(String message) {
-    if (message != null) {
+  public static synchronized void log(String message) {
+    if (message != null && fileWriter != null && writer != null) {
       Date date = new Date();
       message = dateFormat.format(date) + " - " + message;
       if (consoleLog) {
@@ -47,7 +55,7 @@ public class Logger {
   /**
    * Clean up resources PrintWriter.
    */
-  public static void close() {
+  public static synchronized void close() {
     writer.close();
   }
 }

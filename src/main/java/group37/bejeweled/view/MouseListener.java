@@ -5,6 +5,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import main.java.group37.bejeweled.model.Game;
+import main.java.group37.bejeweled.model.Logger;
 import main.java.group37.bejeweled.model.Tile;
 
 /**
@@ -36,7 +37,7 @@ public class MouseListener extends MouseAdapter{
     }
     board.setFocus(loc);
     Game game = board.getGame();
-    System.out.println("Mouse Clicked: (" + game.getBoard()[col][row].getLoc().x + ", " 
+    Logger.log("Mouse Clicked: (" + game.getBoard()[col][row].getLoc().x + ", " 
         + game.getBoard()[col][row].getLoc().y + ") " 
         + Tile.colors[game.getBoard()[col][row].getIndex()]);
 

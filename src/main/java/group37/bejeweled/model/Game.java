@@ -390,7 +390,7 @@ public class Game {
     }
 
     if (!isNeighbour(t0,t1)) {
-      System.out.println("t0 and t1 are no neighbours.");
+      Logger.error("t0 and t1 are no neighbours.");
       return false;
     }
     System.out.println(type);
