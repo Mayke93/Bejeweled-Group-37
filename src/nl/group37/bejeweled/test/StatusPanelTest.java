@@ -2,11 +2,11 @@ package nl.group37.bejeweled.test;
 
 import static org.junit.Assert.assertEquals;
 
-import nl.group37.bejeweled.view.StatusPanel;
-
 //import javax.swing.JLabel;
 
 import org.junit.Test;
+
+import nl.group37.bejeweled.main.view.StatusPanel;
 
 /**
  * Test the StatusPanel class.

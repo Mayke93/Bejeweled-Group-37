@@ -1,18 +1,17 @@
-package nl.group37.bejeweled.model;
+package nl.group37.bejeweled.main.model;
 
 /**
- * Class FlameTile, object for a flame gem on the board.
+ * Class StarTile, object for a Star gem on the board.
  * @author group37
- *
  */
-public class FlameTile extends Tile {
+public class StarTile extends Tile {
 
   /**
-   * Constructor for a flametile.
+   * Constructor for a startile.
    * @param transX, the x-co of the tile on the board.
    * @param transY, the y-co of the tile on the board.
    */
-  public FlameTile(int transX, int transY) {
+  public StarTile(int transX, int transY) {
     super(transX, transY);
     // TODO Auto-generated constructor stub
   }

@@ -3,10 +3,10 @@ package nl.group37.bejeweled.test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import nl.group37.bejeweled.model.Combination;
-import nl.group37.bejeweled.model.Tile;
-
 import org.junit.Test;
+
+import nl.group37.bejeweled.main.model.Combination;
+import nl.group37.bejeweled.main.model.Tile;
 
 import java.util.ArrayList;
 
