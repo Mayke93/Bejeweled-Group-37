@@ -1,4 +1,4 @@
-package nl.group37.bejeweled.main.model;
+package main.java.group37.bejeweled.model;
 
 import java.io.FileWriter;
 import java.io.PrintWriter;
@@ -15,15 +15,15 @@ public class Logger {
 
   /**
    * Write content to log file.
-   * @param message to add.
+   * @param message to log.
    */
   public static void log(String message) {
-
     try {
       write = new FileWriter(LOG_FILE,true);
       writer = new PrintWriter(write);
     } catch (Exception ex) {
       System.out.println("Can't open log file");
+      return;
     }
 
     if (message != null) {

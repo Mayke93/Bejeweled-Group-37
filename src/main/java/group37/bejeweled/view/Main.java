@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 //import javax.swing.border.LineBorder;
 
 import main.java.group37.bejeweled.model.Game;
+import main.java.group37.bejeweled.model.Logger;
 import main.java.group37.bejeweled.model.Tile;
 
 
@@ -57,6 +58,7 @@ public class Main extends JPanel {
     game = new Game(this,panel);
     animations = new Animation(game,this);
     setOpaque(true);
+    Logger.log("test log");
 
     this.addMouseListener(new MouseListener(this));
     this.addMouseMotionListener(new MouseMotionListener(this));
