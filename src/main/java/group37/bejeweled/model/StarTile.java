@@ -1,4 +1,4 @@
-package nl.group37.bejeweled.main.model;
+package main.java.group37.bejeweled.model;
 
 /**
  * Class StarTile, object for a Star gem on the board.

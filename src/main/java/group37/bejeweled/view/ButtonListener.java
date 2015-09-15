@@ -1,4 +1,4 @@
-package nl.group37.bejeweled.main.view;
+package main.java.group37.bejeweled.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

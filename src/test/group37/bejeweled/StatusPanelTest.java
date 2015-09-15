@@ -1,4 +1,4 @@
-package nl.group37.bejeweled.test;
+package test.group37.bejeweled;
 
 import static org.junit.Assert.*;
 
@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import nl.group37.bejeweled.main.view.StatusPanel;
+import main.java.group37.bejeweled.view.StatusPanel;
 
 /**
  * Test the StatusPanel class.

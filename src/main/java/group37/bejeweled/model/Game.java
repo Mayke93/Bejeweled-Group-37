@@ -1,12 +1,12 @@
-package nl.group37.bejeweled.main.model;
+package main.java.group37.bejeweled.model;
 
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
-import nl.group37.bejeweled.main.view.Animation;
-import nl.group37.bejeweled.main.view.Main;
-import nl.group37.bejeweled.main.view.StatusPanel;
+import main.java.group37.bejeweled.view.Animation;
+import main.java.group37.bejeweled.view.Main;
+import main.java.group37.bejeweled.view.StatusPanel;
 
 //import javax.swing.JLabel;
 //import Tile.State;

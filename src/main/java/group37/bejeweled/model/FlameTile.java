@@ -1,4 +1,4 @@
-package nl.group37.bejeweled.main.model;
+package main.java.group37.bejeweled.model;
 
 /**
  * Class FlameTile, object for a flame gem on the board.

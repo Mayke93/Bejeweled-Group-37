@@ -1,4 +1,4 @@
-package nl.group37.bejeweled.main.model;
+package main.java.group37.bejeweled.model;
 
 /**
  * Class HypercubeTile, object for a hypercube gem on the board.

@@ -1,4 +1,4 @@
-package nl.group37.bejeweled.test;
+package test.group37.bejeweled;
 
 
 //import org.junit.Test;

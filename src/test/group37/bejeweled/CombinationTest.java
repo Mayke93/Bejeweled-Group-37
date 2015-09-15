@@ -1,10 +1,10 @@
-package nl.group37.bejeweled.test;
+package test.group37.bejeweled;
 
 
 import org.junit.Test;
 
-import nl.group37.bejeweled.main.model.Combination;
-import nl.group37.bejeweled.main.model.Tile;
+import main.java.group37.bejeweled.model.Combination;
+import main.java.group37.bejeweled.model.Tile;
 
 import static org.junit.Assert.*;
 

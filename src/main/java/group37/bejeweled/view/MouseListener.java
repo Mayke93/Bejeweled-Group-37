@@ -1,11 +1,11 @@
-package nl.group37.bejeweled.main.view;
+package main.java.group37.bejeweled.view;
 
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import nl.group37.bejeweled.main.model.Game;
-import nl.group37.bejeweled.main.model.Tile;
+import main.java.group37.bejeweled.model.Game;
+import main.java.group37.bejeweled.model.Tile;
 
 /**
  * Class that listens to mouse events.
