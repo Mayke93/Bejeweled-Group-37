@@ -3,3 +3,9 @@
 15-9-15 11:15:24.533 - mess4
 15-9-15 11:25:05.211 - m
 15-9-15 11:29:51.595 - test log
+15-9-15 11:35:24.673 - swap tiles: java.awt.Point[x=3,y=1], java.awt.Point[x=3,y=0]
+15-9-15 11:35:39.208 - swap tiles: java.awt.Point[x=3,y=1], java.awt.Point[x=2,y=1]
+15-9-15 11:36:57.439 - Swap tiles: java.awt.Point[x=5,y=2], java.awt.Point[x=5,y=1]
+15-9-15 11:37:25.613 - #Start Game
+15-9-15 11:37:35.528 - Swap tiles: java.awt.Point[x=3,y=2], java.awt.Point[x=2,y=2]
+15-9-15 11:37:55.12 - # Start new game

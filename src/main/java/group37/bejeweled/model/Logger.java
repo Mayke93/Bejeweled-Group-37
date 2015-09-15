@@ -7,10 +7,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Logger {
-  public static final String LOG_FILE = "log.txt";
+  private static final String LOG_FILE = "log.txt";
   private static FileWriter write = null;
   private static PrintWriter writer = null;
-  private static final boolean consoleLog = true;
+  public static final boolean consoleLog = true;
   private static final String d = "dd-M-yy HH:mm:ss.S";
 
   /**

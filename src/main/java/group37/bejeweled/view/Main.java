@@ -58,8 +58,7 @@ public class Main extends JPanel {
     game = new Game(this,panel);
     animations = new Animation(game,this);
     setOpaque(true);
-    Logger.log("test log");
-
+    Logger.log("# Start new game");
     this.addMouseListener(new MouseListener(this));
     this.addMouseMotionListener(new MouseMotionListener(this));
   }
@@ -79,6 +78,7 @@ public class Main extends JPanel {
   public void swapTiles(List<Tile> swapTiles) {
     animations.setType(Animation.Type.SWAP);
     animations.swap(swapTiles.get(0), swapTiles.get(1));
+    Logger.log("Swap tiles: " + swapTiles.get(0).getLoc() + ", " + swapTiles.get(1).getLoc());
   }
 
   /**
@@ -118,6 +118,7 @@ public class Main extends JPanel {
    * 
    */
   public void endGame() {
+    Logger.log("End Game");
     this.frame.setLayout(new BorderLayout());
     JPanel pl = new JPanel(new GridLayout(4,1));
     pl.setBackground(Color.BLACK);
