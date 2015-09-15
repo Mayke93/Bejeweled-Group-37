@@ -1,10 +1,10 @@
 package test.group37.bejeweled;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import main.java.group37.bejeweled.model.Tile;
+
+import org.junit.Test;
 
 import java.awt.Point;
 
