@@ -1,11 +1,46 @@
 
-15-9-15 11:15:24.532 - mess3
-15-9-15 11:15:24.533 - mess4
-15-9-15 11:25:05.211 - m
-15-9-15 11:29:51.595 - test log
-15-9-15 11:35:24.673 - swap tiles: java.awt.Point[x=3,y=1], java.awt.Point[x=3,y=0]
-15-9-15 11:35:39.208 - swap tiles: java.awt.Point[x=3,y=1], java.awt.Point[x=2,y=1]
-15-9-15 11:36:57.439 - Swap tiles: java.awt.Point[x=5,y=2], java.awt.Point[x=5,y=1]
-15-9-15 11:37:25.613 - #Start Game
-15-9-15 11:37:35.528 - Swap tiles: java.awt.Point[x=3,y=2], java.awt.Point[x=2,y=2]
-15-9-15 11:37:55.12 - # Start new game
+15-9-15 12:21:51.72 - # Start new game
+15-9-15 12:22:03.398 - Score: 50
+15-9-15 12:22:03.400 - Swap tiles: java.awt.Point[x=1,y=5], java.awt.Point[x=0,y=5]
+15-9-15 12:22:08.585 - Score: 50
+15-9-15 12:22:08.585 - Swap tiles: java.awt.Point[x=4,y=2], java.awt.Point[x=4,y=3]
+15-9-15 12:22:26.336 - # Start new game
+15-9-15 12:22:32.676 - # Exit Game
+15-9-15 12:22:35.852 - Score: 50
+15-9-15 12:22:35.854 - Swap tiles: java.awt.Point[x=2,y=4], java.awt.Point[x=1,y=4]
+15-9-15 12:22:40.797 - Score: 100
+15-9-15 12:22:40.798 - Swap tiles: java.awt.Point[x=5,y=3], java.awt.Point[x=6,y=3]
+15-9-15 12:22:47.451 - # Exit Game
+15-9-15 12:24:24.531 - # Start new game
+15-9-15 12:24:29.111 - Score: 50
+15-9-15 12:24:29.111 - Level: 1
+15-9-15 12:24:29.113 - Swap tiles: java.awt.Point[x=1,y=2], java.awt.Point[x=2,y=2]
+15-9-15 12:24:33.443 - Score: 100
+15-9-15 12:24:33.444 - Level: 1
+15-9-15 12:24:33.444 - Swap tiles: java.awt.Point[x=6,y=3], java.awt.Point[x=5,y=3]
+15-9-15 12:25:32.479 - # Start new game
+15-9-15 12:25:36.405 - Score: 50
+15-9-15 12:25:36.407 - Swap tiles: java.awt.Point[x=1,y=2], java.awt.Point[x=0,y=2]
+15-9-15 12:25:36.621 - Found 1 chains
+15-9-15 12:25:40.554 - Score: 200
+15-9-15 12:25:40.554 - Swap tiles: java.awt.Point[x=1,y=2], java.awt.Point[x=2,y=2]
+15-9-15 12:25:40.776 - Found 1 chains
+15-9-15 12:25:49.69 - Score: 700
+15-9-15 12:25:49.69 - Swap tiles: java.awt.Point[x=1,y=5], java.awt.Point[x=0,y=5]
+15-9-15 12:25:49.279 - Found 2 chains
+15-9-15 12:25:49.529 - Found 2 chains
+15-9-15 12:29:00.79 - # Exit Game
+15-9-15 12:29:03.47 - # Exit Game
+15-09-15 12:29:16.768 - # Start new game
+15-09-15 12:29:29.182 - # Start new game
+15-09-15 12:29:32.571 - Score: 50
+15-09-15 12:29:32.573 - Swap tiles: java.awt.Point[x=0,y=4], java.awt.Point[x=0,y=5]
+15-09-15 12:29:32.771 - Found 2 chains
+15-09-15 12:30:06.191 - Score: 100
+15-09-15 12:30:06.191 - Swap tiles: java.awt.Point[x=3,y=4], java.awt.Point[x=3,y=3]
+15-09-15 12:30:06.403 - Found 1 chains
+15-09-15 12:30:13.768 - Score: 150
+15-09-15 12:30:13.769 - Swap tiles: java.awt.Point[x=4,y=4], java.awt.Point[x=4,y=5]
+15-09-15 12:30:13.961 - Found 1 chains
+15-09-15 12:30:14.196 - Found 1 chains
+15-09-15 12:30:26.664 - # Exit Game

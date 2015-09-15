@@ -72,6 +72,7 @@ public class Game {
    */
   public void deleteTiles() {
     List<Combination> chains = finder.getAllCombinationsOnBoard();
+    Logger.log("Found " + chains.size() + " chains");
     List<Tile> tiles = new ArrayList<Tile>();
     for (int row = SIZE - 1; row >= 0; row-- ) {
       for (int col = 0; col < SIZE; col++) {
@@ -439,6 +440,7 @@ public class Game {
         break;
     }
     this.score += score;
+    Logger.log("Score: " + this.score);
     panel.setScore(this.score);
   }
 
@@ -446,18 +448,21 @@ public class Game {
    * Increase the levelnumber when a certain score is reached.
    */
   private void updateLevel() {
+    int newlevel = 1;
     if (this.score >= 1000 && this.score < 3500) {
-      panel.setLevel(2);
+      newlevel = 2;
     }
     if (this.score >= 3500 && this.score < 5500) {
-      panel.setLevel(3);
+      newlevel = 3;
     }
     if (this.score >= 5500 && this.score < 8000) {
-      panel.setLevel(4);
+      newlevel = 4;
     }
     if (this.score >= 8000 && this.score < 11000) {
-      panel.setLevel(5);
+      newlevel = 5;
     }
+    panel.setLevel(newlevel);
+    //Logger.log("Level: " + newlevel);
   }
   
 //  /**

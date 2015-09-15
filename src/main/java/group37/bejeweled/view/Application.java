@@ -2,8 +2,11 @@ package main.java.group37.bejeweled.view;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
+
+import main.java.group37.bejeweled.model.Logger;
 
 @SuppressWarnings("serial")
 
@@ -20,14 +23,22 @@ public class Application extends JFrame {
    */
   public Application() {
     initUi();
+    addWindowListener(new java.awt.event.WindowAdapter() {
+      public void windowClosing(WindowEvent winEvt) {
+        Logger.log("# Exit Game");
+        Logger.close();
+        System.exit(0);
+      }
+    });
+
   }
 
   /**
-   * Setting up the GUI.
+   * Setting up the GUI and initialize logger.
    */
   private void initUi() {
     setLayout(new BorderLayout());
-
+    Logger.init();
     statusPanel = new StatusPanel();
     Main board = new Main(this,statusPanel);
     board.setLayout(new BorderLayout());
