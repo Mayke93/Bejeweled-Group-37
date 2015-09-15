@@ -1,7 +1,4 @@
-package nl.group37.bejeweled.view;
-
-import nl.group37.bejeweled.model.Game;
-import nl.group37.bejeweled.model.Tile;
+package nl.group37.bejeweled.main.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -20,6 +17,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 //import javax.swing.border.Border;
 //import javax.swing.border.LineBorder;
+
+import nl.group37.bejeweled.main.model.Game;
+import nl.group37.bejeweled.main.model.Tile;
 
 
 @SuppressWarnings("serial")

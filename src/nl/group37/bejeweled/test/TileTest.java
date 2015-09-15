@@ -2,9 +2,9 @@ package nl.group37.bejeweled.test;
 
 import static org.junit.Assert.assertEquals;
 
-import nl.group37.bejeweled.model.Tile;
-
 import org.junit.Test;
+
+import nl.group37.bejeweled.main.model.Tile;
 
 import java.awt.Point;
 

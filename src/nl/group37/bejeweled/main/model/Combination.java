@@ -1,4 +1,4 @@
-package nl.group37.bejeweled.model;
+package nl.group37.bejeweled.main.model;
 
 import java.util.ArrayList;
 import java.util.List;

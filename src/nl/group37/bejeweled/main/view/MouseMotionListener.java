@@ -1,4 +1,4 @@
-package nl.group37.bejeweled.view;
+package nl.group37.bejeweled.main.view;
 
 import java.awt.Point;
 import java.awt.event.MouseAdapter;

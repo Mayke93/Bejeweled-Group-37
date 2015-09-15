@@ -1,9 +1,9 @@
-package nl.group37.bejeweled.model;
-
-import nl.group37.bejeweled.view.Main;
+package nl.group37.bejeweled.main.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import nl.group37.bejeweled.main.view.Main;
 
 /**
  * This class can be used to find the type and tiles of combinations on the board
