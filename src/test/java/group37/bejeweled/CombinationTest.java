@@ -1,4 +1,4 @@
-package test.group37.bejeweled;
+package test.java.group37.bejeweled;
 
 
 import org.junit.Test;
