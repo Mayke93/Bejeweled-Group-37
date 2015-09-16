@@ -39,9 +39,9 @@ public class MouseListener extends MouseAdapter{
     }
     board.setFocus(loc);
     Game game = board.getGame();
-    Logger.log("Mouse Clicked: (" + game.getBoard()[col][row].getLoc().x + ", " 
-        + game.getBoard()[col][row].getLoc().y + ") " 
-        + Tile.colors[game.getBoard()[col][row].getIndex()]);
+    Logger.log("Mouse Clicked: (" + game.getBoard().getTileAt(col, row).getLoc().x + ", " 
+        + game.getBoard().getTileAt(col, row).getLoc().y + ") " 
+        + Tile.colors[game.getBoard().getTileAt(col, row).getIndex()]);
 
   }
 

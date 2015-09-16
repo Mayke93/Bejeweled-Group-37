@@ -1,5 +1,6 @@
 package main.java.group37.bejeweled.view;
 
+import main.java.group37.bejeweled.model.Board;
 import main.java.group37.bejeweled.model.Game;
 import main.java.group37.bejeweled.model.Logger;
 import main.java.group37.bejeweled.model.Tile;
@@ -152,7 +153,7 @@ public class Main extends JPanel {
   public void paintComponent(Graphics graphics) {
     super.paintComponent(graphics);
 
-    Tile[][] board = game.getBoard();
+    Board board = game.getBoard();
     graphics.drawImage(boardImage.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
     int ix = LOCATION.x;
     int iy = LOCATION.y;
@@ -161,7 +162,7 @@ public class Main extends JPanel {
     for (int i = 0,x = ix, y = iy; i < SIZE; i++) {
       x = ix;
       for (int j = 0; j < SIZE; j++, x += SPACE_X) {
-        tile = board[j][i];
+        tile = board.getTileAt(j, i);
         if (tile.remove) {
           continue;
         }
