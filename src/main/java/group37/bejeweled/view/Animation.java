@@ -1,14 +1,14 @@
 package main.java.group37.bejeweled.view;
 
+import main.java.group37.bejeweled.model.Game;
+import main.java.group37.bejeweled.model.Tile;
+
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.Timer;
-
-import main.java.group37.bejeweled.model.Game;
-import main.java.group37.bejeweled.model.Tile;
 
 /**
  * Class that carries out the disappearing of combinations,

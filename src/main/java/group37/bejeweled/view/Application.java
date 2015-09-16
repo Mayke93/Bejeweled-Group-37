@@ -1,12 +1,12 @@
 package main.java.group37.bejeweled.view;
 
+import main.java.group37.bejeweled.model.Logger;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
-
-import main.java.group37.bejeweled.model.Logger;
 
 @SuppressWarnings("serial")
 

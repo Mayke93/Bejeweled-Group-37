@@ -1,12 +1,14 @@
 package main.java.group37.bejeweled.view;
 
+import main.java.group37.bejeweled.model.Game;
+import main.java.group37.bejeweled.model.Logger;
+import main.java.group37.bejeweled.model.Tile;
+
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import main.java.group37.bejeweled.model.Game;
-import main.java.group37.bejeweled.model.Logger;
-import main.java.group37.bejeweled.model.Tile;
+
 
 /**
  * Class that listens to mouse events.

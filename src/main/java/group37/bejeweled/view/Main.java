@@ -1,5 +1,9 @@
 package main.java.group37.bejeweled.view;
 
+import main.java.group37.bejeweled.model.Game;
+import main.java.group37.bejeweled.model.Logger;
+import main.java.group37.bejeweled.model.Tile;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -17,10 +21,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 //import javax.swing.border.Border;
 //import javax.swing.border.LineBorder;
-
-import main.java.group37.bejeweled.model.Game;
-import main.java.group37.bejeweled.model.Logger;
-import main.java.group37.bejeweled.model.Tile;
 
 
 @SuppressWarnings("serial")
