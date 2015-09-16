@@ -16,7 +16,7 @@ import main.java.group37.bejeweled.view.StatusPanel;
  * @author group37
  */
 public class Game {
-  private Tile[][] board = null;
+  private Board board = null;
   public List<Tile> swapTiles;
   private int score = 0;
   private Main boardPanel;
@@ -44,9 +44,9 @@ public class Game {
   public void addTile(Point loc) {
     int col = loc.x;
     int row = loc.y;
-    if (!swapTiles.contains(board[col][row])) {
+    if (!swapTiles.contains(board.getTileAt(col, row))) {
       //System.out.println("Mouse Dragged: (" + col + ", " + row + ")");
-      swapTiles.add(board[col][row]);
+      swapTiles.add(board.getTileAt(col, row));
       boardPanel.setFocus(loc);
       if (swapTiles.size() == 2 && canSwap()) {              
         boardPanel.swapTiles(swapTiles);
@@ -77,11 +77,11 @@ public class Game {
     for (int row = SIZE - 1; row >= 0; row-- ) {
       for (int col = 0; col < SIZE; col++) {
 
-        if (containsTile(board[col][row], chains)) {
-          board[col][row].delete = true;
-          tiles.add(board[col][row]);
+        if (containsTile(board.getTileAt(col, row), chains)) {
+          board.getTileAt(col, row).delete = true;
+          tiles.add(board.getTileAt(col, row));
           for (int i = row - 1; i >= 0; i--) {
-            board[col][i].increaseLevel();
+            board.getTileAt(col, i).increaseLevel();
           }
         }
       }
@@ -93,7 +93,7 @@ public class Game {
     Tile tile = null;
     for (int i = 0; i < SIZE; i++) {
       for (int j = 0; j < SIZE; j++) {
-        tile = board[j][i];
+        tile = board.getTileAt(j, i);
         System.out.print(tile.getLevel() + " ");
       }
       System.out.println();
@@ -110,24 +110,24 @@ public class Game {
     int level = 0;
     for (int row = SIZE - 1; row >= 0; row--) {
       for (int col = 0; col < SIZE; col++) {
-        level = board[col][row].getLevel();
+        level = board.getTileAt(col, row).getLevel();
         if (level > 0) {
-          board[col][row + level] = board[col][row].clone(col, row + level);
-          board[col][row + level].setLevel(0);
-          board[col][row].setLevel(0);
-          board[col][row].setState(Tile.State.DEFAULT);
+          board.setTileAt(board.getTileAt(col, row).clone(col, row + level), col, row + level);
+          board.getTileAt(col, row + level).setLevel(0);
+          board.getTileAt(col, row).setLevel(0);
+          board.getTileAt(col, row).setState(Tile.State.DEFAULT);
         }
       }
     }
     for (int row = SIZE - 1; row >= 0; row--) {
       for (int col = 0; col < SIZE; col++) {
-        if (board[col][row].getState() == Tile.State.DEFAULT || board[col][row].delete) {
-          board[col][row].setRandomTile();
-          board[col][row].setState(Tile.State.NORMAL);
-          board[col][row].delete = false;
+        if (board.getTileAt(col, row).getState() == Tile.State.DEFAULT || board.getTileAt(col, row).delete) {
+          board.getTileAt(col, row).setRandomTile();
+          board.getTileAt(col, row).setState(Tile.State.NORMAL);
+          board.getTileAt(col, row).delete = false;
         }
-        if (board[col][row].remove) {
-          board[col][row].remove = false;
+        if (board.getTileAt(col, row).remove) {
+          board.getTileAt(col, row).remove = false;
         }
       }
     }
@@ -159,10 +159,10 @@ public class Game {
    * Create a board of random jewels without a sequence of 3 or more tiles with the same color.
    */
   public void generateRandomBoard() {
-    board = new Tile[Main.SIZE][Main.SIZE]; 
+    board = new Board(new Tile[Main.SIZE][Main.SIZE]); 
     for (int i = 0; i < Main.SIZE; i++) {
       for (int j = 0; j < Main.SIZE; j++) {
-        board[i][j] = new Tile(i,j);
+        board.setTileAt(new Tile(i, j), i , j);
       }
 
       //Redo column if a sequence has been detected
@@ -182,7 +182,7 @@ public class Game {
     int sum = 0;
     //Find sequence in row i
     for (int j = 1; j < Main.SIZE; j++) {
-      if (board[row][j].equalsColor(board[row][j - 1])) {
+      if (board.getTileAt(row, j).equalsColor(board.getTileAt(row, j - 1))) {
         sum++;
       } else {
         sum = 0;
@@ -201,8 +201,8 @@ public class Game {
     //Find horizonal sequences
     for (int j = 0; j < Main.SIZE; j++) {
       sum = 0;
-      sum += (board[row - 1][j].equalsColor(board[row][j]) ? 1 : 0);
-      sum += (board[row - 2][j].equalsColor(board[row][j]) ? 1 : 0);
+      sum += (board.getTileAt(row - 1, j).equalsColor(board.getTileAt(row, j)) ? 1 : 0);
+      sum += (board.getTileAt(row - 2, j).equalsColor(board.getTileAt(row, j)) ? 1 : 0);
 
       if (sum == 2) {
         System.out.println("i,j: " + row + "," + j);
@@ -221,8 +221,8 @@ public class Game {
    */
   public Tile.State checktype(Tile t0, Tile t1) {
     Tile.State res = null;
-    String c1 = Tile.colors[board[t0.getX()][t0.getY()].getIndex()];
-    String c2 = Tile.colors[board[t1.getX()][t1.getY()].getIndex()];
+    String c1 = Tile.colors[board.getTileAt(t0.getX(), t0.getY()).getIndex()];
+    String c2 = Tile.colors[board.getTileAt(t1.getX(), t1.getY()).getIndex()];
     Tile tile = null;
     String color = null;
     //swap tiles to look in the rows where the tile will be in case it can be switched
@@ -242,7 +242,7 @@ public class Game {
       //check x direction
       int sum = 1;
       for (int q = tile.getX() + 1; q < SIZE; q++) {
-        if (Tile.colors[board[q][tile.getY()].getIndex()].equals(color)) {
+        if (Tile.colors[board.getTileAt(q, tile.getY()).getIndex()].equals(color)) {
           sum++;
           System.out.println("1e " + sum);
         } else {
@@ -250,7 +250,7 @@ public class Game {
         }
       }
       for (int q = tile.getX() - 1; q >= 0; q--) {
-        if (Tile.colors[board[q][tile.getY()].getIndex()].equals(color)) {
+        if (Tile.colors[board.getTileAt(q, tile.getY()).getIndex()].equals(color)) {
           sum++;
           System.out.println("2e " + sum);
         } else {
@@ -271,7 +271,7 @@ public class Game {
       //check y direction
       sum = 1;
       for (int q = tile.getY() + 1; q < SIZE; q++) {
-        if (Tile.colors[board[tile.getX()][q].getIndex()].equals(color)) {
+        if (Tile.colors[board.getTileAt(tile.getX(), q).getIndex()].equals(color)) {
           sum++;
           System.out.println("3e " + sum);
         } else {
@@ -279,7 +279,7 @@ public class Game {
         }
       }
       for (int q = tile.getY() - 1; q >= 0; q--) {
-        if (Tile.colors[board[tile.getX()][q].getIndex()].equals(color)) {
+        if (Tile.colors[board.getTileAt(tile.getX(), q).getIndex()].equals(color)) {
           sum++;
           System.out.println("4e " + sum);
         } else {
@@ -315,8 +315,8 @@ public class Game {
     //check combinations in x direction
     for (int i = 0; i < SIZE; i++) {
       for (int j = 0; j < 7; j++) {
-        t0 = board[j][i];
-        t1 = board[j + 1][i];
+        t0 = board.getTileAt(j, i);
+        t1 = board.getTileAt(j + 1, i);
         if (!(checktype(t0,t1) == null)) {
           possiblemove = true;
         }
@@ -326,8 +326,8 @@ public class Game {
     //check combinations in y direction
     for (int i = 0; i < SIZE; i++) {
       for (int j = 0; j < 7; j++) {
-        t0 = board[i][j];
-        t1 = board[i][j + 1];
+        t0 = board.getTileAt(i, j);
+        t1 = board.getTileAt(i, j + 1);
         if (!(checktype(t0,t1) == null)) {
           possiblemove = true;
         }
@@ -342,9 +342,9 @@ public class Game {
    * @param t1 second tile to swap
    */
   public void swapTiles(Tile t0, Tile t1) {
-    Tile temp = board[t0.getX()][t0.getY()];
-    board[t0.getX()][t0.getY()] = board[t1.getX()][t1.getY()];
-    board[t1.getX()][t1.getY()] = temp;
+    Tile temp = board.getTileAt(t0.getX(), t0.getY());
+    board.setTileAt(board.getTileAt(t1.getX(), t1.getY()), t0.getX(), t0.getY());
+    board.setTileAt(temp, t1.getX(), t1.getY());
 
     Point tiles = (Point) t0.getLoc().clone();
     t0.setLoc(t1.getX(),t1.getY());
@@ -358,8 +358,8 @@ public class Game {
     /*System.out.println(swapTiles.get(0).getX() + "," + swapTiles.get(0).getY());
       System.out.println(swapTiles.get(1).getX() + "," + swapTiles.get(1).getY());*/
 
-    Tile t0 = board[swapTiles.get(0).getX()][swapTiles.get(0).getY()];
-    Tile t1 = board[swapTiles.get(1).getX()][swapTiles.get(1).getY()];
+    Tile t0 = board.getTileAt(swapTiles.get(0).getX(), swapTiles.get(0).getY());
+    Tile t1 = board.getTileAt(swapTiles.get(1).getX(), swapTiles.get(1).getY());
 
     swapTiles(t0,t1);
     Combination l1 = finder.getSingleCombinationX(t0);
@@ -492,7 +492,7 @@ public class Game {
    * Get board object.
    * @return the board
    */
-  public Tile[][] getBoard() {
+  public Board getBoard() {
     return this.board;
   }
 

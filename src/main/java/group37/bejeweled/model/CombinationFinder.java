@@ -12,13 +12,13 @@ import main.java.group37.bejeweled.view.Main;
  */
 public class CombinationFinder {
   private static final int SIZE = Main.SIZE;
-  private Tile[][] board;
+  private Board board;
 
   /**
    * The constructor for the combinationfinder.
    * @param board, the current board.
    */
-  public CombinationFinder(Tile[][] board) {
+  public CombinationFinder(Board board) {
     this.board = board;
   }
   
@@ -26,7 +26,7 @@ public class CombinationFinder {
    * This method provides the possibility to set the board.
    * @param board, the board to be set.
    */
-  public void setBoard(Tile[][] board) {
+  public void setBoard(Board board) {
     this.board = board;
   }
   
@@ -40,14 +40,14 @@ public class CombinationFinder {
     Combination tile = null;
     for (int i = 0; i < SIZE; i++) {      //for every tile on the board
       for (int j = 0; j < SIZE; j++) {
-        tile = getSingleCombinationX(board[i][j]);
+        tile = getSingleCombinationX(board.getTileAt(i,j));
         if (!tile.getTiles().isEmpty()) {
           if (!sameCombination(allcombinations, tile)) {
             allcombinations.add(tile);
           }
         }
 
-        tile = getSingleCombinationY(board[i][j]);
+        tile = getSingleCombinationY(board.getTileAt(i,j));
         if (!tile.getTiles().isEmpty()) {
           if (!sameCombination(allcombinations, tile)) {
             allcombinations.add(tile);
@@ -71,15 +71,15 @@ public class CombinationFinder {
 
     //check x direction
     for (int q = tile.getX() + 1; q < SIZE; q++) { //check to the right
-      if (board[q][tile.getY()].equalsColor(tile)) {
-        tiles.add(board[q][tile.getY()]);
+      if (board.getTileAt(q, tile.getY()).equalsColor(tile)) {
+        tiles.add(board.getTileAt(q, tile.getY()));
       } else {
         break;
       }
     }
     for (int q = tile.getX() - 1; q >= 0; q--) {    //check to the left
-      if (board[q][tile.getY()].equalsColor(tile)) {
-        tiles.add(board[q][tile.getY()]);
+      if (board.getTileAt(q, tile.getY()).equalsColor(tile)) {
+        tiles.add(board.getTileAt(q, tile.getY()));
       } else {
         break;
       }
@@ -120,15 +120,15 @@ public class CombinationFinder {
 
     //check y direction
     for (int q = tile.getY() + 1; q < SIZE; q++) {   //check down
-      if (board[tile.getX()][q].equalsColor(tile)) {
-        tiles.add(board[tile.getX()][q]);
+      if (board.getTileAt(tile.getX(),q).equalsColor(tile)) {
+        tiles.add(board.getTileAt(tile.getX(),q));
       } else {
         break;
       }
     }
     for (int q = tile.getY() - 1; q >= 0; q--) {      //check up
-      if (board[tile.getX()][q].equalsColor(tile)) {
-        tiles.add(board[tile.getX()][q]);
+      if (board.getTileAt(tile.getX(),q).equalsColor(tile)) {
+        tiles.add(board.getTileAt(tile.getX(),q));
       } else {
         break;
       }
@@ -183,21 +183,21 @@ public class CombinationFinder {
   public List<Tile> findLTshapeX(List<Tile> tiles) {
     List<Tile> newtiles = new ArrayList<Tile>();
     for (Tile t : tiles) {
-      if (t.getY() + 1 < 8 && board[t.getX()][t.getY() + 1].equalsColor(t)) {
-        if (t.getY() + 2 < 8 && board[t.getX()][t.getY() + 2].equalsColor(t)) {      // 2 erboven
-          newtiles.add(board[t.getX()][t.getY() + 1]);
-          newtiles.add(board[t.getX()][t.getY() + 2]);
+      if (t.getY() + 1 < 8 && board.getTileAt(t.getX(),t.getY() + 1).equalsColor(t)) {
+        if (t.getY() + 2 < 8 && board.getTileAt(t.getX(),t.getY() + 2).equalsColor(t)) {      // 2 erboven
+          newtiles.add(board.getTileAt(t.getX(),t.getY() + 1));
+          newtiles.add(board.getTileAt(t.getX(),t.getY() + 2));
           break;
-        } else if (t.getY() - 1 >= 0 && board[t.getX()][t.getY() - 1].equalsColor(t)) {
+        } else if (t.getY() - 1 >= 0 && board.getTileAt(t.getX(),t.getY() - 1).equalsColor(t)) {
           // 1 erboven, 1 beneden
-          newtiles.add(board[t.getX()][t.getY() + 1]);
-          newtiles.add(board[t.getX()][t.getY() - 1]);
+          newtiles.add(board.getTileAt(t.getX(),t.getY() + 1));
+          newtiles.add(board.getTileAt(t.getX(),t.getY() - 1));
           break;
         }
-      } else if (t.getY() - 2 >= 0 && board[t.getX()][t.getY() - 1].equalsColor(t) 
-          && board[t.getX()][t.getY() - 2].equalsColor(t)) {    // 2 beneden
-        newtiles.add(board[t.getX()][t.getY() - 1]);
-        newtiles.add(board[t.getX()][t.getY() - 2]);
+      } else if (t.getY() - 2 >= 0 && board.getTileAt(t.getX(),t.getY() - 1).equalsColor(t) 
+          && board.getTileAt(t.getX(),t.getY() - 2).equalsColor(t)) {    // 2 beneden
+        newtiles.add(board.getTileAt(t.getX(),t.getY() - 1));
+        newtiles.add(board.getTileAt(t.getX(),t.getY() - 2));
         break;
       }
     }
@@ -213,21 +213,21 @@ public class CombinationFinder {
   public List<Tile> findLTshapeY(List<Tile> tiles) {
     List<Tile> newtiles = new ArrayList<Tile>();
     for (Tile t : tiles) {
-      if (t.getX() + 1 < 8 && board[t.getX() + 1][t.getY()].equalsColor(t)) {
-        if (t.getX() + 2 < 8 && board[t.getX() + 2][t.getY()].equalsColor(t)) {    // 2 rechts
-          newtiles.add(board[t.getX() + 1][t.getY()]);
-          newtiles.add(board[t.getX() + 2][t.getY()]);
+      if (t.getX() + 1 < 8 && board.getTileAt(t.getX() + 1, t.getY()).equalsColor(t)) {
+        if (t.getX() + 2 < 8 && board.getTileAt(t.getX() + 2, t.getY()).equalsColor(t)) {    //2 r
+          newtiles.add(board.getTileAt(t.getX() + 1, t.getY()));
+          newtiles.add(board.getTileAt(t.getX() + 2, t.getY()));
           break;
         } else if (t.getX() - 1 >= 0 
-            && board[t.getX() - 1][t.getY()].equalsColor(t)) {     // 1 rechts, 1 links
-          newtiles.add(board[t.getX() + 1][t.getY()]);
-          newtiles.add(board[t.getX() - 1][t.getY()]);
+            && board.getTileAt(t.getX() - 1, t.getY()).equalsColor(t)) {     // 1 rechts, 1 links
+          newtiles.add(board.getTileAt(t.getX() + 1, t.getY()));
+          newtiles.add(board.getTileAt(t.getX() - 1, t.getY()));
           break;
         }
-      } else if (t.getX() - 2 >= 0 && board[t.getX() - 1][t.getY()].equalsColor(t) 
-          && board[t.getX() - 2][t.getY()].equalsColor(t)) {      // 2 links
-        newtiles.add(board[t.getX() - 1][t.getY()]);
-        newtiles.add(board[t.getX() - 2][t.getY()]);
+      } else if (t.getX() - 2 >= 0 && board.getTileAt(t.getX() - 1, t.getY()).equalsColor(t) 
+          && board.getTileAt(t.getX() - 2, t.getY()).equalsColor(t)) {      // 2 links
+        newtiles.add(board.getTileAt(t.getX() - 1, t.getY()));
+        newtiles.add(board.getTileAt(t.getX() - 2, t.getY()));
         break;
       }
     }

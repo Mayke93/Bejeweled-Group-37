@@ -11,7 +11,7 @@ public class Board {
   /**
    * The grid of squares with board[x][y] being the square at column x, row y.
    */
-  private final Tile[][] board;
+  public Tile[][] board;
   
   /**
    * Creates a new board.
@@ -48,6 +48,16 @@ public class Board {
     assert validBorders(xi, yi);
     Tile result = board[xi][yi];
     return result;
+  }
+  
+  /**
+   * methos to set a tile in a specific place.
+   * @param tile
+   * @param x column position of the tile
+   * @param y row position of the tile
+   */
+  public void setTileAt(Tile tile, int xi, int yi) {
+    board[xi][yi] = tile;
   }
   
   /**
