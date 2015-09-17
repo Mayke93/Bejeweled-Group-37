@@ -45,7 +45,6 @@ public class Game {
     int col = loc.x;
     int row = loc.y;
     if (!swapTiles.contains(board.getTileAt(col, row))) {
-      //System.out.println("Mouse Dragged: (" + col + ", " + row + ")");
       swapTiles.add(board.getTileAt(col, row));
       boardPanel.setFocus(loc);
       if (swapTiles.size() == 2 && canSwap()) {              
@@ -73,11 +72,15 @@ public class Game {
   public void deleteTiles() {
     List<Combination> chains = finder.getAllCombinationsOnBoard();
     Logger.log("Found " + chains.size() + " chains");
+    for (Combination comb: chains) {
+      Logger.log("Tile State: " + comb.getState());
+    }
     List<Tile> tiles = new ArrayList<Tile>();
     for (int row = SIZE - 1; row >= 0; row-- ) {
       for (int col = 0; col < SIZE; col++) {
 
         if (containsTile(board.getTileAt(col, row), chains)) {
+          Logger.log("Delete Tile: " + board.getTileAt(col, row));
           board.getTileAt(col, row).delete = true;
           tiles.add(board.getTileAt(col, row));
           for (int i = row - 1; i >= 0; i--) {
@@ -98,9 +101,6 @@ public class Game {
       }
       System.out.println();
     }
-
-    //dropTiles(tiles);
-    //boardPanel.repaint();
   }
 
   /**
@@ -121,7 +121,8 @@ public class Game {
     }
     for (int row = SIZE - 1; row >= 0; row--) {
       for (int col = 0; col < SIZE; col++) {
-        if (board.getTileAt(col, row).getState() == Tile.State.DEFAULT || board.getTileAt(col, row).delete) {
+        if (board.getTileAt(col, row).getState() == Tile.State.DEFAULT 
+            || board.getTileAt(col, row).delete) {
           board.getTileAt(col, row).setRandomTile();
           board.getTileAt(col, row).setState(Tile.State.NORMAL);
           board.getTileAt(col, row).delete = false;
@@ -440,7 +441,8 @@ public class Game {
         break;
     }
     this.score += score;
-    Logger.log("Score: " + this.score);
+    Logger.log("Add score: " + score);
+    Logger.log("Total Score: " + this.score);
     panel.setScore(this.score);
   }
 
