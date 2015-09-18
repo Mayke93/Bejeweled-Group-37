@@ -20,8 +20,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-//import javax.swing.border.Border;
-//import javax.swing.border.LineBorder;
+
 
 
 @SuppressWarnings("serial")
@@ -74,7 +73,7 @@ public class Main extends JPanel {
 
   /**
    * swap the tiles in the list.
-   * @param swapTiles, the list of (two) tiles that should be swapped.
+   * @param swapTiles , the list of (two) tiles that should be swapped.
    */
   public void swapTiles(List<Tile> swapTiles) {
     animations.setType(Animation.Type.SWAP);
