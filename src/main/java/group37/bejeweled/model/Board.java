@@ -15,7 +15,7 @@ public class Board {
   
   /**
    * Creates a new board.
-   * @param b matrix with tiles
+   * @param bi matrix with tiles
    */
   public Board(Tile[][] bi) {
     assert bi != null;
@@ -40,8 +40,8 @@ public class Board {
   
   /**
    * get the tile at coordinates x and y.
-   * @param x column position of the tile
-   * @param y row position of the tile
+   * @param xi column position of the tile
+   * @param yi row position of the tile
    * @return the tile at (x,y)
    */
   public Tile getTileAt(int xi, int yi) {
@@ -52,7 +52,7 @@ public class Board {
   
   /**
    * methos to set a tile in a specific place.
-   * @param tile
+   * @param tile the tile to be placed at position (x,y)
    * @param x column position of the tile
    * @param y row position of the tile
    */
@@ -62,8 +62,8 @@ public class Board {
   
   /**
    * checks if the given coordinates are on the board.
-   * @param x integer position column
-   * @param y integer position row
+   * @param xi integer position column
+   * @param yi integer position row
    * @return true iff the coordinates exist on the board
    */
   public boolean validBorders(int xi, int yi) {
