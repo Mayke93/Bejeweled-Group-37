@@ -3,6 +3,8 @@ package main.java.group37.bejeweled.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import main.java.group37.bejeweled.Board.Tile;
+
 /**
  * Class for making a combination of the type of an combi and the tiles which make this combination.
  * @author group37

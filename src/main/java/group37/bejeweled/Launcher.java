@@ -1,6 +1,8 @@
-package main.java.group37.bejeweled.view;
+package main.java.group37.bejeweled;
 
 import main.java.group37.bejeweled.model.Logger;
+import main.java.group37.bejeweled.view.Main;
+import main.java.group37.bejeweled.view.StatusPanel;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -14,14 +16,14 @@ import javax.swing.JFrame;
  * Class that is responsible for setting up the application.
  * @author group37
  */
-public class Application extends JFrame {
+public class Launcher extends JFrame {
   public StatusPanel statusPanel;
 
   /**
    * Constructor of the application.
    * Starts the setting up of the GUI.
    */
-  public Application() {
+  public Launcher() {
     initUi();
     addWindowListener(new java.awt.event.WindowAdapter() {
       public void windowClosing(WindowEvent winEvt) {
@@ -63,9 +65,10 @@ public class Application extends JFrame {
     EventQueue.invokeLater(new Runnable() {
       //  @Override
       public void run() {
-        Application ex = new Application();
+        Launcher ex = new Launcher();
         ex.setVisible(true);
       }
     });
   }
+
 }

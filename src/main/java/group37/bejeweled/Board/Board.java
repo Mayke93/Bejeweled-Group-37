@@ -1,4 +1,4 @@
-package main.java.group37.bejeweled.model;
+package main.java.group37.bejeweled.Board;
 
 /**
  * board object for the tiles.

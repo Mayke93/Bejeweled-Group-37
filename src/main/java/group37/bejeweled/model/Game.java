@@ -7,6 +7,10 @@ import java.util.Random;
 
 import javax.swing.ImageIcon;
 
+import main.java.group37.bejeweled.Board.Board;
+import main.java.group37.bejeweled.Board.FlameTile;
+import main.java.group37.bejeweled.Board.HypercubeTile;
+import main.java.group37.bejeweled.Board.Tile;
 import main.java.group37.bejeweled.model.Combination.Type;
 //import main.java.group37.bejeweled.model.Tile.State;
 import main.java.group37.bejeweled.view.Animation;
@@ -88,8 +92,6 @@ public class Game {
           Logger.log("Delete Tile: " + board.getTileAt(col, row));
           board.getTileAt(col, row).delete = true;
           tiles.add(board.getTileAt(col, row));
-          //remove the tile from the board object
-         // board.clear(col, row);
           for (int i = row - 1; i >= 0; i--) {
             board.getTileAt(col, i).increaseLevel();
           }
@@ -113,19 +115,19 @@ public class Game {
   /**
    * If there are empty spaces, this method 'drops' the tile above this space into this space.
    */
-  public void dropTiles() {
-    //int level = 0;
+  public void dropTiles() {    
+    int level = 0;
     for (int row = SIZE - 1; row >= 0; row--) {
       for (int col = 0; col < SIZE; col++) {
-        // level = board.getTileAt(col, row).getLevel();
+        level = board.getTileAt(col, row).getLevel();
         Tile curr = board.getTileAt(col, row);
         //if (level > 0) {
         if (board.isEmpty(col, row - 1)) {
           board.setTileAt(curr, col, row - 1);
           //board.setTileAt(board.getTileAt(col, row).clone(col, row + level), col, row + level);
           //board.getTileAt(col, row + level).setLevel(0);
-         // board.getTileAt(col, row).setLevel(0);
-         // board.getTileAt(col, row).setState(Tile.State.DEFAULT);
+          //board.getTileAt(col, row).setLevel(0);
+          //board.getTileAt(col, row).setState(Tile.State.DEFAULT);
         }
       }
     }
@@ -147,6 +149,7 @@ public class Game {
     List<Combination> chains = finder.getAllCombinationsOnBoard();
     if (chains.size() != 0) {
       deleteTiles();
+      
     }
   }
 

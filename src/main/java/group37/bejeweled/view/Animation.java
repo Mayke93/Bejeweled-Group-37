@@ -1,7 +1,7 @@
 package main.java.group37.bejeweled.view;
 
+import main.java.group37.bejeweled.Board.Tile;
 import main.java.group37.bejeweled.model.Game;
-import main.java.group37.bejeweled.model.Tile;
 
 import java.awt.Point;
 import java.awt.event.ActionEvent;
