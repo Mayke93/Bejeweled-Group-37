@@ -16,5 +16,13 @@ public class FlameTile extends Tile {
     super(transX, transY);
     // TODO Auto-generated constructor stub
   }
+  
+  /**
+   * get the type of the tile.
+   * @return type as a string
+   */
+  public String getType() {
+    return "Flame"; 
+  }
 
 }

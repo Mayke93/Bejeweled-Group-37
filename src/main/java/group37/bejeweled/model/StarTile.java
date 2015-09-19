@@ -16,4 +16,12 @@ public class StarTile extends Tile {
     // TODO Auto-generated constructor stub
   }
 
+  /**
+   * get the type of the tile.
+   * @return type as a string
+   */
+  public String getType() {
+    return "Star"; 
+  }
+  
 }

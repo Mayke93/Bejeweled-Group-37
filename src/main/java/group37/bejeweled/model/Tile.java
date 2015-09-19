@@ -2,7 +2,8 @@ package main.java.group37.bejeweled.model;
 
 import java.awt.Image;
 import java.awt.Point;
-import java.util.Random;
+//import java.util.Random;
+import java.util.Arrays;
 
 import javax.swing.ImageIcon;
 
@@ -12,8 +13,8 @@ import javax.swing.ImageIcon;
  */
 public class Tile {
 
-  private Random random;
-  private int index;
+ // private Random random;
+ 
   private ImageIcon image;
   private Point loc;
   public Point translation;
@@ -22,13 +23,15 @@ public class Tile {
   public boolean remove;
   public boolean delete;
 
-  public static enum State{
-    DEFAULT,NORMAL,FLAME,HYPERCUBE,STAR;
-  }
+ // public static enum State{
+ //   DEFAULT,NORMAL,FLAME,HYPERCUBE,STAR;
+ // }
 
-  private State state;
+ // private State state;
 
-  private static final String[] paths = {"src/img/gemBlue.png", "src/img/gemGreen.png",
+  //index is a number that point to the place in de paths and colors array
+  private int index;
+  public final String[] paths = {"src/img/gemBlue.png", "src/img/gemGreen.png",
     "src/img/gemOrange.png", "src/img/gemPurple.png",
     "src/img/gemRed.png", "src/img/gemWhite.png",
     "src/img/gemYellow.png"};
@@ -42,8 +45,8 @@ public class Tile {
    * @param transY location of Tile on the board.
    */
   public Tile(int transX, int transY) {
-    setRandomTile();
-    this.state = State.NORMAL;
+   // setRandomTile();
+    //this.state = State.NORMAL;
     this.loc = new Point(transX,transY);
     this.translation = new Point(0,0);
     this.level = 0;
@@ -84,22 +87,21 @@ public class Tile {
   }
 
   /**
-   * Give tile random color.
-   */
-  public void setRandomTile() { 
-    this.random = new Random();
-    this.state = State.NORMAL;
-    this.index = random.nextInt(paths.length);
-    this.image = new ImageIcon(paths[index]);
-  }
-
-  /**
    * Return image of the tile.
    * @return the Image image.
    */
   public Image getImage() {
     return image.getImage();
   }
+  
+  /**
+   * Return image of the tile.
+   * @return the Image image.
+   */
+  public void setImage(ImageIcon im) {
+    this.image = im;
+  }
+
 
   /**
    * Return index of the tile.
@@ -107,6 +109,15 @@ public class Tile {
    */
   public int getIndex() {
     return this.index;
+  }
+  
+  /**
+   * set index of the tile.
+   * @param xi the new index for the til
+   * @return the index
+   */
+  public void setIndex(int xi) {
+    this.index = xi;
   }
 
   /**
@@ -149,10 +160,10 @@ public class Tile {
     result = prime * result + index;
     result = prime * result + level;
     result = prime * result + ((loc == null) ? 0 : loc.hashCode());
-    result = prime * result + ((random == null) ? 0 : random.hashCode());
+    //result = prime * result + ((random == null) ? 0 : random.hashCode());
     result = prime * result + (remove ? 1231 : 1237);
     result = prime * result + size;
-    result = prime * result + ((state == null) ? 0 : state.hashCode());
+   // result = prime * result + ((state == null) ? 0 : state.hashCode());
     result = prime * result
         + ((translation == null) ? 0 : translation.hashCode());
     return result;
@@ -166,7 +177,7 @@ public class Tile {
    */
   public Tile clone(int coordinateX, int coordinateY) {
     Tile tile = new Tile(coordinateX,coordinateY);
-    tile.state = State.NORMAL;
+   // tile.state = State.NORMAL;
     tile.index = this.index;
     tile.image = new ImageIcon(paths[index]);
     return tile;
@@ -233,20 +244,20 @@ public class Tile {
   }
 
   /**
-   * get the state of the tile.
-   * @return the state as a State
+   * get the type of the tile.
+   * @return type as a string
    */
-  public State getState() {
-    return this.state; 
+  public String getType() {
+    return "Normal"; 
   }
 
   /**
    * sets the state of the tile.
    * @param state State of a tile
-   */
+  
   public void setState(State state) {
     this.state = state; 
-  }
+  } */
 
   /**
    * Method to representthe llcation and the color of a tile in a string.
@@ -264,6 +275,20 @@ public class Tile {
   public String getColor() {
     String color = colors[index];
     return color;
+  }
+  
+  /**
+   * sets the color of a tile.
+   * This is done by changing the index
+   * @param color color of the tile in string
+   */
+  public void setColor(String color) {
+   // assert Arrays.asList(colors).contains(color);
+    for (int i = 0; i < colors.length; i++) {
+      if (colors[i].equals(color)) {
+        index = i;
+      } 
+    }
   }
   
   /**

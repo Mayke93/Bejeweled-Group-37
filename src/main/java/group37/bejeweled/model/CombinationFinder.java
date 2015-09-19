@@ -3,6 +3,7 @@ package main.java.group37.bejeweled.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import main.java.group37.bejeweled.model.Combination.Type;
 import main.java.group37.bejeweled.view.Main;
 
 /**
@@ -92,15 +93,15 @@ public class CombinationFinder {
       if (tiles.size() == 3) {
         List<Tile> specialShape = findLTshapeX(tiles);   // check for T and L shapes
         if (specialShape.isEmpty()) {
-          combi.setState(Tile.State.NORMAL);
+          combi.setType(Type.NORMAL);
         } else {
           tiles.addAll(specialShape);
-          combi.setState(Tile.State.STAR);
+          combi.setType(Type.STAR);
         }
       } else if (tiles.size() == 4) {
-        combi.setState(Tile.State.FLAME);
+        combi.setType(Type.FLAME);
       } else if (tiles.size() == 5) {
-        combi.setState(Tile.State.HYPERCUBE);
+        combi.setType(Type.HYPERCUBE);
       }
       combi.setTiles(tiles);
     }
@@ -140,15 +141,15 @@ public class CombinationFinder {
       if (tiles.size() == 3) {
         List<Tile> specialShape = findLTshapeY(tiles);   // check for T and L shapes
         if (specialShape.isEmpty()) {
-          combi.setState(Tile.State.NORMAL);
+          combi.setType(Type.NORMAL);
         } else {
           tiles.addAll(specialShape);
-          combi.setState(Tile.State.STAR);
+          combi.setType(Type.STAR);
         }
       } else if (tiles.size() == 4) {
-        combi.setState(Tile.State.FLAME);
+        combi.setType(Type.FLAME);
       } else if (tiles.size() == 5) {
-        combi.setState(Tile.State.HYPERCUBE);
+        combi.setType(Type.HYPERCUBE);
       }
       combi.setTiles(tiles);
     }
@@ -184,7 +185,7 @@ public class CombinationFinder {
     List<Tile> newtiles = new ArrayList<Tile>();
     for (Tile t : tiles) {
       if (t.getY() + 1 < 8 && board.getTileAt(t.getX(),t.getY() + 1).equalsColor(t)) {
-        if (t.getY() + 2 < 8 && board.getTileAt(t.getX(),t.getY() + 2).equalsColor(t)) {      // 2 erboven
+        if (t.getY() + 2 < 8 && board.getTileAt(t.getX(),t.getY() + 2).equalsColor(t)) { //2 erboven
           newtiles.add(board.getTileAt(t.getX(),t.getY() + 1));
           newtiles.add(board.getTileAt(t.getX(),t.getY() + 2));
           break;
