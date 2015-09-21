@@ -105,14 +105,14 @@ public class Game {
       tiles.addAll(comb.getTiles());
     }
     
-    delete(tiles);
+    deleteTiles(tiles);
   }
   
   /**
    * Delete all the tiles in 'tiles' from the board.
    * @param tiles list of tiles to delete.
    */
-  public void delete(List<Tile> tiles) {
+  public void deleteTiles(List<Tile> tiles) {
     for (Tile tile: tiles) {
       board.getTileAt(tile.getX(), tile.getY()).delete = true;
       Logger.log("Delete Tile: " + tile);
@@ -120,59 +120,12 @@ public class Game {
         board.getTileAt(tile.getX(), i).increaseLevel();
       }
     }
-    Tile tile = null;
-    for (int i = 0; i < SIZE; i++) {
-      for (int j = 0; j < SIZE; j++) {
-        tile = board.getTileAt(j, i);
-        System.out.print(tile.getLevel() + " ");
-      }
-      System.out.println();
-    }
 
     boardPanel.animations.setType(Animation.Type.REMOVE);
     boardPanel.animations.startRemove(tiles);
   }
 
-  /**
-   * Delete all tiles that form a combination on the current board.
-   */
-  public void deleteTilesr() {
-    List<Combination> chains = finder.getAllCombinationsOnBoard();
-    Logger.log("Found " + chains.size() + " chains");
-    for (Combination comb: chains) {
-      Logger.log("Tile State: " + comb.getType());
-    }
-    List<Tile> tiles = new ArrayList<Tile>();
-    for (int row = SIZE - 1; row >= 0; row-- ) {
-      for (int col = 0; col < SIZE; col++) {
 
-        if (containsTile(board.getTileAt(col, row), chains)) {
-          Logger.log("Delete Tile: " + board.getTileAt(col, row));
-          board.getTileAt(col, row).delete = true;
-          tiles.add(board.getTileAt(col, row));
-          for (int i = row - 1; i >= 0; i--) {
-            board.getTileAt(col, i).increaseLevel();
-          }
-        }
-      }
-    }
-    boardPanel.animations.setType(Animation.Type.REMOVE);
-    boardPanel.animations.startRemove(tiles);
-    printCombinations();
-
-    Tile tile = null;
-    for (int i = 0; i < SIZE; i++) {
-      for (int j = 0; j < SIZE; j++) {
-        tile = board.getTileAt(j, i);
-        System.out.print(tile.getLevel() + " ");
-      }
-      System.out.println();
-    }
-  }
-
-
- 
-  
   /**
    * If there are empty spaces, this method 'drops' the tile above this space into this space.
    */
@@ -186,6 +139,7 @@ public class Game {
           board.setTileAt(board.getTileAt(col, row).clone(col, row + level), col, row + level);
           board.getTileAt(col, row + level).setLevel(0);
           board.getTileAt(col, row).delete = true;
+          board.getTileAt(col, row + level).delete = false;
           board.getTileAt(col, row).setLevel(0);
         }
       }
@@ -193,7 +147,6 @@ public class Game {
     for (int row = SIZE - 1; row >= 0; row--) {
       for (int col = 0; col < SIZE; col++) {
         if (board.getTileAt(col, row).delete) {
-          Logger.log("random " + col + "," + row);
           board.setTileAt(setRandomTile(col,row), col, row);
           board.getTileAt(col, row).delete = false;
         }
@@ -207,25 +160,8 @@ public class Game {
     List<Combination> chains = finder.getAllCombinationsOnBoard();
     if (chains.size() != 0) {
       deleteChains();
-      
     }
   }
-
-  /**
-   * Check if chains contains the tile t.
-   * @param tile tile to check for in chains.
-   * @param chains this list of combinatians.
-   * @return true if chains contains tile.
-   */
-  private boolean containsTile(Tile tile, List<Combination> chains) {
-    for (Combination c: chains) {
-      if (c.getTiles().contains(tile)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
 
   /**
    * Create a board of random jewels without a sequence of 3 or more tiles with the same color.
@@ -254,7 +190,6 @@ public class Game {
   public Tile setRandomTile(int xi, int yi) { 
     Tile tile = new Tile(xi, yi);
     Random random = new Random();
-    //this.state = State.NORMAL;
     tile.setIndex(random.nextInt(7));
     tile.setImage(new ImageIcon(tile.paths[tile.getIndex()]));
     return tile;
@@ -378,8 +313,7 @@ public class Game {
       }
 
       if (sum == 3) {
-       // res = Tile.State.NORMAL;
-       res = new Tile(t0.getX(), t0.getY());
+        res = new Tile(t0.getX(), t0.getY());
       }
       if (sum == 4) {
         //res = Tile.State.FLAME;
@@ -554,7 +488,6 @@ public class Game {
       newlevel = 5;
     }
     panel.setLevel(newlevel);
-    //Logger.log("Level: " + newlevel);
   }
   
   /**
@@ -603,5 +536,4 @@ public class Game {
   public CombinationFinder getFinder() {
     return finder;
   }
-  
 }
