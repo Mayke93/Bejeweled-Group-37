@@ -6,6 +6,8 @@ package main.java.group37.bejeweled.Board;
  *
  */
 public class FlameTile extends Tile {
+  
+  private int score;
 
   /**
    * Constructor for a flametile.
@@ -14,15 +16,23 @@ public class FlameTile extends Tile {
    */
   public FlameTile(int transX, int transY) {
     super(transX, transY);
-    // TODO Auto-generated constructor stub
+    score = 20;
   }
   
   /**
-   * get the type of the tile.
+   * get the type of the tile.  This method is ONLY for printing purposes!
    * @return type as a string
    */
   public String getType() {
     return "Flame"; 
+  }
+  
+  /**
+   * get the score from this type of special tile.
+   * @return the score as an integer
+   */
+  public int getScore() {
+    return score;
   }
 
 }

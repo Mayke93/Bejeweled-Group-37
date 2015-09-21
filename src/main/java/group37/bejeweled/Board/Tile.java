@@ -45,8 +45,6 @@ public class Tile {
    * @param transY location of Tile on the board.
    */
   public Tile(int transX, int transY) {
-   // setRandomTile();
-    //this.state = State.NORMAL;
     this.loc = new Point(transX,transY);
     this.translation = new Point(0,0);
     this.level = 0;
@@ -177,7 +175,6 @@ public class Tile {
    */
   public Tile clone(int coordinateX, int coordinateY) {
     Tile tile = new Tile(coordinateX,coordinateY);
-   // tile.state = State.NORMAL;
     tile.index = this.index;
     tile.image = new ImageIcon(paths[index]);
     return tile;
@@ -249,15 +246,7 @@ public class Tile {
    */
   public String getType() {
     return "Normal"; 
-  }
-
-//  /**
-//   * sets the state of the tile.
-//   * @param state State of a tile
-//  */
-//  public void setState(State state) {
-//    this.state = state; 
-//  } 
+  } 
 
   /**
    * Method to representthe llcation and the color of a tile in a string.

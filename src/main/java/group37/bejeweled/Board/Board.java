@@ -1,5 +1,8 @@
 package main.java.group37.bejeweled.Board;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * board object for the tiles.
  * 
@@ -97,16 +100,20 @@ public class Board {
   }
   
   /**
-   * checks if there is a tile above certain coordinates.
-   * @param xi x coordinate of the tile
-   * @param yi y coordinate of the tile
-   * @return true iff x coordinate is greater than zero and the tile above it (x-1) is not null.
+   * Method to get all tiles from a certain color.
+   * @param index integer that determines the color
+   * @return a list with tiles that have the same color/index number
    */
-  public boolean tileAbove(int xi, int yi) {
-    if(xi > 0 && getTileAt(xi - 1,yi) != null){
-      return true;
+  public List<Tile> sameColors(int index) {
+    List<Tile> res = new ArrayList<Tile>();
+    for (int row = 0; row < board.length; row++) {
+      for (int col = 0; col < board[0].length; col++) {
+        if(index == getTileAt(row, col).getIndex()) {
+          res.add(getTileAt(row, col));
+        }
+      }     
     }
-    return false;
+    return res;
   }
 
 }
