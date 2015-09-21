@@ -23,18 +23,10 @@ public class Tile {
   public boolean remove;
   public boolean delete;
 
- // public static enum State{
- //   DEFAULT,NORMAL,FLAME,HYPERCUBE,STAR;
- // }
-
- // private State state;
 
   //index is a number that point to the place in de paths and colors array
   private int index;
-  public final String[] paths = {"src/img/gemBlue.png", "src/img/gemGreen.png",
-    "src/img/gemOrange.png", "src/img/gemPurple.png",
-    "src/img/gemRed.png", "src/img/gemWhite.png",
-    "src/img/gemYellow.png"};
+  public String[] paths;
   public static final String[] colors = {"Blue", "Green", "Orange", "Purple",
     "Red", "White", "Yellow"};
 
@@ -45,14 +37,17 @@ public class Tile {
    * @param transY location of Tile on the board.
    */
   public Tile(int transX, int transY) {
-   // setRandomTile();
-    //this.state = State.NORMAL;
     this.loc = new Point(transX,transY);
     this.translation = new Point(0,0);
     this.level = 0;
     this.remove = false;
     this.delete = false;
     this.size = 0;
+    String[] p1 = {"src/img/gemBlue.png", "src/img/gemGreen.png",
+        "src/img/gemOrange.png", "src/img/gemPurple.png",
+        "src/img/gemRed.png", "src/img/gemWhite.png",
+        "src/img/gemYellow.png"};
+    paths = p1;
   }
 
   /**
@@ -177,7 +172,6 @@ public class Tile {
    */
   public Tile clone(int coordinateX, int coordinateY) {
     Tile tile = new Tile(coordinateX,coordinateY);
-   // tile.state = State.NORMAL;
     tile.index = this.index;
     tile.image = new ImageIcon(paths[index]);
     return tile;
@@ -249,15 +243,7 @@ public class Tile {
    */
   public String getType() {
     return "Normal"; 
-  }
-
-//  /**
-//   * sets the state of the tile.
-//   * @param state State of a tile
-//  */
-//  public void setState(State state) {
-//    this.state = state; 
-//  } 
+  } 
 
   /**
    * Method to representthe llcation and the color of a tile in a string.
