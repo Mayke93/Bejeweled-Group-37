@@ -23,18 +23,10 @@ public class Tile {
   public boolean remove;
   public boolean delete;
 
- // public static enum State{
- //   DEFAULT,NORMAL,FLAME,HYPERCUBE,STAR;
- // }
-
- // private State state;
 
   //index is a number that point to the place in de paths and colors array
   private int index;
-  public final String[] paths = {"src/img/gemBlue.png", "src/img/gemGreen.png",
-    "src/img/gemOrange.png", "src/img/gemPurple.png",
-    "src/img/gemRed.png", "src/img/gemWhite.png",
-    "src/img/gemYellow.png"};
+  public String[] paths;
   public static final String[] colors = {"Blue", "Green", "Orange", "Purple",
     "Red", "White", "Yellow"};
 
@@ -51,6 +43,11 @@ public class Tile {
     this.remove = false;
     this.delete = false;
     this.size = 0;
+    String[] p1 = {"src/img/gemBlue.png", "src/img/gemGreen.png",
+        "src/img/gemOrange.png", "src/img/gemPurple.png",
+        "src/img/gemRed.png", "src/img/gemWhite.png",
+        "src/img/gemYellow.png"};
+    paths = p1;
   }
 
   /**

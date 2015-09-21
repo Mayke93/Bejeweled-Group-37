@@ -10,12 +10,17 @@ public class HypercubeTile extends Tile {
 
   /**
    * Constructor for a hypercubetile.
-   * @param transX, the x-co of the tile on the board.
-   * @param transY, the y-co of the tile on the board.
+   * @param transX the x-co of the tile on the board.
+   * @param transY the y-co of the tile on the board.
    */
   public HypercubeTile(int transX, int transY) {
     super(transX, transY);
     score = 50;
+    String[] p1 = {"src/img/hypercube/gemBlueHypercube.png", 
+        "src/img/hypercube/gemGreenHypercube.png", "src/img/hypercube/gemOrangeHypercube.png", 
+        "src/img/hypercube/gemPurpleHypercube.png", "src/img/hypercube/gemRedHypercube.png", 
+        "src/img/hypercube/gemWhiteHypercube.png", "src/img/hypercube/gemYellowHypercube.png"};
+    paths = p1;
   }
 
   /**

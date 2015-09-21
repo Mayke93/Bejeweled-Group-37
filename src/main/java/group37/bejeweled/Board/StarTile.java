@@ -10,12 +10,17 @@ public class StarTile extends Tile {
 
   /**
    * Constructor for a startile.
-   * @param transX, the x-co of the tile on the board.
-   * @param transY, the y-co of the tile on the board.
+   * @param transX the x-co of the tile on the board.
+   * @param transY the y-co of the tile on the board.
    */
   public StarTile(int transX, int transY) {
     super(transX, transY);
     score = 50;
+    String[] p1 = {"src/img/star/gemBlueStar.png", 
+        "src/img/star/gemGreenStar.png", "src/img/star/gemOrangeStar.png", 
+        "src/img/star/gemPurpleStar.png", "src/img/star/gemRedStar.png", 
+        "src/img/star/gemWhiteHypercubeStar.png", "src/img/star/gemYellowStar.png"};
+    paths = p1;
   }
 
   /**
