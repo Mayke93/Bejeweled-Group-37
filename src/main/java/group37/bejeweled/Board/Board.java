@@ -104,6 +104,7 @@ public class Board {
    * @param index integer that determines the color
    * @return a list with tiles that have the same color/index number
    */
+
   public List<Tile> sameColors(int index) {
     List<Tile> res = new ArrayList<Tile>();
     for (int row = 0; row < board.length; row++) {
@@ -111,7 +112,7 @@ public class Board {
         if(index == getTileAt(row, col).getIndex()) {
           res.add(getTileAt(row, col));
         }
-      }     
+      }    
     }
     return res;
   }
