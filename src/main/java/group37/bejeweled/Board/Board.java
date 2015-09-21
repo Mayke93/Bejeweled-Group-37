@@ -103,7 +103,7 @@ public class Board {
    * @return true iff x coordinate is greater than zero and the tile above it (x-1) is not null.
    */
   public boolean tileAbove(int xi, int yi) {
-    if(xi > 0 && getTileAt(xi - 1,yi) != null){
+    if (xi > 0 && getTileAt(xi - 1,yi) != null) {
       return true;
     }
     return false;
