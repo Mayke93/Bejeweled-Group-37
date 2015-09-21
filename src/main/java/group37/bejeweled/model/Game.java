@@ -62,122 +62,6 @@ public class Game {
       }
     }
   }
-
-  /**
-   * Prints the combinations obtained by getAllCombinationsOnBoard().
-   */
-  public void printCombinations() {
-    List<Combination> res = finder.getAllCombinationsOnBoard();
-    System.out.println("chains: " + res.size());
-    for (Combination combi : res) {
-      System.out.println("\tType: " + combi.getType());
-      System.out.println("\t" + combi.getTiles());
-    }
-  }
-
-//  /**
-//   * Delete all tiles that form a combination on the current board.
-//   */
-//  public void deleteTiles() {
-//    List<Combination> chains = finder.getAllCombinationsOnBoard();
-//    Logger.log("Found " + chains.size() + " chains");
-//    for (Combination comb: chains) {
-//      Logger.log("Tile State: " + comb.getType());
-//    }
-//    List<Tile> tiles = new ArrayList<Tile>();
-//    for (int row = SIZE - 1; row >= 0; row-- ) {
-//      for (int col = 0; col < SIZE; col++) {
-//
-//        if (containsTile(board.getTileAt(col, row), chains)) {
-//          Logger.log("Delete Tile: " + board.getTileAt(col, row));
-//          board.getTileAt(col, row).delete = true;
-//          tiles.add(board.getTileAt(col, row));
-//          for (int i = row - 1; i >= 0; i--) {
-//            board.getTileAt(col, i).increaseLevel();
-//          }
-//        }
-//      }
-//    }
-//    boardPanel.animations.setType(Animation.Type.REMOVE);
-//    boardPanel.animations.startRemove(tiles);
-//    printCombinations();
-//
-//    Tile tile = null;
-//    for (int i = 0; i < SIZE; i++) {
-//      for (int j = 0; j < SIZE; j++) {
-//        tile = board.getTileAt(j, i);
-//        System.out.print(tile.getLevel() + " ");
-//      }
-//      System.out.println();
-//    }
-//  }
-
-  /**
-   * Delete all tiles that form a combination on the current board.
-   */
-  public void deleteTiles() {
-    List<Combination> chains = finder.getAllCombinationsOnBoard();
-    Logger.log("Found " + chains.size() + " chains");
-    List<Tile> tiles = new ArrayList<Tile>();
-
-    for (Combination comb : chains) {
-      Logger.log("Tile State: " + comb.getType());
-
-      for (Tile t : comb.getTiles()) {
-        Logger.log("Delete Tile: " + board.getTileAt(t.getX(), t.getY()));
-        tiles.add(t);
-        board.clear(t.getX(), t.getY());  
-        //TODO replace this place with special stone in case of longer chain (addSpecialGem())
-        //maybe this should be in swaptiles?
-      }
-    }
-    boardPanel.animations.setType(Animation.Type.REMOVE);
-    boardPanel.animations.startRemove(tiles);
-    printCombinations();
-    
-  }
-  
-  /**
-   * If there are empty spaces, this method 'drops' the tile above this space into this space.
-   */
-  public void dropTiles() {
-    for (int i = 0; i < Main.SIZE; i++) {
-      if (board.isEmpty(0, i)) {
-        board.setTileAt(setRandomTile(0, i), 0, i);
-      }
-    }
-    
-    for (int row = 1; row < Main.SIZE; row++) {
-      for (int col = 1; col < Main.SIZE; col++) {
-        
-        if (board.isEmpty(row, col)) {
-          //zou ook col,row op één kunnen init en dan dit bovenaan
-//          if (!board.tileAbove(row, col)) {
-//            board.setTileAt(setRandomTile(row, col),  row, col);
-//          }
-          if (row - 1 > 0) {
-            board.setTileAt(board.getTileAt(row - 1, col), row, col);
-            board.clear(row - 1, col);
-          }
-        }
-      }
-    }
-  
-    boardPanel.repaint();
-    
-    for (int row = 0; row < Main.SIZE; row++) {
-      for (int col = 0; col < Main.SIZE; col++) {
-        if (board.isEmpty(row, col)) {
-          dropTiles();
-        }
-      }
-    }
-    
-    List<Combination> chains = finder.getAllCombinationsOnBoard();
-    if (chains.size() != 0) {
-      deleteTiles();
-    }
-  }
   
   /**
    * method for adding a special gem.
@@ -197,46 +81,96 @@ public class Game {
         break;
     }
   }
-//  /**
-//   * If there are empty spaces, this method 'drops' the tile above this space into this space.
-//   */
-//  public void dropTiles() {    
-//    int level = 0;
-//    for (int row = SIZE - 1; row >= 0; row--) {
-//      for (int col = 0; col < SIZE; col++) {
-//        level = board.getTileAt(col, row).getLevel();
-//        Tile curr = board.getTileAt(col, row);
-//        //if (level > 0) {
-//        if (board.isEmpty(col, row - 1)) {
-//          board.setTileAt(curr, col, row - 1);
-//          //board.setTileAt(board.getTileAt(col, row).clone(col, row + level), col, row + level);
-//          //board.getTileAt(col, row + level).setLevel(0);
-//          //board.getTileAt(col, row).setLevel(0);
-//          //board.getTileAt(col, row).setState(Tile.State.DEFAULT);
-//        }
-//      }
-//    }
-//    for (int row = SIZE - 1; row >= 0; row--) {
-//      for (int col = 0; col < SIZE; col++) {
-//        if (board.isEmpty(col, row) 
-//            || board.getTileAt(col, row).delete) {
-//          board.setTileAt(setRandomTile(col,row), col, row);
-//         // board.getTileAt(col, row).setState(Tile.State.NORMAL);
-//          board.getTileAt(col, row).delete = false;
-//        }
-//        if (board.getTileAt(col, row).remove) {
-//          board.getTileAt(col, row).remove = false;
-//        }
-//      }
-//    }
-//    boardPanel.repaint();
-//    
-//    List<Combination> chains = finder.getAllCombinationsOnBoard();
-//    if (chains.size() != 0) {
-//      deleteTiles();
-//      
-//    }
-//  }
+
+  /**
+   * Prints the combinations obtained by getAllCombinationsOnBoard().
+   */
+  public void printCombinations() {
+    List<Combination> res = finder.getAllCombinationsOnBoard();
+    System.out.println("chains: " + res.size());
+    for (Combination combi : res) {
+      System.out.println("\tType: " + combi.getType());
+      System.out.println("\t" + combi.getTiles());
+    }
+  }
+
+  /**
+   * Delete all tiles that form a combination on the current board.
+   */
+  public void deleteTiles() {
+    List<Combination> chains = finder.getAllCombinationsOnBoard();
+    Logger.log("Found " + chains.size() + " chains");
+    for (Combination comb: chains) {
+      Logger.log("Tile State: " + comb.getType());
+    }
+    List<Tile> tiles = new ArrayList<Tile>();
+    for (int row = SIZE - 1; row >= 0; row-- ) {
+      for (int col = 0; col < SIZE; col++) {
+
+        if (containsTile(board.getTileAt(col, row), chains)) {
+          Logger.log("Delete Tile: " + board.getTileAt(col, row));
+          board.getTileAt(col, row).delete = true;
+          tiles.add(board.getTileAt(col, row));
+          for (int i = row - 1; i >= 0; i--) {
+            board.getTileAt(col, i).increaseLevel();
+          }
+        }
+      }
+    }
+    boardPanel.animations.setType(Animation.Type.REMOVE);
+    boardPanel.animations.startRemove(tiles);
+    printCombinations();
+
+    Tile tile = null;
+    for (int i = 0; i < SIZE; i++) {
+      for (int j = 0; j < SIZE; j++) {
+        tile = board.getTileAt(j, i);
+        System.out.print(tile.getLevel() + " ");
+      }
+      System.out.println();
+    }
+  }
+
+
+ 
+  
+  /**
+   * If there are empty spaces, this method 'drops' the tile above this space into this space.
+   */
+  public void dropTiles() {    
+    int level = 0;
+    for (int row = SIZE - 1; row >= 0; row--) {
+      for (int col = 0; col < SIZE; col++) {
+        level = board.getTileAt(col, row).getLevel();
+        Tile curr = board.getTileAt(col, row);
+        if (level > 0) {
+          board.setTileAt(curr, col, row - 1);
+          board.setTileAt(board.getTileAt(col, row).clone(col, row + level), col, row + level);
+          board.getTileAt(col, row + level).setLevel(0);
+          board.getTileAt(col, row).setLevel(0);
+        }
+      }
+    }
+    for (int row = SIZE - 1; row >= 0; row--) {
+      for (int col = 0; col < SIZE; col++) {
+        if (board.isEmpty(col, row) 
+            || board.getTileAt(col, row).delete) {
+          board.setTileAt(setRandomTile(col,row), col, row);
+          board.getTileAt(col, row).delete = false;
+        }
+        if (board.getTileAt(col, row).remove) {
+          board.getTileAt(col, row).remove = false;
+        }
+      }
+    }
+    boardPanel.repaint();
+    
+    List<Combination> chains = finder.getAllCombinationsOnBoard();
+    if (chains.size() != 0) {
+      deleteTiles();
+      
+    }
+  }
 
   /**
    * Check if chains contains the tile t.

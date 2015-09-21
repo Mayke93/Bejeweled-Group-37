@@ -19,7 +19,7 @@ public class Tile {
   private Point loc;
   public Point translation;
   public int size;
-  //private int level;
+  private int level;
   public boolean remove;
   public boolean delete;
 
@@ -49,7 +49,7 @@ public class Tile {
     //this.state = State.NORMAL;
     this.loc = new Point(transX,transY);
     this.translation = new Point(0,0);
-    //this.level = 0;
+    this.level = 0;
     this.remove = false;
     this.delete = false;
     this.size = 0;
@@ -221,27 +221,27 @@ public class Tile {
     this.loc = new Point(coordinateX,coordinateY);
   }
 
-//  /**
-//   * get how many levels the tile should drop.
-//   * @return an integer that represents the level
-//   */
-//  public int getLevel() {
-//    return level; 
-//  }
-//
-//  /**
-//   * set how many levels the tile should drop.
-//   */
-//  public void setLevel(int level) {
-//    this.level = level; 
-//  }
-//
-//  /**
-//   *  increases set how many levels the tile should drop.
-//   */
-//  public void increaseLevel() { 
-//    this.level++; 
-//  }
+  /**
+   * get how many levels the tile should drop.
+   * @return an integer that represents the level
+   */
+  public int getLevel() {
+    return level; 
+  }
+
+  /**
+   * set how many levels the tile should drop.
+   */
+  public void setLevel(int level) {
+    this.level = level; 
+  }
+
+  /**
+   *  increases set how many levels the tile should drop.
+   */
+  public void increaseLevel() { 
+    this.level++; 
+  }
 
   /**
    * get the type of the tile.
