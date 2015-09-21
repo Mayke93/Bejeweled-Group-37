@@ -1,9 +1,10 @@
 package main.java.group37.bejeweled.view;
 
-import main.java.group37.bejeweled.model.Board;
+import main.java.group37.bejeweled.Board.Board;
+import main.java.group37.bejeweled.Board.BoardFactory;
+import main.java.group37.bejeweled.Board.Tile;
 import main.java.group37.bejeweled.model.Game;
 import main.java.group37.bejeweled.model.Logger;
-import main.java.group37.bejeweled.model.Tile;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -42,6 +43,8 @@ public class Main extends JPanel {
 
   private final JFrame frame;
   public Animation animations;
+  
+  //private BoardFactory boardfactory;
 
   //Panel with score label and level label
   private StatusPanel panel;
@@ -62,6 +65,7 @@ public class Main extends JPanel {
     Logger.log("# Start new game");
     this.addMouseListener(new MouseListener(this));
     this.addMouseMotionListener(new MouseMotionListener(this));
+    //boardfactory = new BoardFactory(game);
   }
 
   /**
@@ -74,7 +78,7 @@ public class Main extends JPanel {
 
   /**
    * swap the tiles in the list.
-   * @param swapTiles, the list of (two) tiles that should be swapped.
+   * @param swapTiles the list of (two) tiles that should be swapped.
    */
   public void swapTiles(List<Tile> swapTiles) {
     animations.setType(Animation.Type.SWAP);
@@ -162,9 +166,11 @@ public class Main extends JPanel {
     for (int i = 0,x = ix, y = iy; i < SIZE; i++) {
       x = ix;
       for (int j = 0; j < SIZE; j++, x += SPACE_X) {
-        tile = board.getTileAt(j, i);
-        if (tile.remove) {
-          continue;
+        if (!board.isEmpty(j, i)) {
+          tile = board.getTileAt(j, i);
+          if (tile.remove) {
+            continue;
+          }
         }
         graphics.drawImage(tile.getImage(), x + tile.translation.x , 
             y + tile.translation.y,SPACE_X - tile.size,SPACE_Y - tile.size, null);

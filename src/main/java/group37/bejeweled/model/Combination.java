@@ -3,13 +3,25 @@ package main.java.group37.bejeweled.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import main.java.group37.bejeweled.Board.Tile;
+
 /**
  * Class for making a combination of the type of an combi and the tiles which make this combination.
  * @author group37
  */
 public class Combination {
-  public Tile.State type;
+  //public Tile.State type;
+  public Type type;
   public List<Tile> tiles;
+  
+  /**
+   * enum Type tells how many stones are in de combination.
+   * @author group 37
+   *
+   */
+  public enum Type {
+    NORMAL, STAR, FLAME, HYPERCUBE;
+  }
 
   /**
    * Constructor for the Combination.
@@ -18,8 +30,8 @@ public class Combination {
    * @param tiles
    *              a list of tiles which are included in the combination
    */
-  public Combination(Tile.State type, List<Tile> tiles) {
-    this.type = type;
+  public Combination(Type ty, List<Tile> tiles) {
+    this.type = ty;
     this.tiles = tiles;
   }
 
@@ -32,13 +44,20 @@ public class Combination {
   }
 
   /**
-   * Change the state of the combination to:
-   * @param state.
-   */
-  public void setState(Tile.State state) {
-    this.type = state;
+   * Change the type of the combination to.
+   * @param type new type for the combination
+    */
+  public void setType(Type ty) {
+    this.type = ty;
   }
-
+  /**
+   * Gets the state (type) of the combination.
+   * @return type, the type of the combination.
+   */
+  public Type getType() {
+    return type;
+  }
+ 
   /**
    * Set the list of tiles for the combination to:
    * @param tiles, the list of tiles.
@@ -48,18 +67,12 @@ public class Combination {
   }
 
   /**
-   * Gets the state (type) of the combination.
-   * @return type, the type of the combination.
-   */
-  public Tile.State getState() {
-    return type;
-  }
-
-  /**
    * Gets the list of tiles that are included in the combination.
    * @return tiles, the list of tiles.
    */
   public List<Tile> getTiles() {
     return tiles;
   }
+  
+
 }

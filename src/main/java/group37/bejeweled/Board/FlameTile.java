@@ -1,4 +1,4 @@
-package main.java.group37.bejeweled.model;
+package main.java.group37.bejeweled.Board;
 
 /**
  * Class FlameTile, object for a flame gem on the board.
@@ -15,6 +15,14 @@ public class FlameTile extends Tile {
   public FlameTile(int transX, int transY) {
     super(transX, transY);
     // TODO Auto-generated constructor stub
+  }
+  
+  /**
+   * get the type of the tile.
+   * @return type as a string
+   */
+  public String getType() {
+    return "Flame"; 
   }
 
 }

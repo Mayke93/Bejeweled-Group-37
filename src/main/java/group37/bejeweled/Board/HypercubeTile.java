@@ -1,4 +1,4 @@
-package main.java.group37.bejeweled.model;
+package main.java.group37.bejeweled.Board;
 
 /**
  * Class HypercubeTile, object for a hypercube gem on the board.
@@ -16,4 +16,11 @@ public class HypercubeTile extends Tile {
     // TODO Auto-generated constructor stub
   }
 
+  /**
+   * get the type of the tile.
+   * @return type as a string
+   */
+  public String getType() {
+    return "Hypercube"; 
+  }
 }

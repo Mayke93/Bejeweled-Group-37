@@ -3,14 +3,23 @@ package main.java.group37.bejeweled.model;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
+import javax.swing.ImageIcon;
+
+import main.java.group37.bejeweled.Board.Board;
+import main.java.group37.bejeweled.Board.FlameTile;
+import main.java.group37.bejeweled.Board.HypercubeTile;
+import main.java.group37.bejeweled.Board.Tile;
+import main.java.group37.bejeweled.model.Combination.Type;
+//import main.java.group37.bejeweled.model.Tile.State;
 import main.java.group37.bejeweled.view.Animation;
 import main.java.group37.bejeweled.view.Main;
 import main.java.group37.bejeweled.view.StatusPanel;
 
 //import javax.swing.JLabel;
 //import Tile.State;
-
+//TODO tile do not drop down anymore, but are replaced by random tiles.
 /**
  * Class that represents the current game.
  * @author group37
@@ -53,6 +62,25 @@ public class Game {
       }
     }
   }
+  
+  /**
+   * method for adding a special gem.
+   * @param xi x coordinate
+   * @param yi y cordinate 
+   * @param type type of combination
+   */
+  public void addSpecialGem(int xi, int yi, Type type) {
+    switch (type) {
+      case FLAME: //add tile to board.
+        break;
+      case HYPERCUBE:
+        break;
+      case STAR:
+        break;
+      default: //do nothing
+        break;
+    }
+  }
 
   /**
    * Prints the combinations obtained by getAllCombinationsOnBoard().
@@ -61,7 +89,7 @@ public class Game {
     List<Combination> res = finder.getAllCombinationsOnBoard();
     System.out.println("chains: " + res.size());
     for (Combination combi : res) {
-      System.out.println("\tType: " + combi.getState());
+      System.out.println("\tType: " + combi.getType());
       System.out.println("\t" + combi.getTiles());
     }
   }
@@ -73,7 +101,7 @@ public class Game {
     List<Combination> chains = finder.getAllCombinationsOnBoard();
     Logger.log("Found " + chains.size() + " chains");
     for (Combination comb: chains) {
-      Logger.log("Tile State: " + comb.getState());
+      Logger.log("Tile State: " + comb.getType());
     }
     List<Tile> tiles = new ArrayList<Tile>();
     for (int row = SIZE - 1; row >= 0; row-- ) {
@@ -103,28 +131,31 @@ public class Game {
     }
   }
 
+
+ 
+  
   /**
    * If there are empty spaces, this method 'drops' the tile above this space into this space.
    */
-  public void dropTiles() {
+  public void dropTiles() {    
     int level = 0;
     for (int row = SIZE - 1; row >= 0; row--) {
       for (int col = 0; col < SIZE; col++) {
         level = board.getTileAt(col, row).getLevel();
+        Tile curr = board.getTileAt(col, row);
         if (level > 0) {
+          board.setTileAt(curr, col, row - 1);
           board.setTileAt(board.getTileAt(col, row).clone(col, row + level), col, row + level);
           board.getTileAt(col, row + level).setLevel(0);
           board.getTileAt(col, row).setLevel(0);
-          board.getTileAt(col, row).setState(Tile.State.DEFAULT);
         }
       }
     }
     for (int row = SIZE - 1; row >= 0; row--) {
       for (int col = 0; col < SIZE; col++) {
-        if (board.getTileAt(col, row).getState() == Tile.State.DEFAULT 
+        if (board.isEmpty(col, row) 
             || board.getTileAt(col, row).delete) {
-          board.getTileAt(col, row).setRandomTile();
-          board.getTileAt(col, row).setState(Tile.State.NORMAL);
+          board.setTileAt(setRandomTile(col,row), col, row);
           board.getTileAt(col, row).delete = false;
         }
         if (board.getTileAt(col, row).remove) {
@@ -137,6 +168,7 @@ public class Game {
     List<Combination> chains = finder.getAllCombinationsOnBoard();
     if (chains.size() != 0) {
       deleteTiles();
+      
     }
   }
 
@@ -163,7 +195,7 @@ public class Game {
     board = new Board(new Tile[Main.SIZE][Main.SIZE]); 
     for (int i = 0; i < Main.SIZE; i++) {
       for (int j = 0; j < Main.SIZE; j++) {
-        board.setTileAt(new Tile(i, j), i , j);
+        board.setTileAt(setRandomTile(i,j), i , j);
       }
 
       //Redo column if a sequence has been detected
@@ -173,6 +205,22 @@ public class Game {
     }
     finder.setBoard(this.board);
   }
+  
+  /**
+   * makes a random tile.
+   * @param xi x coordinate of the new random tile
+   * @param yi y coordinate of the new random tile
+   * @return a random tile as a Tile object
+   */
+  public Tile setRandomTile(int xi, int yi) { 
+    Tile tile = new Tile(xi, yi);
+    Random random = new Random();
+    //this.state = State.NORMAL;
+    tile.setIndex(random.nextInt(7));
+    tile.setImage(new ImageIcon(tile.paths[tile.getIndex()]));
+    return tile;
+  }
+
 
   /**
    * Checks if column i that just has been added doesn't create a sequence of 3 or more colours.
@@ -220,8 +268,9 @@ public class Game {
    * @param t1 second tile to swap
    * @return true iff swapping tiles t0 and t1 results in a valid combination.
    */
-  public Tile.State checktype(Tile t0, Tile t1) {
-    Tile.State res = null;
+  public Tile checktype(Tile t0, Tile t1) {
+    //Tile.State res = null;
+    Tile res = null;
     String c1 = Tile.colors[board.getTileAt(t0.getX(), t0.getY()).getIndex()];
     String c2 = Tile.colors[board.getTileAt(t1.getX(), t1.getY()).getIndex()];
     Tile tile = null;
@@ -259,14 +308,19 @@ public class Game {
         }
       }
 
+      //TODO which tile changes into special tile? atm I've put in tile t0.
+      //TODO Startile?
       if (sum == 3) {
-        res = Tile.State.NORMAL;
+        //res = Tile.State.NORMAL;
+        res = new Tile(t0.getX(), t0.getY());
       }
       if (sum == 4) {
-        res = Tile.State.FLAME;
+       // res = Tile.State.FLAME;
+        
+        res = new FlameTile(t0.getX(), t0.getY());
       }
       if (sum == 5) {
-        res = Tile.State.HYPERCUBE;
+        res = new HypercubeTile(t0.getX(), t0.getY());
       }
 
       //check y direction
@@ -289,13 +343,15 @@ public class Game {
       }
 
       if (sum == 3) {
-        res = Tile.State.NORMAL;
+       // res = Tile.State.NORMAL;
+       res = new Tile(t0.getX(), t0.getY());
       }
       if (sum == 4) {
-        res = Tile.State.FLAME;
+        //res = Tile.State.FLAME;
+        res = new FlameTile(t0.getX(), t0.getY());
       }
       if (sum == 5) {
-        res = Tile.State.HYPERCUBE;
+        res = new HypercubeTile(t0.getX(), t0.getY());
       }
     }
     //swap the tiles back to original position
@@ -369,18 +425,18 @@ public class Game {
     Combination l4 = finder.getSingleCombinationY(t1);
     swapTiles(t0,t1);
 
-    Tile.State type = null;
+    Type type = null;
     if (!l1.getTiles().isEmpty()) {
-      type = l1.getState();
+      type = l1.getType();
       System.out.println("in1");
     } else if (!l2.getTiles().isEmpty()) {
-      type = l2.getState();
+      type = l2.getType();
       System.out.println("in2");
     } else if (!l3.getTiles().isEmpty()) {
-      type = l3.getState();
+      type = l3.getType();
       System.out.println("in3");
     } else if (!l4.getTiles().isEmpty()) {
-      type = l4.getState();
+      type = l4.getType();
       System.out.println("in4");
     }
 
@@ -391,7 +447,7 @@ public class Game {
     }
 
     if (!isNeighbour(t0,t1)) {
-      Logger.error("t0 and t1 are no neighbours.");
+      Logger.error("t0 and t1 are not neighbours.");
       return false;
     }
     System.out.println(type);
@@ -422,7 +478,7 @@ public class Game {
    * Update score in the view.
    * @param type change score based on the value of type.
    */
-  private void updateScore(Tile.State type) {
+  private void updateScore(Type type) {
     int score = 0;
     switch (type) {
       case NORMAL:
@@ -467,19 +523,19 @@ public class Game {
     //Logger.log("Level: " + newlevel);
   }
   
-//  /**
-//   * End game if there is no possible combination.
-//   */
-//  public void endGame() {
-//    JLabel label1 = new JLabel("No possible combination",JLabel.CENTER);
-//    label1.setVerticalTextPosition(JLabel.TOP);
-//    label1.setHorizontalTextPosition(JLabel.CENTER);
-//    if (!(possibleMove())) {
-//      this.boardPanel.add(label1);
-//      return;
-//    }
-//  }
-
+  /**
+   * End game if there is no possible combination.
+   
+  public void endGame() {
+    JLabel label1 = new JLabel("No possible combination",JLabel.CENTER);
+    label1.setVerticalTextPosition(JLabel.TOP);
+    label1.setHorizontalTextPosition(JLabel.CENTER);
+    if (!(possibleMove())) {
+      this.boardPanel.add(label1);
+      return;
+    }
+  }
+*/
   /**
    * Reset game.
    */

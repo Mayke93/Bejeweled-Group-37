@@ -3,6 +3,9 @@ package main.java.group37.bejeweled.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import main.java.group37.bejeweled.Board.Board;
+import main.java.group37.bejeweled.Board.Tile;
+import main.java.group37.bejeweled.model.Combination.Type;
 import main.java.group37.bejeweled.view.Main;
 
 /**
@@ -71,14 +74,14 @@ public class CombinationFinder {
 
     //check x direction
     for (int q = tile.getX() + 1; q < SIZE; q++) { //check to the right
-      if (board.getTileAt(q, tile.getY()).equalsColor(tile)) {
+      if (tile.equalsColor(board.getTileAt(q, tile.getY()))) {
         tiles.add(board.getTileAt(q, tile.getY()));
       } else {
         break;
       }
     }
     for (int q = tile.getX() - 1; q >= 0; q--) {    //check to the left
-      if (board.getTileAt(q, tile.getY()).equalsColor(tile)) {
+      if (tile.equalsColor(board.getTileAt(q, tile.getY()))) {
         tiles.add(board.getTileAt(q, tile.getY()));
       } else {
         break;
@@ -92,15 +95,15 @@ public class CombinationFinder {
       if (tiles.size() == 3) {
         List<Tile> specialShape = findLTshapeX(tiles);   // check for T and L shapes
         if (specialShape.isEmpty()) {
-          combi.setState(Tile.State.NORMAL);
+          combi.setType(Type.NORMAL);
         } else {
           tiles.addAll(specialShape);
-          combi.setState(Tile.State.STAR);
+          combi.setType(Type.STAR);
         }
       } else if (tiles.size() == 4) {
-        combi.setState(Tile.State.FLAME);
+        combi.setType(Type.FLAME);
       } else if (tiles.size() == 5) {
-        combi.setState(Tile.State.HYPERCUBE);
+        combi.setType(Type.HYPERCUBE);
       }
       combi.setTiles(tiles);
     }
@@ -120,14 +123,14 @@ public class CombinationFinder {
 
     //check y direction
     for (int q = tile.getY() + 1; q < SIZE; q++) {   //check down
-      if (board.getTileAt(tile.getX(),q).equalsColor(tile)) {
+      if (tile.equalsColor(board.getTileAt(tile.getX(),q))) {
         tiles.add(board.getTileAt(tile.getX(),q));
       } else {
         break;
       }
     }
     for (int q = tile.getY() - 1; q >= 0; q--) {      //check up
-      if (board.getTileAt(tile.getX(),q).equalsColor(tile)) {
+      if (tile.equalsColor(board.getTileAt(tile.getX(),q))) {
         tiles.add(board.getTileAt(tile.getX(),q));
       } else {
         break;
@@ -140,15 +143,15 @@ public class CombinationFinder {
       if (tiles.size() == 3) {
         List<Tile> specialShape = findLTshapeY(tiles);   // check for T and L shapes
         if (specialShape.isEmpty()) {
-          combi.setState(Tile.State.NORMAL);
+          combi.setType(Type.NORMAL);
         } else {
           tiles.addAll(specialShape);
-          combi.setState(Tile.State.STAR);
+          combi.setType(Type.STAR);
         }
       } else if (tiles.size() == 4) {
-        combi.setState(Tile.State.FLAME);
+        combi.setType(Type.FLAME);
       } else if (tiles.size() == 5) {
-        combi.setState(Tile.State.HYPERCUBE);
+        combi.setType(Type.HYPERCUBE);
       }
       combi.setTiles(tiles);
     }
@@ -183,19 +186,19 @@ public class CombinationFinder {
   public List<Tile> findLTshapeX(List<Tile> tiles) {
     List<Tile> newtiles = new ArrayList<Tile>();
     for (Tile t : tiles) {
-      if (t.getY() + 1 < 8 && board.getTileAt(t.getX(),t.getY() + 1).equalsColor(t)) {
-        if (t.getY() + 2 < 8 && board.getTileAt(t.getX(),t.getY() + 2).equalsColor(t)) {      // 2 erboven
+      if (t.getY() + 1 < 8 && t.equalsColor(board.getTileAt(t.getX(),t.getY() + 1))) {
+        if (t.getY() + 2 < 8 && t.equalsColor(board.getTileAt(t.getX(),t.getY() + 2))) { //2 erboven
           newtiles.add(board.getTileAt(t.getX(),t.getY() + 1));
           newtiles.add(board.getTileAt(t.getX(),t.getY() + 2));
           break;
-        } else if (t.getY() - 1 >= 0 && board.getTileAt(t.getX(),t.getY() - 1).equalsColor(t)) {
+        } else if (t.getY() - 1 >= 0 && t.equalsColor(board.getTileAt(t.getX(),t.getY() - 1))) {
           // 1 erboven, 1 beneden
           newtiles.add(board.getTileAt(t.getX(),t.getY() + 1));
           newtiles.add(board.getTileAt(t.getX(),t.getY() - 1));
           break;
         }
-      } else if (t.getY() - 2 >= 0 && board.getTileAt(t.getX(),t.getY() - 1).equalsColor(t) 
-          && board.getTileAt(t.getX(),t.getY() - 2).equalsColor(t)) {    // 2 beneden
+      } else if (t.getY() - 2 >= 0 && t.equalsColor(board.getTileAt(t.getX(),t.getY() - 1)) 
+          && t.equalsColor( board.getTileAt(t.getX(),t.getY() - 2))) {    // 2 beneden
         newtiles.add(board.getTileAt(t.getX(),t.getY() - 1));
         newtiles.add(board.getTileAt(t.getX(),t.getY() - 2));
         break;
