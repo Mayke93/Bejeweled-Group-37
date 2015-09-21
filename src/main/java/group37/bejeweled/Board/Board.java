@@ -87,8 +87,26 @@ public class Board {
     return false;
   }
   
+  /**
+   * removes a tile from the board.
+   * @param xi x coordinate of the tile
+   * @param yi y coordinate of the tile
+   */
   public void clear(int xi, int yi) {
     board[xi][yi] = null;
+  }
+  
+  /**
+   * checks if there is a tile above certain coordinates.
+   * @param xi x coordinate of the tile
+   * @param yi y coordinate of the tile
+   * @return true iff x coordinate is greater than zero and the tile above it (x-1) is not null.
+   */
+  public boolean tileAbove(int xi, int yi) {
+    if(xi > 0 && getTileAt(xi - 1,yi) != null){
+      return true;
+    }
+    return false;
   }
 
 }

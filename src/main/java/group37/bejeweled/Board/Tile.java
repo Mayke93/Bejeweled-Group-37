@@ -19,7 +19,7 @@ public class Tile {
   private Point loc;
   public Point translation;
   public int size;
-  private int level;
+  //private int level;
   public boolean remove;
   public boolean delete;
 
@@ -49,7 +49,7 @@ public class Tile {
     //this.state = State.NORMAL;
     this.loc = new Point(transX,transY);
     this.translation = new Point(0,0);
-    this.level = 0;
+    //this.level = 0;
     this.remove = false;
     this.delete = false;
     this.size = 0;
@@ -141,7 +141,7 @@ public class Tile {
    * @return a boolean, true iff the two objects have the same color.
    */
   public boolean equalsColor(Object obj) {
-    if (!(obj instanceof Tile)) {
+    if (!(obj instanceof Tile) || obj == null) {
       return false;
     }
     Tile tile = (Tile)obj;
@@ -158,7 +158,7 @@ public class Tile {
     int result = 1;
     result = prime * result + ((image == null) ? 0 : image.hashCode());
     result = prime * result + index;
-    result = prime * result + level;
+   // result = prime * result + level;
     result = prime * result + ((loc == null) ? 0 : loc.hashCode());
     //result = prime * result + ((random == null) ? 0 : random.hashCode());
     result = prime * result + (remove ? 1231 : 1237);
@@ -221,27 +221,27 @@ public class Tile {
     this.loc = new Point(coordinateX,coordinateY);
   }
 
-  /**
-   * get how many levels the tile should drop.
-   * @return an integer that represents the level
-   */
-  public int getLevel() {
-    return level; 
-  }
-
-  /**
-   * set how many levels the tile should drop.
-   */
-  public void setLevel(int level) {
-    this.level = level; 
-  }
-
-  /**
-   *  increases set how many levels the tile should drop.
-   */
-  public void increaseLevel() { 
-    this.level++; 
-  }
+//  /**
+//   * get how many levels the tile should drop.
+//   * @return an integer that represents the level
+//   */
+//  public int getLevel() {
+//    return level; 
+//  }
+//
+//  /**
+//   * set how many levels the tile should drop.
+//   */
+//  public void setLevel(int level) {
+//    this.level = level; 
+//  }
+//
+//  /**
+//   *  increases set how many levels the tile should drop.
+//   */
+//  public void increaseLevel() { 
+//    this.level++; 
+//  }
 
   /**
    * get the type of the tile.
@@ -251,13 +251,13 @@ public class Tile {
     return "Normal"; 
   }
 
-  /**
-   * sets the state of the tile.
-   * @param state State of a tile
-  
-  public void setState(State state) {
-    this.state = state; 
-  } */
+//  /**
+//   * sets the state of the tile.
+//   * @param state State of a tile
+//  */
+//  public void setState(State state) {
+//    this.state = state; 
+//  } 
 
   /**
    * Method to representthe llcation and the color of a tile in a string.

@@ -166,9 +166,11 @@ public class Main extends JPanel {
     for (int i = 0,x = ix, y = iy; i < SIZE; i++) {
       x = ix;
       for (int j = 0; j < SIZE; j++, x += SPACE_X) {
-        tile = board.getTileAt(j, i);
-        if (tile.remove) {
-          continue;
+        if (!board.isEmpty(j, i)) {
+          tile = board.getTileAt(j, i);
+          if (tile.remove) {
+            continue;
+          }
         }
         graphics.drawImage(tile.getImage(), x + tile.translation.x , 
             y + tile.translation.y,SPACE_X - tile.size,SPACE_Y - tile.size, null);
