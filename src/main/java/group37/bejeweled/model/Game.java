@@ -95,9 +95,48 @@ public class Game {
   }
 
   /**
+   * Delete all combinations found on the board.
+   */
+  public void deleteChains() {
+    List<Combination> chains = finder.getAllCombinationsOnBoard();
+    List<Tile> tiles = new ArrayList<Tile>();
+    
+    for (Combination comb: chains) {
+      tiles.addAll(comb.getTiles());
+    }
+    
+    delete(tiles);
+  }
+  
+  /**
+   * Delete all the tiles in 'tiles' from the board.
+   * @param tiles list of tiles to delete.
+   */
+  public void delete(List<Tile> tiles) {
+    for (Tile tile: tiles) {
+      board.getTileAt(tile.getX(), tile.getY()).delete = true;
+      Logger.log("Delete Tile: " + tile);
+      for (int i = tile.getY() - 1; i >= 0; i--) {
+        board.getTileAt(tile.getX(), i).increaseLevel();
+      }
+    }
+    Tile tile = null;
+    for (int i = 0; i < SIZE; i++) {
+      for (int j = 0; j < SIZE; j++) {
+        tile = board.getTileAt(j, i);
+        System.out.print(tile.getLevel() + " ");
+      }
+      System.out.println();
+    }
+
+    boardPanel.animations.setType(Animation.Type.REMOVE);
+    boardPanel.animations.startRemove(tiles);
+  }
+
+  /**
    * Delete all tiles that form a combination on the current board.
    */
-  public void deleteTiles() {
+  public void deleteTilesr() {
     List<Combination> chains = finder.getAllCombinationsOnBoard();
     Logger.log("Found " + chains.size() + " chains");
     for (Combination comb: chains) {
@@ -142,19 +181,19 @@ public class Game {
     for (int row = SIZE - 1; row >= 0; row--) {
       for (int col = 0; col < SIZE; col++) {
         level = board.getTileAt(col, row).getLevel();
-        Tile curr = board.getTileAt(col, row);
+     
         if (level > 0) {
-          board.setTileAt(curr, col, row - 1);
           board.setTileAt(board.getTileAt(col, row).clone(col, row + level), col, row + level);
           board.getTileAt(col, row + level).setLevel(0);
+          board.getTileAt(col, row).delete = true;
           board.getTileAt(col, row).setLevel(0);
         }
       }
     }
     for (int row = SIZE - 1; row >= 0; row--) {
       for (int col = 0; col < SIZE; col++) {
-        if (board.isEmpty(col, row) 
-            || board.getTileAt(col, row).delete) {
+        if (board.getTileAt(col, row).delete) {
+          Logger.log("random " + col + "," + row);
           board.setTileAt(setRandomTile(col,row), col, row);
           board.getTileAt(col, row).delete = false;
         }
@@ -167,7 +206,7 @@ public class Game {
     
     List<Combination> chains = finder.getAllCombinationsOnBoard();
     if (chains.size() != 0) {
-      deleteTiles();
+      deleteChains();
       
     }
   }
@@ -294,7 +333,6 @@ public class Game {
       for (int q = tile.getX() + 1; q < SIZE; q++) {
         if (Tile.colors[board.getTileAt(q, tile.getY()).getIndex()].equals(color)) {
           sum++;
-          System.out.println("1e " + sum);
         } else {
           break;
         }
@@ -302,7 +340,6 @@ public class Game {
       for (int q = tile.getX() - 1; q >= 0; q--) {
         if (Tile.colors[board.getTileAt(q, tile.getY()).getIndex()].equals(color)) {
           sum++;
-          System.out.println("2e " + sum);
         } else {
           break;
         }
@@ -328,7 +365,6 @@ public class Game {
       for (int q = tile.getY() + 1; q < SIZE; q++) {
         if (Tile.colors[board.getTileAt(tile.getX(), q).getIndex()].equals(color)) {
           sum++;
-          System.out.println("3e " + sum);
         } else {
           break;
         }
@@ -336,7 +372,6 @@ public class Game {
       for (int q = tile.getY() - 1; q >= 0; q--) {
         if (Tile.colors[board.getTileAt(tile.getX(), q).getIndex()].equals(color)) {
           sum++;
-          System.out.println("4e " + sum);
         } else {
           break;
         }
@@ -356,7 +391,6 @@ public class Game {
     }
     //swap the tiles back to original position
     swapTiles(t0,t1);
-    System.out.println(res);
     return res;
   }
 
