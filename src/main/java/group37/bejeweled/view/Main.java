@@ -159,24 +159,7 @@ public class Main extends JPanel {
 
     Board board = game.getBoard();
     graphics.drawImage(boardImage.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
-    int ix = LOCATION.x;
-    int iy = LOCATION.y;
-    Tile tile = null;
-
-    for (int i = 0,x = ix, y = iy; i < SIZE; i++) {
-      x = ix;
-      for (int j = 0; j < SIZE; j++, x += SPACE_X) {
-        if (!board.isEmpty(j, i)) {
-          tile = board.getTileAt(j, i);
-          if (tile.remove) {
-            continue;
-          }
-        }
-        graphics.drawImage(tile.getImage(), x + tile.translation.x , 
-            y + tile.translation.y,SPACE_X - tile.size,SPACE_Y - tile.size, null);
-      }
-      y += SPACE_Y;
-    }
+    board.draw(graphics);
 
     if (focus != null) {
       graphics.drawImage(focusImage.getImage(), focus.x, focus.y,SPACE_X,SPACE_Y, null);
