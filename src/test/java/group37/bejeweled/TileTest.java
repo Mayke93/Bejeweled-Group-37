@@ -179,8 +179,11 @@ public class TileTest {
 //  public void hashCodeTest() {
 //    Tile tile = new Tile(1,1);
 //    tile.setIndex(2);
+//    Tile tile2 = new Tile(1,1);
+//    tile2.setIndex(2);
 //    tile.setImage(new ImageIcon(tile.paths[tile.getIndex()]));
-//    assertEquals(tile.hashCode(), -118909489);
+//    tile2.setImage(new ImageIcon(tile2.paths[tile2.getIndex()]));
+//    assertEquals(tile.hashCode(), tile2.hashCode());
 //  }
 //  
   /**
