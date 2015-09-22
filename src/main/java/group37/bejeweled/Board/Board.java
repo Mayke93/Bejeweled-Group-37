@@ -1,11 +1,14 @@
 package main.java.group37.bejeweled.Board;
 
+import main.java.group37.bejeweled.model.Combination;
 //import java.awt.Graphics;
 
 //import main.java.group37.bejeweled.view.Main;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 /**
  * board object for the tiles.
@@ -170,8 +173,21 @@ public class Board {
     return tiles;
   }
   
-  /**
-   * method to determine if to boards are equal.
+   /** Checks whether there is a special gem in a combination.
+   * @param combi the combination to be checked
+   * @return true iff there is a special gem in the combination.
+   */
+  public boolean combinationContainsSpecialGem(Combination combi) {
+    boolean res = false;
+    for (Tile t1 : combi.getTiles()) {
+      if (t1 instanceof FlameTile || t1 instanceof HypercubeTile || t1 instanceof StarTile) {
+        res = true;
+      }
+    }
+    return res;
+  }
+    
+   /** method to determine if to boards are equal.
    * @param obj object to be compared
    * @return true iff this board is the same as object obj
    */
