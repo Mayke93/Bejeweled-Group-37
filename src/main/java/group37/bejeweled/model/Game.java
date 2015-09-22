@@ -102,6 +102,11 @@ public class Game {
    */
   public void deleteChains() {
     List<Combination> chains = finder.getAllCombinationsOnBoard();
+    
+    for (Combination combi : chains) {
+      updateScore(combi.getType());
+    }
+    
     List<Tile> tiles = new ArrayList<Tile>();
     
     for (Combination comb: chains) {
@@ -423,7 +428,7 @@ public class Game {
       return false;
     }
     System.out.println(type);
-    updateScore(type);
+    //updateScore(type);
     updateLevel();
     return true;
   }
