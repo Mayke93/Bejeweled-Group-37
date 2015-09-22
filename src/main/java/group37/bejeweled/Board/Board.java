@@ -1,11 +1,16 @@
 package main.java.group37.bejeweled.Board;
 
+import main.java.group37.bejeweled.model.Combination;
 //import java.awt.Graphics;
 
 //import main.java.group37.bejeweled.view.Main;
 
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+
 
 /**
  * board object for the tiles.
@@ -88,7 +93,7 @@ public class Board {
    * @return true iff there is no tile on coordinates (x,y)
    */
   public boolean isEmpty(int xi, int yi) {
-    if(validBorders(xi, yi)){
+    if (validBorders(xi, yi)) {
       if (getTileAt(xi, yi) == null) {
         return true;
       }
@@ -170,5 +175,50 @@ public class Board {
     return tiles;
   }
   
+   /** Checks whether there is a special gem in a combination.
+   * @param combi the combination to be checked
+   * @return true iff there is a special gem in the combination.
+   */
+  public boolean combinationContainsSpecialGem(Combination combi) {
+    boolean res = false;
+    for (Tile t1 : combi.getTiles()) {
+      if (t1 instanceof FlameTile || t1 instanceof HypercubeTile || t1 instanceof StarTile) {
+        res = true;
+      }
+    }
+    return res;
+  }
+    
+   /** method to determine if to boards are equal.
+   * @param obj object to be compared
+   * @return true iff this board is the same as object obj
+   */
+  public boolean equals(Object obj) {
+    if (obj instanceof Board) {
+      Board bo = (Board)obj;
+      if (this.getHeight() == bo.getHeight() && this.getWidth() == bo.getWidth()) {
+        for (int row = 0; row < board.length; row++) {        //loop through board
+          for (int col = 0; col < board[0].length; col++) {
+            if (!(bo.getTileAt(row, col).equals(this.getTileAt(row, col)))) {
+              return false;
+            }        
+          }    
+        }
+      }
+      return true;
+    }
+    return false; 
+  }
+  
+  /**
+   * Override the hashcode, because we also override the equals method
+   */
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + Arrays.hashCode(board);
+    return result;
+  }
   
 }
