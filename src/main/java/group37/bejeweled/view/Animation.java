@@ -134,7 +134,7 @@ public class Animation implements ActionListener{
       t.translation = new Point(0,0);
       t.size = 0;
     }
-    game.dropTiles();
+    game.logic.dropTiles();
     if (!game.possibleMove()) {
       board.endGame();
     }
@@ -151,7 +151,7 @@ public class Animation implements ActionListener{
     t0.resetD();
     t1.resetD();
     game.swapTiles(t0,t1);
-    game.deleteChains();
+    game.logic.deleteChains();
   }
 
   /**

@@ -30,10 +30,13 @@ public class Game {
   public BoardFactory boardFactory;
   public List<Tile> swapTiles;
   private int score = 0;
+  private Tile[] swappedTiles; //Use this for special gems
   private Main boardPanel;
   private StatusPanel panel;
   private CombinationFinder finder;
-  private static final int SIZE = Main.SIZE;
+  
+  public GameLogic logic;
+  public static final int SIZE = Main.SIZE;
 
   /**
    * Create game object.
@@ -43,14 +46,22 @@ public class Game {
   public Game(Main boardPanel,StatusPanel panel) {
     this.boardPanel = boardPanel;
     this.boardFactory = new BoardFactory(this);
+    this.board = new Board(new Tile[Main.SIZE][Main.SIZE]); 
     this.panel = panel;
     this.finder = new CombinationFinder(board);
+
+    this.logic = new GameLogic(this);
+    this.logic.setFinder(finder);
+    this.logic.setBoard(board);
+    this.logic.setBoardPanel(boardPanel);
+    
     swapTiles = new ArrayList<Tile>();
+    swappedTiles = new Tile[2];
     generateRandomBoard();
   }
 
   /**
-   * Add tile to swapTiles bases on location from the mouseEvent.
+   * Add tile to swapTiles based on location from the mouseEvent.
    * @param loc location of tile
    */
   public void addTile(Point loc) {
@@ -97,80 +108,11 @@ public class Game {
     }
   }
 
-  /**
-   * Delete all combinations found on the board.
-   */
-  public void deleteChains() {
-    List<Combination> chains = finder.getAllCombinationsOnBoard();
-    List<Tile> tiles = new ArrayList<Tile>();
-    
-    for (Combination comb: chains) {
-      tiles.addAll(comb.getTiles());
-    }
-    
-    deleteTiles(tiles);
-  }
-  
-  /**
-   * Delete all the tiles in 'tiles' from the board.
-   * @param tiles list of tiles to delete.
-   */
-  public void deleteTiles(List<Tile> tiles) {
-    for (Tile tile: tiles) {
-      board.getTileAt(tile.getX(), tile.getY()).delete = true;
-      Logger.log("Delete Tile: " + tile);
-      for (int i = tile.getY() - 1; i >= 0; i--) {
-        board.getTileAt(tile.getX(), i).increaseLevel();
-      }
-    }
-
-    boardPanel.animations.setType(Animation.Type.REMOVE);
-    boardPanel.animations.startRemove(tiles);
-  }
-
-
-  /**
-   * If there are empty spaces, this method 'drops' the tile above this space into this space.
-   */
-  public void dropTiles() {    
-    int level = 0;
-    for (int row = SIZE - 1; row >= 0; row--) {
-      for (int col = 0; col < SIZE; col++) {
-        level = board.getTileAt(col, row).getLevel();
-     
-        if (level > 0) {
-          board.setTileAt(board.getTileAt(col, row).clone(col, row + level), col, row + level);
-          board.getTileAt(col, row + level).setLevel(0);
-          board.getTileAt(col, row).delete = true;
-          board.getTileAt(col, row + level).delete = false;
-          board.getTileAt(col, row).setLevel(0);
-        }
-      }
-    }
-    for (int row = SIZE - 1; row >= 0; row--) {
-      for (int col = 0; col < SIZE; col++) {
-        if (board.getTileAt(col, row).delete) {
-          board.setTileAt(setRandomTile(col,row), col, row);
-          board.getTileAt(col, row).delete = false;
-        }
-        if (board.getTileAt(col, row).remove) {
-          board.getTileAt(col, row).remove = false;
-        }
-      }
-    }
-    boardPanel.repaint();
-    
-    List<Combination> chains = finder.getAllCombinationsOnBoard();
-    if (chains.size() != 0) {
-      deleteChains();
-    }
-  }
 
   /**
    * Create a board of random jewels without a sequence of 3 or more tiles with the same color.
    */
   public void generateRandomBoard() {
-    board = new Board(new Tile[Main.SIZE][Main.SIZE]); 
     for (int i = 0; i < Main.SIZE; i++) {
       for (int j = 0; j < Main.SIZE; j++) {
         board.setTileAt(setRandomTile(i,j), i , j);
@@ -378,6 +320,9 @@ public class Game {
     int yc = t0.getY();
     t0.setLoc(t1.getX(),t1.getY());
     t1.setLoc(xc, yc);
+    
+    swappedTiles[0] = t0;
+    swappedTiles[1] = t1;
   }
 
   /**
