@@ -12,8 +12,6 @@ import javax.swing.ImageIcon;
  * @author Group 37
  */
 public class Tile {
-
- // private Random random;
  
   private ImageIcon image;
   private Point loc;
@@ -22,8 +20,6 @@ public class Tile {
   private int level;
   public boolean remove;
   public boolean delete;
-
-
   //index is a number that point to the place in de paths and colors array
   private int index;
   public String[] paths;
@@ -50,6 +46,8 @@ public class Tile {
     paths = p1;
   }
 
+  //logic for tiles used in other classes
+  
   /**
    * update the translation of the position of the tile.
    * @param dx x translation.
@@ -82,15 +80,37 @@ public class Tile {
   }
 
   /**
-   * Return image of the tile.
-   * @return the Image image.
+   * Create clone of this object.
+   * @param coordinateX col index.
+   * @param coordinateY row index.
+   * @return clone of this.
    */
-  public Image getImage() {
-    return image.getImage();
+  public Tile clone(int coordinateX, int coordinateY) {
+    Tile tile = new Tile(coordinateX,coordinateY);
+    tile.index = this.index;
+    tile.image = new ImageIcon(paths[index]);
+    return tile;
   }
   
   /**
-   * Return image of the tile.
+   *  increases set how many levels the tile should drop.
+   */
+  public void increaseLevel() { 
+    this.level++; 
+  }
+  
+  //getters and setters for the attributes of tiles
+  
+  /**
+   * gets the image of the tile.
+   * @return the Image image.
+   */
+  public ImageIcon getImage() {
+    return image;
+  }
+  
+  /**
+   * set the image of the tile.
    * @return the Image image.
    */
   public void setImage(ImageIcon im) {
@@ -114,69 +134,7 @@ public class Tile {
   public void setIndex(int xi) {
     this.index = xi;
   }
-
-  /**
-   * Returns true iff the compared with object is a tile
-   * and has the same index, X-co and Y-co.
-   * @param obj an objet to be compared
-   * @return a boolean, true iff the two objects are the same.
-   */
-  @Override
-  public boolean equals(Object obj) {
-    if (!(obj instanceof Tile)) {
-      return false;
-    }
-    Tile tile = (Tile)obj;
-    return (this.index == tile.index && tile.getX() == this.getX() && tile.getY() == this.getY());
-  }
   
-  /**
-   * Returns true iff the compared with object is a Tile and has the same color.
-   * @param obj an object to be compared
-   * @return a boolean, true iff the two objects have the same color.
-   */
-  public boolean equalsColor(Object obj) {
-    if (!(obj instanceof Tile) || obj == null) {
-      return false;
-    }
-    Tile tile = (Tile)obj;
-    return (this.index == tile.index);
-  }
-
-  /**
-   * overrides standard hashcode, because we have overwritten the equals method.
-   * @return an integer hashcode
-   */
-  @Override
-  public int hashCode() {
-    final int prime = 31;
-    int result = 1;
-    result = prime * result + ((image == null) ? 0 : image.hashCode());
-    result = prime * result + index;
-   // result = prime * result + level;
-    result = prime * result + ((loc == null) ? 0 : loc.hashCode());
-    //result = prime * result + ((random == null) ? 0 : random.hashCode());
-    result = prime * result + (remove ? 1231 : 1237);
-    result = prime * result + size;
-   // result = prime * result + ((state == null) ? 0 : state.hashCode());
-    result = prime * result
-        + ((translation == null) ? 0 : translation.hashCode());
-    return result;
-  }
-
-  /**
-   * Create clone of this object.
-   * @param coordinateX col index.
-   * @param coordinateY row index.
-   * @return clone of this.
-   */
-  public Tile clone(int coordinateX, int coordinateY) {
-    Tile tile = new Tile(coordinateX,coordinateY);
-    tile.index = this.index;
-    tile.image = new ImageIcon(paths[index]);
-    return tile;
-  }
-
   /**
    * get X value from the location of the tile.
    * @return integer value of X coordinate.
@@ -202,13 +160,6 @@ public class Tile {
   }
 
   /**
-   * sets the location of a tile.
-   */
-  public void setLoc(Point loc) {
-    this.loc = loc;
-  }
-
-  /**
    * set the location of a tile, with coordinates.
    */
   public void setLoc(int coordinateX, int coordinateY) {
@@ -229,16 +180,69 @@ public class Tile {
   public void setLevel(int level) {
     this.level = level; 
   }
-
+  
   /**
-   *  increases set how many levels the tile should drop.
+   * get the traslation of a tile.
+   * @return the translation of a tile as a Point
    */
-  public void increaseLevel() { 
-    this.level++; 
+  public Point getTranslation() {
+    return translation;
+  }
+  
+  //equals methods and hascode
+  
+  /**
+   * Returns true iff the compared with object is a Tile and has the same color.
+   * @param obj an object to be compared
+   * @return a boolean, true iff the two objects have the same color.
+   */
+  public boolean equalsColor(Object obj) {
+    if (!(obj instanceof Tile) || obj == null) {
+      return false;
+    }
+    Tile tile = (Tile)obj;
+    return (this.index == tile.index);
   }
 
+  
   /**
-   * get the type of the tile.
+   * Returns true iff the compared with object is a tile
+   * and has the same index, X-co and Y-co.
+   * @param obj an objet to be compared
+   * @return a boolean, true iff the two objects are the same.
+   */
+  @Override
+  public boolean equals(Object obj) {
+    if (!(obj instanceof Tile)) {
+      return false;
+    }
+    Tile tile = (Tile)obj;
+    return (this.index == tile.index && tile.getX() == this.getX() && tile.getY() == this.getY());
+  }
+  
+  /**
+   * overrides standard hashcode, because we have overwritten the equals method.
+   * @return an integer hashcode
+   */
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((image == null) ? 0 : image.hashCode());
+    result = prime * result + index;
+    result = prime * result + level;
+    result = prime * result + ((loc == null) ? 0 : loc.hashCode());
+    result = prime * result + (remove ? 1231 : 1237);
+    result = prime * result + size;
+    result = prime * result
+        + ((translation == null) ? 0 : translation.hashCode());
+    return result;
+  }
+
+  //tostring methods, only for printing!!
+  
+  /**
+   * get the type of the tile, only for printing purposes!
    * @return type as a string
    */
   public String getType() {
@@ -252,37 +256,6 @@ public class Tile {
   public String toString() {
     return "(" + Integer.toString(this.loc.x) + "," 
            + Integer.toString(this.loc.y) + ") " + colors[this.index];
-  }
-
-  /**
-   * gets the color of a tile.
-   * @return the color of a tile in a string
-   */
-  public String getColor() {
-    String color = colors[index];
-    return color;
-  }
-  
-  /**
-   * sets the color of a tile.
-   * This is done by changing the index
-   * @param color color of the tile in string
-   */
-  public void setColor(String color) {
-   // assert Arrays.asList(colors).contains(color);
-    for (int i = 0; i < colors.length; i++) {
-      if (colors[i].equals(color)) {
-        index = i;
-      } 
-    }
-  }
-  
-  /**
-   * get the traslation of a tile.
-   * @return the translation of a tile as a Point
-   */
-  public Point getTranslation() {
-    return translation;
   }
   
   

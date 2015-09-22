@@ -371,9 +371,10 @@ public class Game {
     board.setTileAt(board.getTileAt(t1.getX(), t1.getY()), t0.getX(), t0.getY());
     board.setTileAt(temp, t1.getX(), t1.getY());
 
-    Point tiles = (Point) t0.getLoc().clone();
+    int xc = t0.getX();
+    int yc = t0.getY();
     t0.setLoc(t1.getX(),t1.getY());
-    t1.setLoc(tiles);
+    t1.setLoc(xc, yc);
   }
 
   /**

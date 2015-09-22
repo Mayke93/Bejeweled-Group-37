@@ -138,7 +138,7 @@ public class Board {
             continue;
           }
         }
-        graphics.drawImage(tile.getImage(),
+        graphics.drawImage(tile.getImage().getImage(),
             x + tile.translation.x, 
             y + tile.translation.y,
             Main.SPACE_X - tile.size,

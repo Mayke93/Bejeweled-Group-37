@@ -160,7 +160,7 @@ public class Main extends JPanel {
     Board board = game.getBoard();
     graphics.drawImage(boardImage.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
     board.draw(graphics);
-
+    
     if (focus != null) {
       graphics.drawImage(focusImage.getImage(), focus.x, focus.y,SPACE_X,SPACE_Y, null);
     }

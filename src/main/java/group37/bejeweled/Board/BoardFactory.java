@@ -56,7 +56,7 @@ public class BoardFactory extends JPanel {
         if (tile.remove) {
           continue;
         }
-        graphics.drawImage(tile.getImage(), x + tile.translation.x , 
+        graphics.drawImage(tile.getImage().getImage(), x + tile.translation.x , 
             y + tile.translation.y,SPACE_X - tile.size,SPACE_Y - tile.size, null);
       }
       y += SPACE_Y;
