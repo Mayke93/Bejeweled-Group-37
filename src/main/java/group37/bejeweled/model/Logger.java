@@ -13,6 +13,15 @@ public class Logger {
   public static boolean consoleLog = true;
   private static DateFormat dateFormat = new SimpleDateFormat("dd-MM-yy HH:mm:ss.SSS");
 
+  private static Logger logger = new Logger();
+  
+  private Logger() {
+  }
+  
+  public static Logger getInstance() {
+    return logger;
+  }
+
   /**
    * Initialize logger.
    */

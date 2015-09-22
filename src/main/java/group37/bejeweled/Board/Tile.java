@@ -54,6 +54,7 @@ public class Tile {
    * @param dy y translation.
    */
   public void updateTranslation(int dx, int dy) {
+    //TODO split method
     int sx = this.translation.x + dx;
     if (sx == 64) {
       sx = 65;
