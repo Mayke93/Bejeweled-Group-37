@@ -470,6 +470,14 @@ public class Game {
     return this.board;
   }
 
+  public int getScore(){
+    return this.score;
+  }
+  
+  public void setScore(int score){
+    this.score = score;
+  }
+  
   /**
    * Get the list with the selected tiles to swap.
    * @return the list swapTiles
