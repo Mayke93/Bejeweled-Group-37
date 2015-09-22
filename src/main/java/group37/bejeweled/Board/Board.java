@@ -1,8 +1,9 @@
 package main.java.group37.bejeweled.Board;
 
-import java.awt.Graphics;
+//import java.awt.Graphics;
 
-import main.java.group37.bejeweled.view.Main;
+//import main.java.group37.bejeweled.view.Main;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,8 +88,10 @@ public class Board {
    * @return true iff there is no tile on coordinates (x,y)
    */
   public boolean isEmpty(int xi, int yi) {
-    if (getTileAt(xi, yi) == null || !(validBorders(xi, yi))) {
-      return true;
+    if(validBorders(xi, yi)){
+      if (getTileAt(xi, yi) == null) {
+        return true;
+      }
     }
     return false;
   }
@@ -103,20 +106,69 @@ public class Board {
   }
   
   /**
-   * Method to get all tiles from a certain color.
-   * @param index integer that determines the color
-   * @return a list with tiles that have the same color/index number
+   * Gets the tiles that need to be deleted due to the detonating of the flame gem.
+   * @param t1 the flame gem
+   * @return tiles, the list of tiles to be deleted.
    */
-
-  public List<Tile> sameColors(int index) {
-    List<Tile> res = new ArrayList<Tile>();
-    for (int row = 0; row < board.length; row++) {
+  public List<Tile> getTilesToDeleteFlame(Tile t1) {
+    List<Tile> tiles = new ArrayList<Tile>();
+    
+    tiles.add(t1);                                        //add the flame tile to the list.
+    tiles.add(getTileAt(t1.getX() - 1, t1.getY()));       //links van flame tile
+    tiles.add(getTileAt(t1.getX() + 1, t1.getY()));       //rechts van flame tile
+    tiles.add(getTileAt(t1.getX() - 1, t1.getY() + 1));   //linksonder van flame tile
+    tiles.add(getTileAt(t1.getX() - 1, t1.getY() - 1));   //linksboven van flame tile
+    tiles.add(getTileAt(t1.getX() + 1, t1.getY() + 1));   //rechtsonder van flame tile
+    tiles.add(getTileAt(t1.getX() + 1, t1.getY() - 1));   //rechtsboven van flame tile
+    tiles.add(getTileAt(t1.getX(), t1.getY() - 1));       //boven van flame tile
+    tiles.add(getTileAt(t1.getX(), t1.getY() + 1));       //onder van flame tile
+    
+    return tiles;
+  }
+  
+  /**
+   * Gets the tiles that need to be deleted due to the detonating of the hypercube gem.
+   * @param t1 the hypercube gem
+   * @return tiles, the list of tiles to be deleted.
+   */
+  public List<Tile> getTilesToDeleteHypercube(Tile t1) {
+    List<Tile> tiles = new ArrayList<Tile>();
+    int index = t1.getIndex();
+    
+    for (int row = 0; row < board.length; row++) {        //loop through board
       for (int col = 0; col < board[0].length; col++) {
-        if (index == getTileAt(row, col).getIndex()) {
-          res.add(getTileAt(row, col));
+        if (index == getTileAt(row, col).getIndex()) {    //add tile tile if colors are the same
+          tiles.add(getTileAt(row, col));
         }
       }    
     }
-    return res;
+    return tiles;
   }
+  
+  /**
+   * Gets the tiles that need to be deleted due to the detonating of the hypercube gem.
+   * @param t1 the hypercube gem
+   * @return tiles, the list of tiles to be deleted.
+   */
+  public List<Tile> getTilesToDeleteStar(Tile t1) {
+    List<Tile> tiles = new ArrayList<Tile>();
+    tiles.add(t1);
+    
+    for (int i = 1; t1.getX() - i >= 0; i++) {          //get the tiles left from the star tile
+      tiles.add(getTileAt(t1.getX() - i, t1.getY()));
+    }
+    for (int i = 1; t1.getX() + i < 8; i++) {           //get the tiles right from the star tile
+      tiles.add(getTileAt(t1.getX() + i, t1.getY()));
+    }
+    for (int i = 1; t1.getY() - i >= 0; i++) {          //get the tiles above the star tile
+      tiles.add(getTileAt(t1.getX(), t1.getY() - i));
+    }
+    for (int i = 1; t1.getY() + i < 8; i++) {           //get the tiles below the star tile
+      tiles.add(getTileAt(t1.getX(), t1.getY() + i));
+    }
+    
+    return tiles;
+  }
+  
+  
 }

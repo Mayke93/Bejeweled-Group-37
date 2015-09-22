@@ -54,6 +54,7 @@ public class Tile {
    * @param dy y translation.
    */
   public void updateTranslation(int dx, int dy) {
+    //TODO split method
     int sx = this.translation.x + dx;
     if (sx == 64) {
       sx = 65;
@@ -242,7 +243,7 @@ public class Tile {
   //tostring methods, only for printing!!
   
   /**
-   * get the type of the tile, only for printing purposes!
+   * get the type of the tile, only for printing purposes.
    * @return type as a string
    */
   public String getType() {
