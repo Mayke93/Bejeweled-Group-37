@@ -27,15 +27,15 @@ public class SavedGame {
 
     JSONObject obj = new JSONObject();
     obj.put("score", game.getScore());
+    obj.put("level", game.getLevel());
 
     FileWriter file;
     try {
-      file = new FileWriter("/Users/Kiran/Desktop/test.json");
+      file = new FileWriter("/Users/Kiran/Desktop/values.json");
       file.write(obj.toJSONString());
       file.flush();
       file.close();
     } catch (Exception e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
   }

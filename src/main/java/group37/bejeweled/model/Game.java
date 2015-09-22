@@ -30,6 +30,7 @@ public class Game {
   public BoardFactory boardFactory;
   public List<Tile> swapTiles;
   private int score = 0;
+  private int newlevel = 1;
   private Tile[] swappedTiles; //Use this for special gems
   private Main boardPanel;
   private StatusPanel panel;
@@ -368,7 +369,7 @@ public class Game {
       return false;
     }
     System.out.println(type);
-    //updateScore(type);
+    updateScore(type);
     updateLevel();
     return true;
   }
@@ -423,7 +424,6 @@ public class Game {
    * Increase the levelnumber when a certain score is reached.
    */
   private void updateLevel() {
-    int newlevel = 1;
     if (this.score >= 1000 && this.score < 3500) {
       newlevel = 2;
     }
@@ -477,6 +477,11 @@ public class Game {
   public void setScore(int score){
     this.score = score;
   }
+  
+  public int getLevel(){
+    return this.newlevel;
+  }
+  
   
   /**
    * Get the list with the selected tiles to swap.
