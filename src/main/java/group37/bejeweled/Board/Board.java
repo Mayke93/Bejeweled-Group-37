@@ -88,8 +88,10 @@ public class Board {
    * @return true iff there is no tile on coordinates (x,y)
    */
   public boolean isEmpty(int xi, int yi) {
-    if (getTileAt(xi, yi) == null || !(validBorders(xi, yi))) {
-      return true;
+    if(validBorders(xi, yi)){
+      if (getTileAt(xi, yi) == null) {
+        return true;
+      }
     }
     return false;
   }
