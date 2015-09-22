@@ -157,9 +157,8 @@ public class Main extends JPanel {
   public void paintComponent(Graphics graphics) {
     super.paintComponent(graphics);
 
-    Board board = game.getBoard();
     graphics.drawImage(boardImage.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
-    board.draw(graphics);
+    game.boardFactory.paintComponent(graphics);
     
     if (focus != null) {
       graphics.drawImage(focusImage.getImage(), focus.x, focus.y,SPACE_X,SPACE_Y, null);

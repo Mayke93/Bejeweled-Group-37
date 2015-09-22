@@ -119,33 +119,4 @@ public class Board {
     }
     return res;
   }
-  
-  /**
-   * Draw board on GUI.
-   * @param graphics graphics object to paint.
-   */
-  public void draw(Graphics graphics) {
-    int ix = Main.LOCATION.x;
-    int iy = Main.LOCATION.y;
-    Tile tile = null;
-
-    for (int i = 0,x = ix, y = iy; i < Main.SIZE; i++) {
-      x = ix;
-      for (int j = 0; j < Main.SIZE; j++, x += Main.SPACE_X) {
-        if (!isEmpty(j, i)) {
-          tile = getTileAt(j, i);
-          if (tile.remove) {
-            continue;
-          }
-        }
-        graphics.drawImage(tile.getImage().getImage(),
-            x + tile.translation.x, 
-            y + tile.translation.y,
-            Main.SPACE_X - tile.size,
-            Main.SPACE_Y - tile.size,
-            null);
-      }
-      y += Main.SPACE_Y;
-    }
-  }
 }
