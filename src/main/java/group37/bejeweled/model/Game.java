@@ -369,7 +369,6 @@ public class Game {
       return false;
     }
     System.out.println(type);
-    updateScore(type);
     updateLevel();
     return true;
   }
@@ -396,7 +395,7 @@ public class Game {
    * Update score in the view.
    * @param type change score based on the value of type.
    */
-  private void updateScore(Type type) {
+  public void updateScore(Type type) {
     int score = 0;
     switch (type) {
       case NORMAL:

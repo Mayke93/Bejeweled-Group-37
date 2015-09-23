@@ -3,6 +3,9 @@ package main.java.group37.bejeweled.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import main.java.group37.bejeweled.Board.FlameTile;
+import main.java.group37.bejeweled.Board.HypercubeTile;
+import main.java.group37.bejeweled.Board.StarTile;
 import main.java.group37.bejeweled.Board.Tile;
 
 /**
@@ -72,6 +75,28 @@ public class Combination {
    */
   public List<Tile> getTiles() {
     return tiles;
+  }
+  
+  /** Checks whether there is a special gem in a combination.
+   * @param combi the combination to be checked
+   * @return true iff there is a special gem in the combination.
+   */
+  public boolean combinationContainsSpecialGem() {
+    boolean res = false;
+    for (Tile t1 : this.getTiles()) {
+      if (t1 instanceof FlameTile | t1 instanceof HypercubeTile | t1 instanceof StarTile) {
+        res = true;
+      }
+    }
+    return res;
+  }
+  
+  public boolean isSpecialCombination() {
+    boolean res = false;
+    if (this.getType() == Type.FLAME | this.getType() == Type.STAR | this.getType() == Type.HYPERCUBE) {
+      res = true;
+    }
+    return res;
   }
   
 

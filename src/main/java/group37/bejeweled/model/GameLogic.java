@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import main.java.group37.bejeweled.Board.Board;
+import main.java.group37.bejeweled.Board.FlameTile;
 import main.java.group37.bejeweled.Board.Tile;
+import main.java.group37.bejeweled.model.Combination.Type;
 import main.java.group37.bejeweled.view.Animation;
 import main.java.group37.bejeweled.view.Main;
 
@@ -38,7 +40,12 @@ public class GameLogic {
     List<Tile> tiles = new ArrayList<Tile>();
     
     for (Combination comb: chains) {
+      game.updateScore(comb.getType());
       tiles.addAll(comb.getTiles());
+      if (comb.isSpecialCombination()) {          //als er speciale combi is
+        generateSpecialGem(comb);                 //maak dan een special gem
+        //tiles.remove(comb.getTiles().get(2));
+      }
     }
     
     deleteTiles(tiles);
@@ -60,7 +67,6 @@ public class GameLogic {
     boardPanel.animations.setType(Animation.Type.REMOVE);
     boardPanel.animations.startRemove(tiles);
   }
-
 
   /**
    * If there are empty spaces, this method 'drops' the tile above this space into this space.
@@ -97,6 +103,35 @@ public class GameLogic {
     if (chains.size() != 0) {
       deleteChains();
     }
+  }
+  
+  
+  /**
+   * Finds the type of the special combination and calls the method to generate this special gem.
+   * @param combi the combination to find the type of.
+   */
+  public void generateSpecialGem(Combination combi) {
+    if (combi.getType() == Type.FLAME) {
+      generateSpecialGemFlame(combi);
+    }
+    if (combi.getType() == Type.STAR) {
+      generateSpecialGemStar(combi);
+    }
+    if (combi.getType() == Type.HYPERCUBE) {
+      generateSpecialGemFlameHypbercube(combi);
+    }
+  }
+  
+  private void generateSpecialGemFlameHypbercube(Combination combi) {
+    // TODO Auto-generated method stub
+  }
+
+  private void generateSpecialGemStar(Combination combi) {
+    // TODO Auto-generated method stub
+  }
+
+  public void generateSpecialGemFlame(Combination combi) {
+    // TODO Auto-generated method stub
   }
 
 }
