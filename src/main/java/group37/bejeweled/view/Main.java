@@ -5,6 +5,7 @@ import main.java.group37.bejeweled.Board.BoardFactory;
 import main.java.group37.bejeweled.Board.Tile;
 import main.java.group37.bejeweled.model.Game;
 import main.java.group37.bejeweled.model.Logger;
+import main.java.group37.bejeweled.model.SavedGame;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -14,6 +15,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Point;
+import java.io.IOException;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -43,7 +45,7 @@ public class Main extends JPanel {
 
   private final JFrame frame;
   public Animation animations;
-  
+  private SavedGame saveGame;
   //private BoardFactory boardfactory;
 
   //Panel with score label and level label
@@ -66,6 +68,8 @@ public class Main extends JPanel {
     this.addMouseListener(new MouseListener(this));
     this.addMouseMotionListener(new MouseMotionListener(this));
     //boardfactory = new BoardFactory(game);
+
+    SavedGame.save(game);
   }
 
   /**
@@ -123,6 +127,9 @@ public class Main extends JPanel {
    * 
    */
   public void endGame() {
+    
+    
+    
     Logger.log("End Game");
     this.frame.setLayout(new BorderLayout());
     JPanel pl = new JPanel(new GridLayout(4,1));

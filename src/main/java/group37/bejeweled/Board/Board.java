@@ -5,7 +5,9 @@ import main.java.group37.bejeweled.model.Combination;
 
 //import main.java.group37.bejeweled.view.Main;
 
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -206,6 +208,17 @@ public class Board {
       return true;
     }
     return false; 
+  }
+  
+  /**
+   * Override the hashcode, because we also override the equals method
+   */
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + Arrays.hashCode(board);
+    return result;
   }
   
 }

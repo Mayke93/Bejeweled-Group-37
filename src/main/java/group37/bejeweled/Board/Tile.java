@@ -54,23 +54,21 @@ public class Tile {
    * @param dy y translation.
    */
   public void updateTranslation(int dx, int dy) {
-    //TODO split method
     int sx = this.translation.x + dx;
-    if (sx == 64) {
-      sx = 65;
-    }
-    if (sx == -64) {
-      sx = -65;
-    }
-
+    sx = saturateCoordinate(sx);
     int sy = this.translation.y + dy;
-    if (sy == 64) {
-      sy = 65;
-    }
-    if (sy == -64) {
-      sy = -65;
-    }
+    sy = saturateCoordinate(sy);
     this.translation.setLocation(sx,sy);
+  }
+  
+  private int saturateCoordinate(int coord) {
+    if (coord == 64) {
+      return 65;
+    }
+    if (coord == -64) {
+      return -65;
+    }
+    return coord;
   }
   
   /**

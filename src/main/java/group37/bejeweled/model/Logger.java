@@ -42,14 +42,14 @@ public class Logger {
    * @param error String with error message.
    */
   public static synchronized void error(String error) {
-    log("ERROR: " + error);
+    logger.writeToLog("ERROR: " + error);
   }
-
+  
   /**
    * Write content to log file.
    * @param message to log.
    */
-  public static synchronized void log(String message) {
+  private void writeToLog(String message) {
     if (message != null && fileWriter != null && writer != null) {
       Date date = new Date();
       message = dateFormat.format(date) + " - " + message;
@@ -59,6 +59,14 @@ public class Logger {
       writer.println(message);
       writer.flush();
     }
+  }
+
+  /**
+   * Write content to log file.
+   * @param message to log.
+   */
+  public static synchronized void log(String message) {
+    logger.writeToLog(message);
   }
   
   /**

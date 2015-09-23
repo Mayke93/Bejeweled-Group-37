@@ -369,6 +369,10 @@ public class Game {
       return false;
     }
     System.out.println(type);
+<<<<<<< HEAD
+=======
+    updateScore(type);
+>>>>>>> master
     updateLevel();
     return true;
   }
