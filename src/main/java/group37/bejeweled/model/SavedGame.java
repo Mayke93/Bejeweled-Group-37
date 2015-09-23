@@ -31,7 +31,7 @@ public class SavedGame {
 
     FileWriter file;
     try {
-      file = new FileWriter("/Users/Kiran/Desktop/values.json");
+      file = new FileWriter("values.json");
       file.write(obj.toJSONString());
       file.flush();
       file.close();
