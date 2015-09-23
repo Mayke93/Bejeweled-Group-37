@@ -38,6 +38,7 @@ public class GameLogic {
     List<Tile> tiles = new ArrayList<Tile>();
     
     for (Combination comb: chains) {
+      game.updateScore(comb.getType());
       tiles.addAll(comb.getTiles());
     }
     
