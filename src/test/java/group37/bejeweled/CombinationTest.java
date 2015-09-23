@@ -5,11 +5,13 @@ import org.junit.Test;
 
 import main.java.group37.bejeweled.model.Combination;
 import main.java.group37.bejeweled.model.Combination.Type;
+import main.java.group37.bejeweled.Board.FlameTile;
 import main.java.group37.bejeweled.Board.Tile;
 
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Simple basic tests for class Combination. 
@@ -67,6 +69,18 @@ public class CombinationTest {
     x1.setTiles(tiles);
     assertEquals(tiles, x1.getTiles());
     assertTrue(x1.getTiles().contains(a1));
+  }
+  
+  /**
+   * Test combinationContainsSpecialGem method for a true combination.
+   */
+  @Test
+  public void combinationContainsSpecialGemTrueTest() {
+    Combination x1 = combinationMaker();
+    List<Tile> tiles = x1.getTiles();
+    Tile a1 = new FlameTile(1, 4);
+    tiles.add(a1);
+    assertTrue(x1.combinationContainsSpecialGem());  
   }
 
 }

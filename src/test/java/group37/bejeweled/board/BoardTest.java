@@ -1,4 +1,4 @@
-package test.java.group37.bejeweled;
+package test.java.group37.bejeweled.board;
 
 import static org.junit.Assert.*;
 
@@ -112,10 +112,12 @@ public class BoardTest {
     assertNull(board.getTileAt(3, 2));
   }
   
+  
   /**
    * Test getTilesToDeleteFlame method.
    */
   @Test
+  @SuppressWarnings("OneStatementPerLine")
   public void getTilesToDeleteFlameTest() {
     Tile[][] tiles = new Tile[3][3];
     Board board = new Board(tiles);
@@ -123,7 +125,7 @@ public class BoardTest {
     board.setTileAt(tile, 0, 0); board.setTileAt(tile, 0, 1); board.setTileAt(tile, 0, 2);
     board.setTileAt(tile, 1, 0); board.setTileAt(tile, 1, 1); board.setTileAt(tile, 1, 2);
     board.setTileAt(tile, 2, 0); board.setTileAt(tile, 2, 1); board.setTileAt(tile, 2, 2);
-    assertEquals(board.getTileAt(2, 2), tile); 
+    assertEquals(board.getTileAt(1, 1), tile); 
    
     List<Tile> newList = new ArrayList<Tile>();
     newList.add(tile); newList.add(tile); newList.add(tile);
@@ -131,6 +133,27 @@ public class BoardTest {
     List<Tile> list = board.getTilesToDeleteFlame(tile);
     assertFalse(list.equals(newList));
     newList.add(tile); newList.add(tile); newList.add(tile);
+    assertTrue(list.equals(newList));
+  }
+  /**
+   * Test getTilesToDeleteFlame method, with the flame tile in a corner.
+   */
+  @Test
+  public void getTilesToDeleteInCornerFlameTest() {
+    Tile[][] tiles = new Tile[3][3];
+    Board board = new Board(tiles);
+    Tile tile = new Tile(0,0);
+    board.setTileAt(tile, 0, 0); board.setTileAt(tile, 0, 1);// board.setTileAt(tile, 0, 2);
+    board.setTileAt(tile, 1, 0); board.setTileAt(tile, 1, 1);// board.setTileAt(tile, 1, 2);
+    //board.setTileAt(tile, 2, 0); board.setTileAt(tile, 2, 1); board.setTileAt(tile, 2, 2);
+    assertEquals(board.getTileAt(0, 0), tile); 
+   
+    List<Tile> newList = new ArrayList<Tile>();
+    //newList.add(tile); newList.add(tile); newList.add(tile);
+    newList.add(tile); newList.add(tile); //newList.add(tile);
+    List<Tile> list = board.getTilesToDeleteFlame(tile);
+    assertFalse(list.equals(newList));
+    newList.add(tile); newList.add(tile);
     assertTrue(list.equals(newList));
   }
   
@@ -151,7 +174,7 @@ public class BoardTest {
     List<Tile> newList = new ArrayList<Tile>();
     newList.add(tile); newList.add(tile); newList.add(tile);
     newList.add(tile); newList.add(tile); newList.add(tile);
-    List<Tile> list = board.getTilesToDeleteFlame(tile);
+    List<Tile> list = board.getTilesToDeleteHypercube(tile);
     assertFalse(list.equals(newList));
     newList.add(tile); newList.add(tile); newList.add(tile);
     assertTrue(list.equals(newList));
@@ -160,26 +183,26 @@ public class BoardTest {
   /**
    * Test getTilesToDeleteStar method.
    */
-//  @Test
-//  public void getTilesToDeleteStarTest() {
-//    Tile[][] tiles = new Tile[2][2];
-//    Board board = new Board(tiles);
-//    Tile tile = new Tile(1,1);
-//    Tile tile2 = new Tile(0,1);
-//    Tile tile3 = new Tile(0,0);
-//    Tile tile4 = new Tile(1,0);
-//    board.setTileAt(tile3, 0, 0); board.setTileAt(tile2, 0, 1);
-//    board.setTileAt(tile4, 1, 0); board.setTileAt(tile, 1, 1); 
-//    assertEquals(board.getTileAt(1, 1), tile); 
-//   
-//    List<Tile> newList = new ArrayList<Tile>();
-//    List<Tile> list = board.getTilesToDeleteFlame(tile);
-//    assertFalse(list.equals(newList));
-//    newList.add(tile); 
-//    newList.add(tile2); 
-//    newList.add(tile4);
-//    assertTrue(list.equals(newList));
-//  }
-//  
+  @Test
+  public void getTilesToDeleteStarTest() {
+    Tile[][] tiles = new Tile[2][2];
+    Board board = new Board(tiles);
+    Tile tile = new Tile(1,1);
+    Tile tile2 = new Tile(0,1);
+    Tile tile3 = new Tile(0,0);
+    Tile tile4 = new Tile(1,0);
+    board.setTileAt(tile3, 0, 0); board.setTileAt(tile2, 0, 1);
+    board.setTileAt(tile4, 1, 0); board.setTileAt(tile, 1, 1); 
+    assertEquals(board.getTileAt(1, 1), tile); 
+   
+    List<Tile> newList = new ArrayList<Tile>();
+    List<Tile> list = board.getTilesToDeleteStar(tile);
+    assertFalse(list.equals(newList));
+    newList.add(tile); 
+    newList.add(tile2); 
+    newList.add(tile4);
+    assertTrue(list.equals(newList));
+  }
+  
   
 }
