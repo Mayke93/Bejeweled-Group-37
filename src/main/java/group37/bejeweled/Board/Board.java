@@ -207,15 +207,25 @@ public class Board {
     if (obj instanceof Board) {
       Board bo = (Board)obj;
       if (this.getHeight() == bo.getHeight() && this.getWidth() == bo.getWidth()) {
+        
         for (int row = 0; row < board.length; row++) {        //loop through board
           for (int col = 0; col < board[0].length; col++) {
-            if (!(bo.getTileAt(row, col).equals(this.getTileAt(row, col)))) {
+            if (bo.getTileAt(row, col) == null && !(this.getTileAt(row, col) == null)) {
               return false;
-            }        
+            }
+            if (this.getTileAt(row, col) == null && !(bo.getTileAt(row, col) == null)) {
+              return false;
+            }
+            if (!(this.getTileAt(row, col) == null && bo.getTileAt(row, col) == null)) {
+              if (!(bo.getTileAt(row, col).equals(this.getTileAt(row, col)))) {
+                return false;
+              }    
+            }
           }    
         }
+        return true;
       }
-      return true;
+
     }
     return false; 
   }

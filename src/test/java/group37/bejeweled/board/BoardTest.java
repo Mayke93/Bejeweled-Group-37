@@ -117,7 +117,7 @@ public class BoardTest {
    * Test getTilesToDeleteFlame method.
    */
   @Test
-  @SuppressWarnings("OneStatementPerLine")
+ // @SuppressWarnings("OneStatementPerLine")
   public void getTilesToDeleteFlameTest() {
     Tile[][] tiles = new Tile[3][3];
     Board board = new Board(tiles);
@@ -143,14 +143,12 @@ public class BoardTest {
     Tile[][] tiles = new Tile[3][3];
     Board board = new Board(tiles);
     Tile tile = new Tile(0,0);
-    board.setTileAt(tile, 0, 0); board.setTileAt(tile, 0, 1);// board.setTileAt(tile, 0, 2);
-    board.setTileAt(tile, 1, 0); board.setTileAt(tile, 1, 1);// board.setTileAt(tile, 1, 2);
-    //board.setTileAt(tile, 2, 0); board.setTileAt(tile, 2, 1); board.setTileAt(tile, 2, 2);
-    assertEquals(board.getTileAt(0, 0), tile); 
+    board.setTileAt(tile, 0, 0); board.setTileAt(tile, 0, 1);
+    board.setTileAt(tile, 1, 0); board.setTileAt(tile, 1, 1);
    
     List<Tile> newList = new ArrayList<Tile>();
-    //newList.add(tile); newList.add(tile); newList.add(tile);
-    newList.add(tile); newList.add(tile); //newList.add(tile);
+    newList.add(tile); 
+    newList.add(tile); 
     List<Tile> list = board.getTilesToDeleteFlame(tile);
     assertFalse(list.equals(newList));
     newList.add(tile); newList.add(tile);
@@ -191,8 +189,10 @@ public class BoardTest {
     Tile tile2 = new Tile(0,1);
     Tile tile3 = new Tile(0,0);
     Tile tile4 = new Tile(1,0);
-    board.setTileAt(tile3, 0, 0); board.setTileAt(tile2, 0, 1);
-    board.setTileAt(tile4, 1, 0); board.setTileAt(tile, 1, 1); 
+    board.setTileAt(tile3, 0, 0); 
+    board.setTileAt(tile2, 0, 1);
+    board.setTileAt(tile4, 1, 0); 
+    board.setTileAt(tile, 1, 1); 
     assertEquals(board.getTileAt(1, 1), tile); 
    
     List<Tile> newList = new ArrayList<Tile>();
@@ -204,5 +204,86 @@ public class BoardTest {
     assertTrue(list.equals(newList));
   }
   
+  /**
+   * test for the equals method, with a board that only contains null tiles.
+   * one for true and false.
+   */
+  @Test
+  public void equalsOnlyNullTilesTest() {
+    Tile[][] t0 = new Tile[2][2];
+    Board b0 = new Board(t0);
+    Tile[][] t1 = new Tile[2][2];
+    Board b1 = new Board(t1);
+    assertTrue(b0.equals(b1));
+    Tile[][] t2 = new Tile[2][1];
+    Board b2 = new Board(t2);
+    assertFalse(b1.equals(b2));
+  }
+  
+  
+  /**
+   * test for the equals method, with a board that contains tiles that are not null.
+   * one for true and false. The tiles are the same.
+   */
+  @Test
+  public void equalsWithTilesTest() {
+    Tile[][] t0 = new Tile[2][2];
+    Tile x0 = new Tile(1,1);
+    Board b0 = new Board(t0);
+    b0.setTileAt(x0, 1, 1);
+    
+    Tile[][] t1 = new Tile[2][2];
+    Tile x1 = new Tile(1,1);
+    Board b1 = new Board(t1);
+    b1.setTileAt(x1, 1, 1);
+    assertTrue(b0.equals(b1));
+    
+    Tile[][] t2 = new Tile[2][2];
+    Board b2 = new Board(t2);
+    b2.setTileAt(x0, 0, 0);
+    assertFalse(b1.equals(b2));
+    assertFalse(b2.equals(b1));
+  }
+  
+  /**
+   * test for the equals method, with a board that contains tiles that are not null.
+   * one for true and false. The tiles are not equal
+   */
+  @Test
+  public void equalsWithDifferentTilesTest() {
+    Tile[][] t0 = new Tile[2][2];
+    Tile x0 = new Tile(1,1);
+    Board b0 = new Board(t0);
+    b0.setTileAt(x0, 1, 1);
+    
+    Tile[][] t1 = new Tile[2][2];
+    Tile x1 = new Tile(2,1);
+    Board b1 = new Board(t1);
+    b1.setTileAt(x1, 1, 1);
+    assertFalse(b0.equals(b1));
+    
+  }
+  
+  /**
+   * Test for equals method, with an object that is not a board.
+   */
+  @Test
+  public void equalsWithInvalidObjectTest() {
+    Tile[][] t0 = new Tile[2][2];
+    Board b0 = new Board(t0);
+    Object obj = new Object();
+    assertFalse(b0.equals(obj));
+  }
+  
+  /**
+   * test for the hashcode of board.
+   */
+  public void hashCodeTest() {
+    Tile[][] t0 = new Tile[2][2];
+    Board b0 = new Board(t0);
+    Tile[][] t1 = new Tile[2][2];
+    Board b1 = new Board(t1);
+    assertTrue(b0.hashCode() == b1.hashCode());
+  }
   
 }

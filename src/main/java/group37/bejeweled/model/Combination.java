@@ -13,7 +13,7 @@ import main.java.group37.bejeweled.Board.Tile;
  * @author group37
  */
 public class Combination {
-  //public Tile.State type;
+  
   public Type type;
   public List<Tile> tiles;
   
