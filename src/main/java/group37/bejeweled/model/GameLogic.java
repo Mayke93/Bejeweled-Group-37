@@ -5,6 +5,8 @@ import java.util.List;
 
 import main.java.group37.bejeweled.Board.Board;
 import main.java.group37.bejeweled.Board.FlameTile;
+import main.java.group37.bejeweled.Board.HypercubeTile;
+import main.java.group37.bejeweled.Board.StarTile;
 import main.java.group37.bejeweled.Board.Tile;
 import main.java.group37.bejeweled.model.Combination.Type;
 import main.java.group37.bejeweled.view.Animation;
@@ -42,6 +44,16 @@ public class GameLogic {
     for (Combination comb: chains) {
       game.updateScore(comb.getType());
       tiles.addAll(comb.getTiles());
+      
+      if (comb.containsSpecialGem() != null) {
+        List<Tile> gemtiles = getTilesToDeleteSpecialGem(comb);
+        for (Tile t1 : gemtiles) {
+          if (!tiles.contains(t1)) {
+            tiles.add(t1);
+          }
+        }
+      }
+      
       if (comb.isSpecialCombination()) {          //als er speciale combi is
         generateSpecialGem(comb);                 //maak dan een special gem
         //tiles.remove(comb.getTiles().get(2));
@@ -133,5 +145,22 @@ public class GameLogic {
   public void generateSpecialGemFlame(Combination combi) {
     // TODO Auto-generated method stub
   }
+  
+  public List<Tile> getTilesToDeleteSpecialGem(Combination combi) {
+    List<Tile> tiles = new ArrayList<Tile>();
+    
+    if (combi.containsSpecialGem() instanceof FlameTile) {
+      tiles = board.getTilesToDeleteFlame(combi.containsSpecialGem());
+    }
+    if (combi.containsSpecialGem() instanceof StarTile) {
+      tiles = board.getTilesToDeleteStar(combi.containsSpecialGem());
+    }
+    if (combi.containsSpecialGem() instanceof HypercubeTile) {
+      tiles = board.getTilesToDeleteHypercube(combi.containsSpecialGem());
+    }
+    
+    return tiles;
+  }
+  
 
 }
