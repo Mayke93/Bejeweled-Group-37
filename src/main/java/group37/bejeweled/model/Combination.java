@@ -78,22 +78,26 @@ public class Combination {
   }
   
   /** Checks whether there is a special gem in a combination.
-   * @param combi the combination to be checked
    * @return true iff there is a special gem in the combination.
    */
-  public boolean combinationContainsSpecialGem() {
-    boolean res = false;
+  public Tile containsSpecialGem() {
     for (Tile t1 : this.getTiles()) {
       if (t1 instanceof FlameTile | t1 instanceof HypercubeTile | t1 instanceof StarTile) {
-        res = true;
+        return t1;
       }
     }
-    return res;
+    return null;
   }
   
+  /**
+   * Checks whether the combination should create a special gem.
+   * @return true iff a special gem should be created.
+   */
   public boolean isSpecialCombination() {
     boolean res = false;
-    if (this.getType() == Type.FLAME | this.getType() == Type.STAR | this.getType() == Type.HYPERCUBE) {
+    if (this.getType() == Type.FLAME 
+        | this.getType() == Type.STAR 
+        | this.getType() == Type.HYPERCUBE) {
       res = true;
     }
     return res;
