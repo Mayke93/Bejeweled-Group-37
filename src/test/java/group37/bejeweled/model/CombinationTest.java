@@ -1,15 +1,17 @@
-package test.java.group37.bejeweled;
+package test.java.group37.bejeweled.model;
 
 
 import org.junit.Test;
 
 import main.java.group37.bejeweled.model.Combination;
 import main.java.group37.bejeweled.model.Combination.Type;
+import main.java.group37.bejeweled.Board.FlameTile;
 import main.java.group37.bejeweled.Board.Tile;
 
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Simple basic tests for class Combination. 
@@ -67,6 +69,52 @@ public class CombinationTest {
     x1.setTiles(tiles);
     assertEquals(tiles, x1.getTiles());
     assertTrue(x1.getTiles().contains(a1));
+  }
+  
+  /**
+   * Test combinationContainsSpecialGem method for a true.
+   * combination has a special gem.
+   */
+  @Test
+  public void containsSpecialGemTrueTest() {
+    Combination x1 = combinationMaker();
+    List<Tile> tiles = x1.getTiles();
+    Tile a1 = new FlameTile(1, 4);
+    tiles.add(a1);
+    assertEquals(x1.containsSpecialGem(), a1);  
+  }
+  
+  /**
+   * Test combinationContainsSpecialGem method for a false.
+   */
+  @Test
+  public void containsSpecialGemFalseTest() {
+    Combination x1 = combinationMaker();
+    assertEquals(x1.containsSpecialGem(), null);  
+  }
+  
+  /**
+   * Test isSpecialCombination method for a true output.
+   */
+  @Test
+  public void isSpecialCombinationTrueTest() {
+    Combination x1 = combinationMaker();
+    x1.setType(Type.HYPERCUBE);
+    assertTrue(x1.isSpecialCombination());
+    x1.setType(Type.FLAME);
+    assertTrue(x1.isSpecialCombination());
+    x1.setType(Type.STAR);
+    assertTrue(x1.isSpecialCombination());
+  }
+  
+  /**
+   * Test isSpecialCombination method for a flase output.
+   */
+  @Test
+  public void isSpecialCombinationFalseTest() {
+    Combination x1 = combinationMaker();
+    x1.setType(Type.NORMAL);
+    assertFalse(x1.isSpecialCombination());
   }
 
 }

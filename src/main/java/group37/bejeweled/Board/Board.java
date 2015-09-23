@@ -119,15 +119,31 @@ public class Board {
     List<Tile> tiles = new ArrayList<Tile>();
     
     tiles.add(t1);                                        //add the flame tile to the list.
-    tiles.add(getTileAt(t1.getX() - 1, t1.getY()));       //links van flame tile
-    tiles.add(getTileAt(t1.getX() + 1, t1.getY()));       //rechts van flame tile
-    tiles.add(getTileAt(t1.getX() - 1, t1.getY() + 1));   //linksonder van flame tile
-    tiles.add(getTileAt(t1.getX() - 1, t1.getY() - 1));   //linksboven van flame tile
-    tiles.add(getTileAt(t1.getX() + 1, t1.getY() + 1));   //rechtsonder van flame tile
-    tiles.add(getTileAt(t1.getX() + 1, t1.getY() - 1));   //rechtsboven van flame tile
-    tiles.add(getTileAt(t1.getX(), t1.getY() - 1));       //boven van flame tile
-    tiles.add(getTileAt(t1.getX(), t1.getY() + 1));       //onder van flame tile
-    
+    if (validBorders(t1.getX() - 1, t1.getY())) {
+      tiles.add(getTileAt(t1.getX() - 1, t1.getY()));       //links van flame tile
+    }
+    if (validBorders(t1.getX() + 1, t1.getY())) {
+      tiles.add(getTileAt(t1.getX() + 1, t1.getY()));       //rechts van flame tile
+    }
+    if(validBorders(t1.getX() - 1, t1.getY() + 1)){
+      tiles.add(getTileAt(t1.getX() - 1, t1.getY() + 1));   //linksonder van flame tile
+    }
+    if (validBorders(t1.getX() - 1, t1.getY() - 1)) {
+      tiles.add(getTileAt(t1.getX() - 1, t1.getY() - 1));   //linksboven van flame tile
+    }
+    if (validBorders(t1.getX() + 1, t1.getY() + 1)) {
+      tiles.add(getTileAt(t1.getX() + 1, t1.getY() + 1));   //rechtsonder van flame tile
+    }
+    if (validBorders(t1.getX() + 1, t1.getY() - 1)) {
+      tiles.add(getTileAt(t1.getX() + 1, t1.getY() - 1));   //rechtsboven van flame tile
+    }
+    if (validBorders(t1.getX(), t1.getY() - 1)) {
+      tiles.add(getTileAt(t1.getX(), t1.getY() - 1));       //boven van flame tile
+    }
+    if (validBorders(t1.getX(), t1.getY() + 1)) {
+      tiles.add(getTileAt(t1.getX(), t1.getY() + 1));   //onder van flame tile
+    }
+
     return tiles;
   }
   
@@ -160,16 +176,24 @@ public class Board {
     tiles.add(t1);
     
     for (int i = 1; t1.getX() - i >= 0; i++) {          //get the tiles left from the star tile
-      tiles.add(getTileAt(t1.getX() - i, t1.getY()));
+      if (validBorders(t1.getX() - i, t1.getY())) {
+        tiles.add(getTileAt(t1.getX() - i, t1.getY()));
+      }
     }
     for (int i = 1; t1.getX() + i < 8; i++) {           //get the tiles right from the star tile
-      tiles.add(getTileAt(t1.getX() + i, t1.getY()));
+      if (validBorders(t1.getX() + i, t1.getY())) {
+        tiles.add(getTileAt(t1.getX() + i, t1.getY()));
+      }
     }
     for (int i = 1; t1.getY() - i >= 0; i++) {          //get the tiles above the star tile
-      tiles.add(getTileAt(t1.getX(), t1.getY() - i));
+      if (validBorders(t1.getX(), t1.getY() - 1)) {
+        tiles.add(getTileAt(t1.getX(), t1.getY() - i));
+      }
     }
     for (int i = 1; t1.getY() + i < 8; i++) {           //get the tiles below the star tile
-      tiles.add(getTileAt(t1.getX(), t1.getY() + i));
+      if (validBorders(t1.getX(), t1.getY() + i)) {
+        tiles.add(getTileAt(t1.getX(), t1.getY() + i));
+      }
     }
     
     return tiles;
@@ -183,15 +207,25 @@ public class Board {
     if (obj instanceof Board) {
       Board bo = (Board)obj;
       if (this.getHeight() == bo.getHeight() && this.getWidth() == bo.getWidth()) {
+        
         for (int row = 0; row < board.length; row++) {        //loop through board
           for (int col = 0; col < board[0].length; col++) {
-            if (!(bo.getTileAt(row, col).equals(this.getTileAt(row, col)))) {
+            if (bo.getTileAt(row, col) == null && !(this.getTileAt(row, col) == null)) {
               return false;
-            }        
+            }
+            if (this.getTileAt(row, col) == null && !(bo.getTileAt(row, col) == null)) {
+              return false;
+            }
+            if (!(this.getTileAt(row, col) == null && bo.getTileAt(row, col) == null)) {
+              if (!(bo.getTileAt(row, col).equals(this.getTileAt(row, col)))) {
+                return false;
+              }    
+            }
           }    
         }
+        return true;
       }
-      return true;
+
     }
     return false; 
   }

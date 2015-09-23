@@ -34,6 +34,13 @@ public class CombinationFinder {
   }
   
   /**
+   * This method provides the possibility to get the board.
+   */
+  public Board getBoard() {
+    return this.board;
+  }
+  
+  /**
    * Returns a list, which contains lists with 2 objects: (State,List of tiles),
    * eg. (Tile.State.NORMAL,List(t1,t2,t3)).
    * This is a list of all the valid combinations on the board at this time.

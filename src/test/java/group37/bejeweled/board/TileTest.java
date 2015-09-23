@@ -1,4 +1,4 @@
-package test.java.group37.bejeweled;
+package test.java.group37.bejeweled.board;
 
 import static org.junit.Assert.*;
 
@@ -172,20 +172,18 @@ public class TileTest {
   }
   
 
-//  /**
-//   * Simple input/output test for hash method.
-//   */
-//  @Test
-//  public void hashCodeTest() {
-//    Tile tile = new Tile(1,1);
-//    tile.setIndex(2);
-//    Tile tile2 = new Tile(1,1);
-//    tile2.setIndex(2);
-//    tile.setImage(new ImageIcon(tile.paths[tile.getIndex()]));
-//    tile2.setImage(new ImageIcon(tile2.paths[tile2.getIndex()]));
-//    assertEquals(tile.hashCode(), tile2.hashCode());
-//  }
-//  
+  /**
+   * Simple input/output test for hash method.
+   */
+  @Test
+  public void hashCodeTest() {
+    Tile tile = new Tile(1,1);
+    tile.setIndex(2);
+    Tile tile2 = new Tile(1,1);
+    tile2.setIndex(2);
+    assertTrue(tile.hashCode() == tile2.hashCode());
+  }
+  
   /**
    * Simple input/output test for getType method.
    */
