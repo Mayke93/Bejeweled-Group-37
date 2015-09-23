@@ -278,11 +278,11 @@ public class BoardTest {
   /**
    * test for the hashcode of board.
    */
+  @Test
   public void hashCodeTest() {
-    Tile[][] t0 = new Tile[2][2];
+    Tile[][] t0 = new Tile[1][1];
     Board b0 = new Board(t0);
-    Tile[][] t1 = new Tile[2][2];
-    Board b1 = new Board(t1);
+    Board b1 = new Board(t0);
     assertTrue(b0.hashCode() == b1.hashCode());
   }
   
