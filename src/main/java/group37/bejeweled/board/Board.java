@@ -1,11 +1,10 @@
 package main.java.group37.bejeweled.board;
 
 import main.java.group37.bejeweled.model.Combination;
-//import java.awt.Graphics;
+import main.java.group37.bejeweled.model.Game;
+import main.java.group37.bejeweled.view.Main;
 
-//import main.java.group37.bejeweled.view.Main;
-
-
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +18,7 @@ import java.util.List;
  *
  */
 public class Board {
-  
+  private static final int SIZE = Main.SIZE;
   /**
    * The grid of squares with board[x][y] being the square at column x, row y.
    */
@@ -112,38 +111,22 @@ public class Board {
   
   /**
    * Gets the tiles that need to be deleted due to the detonating of the flame gem.
-   * @param t1 the flame gem
+   * @param tile the flame gem
    * @return tiles, the list of tiles to be deleted.
    */
-  public List<Tile> getTilesToDeleteFlame(Tile t1) {
+  public List<Tile> getTilesToDeleteFlame(Tile tile) {
     List<Tile> tiles = new ArrayList<Tile>();
-    
-    tiles.add(t1);                                        //add the flame tile to the list.
-    if (validBorders(t1.getX() - 1, t1.getY())) {
-      tiles.add(getTileAt(t1.getX() - 1, t1.getY()));       //links van flame tile
+    final Point[] translations = {new Point(1,0), new Point(1,1), new Point(0,1),
+                                  new Point(-1,1), new Point(-1,0), new Point(-1,-1),
+                                  new Point(0,-1), new Point(1,-1)};
+    int tx = tile.getX();
+    int ty = tile.getY();
+    tiles.add(tile);
+    for (Point translation: translations) {
+      if (validBorders(tx + translation.x, ty + translation.y)) {
+        tiles.add(getTileAt(tx + translation.x, ty + translation.y));
+      }
     }
-    if (validBorders(t1.getX() + 1, t1.getY())) {
-      tiles.add(getTileAt(t1.getX() + 1, t1.getY()));       //rechts van flame tile
-    }
-    if(validBorders(t1.getX() - 1, t1.getY() + 1)){
-      tiles.add(getTileAt(t1.getX() - 1, t1.getY() + 1));   //linksonder van flame tile
-    }
-    if (validBorders(t1.getX() - 1, t1.getY() - 1)) {
-      tiles.add(getTileAt(t1.getX() - 1, t1.getY() - 1));   //linksboven van flame tile
-    }
-    if (validBorders(t1.getX() + 1, t1.getY() + 1)) {
-      tiles.add(getTileAt(t1.getX() + 1, t1.getY() + 1));   //rechtsonder van flame tile
-    }
-    if (validBorders(t1.getX() + 1, t1.getY() - 1)) {
-      tiles.add(getTileAt(t1.getX() + 1, t1.getY() - 1));   //rechtsboven van flame tile
-    }
-    if (validBorders(t1.getX(), t1.getY() - 1)) {
-      tiles.add(getTileAt(t1.getX(), t1.getY() - 1));       //boven van flame tile
-    }
-    if (validBorders(t1.getX(), t1.getY() + 1)) {
-      tiles.add(getTileAt(t1.getX(), t1.getY() + 1));   //onder van flame tile
-    }
-
     return tiles;
   }
   
@@ -168,34 +151,25 @@ public class Board {
   
   /**
    * Gets the tiles that need to be deleted due to the detonating of the hypercube gem.
-   * @param t1 the hypercube gem
+   * @param tile the hypercube gem
    * @return tiles, the list of tiles to be deleted.
    */
-  public List<Tile> getTilesToDeleteStar(Tile t1) {
+  public List<Tile> getTilesToDeleteStar(Tile tile) {
     List<Tile> tiles = new ArrayList<Tile>();
-    tiles.add(t1);
+    tiles.add(tile);
     
-    for (int i = 1; t1.getX() - i >= 0; i++) {          //get the tiles left from the star tile
-      if (validBorders(t1.getX() - i, t1.getY())) {
-        tiles.add(getTileAt(t1.getX() - i, t1.getY()));
+    int tx = tile.getX();
+    int ty = tile.getY();
+    for (int col = 0; col < SIZE; col++) {
+      if (col != tx) {
+        tiles.add(getTileAt(col,ty));
       }
     }
-    for (int i = 1; t1.getX() + i < 8; i++) {           //get the tiles right from the star tile
-      if (validBorders(t1.getX() + i, t1.getY())) {
-        tiles.add(getTileAt(t1.getX() + i, t1.getY()));
+    for (int row = 0; row < SIZE; row++) {
+      if (row != ty) {
+        tiles.add(getTileAt(tx,row));
       }
     }
-    for (int i = 1; t1.getY() - i >= 0; i++) {          //get the tiles above the star tile
-      if (validBorders(t1.getX(), t1.getY() - 1)) {
-        tiles.add(getTileAt(t1.getX(), t1.getY() - i));
-      }
-    }
-    for (int i = 1; t1.getY() + i < 8; i++) {           //get the tiles below the star tile
-      if (validBorders(t1.getX(), t1.getY() + i)) {
-        tiles.add(getTileAt(t1.getX(), t1.getY() + i));
-      }
-    }
-    
     return tiles;
   }
     
@@ -240,5 +214,4 @@ public class Board {
     result = prime * result + Arrays.hashCode(board);
     return result;
   }
-  
 }
