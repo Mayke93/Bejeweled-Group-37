@@ -30,14 +30,14 @@ public class SavedGameTest {
     return game;
   }
   
-  /**
-   * test for saved game constructor.
-   */
-  @Test
-  public void savedGameConstrtest() {
-    Game game = gameMaker();
-    SavedGame sv = new SavedGame(game);
-    assertNotNull(sv);
-  }
+//  /**
+//   * test for saved game constructor.
+//   */
+//  @Test
+//  public void savedGameConstrtest() {
+//    Game game = gameMaker();
+//    SavedGame sv = new SavedGame(game);
+//    assertNotNull(sv);
+//  }
 
 }

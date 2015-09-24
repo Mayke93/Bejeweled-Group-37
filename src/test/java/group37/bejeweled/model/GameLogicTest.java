@@ -28,35 +28,35 @@ public class GameLogicTest {
    return game;
   }
   
-  /**
-   * test for the constructor of gameLogic.
-   */
-  @Test
-  public void gameLogicConstrTest() {
-    GameLogic gl = new GameLogic(gameMaker());
-    assertNotNull(gl);
-  }
+//  /**
+//   * test for the constructor of gameLogic.
+//   */
+//  @Test
+//  public void gameLogicConstrTest() {
+//    GameLogic gl = new GameLogic(gameMaker());
+//    assertNotNull(gl);
+//  }
   
-  /**
-   * test getters and setters in gamelogic.
-   */
-  @Test
-  public void settergetterTest() {
-    Tile[][] tiles = new Tile[1][1];
-    Board board = new Board(tiles);
-    CombinationFinder cf = new CombinationFinder(board);
-    GameLogic gl = new GameLogic(gameMaker());
-    gl.setFinder(cf);
-    assertEquals(gl.getFinder(), cf);
-    gl.setBoard(board);
-    assertEquals(gl.getBoard(), board);
-    
-    StatusPanel sp = new StatusPanel();
-    JFrame frame = new JFrame();
-    Main main = new Main(frame, sp);
-    gl.setBoardPanel(main);
-    assertEquals(gl.getBoardPanel(), main);   
-  }
+//  /**
+//   * test getters and setters in gamelogic.
+//   */
+//  @Test
+//  public void settergetterTest() {
+//    Tile[][] tiles = new Tile[1][1];
+//    Board board = new Board(tiles);
+//    CombinationFinder cf = new CombinationFinder(board);
+//    GameLogic gl = new GameLogic(gameMaker());
+//    gl.setFinder(cf);
+//    assertEquals(gl.getFinder(), cf);
+//    gl.setBoard(board);
+//    assertEquals(gl.getBoard(), board);
+//    
+//    StatusPanel sp = new StatusPanel();
+//    JFrame frame = new JFrame();
+//    Main main = new Main(frame, sp);
+//    gl.setBoardPanel(main);
+//    assertEquals(gl.getBoardPanel(), main);   
+//  }
   
 //  /**
 //   * test for deletechains method.
