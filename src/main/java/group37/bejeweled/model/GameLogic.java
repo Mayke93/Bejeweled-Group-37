@@ -28,12 +28,36 @@ public class GameLogic {
     this.finder = finder;
   }
 
+  /**
+   * gets the combinationfinder.
+   * @return a CombinationFinder object
+   */
+  public CombinationFinder getFinder() {
+    return this.finder;
+  }
+  
   public void setBoard(Board board) {
     this.board = board;
+  }
+  
+  /**
+   * gets the board.
+   * @return a Board object
+   */
+  public Board getBoard() {
+    return this.board;
   }
 
   public void setBoardPanel(Main boardPanel) {
     this.boardPanel = boardPanel;
+  }
+  
+  /**
+   * gets the main.
+   * @return a main object
+   */
+  public Main getBoardPanel() {
+    return this.boardPanel;
   }
 
   /**
