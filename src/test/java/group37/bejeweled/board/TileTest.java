@@ -6,6 +6,7 @@ import main.java.group37.bejeweled.board.FlameTile;
 import main.java.group37.bejeweled.board.HypercubeTile;
 import main.java.group37.bejeweled.board.StarTile;
 import main.java.group37.bejeweled.board.Tile;
+import main.java.group37.bejeweled.model.Combination.Type;
 
 import org.junit.Test;
 
@@ -207,6 +208,7 @@ public class TileTest {
     tile.setIndex(2);
     Tile tile2 = new Tile(1,1);
     tile2.setIndex(2);
+    System.out.println();
     assertTrue(tile.hashCode() == tile2.hashCode());
   }
   
@@ -236,7 +238,17 @@ public class TileTest {
   }
   
   /**
-   * simple test for the getscore of the subclasses
+   * Simple test for getters and setters of nextType
+   */
+  @Test
+  public void getSetnextTypeTest() { 
+    Tile tile = new Tile(1,1);
+    tile.setNextType(Type.FLAME);
+    assertEquals(tile.getNextType(), Type.FLAME);
+  }
+  
+  /**
+   * simple test for the getscore of the subclasses.
    */
   @Test
   public void getScoreTest() {

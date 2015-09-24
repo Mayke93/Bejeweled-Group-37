@@ -1,13 +1,11 @@
 package main.java.group37.bejeweled.board;
 
-import java.awt.Image;
+import main.java.group37.bejeweled.model.Combination.Type;
+
 import java.awt.Point;
-//import java.util.Random;
-import java.util.Arrays;
 
 import javax.swing.ImageIcon;
 
-import main.java.group37.bejeweled.model.Combination.Type;
 
 /**
  * Class for initialising a gem on the board.
@@ -130,11 +128,9 @@ public class Tile {
   /**
    * set index of the tile.
    * @param xi the new index for the til
-   * @return the index
    */
   public void setIndex(int xi) {
     this.index = xi;
-    this.image = new ImageIcon(paths[index]);
   }
   
   /**
@@ -252,7 +248,7 @@ public class Tile {
   } 
 
   /**
-   * Method to representthe llcation and the color of a tile in a string.
+   * Method to represent the location and the color of a tile in a string.
    * @return a string witn the loaction and the color
    */
   public String toString() {
