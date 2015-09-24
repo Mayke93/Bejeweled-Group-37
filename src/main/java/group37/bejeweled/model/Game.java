@@ -78,25 +78,6 @@ public class Game {
       }
     }
   }
-  
-  /**
-   * method for adding a special gem.
-   * @param xi x coordinate
-   * @param yi y cordinate 
-   * @param type type of combination
-   */
-  public void addSpecialGem(int xi, int yi, Type type) {
-    switch (type) {
-      case FLAME: //add tile to board.
-        break;
-      case HYPERCUBE:
-        break;
-      case STAR:
-        break;
-      default: //do nothing
-        break;
-    }
-  }
 
   /**
    * Prints the combinations obtained by getAllCombinationsOnBoard().
@@ -493,7 +474,15 @@ public class Game {
   public Board getBoard() {
     return this.board;
   }
-
+  
+  /**
+   * set board object.
+   * @return the board
+   */
+  public void setBoard(Board bo) {
+    this.board = bo;
+  }
+  
   public int getScore(){
     return this.score;
   }
@@ -521,6 +510,15 @@ public class Game {
    */
   public CombinationFinder getFinder() {
     return finder;
+  }
+  
+  /**
+   * sets the CombinationFinder
+   * @param cf CombinationFinder object
+   * @return a CombinationFinder object
+   */
+  public void setFinder(CombinationFinder cf) {
+    this.finder = cf;
   }
 
   public void setLevel(Integer level1) {

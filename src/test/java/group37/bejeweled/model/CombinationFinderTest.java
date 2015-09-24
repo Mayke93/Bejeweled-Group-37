@@ -1,17 +1,18 @@
 package test.java.group37.bejeweled.model;
 
+import main.java.group37.bejeweled.board.Board;
+import main.java.group37.bejeweled.board.Tile;
+import main.java.group37.bejeweled.model.Combination;
+import main.java.group37.bejeweled.model.Combination.Type;
+import main.java.group37.bejeweled.model.CombinationFinder;
+
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
 
-import main.java.group37.bejeweled.board.Board;
-import main.java.group37.bejeweled.board.Tile;
-import main.java.group37.bejeweled.model.Combination;
-import main.java.group37.bejeweled.model.CombinationFinder;
-import main.java.group37.bejeweled.model.Combination.Type;
 
 /**
  * simple input/output tests for the CombinationFinder class.

@@ -108,7 +108,7 @@ public class CombinationTest {
   }
   
   /**
-   * Test isSpecialCombination method for a flase output.
+   * Test isSpecialCombination method for a l output.
    */
   @Test
   public void isSpecialCombinationFalseTest() {
@@ -117,4 +117,27 @@ public class CombinationTest {
     assertFalse(x1.isSpecialCombination());
   }
 
+  /**
+   * Test equals for a false output.
+   */
+  @Test
+  public void equalsFalseTest() {
+    Combination x1 = combinationMaker();
+    Combination x2 = combinationMaker();
+    x2.setType(Type.FLAME);
+    assertFalse(x1.equals(x2));
+    Object obj = new Object();
+    assertFalse(x1.equals(obj));
+  }
+  
+  /**
+   * Test equals for a True output.
+   */
+  @Test
+  public void equalsTrueTest() {
+    Combination x1 = combinationMaker();
+    Combination x2 = combinationMaker();
+    assertTrue(x1.equals(x2));
+  }
+  
 }
