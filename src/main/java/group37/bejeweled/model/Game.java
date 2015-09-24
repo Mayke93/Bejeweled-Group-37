@@ -11,6 +11,7 @@ import main.java.group37.bejeweled.board.Board;
 import main.java.group37.bejeweled.board.BoardFactory;
 import main.java.group37.bejeweled.board.FlameTile;
 import main.java.group37.bejeweled.board.HypercubeTile;
+import main.java.group37.bejeweled.board.StarTile;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.model.Combination.Type;
 //import main.java.group37.bejeweled.model.Tile.State;
@@ -149,16 +150,17 @@ public class Game {
    * @return tile object.
    */
   public Tile setSpecialTile(int xi, int yi,Type type) {
-    Tile tile = new Tile(xi,yi);
-    if (type == Type.FLAME) {
-      //tile.setIndex(xi);
+    Tile tile = null;
+    if (type == Type.NORMAL) {
+      tile = new Tile(xi,yi);
+    } else if (type == Type.FLAME) {
+      tile = new FlameTile(xi,yi);
+    } else if (type == Type.STAR) {
+      tile = new StarTile(xi,yi);
+    } else if (type == Type.HYPERCUBE) {
+      tile = new HypercubeTile(xi,yi);
     }
-    if (type == Type.STAR) {
-      //tile.setIndex(xi);
-    }
-    if (type == Type.HYPERCUBE) {
-      //tile.setIndex(xi);
-    }
+    Logger.log(type.toString() + " " + tile.getLoc());
     tile.setImage(new ImageIcon(tile.paths[tile.getIndex()]));
     return tile;
   }

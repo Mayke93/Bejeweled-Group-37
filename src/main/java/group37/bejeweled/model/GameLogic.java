@@ -47,6 +47,7 @@ public class GameLogic {
 
       if (comb.containsSpecialGem() != null) {
         List<Tile> gemtiles = getTilesToDeleteSpecialGem(comb);
+        Logger.log("Special gem in combination");
         for (Tile t1 : gemtiles) {
           if (!tiles.contains(t1)) {
             tiles.add(t1);
@@ -71,7 +72,7 @@ public class GameLogic {
     for (Tile tile: tiles) {
       board.getTileAt(tile.getX(), tile.getY()).delete = true;
       Logger.log("Delete Tile: " + tile);
-      if(tile.getNextType() == Type.NORMAL) {
+      if (tile.getNextType() == Type.NORMAL) {
         for (int i = tile.getY() - 1; i >= 0; i--) {
           board.getTileAt(tile.getX(), i).increaseLevel();
         }
@@ -113,6 +114,7 @@ public class GameLogic {
           } else if (tile.getNextType() == Type.HYPERCUBE) {
             board.setTileAt(game.setSpecialTile(col,row,Type.HYPERCUBE), col, row);
           }
+          tile.setNextType(Type.NORMAL);
           tile.delete = false;
         }
         if (board.getTileAt(col, row).remove) {
