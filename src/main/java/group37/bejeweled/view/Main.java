@@ -64,10 +64,11 @@ public class Main extends JPanel {
     game = new Game(this,panel);
     animations = new Animation(game,this);
     setOpaque(true);
-    Logger.log("# Start new game");
+    Logger.getInstance().log("# Start new game");
     this.addMouseListener(new MouseListener(this));
     this.addMouseMotionListener(new MouseMotionListener(this));
     //boardfactory = new BoardFactory(game);
+
     SavedGame.save(game);
   }
 
@@ -126,6 +127,9 @@ public class Main extends JPanel {
    * 
    */
   public void endGame() {
+    
+    
+    
     Logger.log("End Game");
     this.frame.setLayout(new BorderLayout());
     JPanel pl = new JPanel(new GridLayout(4,1));

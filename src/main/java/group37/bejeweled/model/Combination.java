@@ -8,7 +8,6 @@ import main.java.group37.bejeweled.board.HypercubeTile;
 import main.java.group37.bejeweled.board.StarTile;
 import main.java.group37.bejeweled.board.Tile;
 
-
 /**
  * Class for making a combination of the type of an combi and the tiles which make this combination.
  * @author group37
