@@ -24,8 +24,12 @@ public class Tile {
   public boolean delete;
   //index is a number that point to the place in de paths and colors array
   private int index;
-  public String[] paths;
+  public String[] paths = {"src/img/gemBlue.png", "src/img/gemGreen.png",
+                           "src/img/gemOrange.png", "src/img/gemPurple.png",
+                           "src/img/gemRed.png", "src/img/gemWhite.png",
+                           "src/img/gemYellow.png"};
   private Type nextType;
+
   public static final String[] colors = {"Blue", "Green", "Orange", "Purple",
     "Red", "White", "Yellow"};
 
@@ -43,11 +47,6 @@ public class Tile {
     this.delete = false;
     this.size = 0;
     this.nextType = Type.NORMAL;
-    String[] p1 = {"src/img/gemBlue.png", "src/img/gemGreen.png",
-        "src/img/gemOrange.png", "src/img/gemPurple.png",
-        "src/img/gemRed.png", "src/img/gemWhite.png",
-        "src/img/gemYellow.png"};
-    paths = p1;
   }
 
   //logic for tiles used in other classes
@@ -119,8 +118,7 @@ public class Tile {
   public void setImage(ImageIcon im) {
     this.image = im;
   }
-
-
+  
   /**
    * Return index of the tile.
    * @return the index
@@ -136,6 +134,7 @@ public class Tile {
    */
   public void setIndex(int xi) {
     this.index = xi;
+    this.image = new ImageIcon(paths[index]);
   }
   
   /**

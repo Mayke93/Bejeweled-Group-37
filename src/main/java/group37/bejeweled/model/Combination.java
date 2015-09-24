@@ -82,7 +82,7 @@ public class Combination {
    */
   public Tile containsSpecialGem() {
     for (Tile t1 : this.getTiles()) {
-      if (t1 instanceof FlameTile | t1 instanceof HypercubeTile | t1 instanceof StarTile) {
+      if (t1 instanceof FlameTile || t1 instanceof HypercubeTile || t1 instanceof StarTile) {
         return t1;
       }
     }
@@ -96,8 +96,8 @@ public class Combination {
   public boolean isSpecialCombination() {
     boolean res = false;
     if (this.getType() == Type.FLAME 
-        | this.getType() == Type.STAR 
-        | this.getType() == Type.HYPERCUBE) {
+        || this.getType() == Type.STAR 
+        || this.getType() == Type.HYPERCUBE) {
       res = true;
     }
     return res;
