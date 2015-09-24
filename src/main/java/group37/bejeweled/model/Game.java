@@ -140,6 +140,28 @@ public class Game {
     tile.setImage(new ImageIcon(tile.paths[tile.getIndex()]));
     return tile;
   }
+  
+  /**
+   * Set tile to special tile.
+   * @param xi x coordinate of the new random tile
+   * @param yi y coordinate of the new random tile
+   * @param type type of special tile.
+   * @return tile object.
+   */
+  public Tile setSpecialTile(int xi, int yi,Type type) {
+    Tile tile = new Tile(xi,yi);
+    if (type == Type.FLAME) {
+      //tile.setIndex(xi);
+    }
+    if (type == Type.STAR) {
+      //tile.setIndex(xi);
+    }
+    if (type == Type.HYPERCUBE) {
+      //tile.setIndex(xi);
+    }
+    tile.setImage(new ImageIcon(tile.paths[tile.getIndex()]));
+    return tile;
+  }
 
 
   /**

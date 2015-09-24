@@ -7,6 +7,8 @@ import java.util.Arrays;
 
 import javax.swing.ImageIcon;
 
+import main.java.group37.bejeweled.model.Combination.Type;
+
 /**
  * Class for initialising a gem on the board.
  * @author Group 37
@@ -23,6 +25,7 @@ public class Tile {
   //index is a number that point to the place in de paths and colors array
   private int index;
   public String[] paths;
+  private Type nextType;
   public static final String[] colors = {"Blue", "Green", "Orange", "Purple",
     "Red", "White", "Yellow"};
 
@@ -39,6 +42,7 @@ public class Tile {
     this.remove = false;
     this.delete = false;
     this.size = 0;
+    this.nextType = Type.NORMAL;
     String[] p1 = {"src/img/gemBlue.png", "src/img/gemGreen.png",
         "src/img/gemOrange.png", "src/img/gemPurple.png",
         "src/img/gemRed.png", "src/img/gemWhite.png",
@@ -256,6 +260,12 @@ public class Tile {
     return "(" + Integer.toString(this.loc.x) + "," 
            + Integer.toString(this.loc.y) + ") " + colors[this.index];
   }
-  
-  
+
+  public Type getNextType() {
+    return nextType;
+  }
+
+  public void setNextType(Type nextType) {
+    this.nextType = nextType;
+  }
 }
