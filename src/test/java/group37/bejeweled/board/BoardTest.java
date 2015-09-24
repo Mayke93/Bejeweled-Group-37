@@ -125,7 +125,6 @@ public class BoardTest {
     board.setTileAt(tile, 0, 0); board.setTileAt(tile, 0, 1); board.setTileAt(tile, 0, 2);
     board.setTileAt(tile, 1, 0); board.setTileAt(tile, 1, 1); board.setTileAt(tile, 1, 2);
     board.setTileAt(tile, 2, 0); board.setTileAt(tile, 2, 1); board.setTileAt(tile, 2, 2);
-    assertEquals(board.getTileAt(1, 1), tile); 
    
     List<Tile> newList = new ArrayList<Tile>();
     newList.add(tile); newList.add(tile); newList.add(tile);
@@ -167,7 +166,6 @@ public class BoardTest {
     board.setTileAt(tile, 0, 0); board.setTileAt(tile, 0, 1); board.setTileAt(tile, 0, 2);
     board.setTileAt(tile, 1, 0); board.setTileAt(tile, 1, 1); board.setTileAt(tile, 1, 2);
     board.setTileAt(tile, 2, 0); board.setTileAt(tile, 2, 1); board.setTileAt(tile, 2, 2);
-    assertEquals(board.getTileAt(2, 2), tile); 
    
     List<Tile> newList = new ArrayList<Tile>();
     newList.add(tile); newList.add(tile); newList.add(tile);
@@ -193,7 +191,6 @@ public class BoardTest {
     board.setTileAt(tile2, 0, 1);
     board.setTileAt(tile4, 1, 0); 
     board.setTileAt(tile, 1, 1); 
-    assertEquals(board.getTileAt(1, 1), tile); 
    
     List<Tile> newList = new ArrayList<Tile>();
     List<Tile> list = board.getTilesToDeleteStar(tile);
@@ -201,7 +198,6 @@ public class BoardTest {
     newList.add(tile); 
     newList.add(tile2); 
     newList.add(tile4);
-    System.out.println(list.toString() + "lijst2: " + newList.toString());
     assertTrue(list.equals(newList));
   }
   
