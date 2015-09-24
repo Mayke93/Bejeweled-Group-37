@@ -5,8 +5,8 @@ import org.junit.Test;
 
 import main.java.group37.bejeweled.model.Combination;
 import main.java.group37.bejeweled.model.Combination.Type;
-import main.java.group37.bejeweled.Board.FlameTile;
-import main.java.group37.bejeweled.Board.Tile;
+import main.java.group37.bejeweled.board.FlameTile;
+import main.java.group37.bejeweled.board.Tile;
 
 import static org.junit.Assert.*;
 

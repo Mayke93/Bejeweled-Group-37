@@ -2,14 +2,14 @@ package test.java.group37.bejeweled.board;
 
 import static org.junit.Assert.*;
 
-import main.java.group37.bejeweled.Board.Tile;
 
 import org.junit.Test;
 
 import java.awt.Image;
 import java.awt.Point;
-
 import javax.swing.ImageIcon;
+import main.java.group37.bejeweled.board.Tile;
+
 
 
 /**

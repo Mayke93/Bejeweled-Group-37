@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Iterator;
 
-import main.java.group37.bejeweled.Board.Board;
+import main.java.group37.bejeweled.board.Board;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

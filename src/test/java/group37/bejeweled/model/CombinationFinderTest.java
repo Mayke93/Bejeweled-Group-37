@@ -4,12 +4,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import main.java.group37.bejeweled.Board.Board;
-import main.java.group37.bejeweled.Board.Tile;
+import main.java.group37.bejeweled.board.Board;
+import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.model.CombinationFinder;
 
 /**
- * simple input/output tests for the CombinationFinder class
+ * simple input/output tests for the CombinationFinder class.
  * @author group 37
  *
  */
@@ -31,7 +31,7 @@ public class CombinationFinderTest {
    * test for setboard and getboard method.
    */
   @Test
-  public void setGetBoardTest(){
+  public void setGetBoardTest() {
     Tile[][] tiles = new Tile[4][4];
     Board board = new Board(tiles);
     CombinationFinder cf = new  CombinationFinder(board);
