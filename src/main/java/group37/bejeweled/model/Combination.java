@@ -103,5 +103,20 @@ public class Combination {
     return res;
   }
   
+  /**
+   * equals method for a combination
+   * @return true iff the type and the tiles are the same.
+   */
+  public boolean equals(Object obj) {
+    if (obj instanceof Combination) {
+      Combination that = (Combination) obj;
+      if (that.getTiles().size() == this.getTiles().size() 
+          && that.getTiles().containsAll(this.getTiles()) && that.getType() == this.getType()) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
 
 }
