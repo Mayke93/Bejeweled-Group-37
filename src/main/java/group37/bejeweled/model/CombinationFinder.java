@@ -14,7 +14,7 @@ import main.java.group37.bejeweled.view.Main;
  * @author group37
  */
 public class CombinationFinder {
-  private static final int SIZE = Main.SIZE;
+  
   private Board board;
 
   /**
@@ -48,8 +48,8 @@ public class CombinationFinder {
   public List<Combination> getAllCombinationsOnBoard() {
     List<Combination> allcombinations = new ArrayList<Combination>();
     Combination tile = null;
-    for (int i = 0; i < SIZE; i++) {      //for every tile on the board
-      for (int j = 0; j < SIZE; j++) {
+    for (int i = 0; i < board.getWidth(); i++) {      //for every tile on the board
+      for (int j = 0; j < board.getHeight(); j++) {
         tile = getSingleCombinationX(board.getTileAt(i,j));
         if (!tile.getTiles().isEmpty()) {
           if (!sameCombination(allcombinations, tile)) {
@@ -80,7 +80,7 @@ public class CombinationFinder {
     List<Tile> tiles = new ArrayList<Tile>();
 
     //check x direction
-    for (int q = tile.getX() + 1; q < SIZE; q++) { //check to the right
+    for (int q = tile.getX() + 1; q < board.getWidth(); q++) { //check to the right
       if (tile.equalsColor(board.getTileAt(q, tile.getY()))) {
         tiles.add(board.getTileAt(q, tile.getY()));
       } else {
@@ -88,10 +88,12 @@ public class CombinationFinder {
       }
     }
     for (int q = tile.getX() - 1; q >= 0; q--) {    //check to the left
-      if (tile.equalsColor(board.getTileAt(q, tile.getY()))) {
-        tiles.add(board.getTileAt(q, tile.getY()));
-      } else {
-        break;
+      if (board.validBorders(q, tile.getY())) {
+        if (tile.equalsColor(board.getTileAt(q, tile.getY()))) {
+          tiles.add(board.getTileAt(q, tile.getY()));
+        } else {
+          break;
+        }
       }
     }
     
@@ -129,7 +131,7 @@ public class CombinationFinder {
     List<Tile> tiles = new ArrayList<Tile>();
 
     //check y direction
-    for (int q = tile.getY() + 1; q < SIZE; q++) {   //check down
+    for (int q = tile.getY() + 1; q < board.getHeight(); q++) {   //check down
       if (tile.equalsColor(board.getTileAt(tile.getX(),q))) {
         tiles.add(board.getTileAt(tile.getX(),q));
       } else {
