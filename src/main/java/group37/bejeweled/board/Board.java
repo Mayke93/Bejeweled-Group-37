@@ -160,12 +160,12 @@ public class Board {
     
     int tx = tile.getX();
     int ty = tile.getY();
-    for (int col = 0; col < SIZE; col++) {
+    for (int col = 0; col < getHeight(); col++) {
       if (col != tx) {
         tiles.add(getTileAt(col,ty));
       }
     }
-    for (int row = 0; row < SIZE; row++) {
+    for (int row = 0; row < getWidth(); row++) {
       if (row != ty) {
         tiles.add(getTileAt(tx,row));
       }

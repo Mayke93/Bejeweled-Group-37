@@ -2,18 +2,22 @@ package test.java.group37.bejeweled.board;
 
 import static org.junit.Assert.*;
 
+import main.java.group37.bejeweled.board.FlameTile;
+import main.java.group37.bejeweled.board.HypercubeTile;
+import main.java.group37.bejeweled.board.StarTile;
+import main.java.group37.bejeweled.board.Tile;
 
 import org.junit.Test;
 
 import java.awt.Image;
 import java.awt.Point;
-import javax.swing.ImageIcon;
-import main.java.group37.bejeweled.board.Tile;
 
+import javax.swing.ImageIcon;
 
 
 /**
  * Simple test class for Tile.
+ * at this moment also contains for the subclasses.
  * @author group37
  */
 public class TileTest {
@@ -25,6 +29,12 @@ public class TileTest {
   public void tileConstrTest() {
     Tile tile = new Tile(1, 1);
     assertNotNull(tile);
+    Tile flametile = new FlameTile(1,1);
+    assertNotNull(flametile);
+    Tile hypertile = new HypercubeTile(1,1);
+    assertNotNull(hypertile);
+    Tile startile = new StarTile(1,1);
+    assertNotNull(startile);
   }
   
   /**
@@ -38,6 +48,19 @@ public class TileTest {
     tile.updateTranslation(1, 1);
     Point newPoint = new Point(1,1);
     assertEquals(tile.getLoc(), newPoint);
+  }
+  
+  /**
+   * simple test for saturateCoordinate method.
+   */
+  @Test
+  public void saturateCoordinateTest() {
+    Tile tile = new Tile(1, 1);
+    int coord = 64;
+    int coord2 = -64;
+    tile.updateTranslation(coord, coord2);
+    Point point = new Point(65,-65);
+    assertEquals(tile.getTranslation(), point);
   }
   
   /**
@@ -87,7 +110,6 @@ public class TileTest {
     tile.setIndex(2);
     tile.setImage(new ImageIcon(tile.paths[tile.getIndex()]));
     ImageIcon image = new ImageIcon("src/img/gemOrange.png");
-    System.out.println(tile.getImage());
     assertEquals(tile.getImage().getDescription(), image.getDescription());
   }
   
@@ -145,6 +167,8 @@ public class TileTest {
     tile.setIndex(5);
     tile2.setIndex(5);
     assertTrue(tile.equalsColor(tile2));
+    Object obj = new Object();
+    assertFalse(tile.equalsColor(obj));
   }
   
   /**
@@ -169,6 +193,8 @@ public class TileTest {
     tile.setIndex(5);
     tile2.setIndex(5);
     assertFalse(tile.equals(tile2));
+    Object obj = new Object();
+    assertFalse(tile.equals(obj));
   }
   
 
@@ -191,6 +217,12 @@ public class TileTest {
   public void getTypeTest() {
     Tile tile = new Tile(1,1);
     assertTrue(tile.getType().equals("Normal"));
+    FlameTile flametile = new FlameTile(1,1);
+    assertTrue(flametile.getType().equals("Flame"));
+    HypercubeTile hypertile = new HypercubeTile(1,1);
+    assertTrue(hypertile.getType().equals("Hypercube"));
+    StarTile startile = new StarTile(1,1);
+    assertTrue(startile.getType().equals("Star"));
   }
   
   /**
@@ -203,4 +235,16 @@ public class TileTest {
     assertTrue(tile.toString().equals("(1,1) Blue"));
   }
   
+  /**
+   * simple test for the getscore of the subclasses
+   */
+  @Test
+  public void getScoreTest() {
+    FlameTile flametile = new FlameTile(1,1);
+    assertEquals(flametile.getScore(), 20);
+    HypercubeTile hypertile = new HypercubeTile(1,1);
+    assertEquals(hypertile.getScore(), 50);
+    StarTile startile = new StarTile(1,1);
+    assertEquals(startile.getScore(), 50);
+  }
 }
