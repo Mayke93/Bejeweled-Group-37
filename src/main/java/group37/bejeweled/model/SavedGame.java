@@ -70,9 +70,12 @@ public class SavedGame {
 
       getScore(jsonObject);
       getLevel(jsonObject);
-      getBoard(jsonObject,bd);
-
-      game.getBoard().board = bd;
+      
+      if (getBoard(jsonObject,bd)) {
+        game.getBoard().board = bd;
+      } else {
+        game.generateRandomBoard();
+      }
       
     } catch (FileNotFoundException e) {
       e.printStackTrace();
@@ -84,8 +87,11 @@ public class SavedGame {
 
   }
   
-  private static void getBoard(JSONObject obj,Tile[][] bd) {
+  private static boolean getBoard(JSONObject obj,Tile[][] bd) {
     JSONArray tiles = (JSONArray) obj.get("board");
+    if (tiles == null) {
+      return false;
+    }
     for (int row = 0; row < SIZE; row++) {
       JSONArray rowJ = (JSONArray) tiles.get(row);
       for (int col = 0; col < SIZE; col++) {
@@ -93,6 +99,7 @@ public class SavedGame {
         bd[col][row].setIndex(((Long)rowJ.get(col)).intValue());
       }
     }
+    return true;
   }
   
   private static int getScore(JSONObject obj) {
