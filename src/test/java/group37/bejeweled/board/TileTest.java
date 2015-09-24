@@ -2,10 +2,10 @@ package test.java.group37.bejeweled.board;
 
 import static org.junit.Assert.*;
 
-import main.java.group37.bejeweled.Board.FlameTile;
-import main.java.group37.bejeweled.Board.HypercubeTile;
-import main.java.group37.bejeweled.Board.StarTile;
-import main.java.group37.bejeweled.Board.Tile;
+import main.java.group37.bejeweled.board.FlameTile;
+import main.java.group37.bejeweled.board.HypercubeTile;
+import main.java.group37.bejeweled.board.StarTile;
+import main.java.group37.bejeweled.board.Tile;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package main.java.group37.bejeweled.Board;
+package main.java.group37.bejeweled.board;
 
 import java.awt.Image;
 import java.awt.Point;

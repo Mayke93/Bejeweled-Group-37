@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import main.java.group37.bejeweled.Board.Board;
-import main.java.group37.bejeweled.Board.Tile;
+import main.java.group37.bejeweled.board.Board;
+import main.java.group37.bejeweled.board.Tile;
 
 /**
  * Simple basic test for the board class.

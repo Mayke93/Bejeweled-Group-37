@@ -1,4 +1,4 @@
-package main.java.group37.bejeweled.Board;
+package main.java.group37.bejeweled.board;
 
 /**
  * Class FlameTile, object for a flame gem on the board.
