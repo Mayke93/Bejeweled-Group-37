@@ -1,6 +1,7 @@
 package main.java.group37.bejeweled;
 
 import main.java.group37.bejeweled.model.Logger;
+import main.java.group37.bejeweled.model.SavedGame;
 import main.java.group37.bejeweled.view.Main;
 import main.java.group37.bejeweled.view.StatusPanel;
 
@@ -29,6 +30,7 @@ public class Launcher extends JFrame {
       public void windowClosing(WindowEvent winEvt) {
         Logger.log("# Exit Game");
         Logger.close();
+        SavedGame.save();
         System.exit(0);
       }
     });
@@ -46,6 +48,9 @@ public class Launcher extends JFrame {
     board.setLayout(new BorderLayout());
 
     board.add(statusPanel,BorderLayout.WEST);
+    
+    SavedGame sg = new SavedGame(board.getGame());
+    sg.jsonReader();
     add(board);
 
     setSize(800, 619);
