@@ -143,4 +143,4 @@ public class GameTest {
 //    game.setFinder(cf);
 //    assertEquals(game.getFinder(), cf);
 //  }
-//}
+}
