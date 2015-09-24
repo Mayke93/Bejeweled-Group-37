@@ -34,6 +34,7 @@ public class GameLogic {
   public void setBoardPanel(Main boardPanel) {
     this.boardPanel = boardPanel;
   }
+
   /**
    * Delete all combinations found on the board.
    */

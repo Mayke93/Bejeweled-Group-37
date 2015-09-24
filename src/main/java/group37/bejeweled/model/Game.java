@@ -160,6 +160,7 @@ public class Game {
     } else if (type == Type.HYPERCUBE) {
       tile = new HypercubeTile(xi,yi);
     }
+    tile.setIndex(board.getTileAt(xi, yi).getIndex());
     Logger.log(type.toString() + " " + tile.getLoc());
     tile.setImage(new ImageIcon(tile.paths[tile.getIndex()]));
     return tile;

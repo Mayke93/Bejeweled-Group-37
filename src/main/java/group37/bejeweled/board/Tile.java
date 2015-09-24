@@ -134,6 +134,7 @@ public class Tile {
    */
   public void setIndex(int xi) {
     this.index = xi;
+    this.image = new ImageIcon(paths[index]);
   }
   
   /**
