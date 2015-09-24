@@ -201,6 +201,7 @@ public class BoardTest {
     newList.add(tile); 
     newList.add(tile2); 
     newList.add(tile4);
+    System.out.println(list.toString() + "lijst2: " + newList.toString());
     assertTrue(list.equals(newList));
   }
   
