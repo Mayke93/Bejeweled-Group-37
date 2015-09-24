@@ -46,10 +46,10 @@ public class GameLogic {
     for (Combination comb: chains) {
       game.updateScore(comb.getType());
       tiles.addAll(comb.getTiles());
+      Logger.log("Special gem in combination: " + comb.getType());
 
       if (comb.containsSpecialGem() != null) {
         List<Tile> gemtiles = getTilesToDeleteSpecialGem(comb);
-        Logger.log("Special gem in combination: " + comb.getType());
         for (Tile t1 : gemtiles) {
           if (!tiles.contains(t1)) {
             tiles.add(t1);

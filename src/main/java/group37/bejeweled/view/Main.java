@@ -68,8 +68,6 @@ public class Main extends JPanel {
     this.addMouseListener(new MouseListener(this));
     this.addMouseMotionListener(new MouseMotionListener(this));
     //boardfactory = new BoardFactory(game);
-
-    SavedGame.save(game);
   }
 
   /**

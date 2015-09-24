@@ -522,4 +522,8 @@ public class Game {
   public CombinationFinder getFinder() {
     return finder;
   }
+
+  public void setLevel(Integer level1) {
+    this.newlevel = level1; 
+  }
 }
