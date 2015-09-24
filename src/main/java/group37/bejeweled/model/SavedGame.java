@@ -12,22 +12,37 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Iterator;
+
+import javax.swing.ImageIcon;
 
 
 public class SavedGame {
-  public static Game game;
+  public Game game;
   public static final int SIZE = 8;
+  private static final String path = "values.json";
   public Board board;
+  
+  private static SavedGame sg = new SavedGame();
 
-  public SavedGame(Game game) {
+  private SavedGame() {
+
+  }
+  
+  public static SavedGame getInstance() {
+    return sg;
+  }
+  
+  public void setGame(Game game) {
     this.game = game;
   }
 
   /**
    * The status of the game gets saved in JSON format.
    */
-  public static void save() {
+  @SuppressWarnings("unchecked")
+  public void saveGame() {
     Board board = game.getBoard();
     JSONObject obj = new JSONObject();
     obj.put("score", game.getScore());
@@ -35,10 +50,10 @@ public class SavedGame {
 
     JSONArray list2 = new JSONArray();
 
-    for (int q = 0; q < SIZE; q++) {
+    for (int row = 0; row < SIZE; row++) {
       JSONArray list = new JSONArray();
-      for (int j = 0; j < SIZE; j++) {
-        list.add(board.getTileAt(j, q).getIndex());
+      for (int col = 0; col < SIZE; col++) {
+        list.add(board.getTileAt(col, row).getIndex());
       }
       list2.add(list);
     }
@@ -46,10 +61,10 @@ public class SavedGame {
     writeToFile(obj);
   }
   
-  private static void writeToFile(JSONObject obj) {
+  private void writeToFile(JSONObject obj) {
     FileWriter file;
     try {
-      file = new FileWriter("values.json");
+      file = new FileWriter(path);
       file.write(obj.toJSONString());
       file.flush();
       file.close();
@@ -61,22 +76,31 @@ public class SavedGame {
   /**
    * The reader method.
    */
-  public static void jsonReader() {
-    JSONParser parser = new JSONParser();
-    Tile[][] bd = new Tile[SIZE][SIZE];
-    try {
-      Object obj = parser.parse(new FileReader("values.json"));
-      JSONObject jsonObject = (JSONObject) obj;
+  public void loadGame() {
+    JSONObject obj = parseJsonFromFile();
+    if (obj == null ) {
+      return;
+    }
+    getScore(obj);
+    getLevel(obj);
 
-      getScore(jsonObject);
-      getLevel(jsonObject);
-      
-      if (getBoard(jsonObject,bd)) {
-        game.getBoard().board = bd;
-      } else {
-        game.generateRandomBoard();
-      }
-      
+    Tile[][] newBoard = new Tile[SIZE][SIZE];
+    if (getBoard(obj,newBoard)) {
+      game.getBoard().board = newBoard;
+    } else {
+      game.generateRandomBoard();
+    }
+  }
+  
+  /**
+   * Load JSON datd from file and parse the data into a JSON object.
+   * @return object with parsed data from JSON file.
+   */
+  private JSONObject parseJsonFromFile() {
+    JSONParser parser = new JSONParser();
+    JSONObject obj = null;
+    try {
+      obj = (JSONObject) parser.parse(new FileReader(path));
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     } catch (IOException e) {
@@ -84,38 +108,40 @@ public class SavedGame {
     } catch (ParseException e) {
       e.printStackTrace();
     }
-
+    return obj;
   }
   
-  private static boolean getBoard(JSONObject obj,Tile[][] bd) {
+  private boolean getBoard(JSONObject obj,Tile[][] bd) {
     JSONArray tiles = (JSONArray) obj.get("board");
     if (tiles == null) {
       return false;
     }
+    int index = 0;
     for (int row = 0; row < SIZE; row++) {
       JSONArray rowJ = (JSONArray) tiles.get(row);
       for (int col = 0; col < SIZE; col++) {
         bd[col][row] = new Tile(col,row);
-        bd[col][row].setIndex(((Long)rowJ.get(col)).intValue());
+        index = ((Long)rowJ.get(col)).intValue();
+        bd[col][row].setIndex(index);
+        bd[col][row].setImage(new ImageIcon(bd[col][row].paths[index]));
       }
     }
     return true;
   }
   
-  private static int getScore(JSONObject obj) {
+  private int getScore(JSONObject obj) {
     Long score = (Long) obj.get("score");
     Integer score1 = new Integer(score.intValue());
     game.setScore(score1);
-    System.out.println("Score: " + score);
+    Logger.log(" Read Score: " + score);
     return score1;
   }
   
-  private static int getLevel(JSONObject obj) {
+  private int getLevel(JSONObject obj) {
     Long level = (Long) obj.get("level");
     Integer level1 = new Integer(level.intValue());
     game.setLevel(level1);
-    System.out.println("Level: " + level);
+    Logger.log("Read Level: " + level);
     return level1;
   }
-  
 }

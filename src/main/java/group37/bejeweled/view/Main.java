@@ -64,9 +64,12 @@ public class Main extends JPanel {
     game = new Game(this,panel);
     animations = new Animation(game,this);
     setOpaque(true);
-    Logger.getInstance().log("# Start new game");
+    Logger.log("# Start new game");
     this.addMouseListener(new MouseListener(this));
     this.addMouseMotionListener(new MouseMotionListener(this));
+
+    SavedGame.getInstance().setGame(game);
+    SavedGame.getInstance().loadGame();
     //boardfactory = new BoardFactory(game);
   }
 

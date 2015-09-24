@@ -30,7 +30,7 @@ public class Launcher extends JFrame {
       public void windowClosing(WindowEvent winEvt) {
         Logger.log("# Exit Game");
         Logger.close();
-        SavedGame.save();
+        SavedGame.getInstance().saveGame();
         System.exit(0);
       }
     });
@@ -49,8 +49,6 @@ public class Launcher extends JFrame {
 
     board.add(statusPanel,BorderLayout.WEST);
     
-    SavedGame sg = new SavedGame(board.getGame());
-    sg.jsonReader();
     add(board);
 
     setSize(800, 619);
