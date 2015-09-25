@@ -34,7 +34,6 @@ public class Launcher extends JFrame {
         System.exit(0);
       }
     });
-
   }
 
   /**
@@ -44,7 +43,9 @@ public class Launcher extends JFrame {
     setLayout(new BorderLayout());
     Logger.init();
     statusPanel = new StatusPanel();
+    
     Main board = new Main(this,statusPanel);
+    statusPanel.setMain(board);
     board.setLayout(new BorderLayout());
     
     board.add(statusPanel,BorderLayout.WEST);
