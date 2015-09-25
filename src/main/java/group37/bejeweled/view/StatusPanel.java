@@ -9,6 +9,9 @@ import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import main.java.group37.bejeweled.board.Board;
+import main.java.group37.bejeweled.model.Game;
+
 @SuppressWarnings("serial")
 /**
  * Class for diplaying the status of the game.
@@ -20,6 +23,9 @@ public class StatusPanel extends JPanel{
   private JLabel levelLabel = new JLabel("Level:");
 
   private static final Font font = new Font("Serif", Font.BOLD, 35);
+  public Board board;
+  public Game game;
+  public StatusPanel statusPanel;
 
   /**
    * Create labels for displaying the status of the game.

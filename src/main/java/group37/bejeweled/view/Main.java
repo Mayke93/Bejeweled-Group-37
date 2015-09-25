@@ -67,9 +67,12 @@ public class Main extends JPanel {
     Logger.log("# Start new game");
     this.addMouseListener(new MouseListener(this));
     this.addMouseMotionListener(new MouseMotionListener(this));
-
+    
     SavedGame.getInstance().setGame(game);
     SavedGame.getInstance().loadGame();
+    panel.setLevel(game.getLevel());
+    panel.setScore(game.getScore());
+    System.out.println("level:" +game.getLevel());
     //boardfactory = new BoardFactory(game);
   }
 

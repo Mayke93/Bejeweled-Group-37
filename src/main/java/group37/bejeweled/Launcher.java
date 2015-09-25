@@ -46,9 +46,8 @@ public class Launcher extends JFrame {
     statusPanel = new StatusPanel();
     Main board = new Main(this,statusPanel);
     board.setLayout(new BorderLayout());
-
-    board.add(statusPanel,BorderLayout.WEST);
     
+    board.add(statusPanel,BorderLayout.WEST);
     add(board);
 
     setSize(800, 619);
