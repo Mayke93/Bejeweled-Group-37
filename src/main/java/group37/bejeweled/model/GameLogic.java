@@ -72,6 +72,7 @@ public class GameLogic {
       if (comb.containsSpecialGem() == null) {
         game.updateScore(comb.getType());         //update normal score
       }
+      Logger.log("Comb type: " + comb.getType());
       System.out.println(comb.containsSpecialGem());
       
       if (comb.containsSpecialGem() != null) {
@@ -83,6 +84,7 @@ public class GameLogic {
             tiles.add(t1);
           }
         }
+        Logger.log("Delete " + gemtiles.size() + " additional tiles");
       }
 
       if (comb.isSpecialCombination()) {          //als er speciale combi is
@@ -166,6 +168,7 @@ public class GameLogic {
    * @param combi the combination to find the type of.
    */
   public void generateSpecialGem(Combination combi) {
+    Logger.log("Generate special gem");
     if (combi.getType() == Type.FLAME) {
       combi.getTiles().get(0).setNextType(Type.FLAME);
     }

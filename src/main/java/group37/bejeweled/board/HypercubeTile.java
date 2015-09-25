@@ -1,5 +1,6 @@
 package main.java.group37.bejeweled.board;
 
+import javax.swing.ImageIcon;
 /**
  * Class HypercubeTile, object for a hypercube gem on the board.
  * @author group37
@@ -39,4 +40,16 @@ public class HypercubeTile extends Tile {
     return score;
   }
   
+  /**
+   * Create clone of this object.
+   * @param coordinateX col index.
+   * @param coordinateY row index.
+   * @return clone of this.
+   */
+  public Tile clone(int coordinateX, int coordinateY) {
+    Tile tile = new HypercubeTile(coordinateX,coordinateY);
+    tile.setIndex(this.index);
+    tile.setImage(new ImageIcon(paths[index]));
+    return tile;
+  }
 }

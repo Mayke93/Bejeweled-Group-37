@@ -1,10 +1,11 @@
 package main.java.group37.bejeweled.board;
 
-import main.java.group37.bejeweled.model.Combination.Type;
 
 import java.awt.Point;
 
 import javax.swing.ImageIcon;
+
+import main.java.group37.bejeweled.model.Combination.Type;
 
 
 /**
@@ -13,7 +14,7 @@ import javax.swing.ImageIcon;
  */
 public class Tile {
  
-  private ImageIcon image;
+  protected ImageIcon image;
   private Point loc;
   public Point translation;
   public int size;
@@ -21,7 +22,7 @@ public class Tile {
   public boolean remove;
   public boolean delete;
   //index is a number that point to the place in de paths and colors array
-  private int index;
+  protected int index;
   public String[] paths = {"src/img/gemBlue.png", "src/img/gemGreen.png",
                            "src/img/gemOrange.png", "src/img/gemPurple.png",
                            "src/img/gemRed.png", "src/img/gemWhite.png",
