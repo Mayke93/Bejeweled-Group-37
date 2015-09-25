@@ -1,14 +1,18 @@
 package test.java.group37.bejeweled.board;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
+import main.java.group37.bejeweled.board.Board;
+import main.java.group37.bejeweled.board.HypercubeTile;
+import main.java.group37.bejeweled.board.Tile;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.junit.Test;
-
-import main.java.group37.bejeweled.board.Board;
-import main.java.group37.bejeweled.board.Tile;
 
 /**
  * Simple basic test for the board class.
@@ -161,16 +165,17 @@ public class BoardTest {
   public void getTilesToDeleteHypercubeTest() {
     Tile[][] tiles = new Tile[3][3];
     Board board = new Board(tiles);
+    Tile htile = new HypercubeTile(1,1);
     Tile tile = new Tile(1,1);
     tile.setIndex(1);
-    board.setTileAt(tile, 0, 0); board.setTileAt(tile, 0, 1); board.setTileAt(tile, 0, 2);
+    board.setTileAt(htile, 0, 0); board.setTileAt(tile, 0, 1); board.setTileAt(tile, 0, 2);
     board.setTileAt(tile, 1, 0); board.setTileAt(tile, 1, 1); board.setTileAt(tile, 1, 2);
     board.setTileAt(tile, 2, 0); board.setTileAt(tile, 2, 1); board.setTileAt(tile, 2, 2);
    
     List<Tile> newList = new ArrayList<Tile>();
+    newList.add(htile); newList.add(tile); newList.add(tile);
     newList.add(tile); newList.add(tile); newList.add(tile);
-    newList.add(tile); newList.add(tile); newList.add(tile);
-    List<Tile> list = board.getTilesToDeleteHypercube(tile);
+    List<Tile> list = board.getTilesToDeleteHypercube(tile, htile);
     assertFalse(list.equals(newList));
     newList.add(tile); newList.add(tile); newList.add(tile);
     assertTrue(list.equals(newList));

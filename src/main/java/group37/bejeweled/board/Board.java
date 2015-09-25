@@ -1,15 +1,9 @@
 package main.java.group37.bejeweled.board;
 
-import main.java.group37.bejeweled.model.Combination;
-import main.java.group37.bejeweled.model.Game;
-import main.java.group37.bejeweled.view.Main;
-
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-
 
 /**
  * board object for the tiles.
@@ -18,7 +12,7 @@ import java.util.List;
  *
  */
 public class Board {
-  private static final int SIZE = Main.SIZE;
+  
   /**
    * The grid of squares with board[x][y] being the square at column x, row y.
    */
@@ -135,8 +129,9 @@ public class Board {
    * @param t1 the hypercube gem
    * @return tiles, the list of tiles to be deleted.
    */
-  public List<Tile> getTilesToDeleteHypercube(Tile t1) {
+  public List<Tile> getTilesToDeleteHypercube(Tile t1, Tile hyper) {
     List<Tile> tiles = new ArrayList<Tile>();
+    tiles.add(hyper);
     int index = t1.getIndex();
     
     for (int row = 0; row < board.length; row++) {        //loop through board

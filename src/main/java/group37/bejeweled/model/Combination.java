@@ -1,12 +1,12 @@
 package main.java.group37.bejeweled.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import main.java.group37.bejeweled.board.FlameTile;
 import main.java.group37.bejeweled.board.HypercubeTile;
 import main.java.group37.bejeweled.board.StarTile;
 import main.java.group37.bejeweled.board.Tile;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class for making a combination of the type of an combi and the tiles which make this combination.
@@ -101,6 +101,18 @@ public class Combination {
       res = true;
     }
     return res;
+  }
+
+  /**
+   * Hashcode for a combination object.
+   */
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((tiles == null) ? 0 : tiles.hashCode());
+    result = prime * result + ((type == null) ? 0 : type.hashCode());
+    return result;
   }
   
   /**

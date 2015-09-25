@@ -2,7 +2,7 @@ package main.java.group37.bejeweled.model;
 
 import main.java.group37.bejeweled.board.Board;
 import main.java.group37.bejeweled.board.FlameTile;
-import main.java.group37.bejeweled.board.HypercubeTile;
+//import main.java.group37.bejeweled.board.HypercubeTile;
 import main.java.group37.bejeweled.board.StarTile;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.model.Combination.Type;
@@ -199,9 +199,9 @@ public class GameLogic {
     if (combi.containsSpecialGem() instanceof StarTile) {
       tiles = board.getTilesToDeleteStar(combi.containsSpecialGem());
     }
-    if (combi.containsSpecialGem() instanceof HypercubeTile) {
-      tiles = board.getTilesToDeleteHypercube(combi.containsSpecialGem());
-    }
+//    if (combi.containsSpecialGem() instanceof HypercubeTile) {
+//      tiles = board.getTilesToDeleteHypercube(combi.containsSpecialGem());
+//    }
 
     return tiles;
   }

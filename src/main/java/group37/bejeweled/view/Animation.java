@@ -1,5 +1,6 @@
 package main.java.group37.bejeweled.view;
 
+import main.java.group37.bejeweled.board.HypercubeTile;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.model.Game;
 
@@ -151,7 +152,13 @@ public class Animation implements ActionListener{
     t0.resetD();
     t1.resetD();
     game.swapTiles(t0,t1);
-    game.logic.deleteChains();
+    if (t0 instanceof HypercubeTile) {
+      game.logic.deleteTiles(game.getBoard().getTilesToDeleteHypercube(t1,t0));
+    } else if (t1 instanceof HypercubeTile) {
+      game.logic.deleteTiles(game.getBoard().getTilesToDeleteHypercube(t0,t1));
+    } else {
+      game.logic.deleteChains();
+    }
   }
 
   /**

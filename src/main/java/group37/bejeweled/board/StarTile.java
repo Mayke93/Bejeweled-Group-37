@@ -19,7 +19,7 @@ public class StarTile extends Tile {
     String[] p1 = {"src/img/star/gemBlueStar.png", 
         "src/img/star/gemGreenStar.png", "src/img/star/gemOrangeStar.png", 
         "src/img/star/gemPurpleStar.png", "src/img/star/gemRedStar.png", 
-        "src/img/star/gemWhiteHypercubeStar.png", "src/img/star/gemYellowStar.png"};
+        "src/img/star/gemWhiteStar.png", "src/img/star/gemYellowStar.png"};
     paths = p1;
   }
 
