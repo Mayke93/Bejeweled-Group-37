@@ -424,6 +424,29 @@ public class Game {
     Logger.log("Total Score: " + this.score);
     panel.setScore(this.score);
   }
+  
+  /**
+   * Update the score in the view for points obtained by special gems.
+   * @param combi the combination containing the special gem
+   * @param tiles all the tiles deleted by the special gem
+   */
+  public void updateScoreSpecialGem(Combination combi, List<Tile> tiles) {
+    if (combi.containsSpecialGem() instanceof FlameTile) {
+      for (int i = 0; i < tiles.size(); i++) {
+        this.score += 20;
+      }
+      Logger.log("Add score: " + tiles.size() + "*" + 20);
+    }
+    if (combi.containsSpecialGem() instanceof StarTile 
+        || combi.containsSpecialGem() instanceof HypercubeTile) {
+      for (int i = 0; i < tiles.size(); i++) {
+        this.score += 50;
+      }
+      Logger.log("Add score: " + tiles.size() + "*" + 50);
+    }
+    Logger.log("Total Score: " + this.score);
+    panel.setScore(this.score);
+  }
 
   /**
    * Increase the levelnumber when a certain score is reached.
