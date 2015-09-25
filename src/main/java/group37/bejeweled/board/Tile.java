@@ -89,6 +89,7 @@ public class Tile {
   public Tile clone(int coordinateX, int coordinateY) {
     Tile tile = new Tile(coordinateX,coordinateY);
     tile.index = this.index;
+    tile.nextType = this.nextType;
     tile.image = new ImageIcon(paths[index]);
     return tile;
   }
