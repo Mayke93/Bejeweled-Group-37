@@ -199,9 +199,9 @@ public class GameLogic {
     if (combi.containsSpecialGem() instanceof StarTile) {
       tiles = board.getTilesToDeleteStar(combi.containsSpecialGem());
     }
-    if (combi.containsSpecialGem() instanceof HypercubeTile) {
-      tiles = board.getTilesToDeleteHypercube(combi.containsSpecialGem());
-    }
+//    if (combi.containsSpecialGem() instanceof HypercubeTile) {
+//      tiles = board.getTilesToDeleteHypercube(combi.containsSpecialGem());
+//    }
 
     return tiles;
   }

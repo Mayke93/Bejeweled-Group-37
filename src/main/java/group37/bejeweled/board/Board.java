@@ -135,8 +135,9 @@ public class Board {
    * @param t1 the hypercube gem
    * @return tiles, the list of tiles to be deleted.
    */
-  public List<Tile> getTilesToDeleteHypercube(Tile t1) {
+  public List<Tile> getTilesToDeleteHypercube(Tile t1, Tile hyper) {
     List<Tile> tiles = new ArrayList<Tile>();
+    tiles.add(hyper);
     int index = t1.getIndex();
     
     for (int row = 0; row < board.length; row++) {        //loop through board
