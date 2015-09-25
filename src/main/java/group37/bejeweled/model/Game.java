@@ -94,6 +94,7 @@ public class Game {
    * Create a board of random jewels without a sequence of 3 or more tiles with the same color.
    */
   public void generateRandomBoard() {
+    Logger.log("Create new board");
     for (int i = 0; i < Main.SIZE; i++) {
       for (int j = 0; j < Main.SIZE; j++) {
         board.setTileAt(setRandomTile(i,j), i , j);

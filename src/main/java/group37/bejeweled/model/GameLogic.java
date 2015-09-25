@@ -118,6 +118,7 @@ public class GameLogic {
    */
   public void dropTiles() {    
     int level = 0;
+    List<Tile> tiles = new ArrayList<Tile>();
     for (int row = SIZE - 1; row >= 0; row--) {
       for (int col = 0; col < SIZE; col++) {
         level = board.getTileAt(col, row).getLevel();
