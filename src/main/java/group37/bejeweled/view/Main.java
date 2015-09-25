@@ -128,9 +128,6 @@ public class Main extends JPanel {
    * 
    */
   public void endGame() {
-    
-    
-    
     Logger.log("End Game");
     this.frame.setLayout(new BorderLayout());
     JPanel pl = new JPanel(new GridLayout(4,1));

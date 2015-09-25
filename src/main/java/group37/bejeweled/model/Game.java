@@ -364,7 +364,9 @@ public class Game {
       System.out.println("in4");
     }
 
-    //Tile.State type = checktype(t0,t1);
+    if(t0 instanceof HypercubeTile || t1 instanceof HypercubeTile) {
+      return true;
+    }
 
     if (type == null) {
       return false;
