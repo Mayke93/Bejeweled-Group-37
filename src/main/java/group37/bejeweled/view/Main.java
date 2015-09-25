@@ -56,6 +56,8 @@ public class Main extends JPanel {
     this.frame = frame;
     this.panel = panel;
     game = new Game(this,panel);
+    panel.setGame(game);
+    panel.setMain(this);
     animations = new Animation(game,this);
     setOpaque(true);
     Logger.log("# Start new game");
@@ -66,7 +68,7 @@ public class Main extends JPanel {
     SavedGame.getInstance().loadGame();
     panel.setLevel(game.getLevel());
     panel.setScore(game.getScore());
-    System.out.println("level:" +game.getLevel());
+    System.out.println("level:" + game.getLevel());
     //boardfactory = new BoardFactory(game);
   }
 
