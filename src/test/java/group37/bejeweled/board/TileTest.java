@@ -1,6 +1,9 @@
 package test.java.group37.bejeweled.board;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import main.java.group37.bejeweled.board.FlameTile;
 import main.java.group37.bejeweled.board.HypercubeTile;
@@ -10,7 +13,6 @@ import main.java.group37.bejeweled.model.Combination.Type;
 
 import org.junit.Test;
 
-import java.awt.Image;
 import java.awt.Point;
 
 import javax.swing.ImageIcon;
@@ -238,7 +240,7 @@ public class TileTest {
   }
   
   /**
-   * Simple test for getters and setters of nextType
+   * Simple test for getters and setters of nextType.
    */
   @Test
   public void getSetnextTypeTest() { 

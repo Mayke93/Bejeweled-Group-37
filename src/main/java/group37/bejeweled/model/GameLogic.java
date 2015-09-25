@@ -2,7 +2,7 @@ package main.java.group37.bejeweled.model;
 
 import main.java.group37.bejeweled.board.Board;
 import main.java.group37.bejeweled.board.FlameTile;
-import main.java.group37.bejeweled.board.HypercubeTile;
+//import main.java.group37.bejeweled.board.HypercubeTile;
 import main.java.group37.bejeweled.board.StarTile;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.model.Combination.Type;

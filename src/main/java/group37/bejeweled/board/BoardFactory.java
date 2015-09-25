@@ -1,16 +1,12 @@
 package main.java.group37.bejeweled.board;
 
+import main.java.group37.bejeweled.model.Game;
+
 import java.awt.Graphics;
 import java.awt.Point;
 
 import javax.swing.ImageIcon;
-//import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import main.java.group37.bejeweled.model.Game;
-
-//import main.java.group37.bejeweled.view.Animation;
-//import main.java.group37.bejeweled.view.StatusPanel;
 
 @SuppressWarnings("serial")
 public class BoardFactory extends JPanel {
@@ -23,7 +19,6 @@ public class BoardFactory extends JPanel {
   private static ImageIcon focusImage = new ImageIcon("src/img/focus.png");
   private Point focus = null;
 
- 
   //public Animation animations;
 
   //Panel with score label and level label

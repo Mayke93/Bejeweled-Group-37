@@ -1,7 +1,5 @@
 package main.java.group37.bejeweled.view;
 
-import main.java.group37.bejeweled.board.Board;
-import main.java.group37.bejeweled.board.BoardFactory;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.model.Game;
 import main.java.group37.bejeweled.model.Logger;
@@ -15,7 +13,6 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Point;
-import java.io.IOException;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -23,9 +20,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-//import javax.swing.border.Border;
-//import javax.swing.border.LineBorder;
-
 
 @SuppressWarnings("serial")
 
