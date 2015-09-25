@@ -8,6 +8,7 @@ import java.util.List;
 import org.junit.Test;
 
 import main.java.group37.bejeweled.board.Board;
+import main.java.group37.bejeweled.board.HypercubeTile;
 import main.java.group37.bejeweled.board.Tile;
 
 /**
@@ -159,18 +160,19 @@ public class BoardTest {
    */
   @Test
   public void getTilesToDeleteHypercubeTest() {
+    Tile htile = new HypercubeTile(1,1);
     Tile[][] tiles = new Tile[3][3];
     Board board = new Board(tiles);
     Tile tile = new Tile(1,1);
     tile.setIndex(1);
     board.setTileAt(tile, 0, 0); board.setTileAt(tile, 0, 1); board.setTileAt(tile, 0, 2);
     board.setTileAt(tile, 1, 0); board.setTileAt(tile, 1, 1); board.setTileAt(tile, 1, 2);
-    board.setTileAt(tile, 2, 0); board.setTileAt(tile, 2, 1); board.setTileAt(tile, 2, 2);
+    board.setTileAt(tile, 2, 0); board.setTileAt(tile, 2, 1); board.setTileAt(htile, 2, 2);
    
     List<Tile> newList = new ArrayList<Tile>();
+    newList.add(htile); newList.add(tile); newList.add(tile);
     newList.add(tile); newList.add(tile); newList.add(tile);
-    newList.add(tile); newList.add(tile); newList.add(tile);
-    List<Tile> list = board.getTilesToDeleteHypercube(tile);
+    List<Tile> list = board.getTilesToDeleteHypercube(tile, htile);
     assertFalse(list.equals(newList));
     newList.add(tile); newList.add(tile); newList.add(tile);
     assertTrue(list.equals(newList));
