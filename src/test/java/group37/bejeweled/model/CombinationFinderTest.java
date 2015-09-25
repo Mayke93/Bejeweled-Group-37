@@ -1,18 +1,19 @@
 package test.java.group37.bejeweled.model;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import main.java.group37.bejeweled.board.Board;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.model.Combination;
 import main.java.group37.bejeweled.model.Combination.Type;
 import main.java.group37.bejeweled.model.CombinationFinder;
 
-import static org.junit.Assert.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-
-
 
 /**
  * simple input/output tests for the CombinationFinder class.
@@ -73,7 +74,6 @@ public class CombinationFinderTest {
    */
   @Test
   public void getAllCombinationsOnBoardTest() {
-    Tile[][] tiles = new Tile[3][2];
     Tile t0 = new Tile(0,0);
     t0.setIndex(2);
     Tile t1 = new Tile(1,0);
@@ -82,6 +82,7 @@ public class CombinationFinderTest {
     t2.setIndex(2);
     Tile t3 = new Tile(0,1);
     t3.setIndex(1);
+    Tile[][] tiles = new Tile[3][2];
     Board board = new Board(tiles);
     board.setTileAt(t0, 0, 0);
     board.setTileAt(t1, 1, 0);

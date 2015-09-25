@@ -1,12 +1,10 @@
 package test.java.group37.bejeweled.model;
 
-import static org.junit.Assert.*;
-
-//import javax.swing.JLabel;
-
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import main.java.group37.bejeweled.view.StatusPanel;
+
+import org.junit.Test;
 
 /**
  * Test the StatusPanel class.

@@ -1,12 +1,11 @@
 package main.java.group37.bejeweled.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import main.java.group37.bejeweled.board.Board;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.model.Combination.Type;
-import main.java.group37.bejeweled.view.Main;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class can be used to find the type and tiles of combinations on the board

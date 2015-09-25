@@ -1,15 +1,9 @@
 package main.java.group37.bejeweled.board;
 
-import main.java.group37.bejeweled.model.Combination;
-import main.java.group37.bejeweled.model.Game;
-import main.java.group37.bejeweled.view.Main;
-
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-
 
 /**
  * board object for the tiles.
@@ -18,7 +12,7 @@ import java.util.List;
  *
  */
 public class Board {
-  private static final int SIZE = Main.SIZE;
+  
   /**
    * The grid of squares with board[x][y] being the square at column x, row y.
    */

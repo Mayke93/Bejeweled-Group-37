@@ -1,12 +1,5 @@
 package main.java.group37.bejeweled.model;
 
-import java.awt.Point;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-import javax.swing.ImageIcon;
-
 import main.java.group37.bejeweled.board.Board;
 import main.java.group37.bejeweled.board.BoardFactory;
 import main.java.group37.bejeweled.board.FlameTile;
@@ -14,10 +7,15 @@ import main.java.group37.bejeweled.board.HypercubeTile;
 import main.java.group37.bejeweled.board.StarTile;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.model.Combination.Type;
-//import main.java.group37.bejeweled.model.Tile.State;
-import main.java.group37.bejeweled.view.Animation;
 import main.java.group37.bejeweled.view.Main;
 import main.java.group37.bejeweled.view.StatusPanel;
+
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import javax.swing.ImageIcon;
 
 //import javax.swing.JLabel;
 //import Tile.State;
