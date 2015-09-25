@@ -69,13 +69,13 @@ public class GameLogic {
 
     for (Combination comb: chains) {
       tiles.addAll(comb.getTiles());
-      Logger.log("Special gem in combination: " + comb.getType());
-
       if (comb.containsSpecialGem() == null) {
         game.updateScore(comb.getType());         //update normal score
       }
       System.out.println(comb.containsSpecialGem());
+      
       if (comb.containsSpecialGem() != null) {
+        Logger.log("Special gem in combination: " + comb.getType());
         List<Tile> gemtiles = getTilesToDeleteSpecialGem(comb);
         game.updateScoreSpecialGem(comb, gemtiles); //update score for detonating special gem
         for (Tile t1 : gemtiles) {
@@ -87,10 +87,8 @@ public class GameLogic {
 
       if (comb.isSpecialCombination()) {          //als er speciale combi is
         generateSpecialGem(comb);                 //maak dan een special gem
-        //tiles.remove(comb.getTiles().get(2));
       }
     }
-
     deleteTiles(tiles);
   }
 
@@ -132,9 +130,10 @@ public class GameLogic {
         }
       }
     }
+    Tile tile = new Tile(0,0);
     for (int row = SIZE - 1; row >= 0; row--) {
       for (int col = 0; col < SIZE; col++) {
-        Tile tile = board.getTileAt(col, row);
+        tile = board.getTileAt(col, row);
         if (tile.delete) {
           if (tile.getNextType() == Type.NORMAL) {
             board.setTileAt(game.setRandomTile(col,row), col, row);
@@ -168,26 +167,14 @@ public class GameLogic {
    */
   public void generateSpecialGem(Combination combi) {
     if (combi.getType() == Type.FLAME) {
-      generateSpecialGemFlame(combi);
+      combi.getTiles().get(0).setNextType(Type.FLAME);
     }
     if (combi.getType() == Type.STAR) {
-      generateSpecialGemStar(combi);
+      combi.getTiles().get(0).setNextType(Type.STAR);
     }
     if (combi.getType() == Type.HYPERCUBE) {
-      generateSpecialGemFlameHypbercube(combi);
+      combi.getTiles().get(0).setNextType(Type.HYPERCUBE);
     }
-  }
-
-  private void generateSpecialGemFlameHypbercube(Combination combi) {
-    combi.getTiles().get(0).setNextType(Type.HYPERCUBE);
-  }
-
-  private void generateSpecialGemStar(Combination combi) {
-    combi.getTiles().get(0).setNextType(Type.STAR);
-  }
-
-  public void generateSpecialGemFlame(Combination combi) {
-    combi.getTiles().get(0).setNextType(Type.FLAME);
   }
 
   /**

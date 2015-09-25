@@ -129,7 +129,7 @@ public class Game {
    * @param type type of special tile.
    * @return tile object.
    */
-  public Tile setSpecialTile(int xi, int yi,Type type) {
+  public Tile setSpecialTile(int xi, int yi, Type type) {
     Tile tile = null;
     if (type == Type.NORMAL) {
       tile = new Tile(xi,yi);
@@ -342,28 +342,28 @@ public class Game {
     Tile t1 = board.getTileAt(swapTiles.get(1).getX(), swapTiles.get(1).getY());
 
     swapTiles(t0,t1);
-    Combination l1 = finder.getSingleCombinationX(t0);
-    Combination l2 = finder.getSingleCombinationX(t1);
-    Combination l3 = finder.getSingleCombinationY(t0);
-    Combination l4 = finder.getSingleCombinationY(t1);
+    Combination combiX0 = finder.getSingleCombinationX(t0);
+    Combination combiX1 = finder.getSingleCombinationX(t1);
+    Combination combiY0 = finder.getSingleCombinationY(t0);
+    Combination combiY1 = finder.getSingleCombinationY(t1);
     swapTiles(t0,t1);
 
     Type type = null;
-    if (!l1.getTiles().isEmpty()) {
-      type = l1.getType();
+    if (!combiX0.getTiles().isEmpty()) {
+      type = combiX0.getType();
       System.out.println("in1");
-    } else if (!l2.getTiles().isEmpty()) {
-      type = l2.getType();
+    } else if (!combiX1.getTiles().isEmpty()) {
+      type = combiX1.getType();
       System.out.println("in2");
-    } else if (!l3.getTiles().isEmpty()) {
-      type = l3.getType();
+    } else if (!combiY0.getTiles().isEmpty()) {
+      type = combiY0.getType();
       System.out.println("in3");
-    } else if (!l4.getTiles().isEmpty()) {
-      type = l4.getType();
+    } else if (!combiY1.getTiles().isEmpty()) {
+      type = combiY1.getType();
       System.out.println("in4");
     }
 
-    if(t0 instanceof HypercubeTile || t1 instanceof HypercubeTile) {
+    if (t0 instanceof HypercubeTile || t1 instanceof HypercubeTile) {
       return true;
     }
 
