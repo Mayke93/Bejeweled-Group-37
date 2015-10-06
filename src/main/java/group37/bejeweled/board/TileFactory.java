@@ -1,6 +1,6 @@
 package main.java.group37.bejeweled.board;
 
-import main.java.group37.bejeweled.model.Combination.Type;
+import main.java.group37.bejeweled.combination.Combination.Type;
 
 public class TileFactory {
   

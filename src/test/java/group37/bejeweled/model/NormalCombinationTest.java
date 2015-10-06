@@ -4,12 +4,13 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-
 import main.java.group37.bejeweled.board.FlameTile;
 import main.java.group37.bejeweled.board.NormalTile;
 import main.java.group37.bejeweled.board.Tile;
-import main.java.group37.bejeweled.model.Combination;
-import main.java.group37.bejeweled.model.Combination.Type;
+import main.java.group37.bejeweled.combination.Combination;
+import main.java.group37.bejeweled.combination.Combination.Type;
+import main.java.group37.bejeweled.combination.NormalCombination;
+
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ import java.util.List;
  * Not all methods tested yet, because random colors are assigned to Tiles.
  * @author Mayke Kloppenburg
  */
-public class CombinationTest {
+public class NormalCombinationTest {
 
   /**
    * Method to make a combination so the tests are more compact.
@@ -34,7 +35,8 @@ public class CombinationTest {
     tiles.add(a1);
     tiles.add(b1);
     tiles.add(c1);
-    Combination x1 = new Combination(Type.NORMAL, tiles);
+    Combination x1 = new NormalCombination();
+    x1.setTiles(tiles);
     return x1;
   }
 
@@ -43,7 +45,7 @@ public class CombinationTest {
    */
   @Test
   public void testCombination() {
-    Combination x1 = new Combination();
+    Combination x1 = new NormalCombination();
     assertNotNull(x1);
   }
 

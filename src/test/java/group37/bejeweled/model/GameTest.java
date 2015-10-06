@@ -10,8 +10,8 @@ import org.junit.Test;
 
 import main.java.group37.bejeweled.board.Board;
 import main.java.group37.bejeweled.board.Tile;
-import main.java.group37.bejeweled.model.Combination.Type;
-import main.java.group37.bejeweled.model.CombinationFinder;
+import main.java.group37.bejeweled.combination.CombinationFinder;
+import main.java.group37.bejeweled.combination.Combination.Type;
 import main.java.group37.bejeweled.model.Game;
 import main.java.group37.bejeweled.view.Main;
 import main.java.group37.bejeweled.view.StatusPanel;
