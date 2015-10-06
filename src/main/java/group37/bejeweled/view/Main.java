@@ -137,15 +137,15 @@ public class Main extends JPanel {
     button.setText("New Game");
     button.setSize(400, 50);
     button.setMinimumSize(new Dimension(400,200));
-    button.setFont(new Font("Serif",Font.BOLD, 45)); 
+    button.setFont(new Font("Serif", Font.BOLD, 45)); 
     button.setForeground(Color.BLACK);
     button.addActionListener(new ButtonListener());
 
-    JLabel label = new JLabel("Game over frown-emoticon",JLabel.CENTER);
+    JLabel label = new JLabel("GAME OVER", JLabel.CENTER);
     label.setForeground(Color.WHITE);
     label.setVerticalTextPosition(JLabel.TOP);
     label.setHorizontalTextPosition(JLabel.CENTER);
-    label.setFont(new Font("Serif",Font.BOLD, 45)); 
+    label.setFont(new Font("Serif", Font.BOLD, 45)); 
 
     pl.setAlignmentX(Component.CENTER_ALIGNMENT);
     pl.add(label);
