@@ -1,6 +1,7 @@
 package main.java.group37.bejeweled.model;
 
 import main.java.group37.bejeweled.board.Board;
+import main.java.group37.bejeweled.board.NormalTile;
 import main.java.group37.bejeweled.board.Tile;
 
 import org.json.simple.JSONArray;
@@ -118,7 +119,7 @@ public class SavedGame {
     for (int row = 0; row < SIZE; row++) {
       JSONArray rowJ = (JSONArray) tiles.get(row);
       for (int col = 0; col < SIZE; col++) {
-        bd[col][row] = new Tile(col,row);
+        bd[col][row] = new NormalTile(col,row);
         index = ((Long)rowJ.get(col)).intValue();
         bd[col][row].setIndex(index);
         bd[col][row].setImage(new ImageIcon(bd[col][row].paths[index]));

@@ -49,6 +49,7 @@ public class FlameTile extends Tile {
    * @param coordinateY row index.
    * @return clone of this.
    */
+  @Override
   public Tile clone(int coordinateX, int coordinateY) {
     Tile tile = new FlameTile(coordinateX,coordinateY);
     tile.setIndex(this.index);

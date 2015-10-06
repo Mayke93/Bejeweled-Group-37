@@ -12,7 +12,7 @@ import main.java.group37.bejeweled.model.Combination.Type;
  * Class for initialising a gem on the board.
  * @author Group 37
  */
-public class Tile {
+public abstract class Tile {
  
   protected ImageIcon image;
   private Point loc;
@@ -78,20 +78,6 @@ public class Tile {
    */
   public void resetD() {
     this.translation = new Point(0,0);
-  }
-
-  /**
-   * Create clone of this object.
-   * @param coordinateX col index.
-   * @param coordinateY row index.
-   * @return clone of this.
-   */
-  public Tile clone(int coordinateX, int coordinateY) {
-    Tile tile = new Tile(coordinateX,coordinateY);
-    tile.index = this.index;
-    tile.nextType = this.nextType;
-    tile.image = new ImageIcon(paths[index]);
-    return tile;
   }
   
   /**
@@ -238,16 +224,22 @@ public class Tile {
         + ((translation == null) ? 0 : translation.hashCode());
     return result;
   }
-
-  //tostring methods, only for printing!!
   
   /**
-   * get the type of the tile, only for printing purposes.
-   * @return type as a string
+   * Create clone of this object.
+   * @param coordinateX col index.
+   * @param coordinateY row index.
+   * @return clone of this.
    */
-  public String getType() {
-    return "Normal"; 
-  } 
+  public Tile clone(int coordinateX, int coordinateY) {
+    Tile tile = new NormalTile(coordinateX,coordinateY);
+    tile.index = this.index;
+    tile.nextType = this.nextType;
+    tile.image = new ImageIcon(paths[index]);
+    return tile;
+  }
+
+  //tostring methods, only for printing!!
 
   /**
    * Method to represent the location and the color of a tile in a string.
@@ -265,4 +257,6 @@ public class Tile {
   public void setNextType(Type nextType) {
     this.nextType = nextType;
   }
+  
+  public abstract String getType();
 }

@@ -4,6 +4,7 @@ import main.java.group37.bejeweled.board.Board;
 import main.java.group37.bejeweled.board.BoardFactory;
 import main.java.group37.bejeweled.board.FlameTile;
 import main.java.group37.bejeweled.board.HypercubeTile;
+import main.java.group37.bejeweled.board.NormalTile;
 import main.java.group37.bejeweled.board.StarTile;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.model.Combination.Type;
@@ -115,7 +116,7 @@ public class Game {
    * @return a random tile as a Tile object
    */
   public Tile setRandomTile(int xi, int yi) { 
-    Tile tile = new Tile(xi, yi);
+    Tile tile = new NormalTile(xi, yi);
     Random random = new Random();
     tile.setIndex(random.nextInt(7));
     tile.setImage(new ImageIcon(tile.paths[tile.getIndex()]));
@@ -132,7 +133,7 @@ public class Game {
   public Tile setSpecialTile(int xi, int yi, Type type) {
     Tile tile = null;
     if (type == Type.NORMAL) {
-      tile = new Tile(xi,yi);
+      tile = new NormalTile(xi,yi);
     } else if (type == Type.FLAME) {
       tile = new FlameTile(xi,yi);
     } else if (type == Type.STAR) {
@@ -235,7 +236,7 @@ public class Game {
       //TODO Startile?
       if (sum == 3) {
         //res = Tile.State.NORMAL;
-        res = new Tile(t0.getX(), t0.getY());
+        res = new NormalTile(t0.getX(), t0.getY());
       }
       if (sum == 4) {
        // res = Tile.State.FLAME;
@@ -264,7 +265,7 @@ public class Game {
       }
 
       if (sum == 3) {
-        res = new Tile(t0.getX(), t0.getY());
+        res = new NormalTile(t0.getX(), t0.getY());
       }
       if (sum == 4) {
         //res = Tile.State.FLAME;

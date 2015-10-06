@@ -2,6 +2,7 @@ package main.java.group37.bejeweled.model;
 
 import main.java.group37.bejeweled.board.Board;
 import main.java.group37.bejeweled.board.FlameTile;
+import main.java.group37.bejeweled.board.NormalTile;
 //import main.java.group37.bejeweled.board.HypercubeTile;
 import main.java.group37.bejeweled.board.StarTile;
 import main.java.group37.bejeweled.board.Tile;
@@ -132,7 +133,7 @@ public class GameLogic {
         }
       }
     }
-    Tile tile = new Tile(0,0);
+    Tile tile = new NormalTile(0,0);
     for (int row = SIZE - 1; row >= 0; row--) {
       for (int col = 0; col < SIZE; col++) {
         tile = board.getTileAt(col, row);
