@@ -6,7 +6,9 @@ import main.java.group37.bejeweled.board.NormalTile;
 //import main.java.group37.bejeweled.board.HypercubeTile;
 import main.java.group37.bejeweled.board.StarTile;
 import main.java.group37.bejeweled.board.Tile;
-import main.java.group37.bejeweled.model.Combination.Type;
+import main.java.group37.bejeweled.combination.Combination;
+import main.java.group37.bejeweled.combination.Combination.Type;
+import main.java.group37.bejeweled.combination.CombinationFinder;
 import main.java.group37.bejeweled.view.Animation;
 import main.java.group37.bejeweled.view.Main;
 
@@ -37,6 +39,10 @@ public class GameLogic {
     return this.finder;
   }
   
+  /**
+   * Set the board.
+   * @param board the board to be set.
+   */
   public void setBoard(Board board) {
     this.board = board;
   }
@@ -49,6 +55,10 @@ public class GameLogic {
     return this.board;
   }
 
+  /**
+   * Set the current boardpanel.
+   * @param boardPanel the panel to be set to. 
+   */
   public void setBoardPanel(Main boardPanel) {
     this.boardPanel = boardPanel;
   }
@@ -71,7 +81,7 @@ public class GameLogic {
     for (Combination comb: chains) {
       tiles.addAll(comb.getTiles());
       if (comb.containsSpecialGem() == null) {
-        game.updateScore(comb.getType());         //update normal score
+        game.updateScore(comb);         //update normal score
       }
       Logger.log("Comb type: " + comb.getType());
       System.out.println(comb.containsSpecialGem());
@@ -119,7 +129,6 @@ public class GameLogic {
    */
   public void dropTiles() {    
     int level = 0;
-    List<Tile> tiles = new ArrayList<Tile>();
     for (int row = SIZE - 1; row >= 0; row--) {
       for (int col = 0; col < SIZE; col++) {
         level = board.getTileAt(col, row).getLevel();
@@ -170,15 +179,7 @@ public class GameLogic {
    */
   public void generateSpecialGem(Combination combi) {
     Logger.log("Generate special gem");
-    if (combi.getType() == Type.FLAME) {
-      combi.getTiles().get(0).setNextType(Type.FLAME);
-    }
-    if (combi.getType() == Type.STAR) {
-      combi.getTiles().get(0).setNextType(Type.STAR);
-    }
-    if (combi.getType() == Type.HYPERCUBE) {
-      combi.getTiles().get(0).setNextType(Type.HYPERCUBE);
-    }
+    combi.setNextType();
   }
 
   /**

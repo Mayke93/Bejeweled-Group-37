@@ -1,4 +1,4 @@
-package main.java.group37.bejeweled.model;
+package main.java.group37.bejeweled.combination;
 
 import main.java.group37.bejeweled.board.FlameTile;
 import main.java.group37.bejeweled.board.HypercubeTile;
@@ -12,7 +12,7 @@ import java.util.List;
  * Class for making a combination of the type of an combi and the tiles which make this combination.
  * @author group37
  */
-public class Combination {
+public abstract class Combination {
   
   public Type type;
   public List<Tile> tiles;
@@ -33,8 +33,8 @@ public class Combination {
    * @param tiles
    *              a list of tiles which are included in the combination
    */
-  public Combination(Type ty, List<Tile> tiles) {
-    this.type = ty;
+  public Combination(List<Tile> tiles) {
+    //this.type = ty;
     this.tiles = tiles;
   }
 
@@ -95,9 +95,7 @@ public class Combination {
    */
   public boolean isSpecialCombination() {
     boolean res = false;
-    if (this.getType() == Type.FLAME 
-        || this.getType() == Type.STAR 
-        || this.getType() == Type.HYPERCUBE) {
+    if (!(this.getType() == Type.NORMAL)) {
       res = true;
     }
     return res;
@@ -130,5 +128,15 @@ public class Combination {
     return false;
   }
   
+  /**
+   * Get the score for making a combination.
+   * @return the score
+   */
+  public abstract int score();
+  
+  /**
+   * Set the next type for the gem.
+   */
+  public abstract void setNextType();
 
 }

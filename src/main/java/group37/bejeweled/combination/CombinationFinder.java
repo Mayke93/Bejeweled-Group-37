@@ -1,8 +1,8 @@
-package main.java.group37.bejeweled.model;
+package main.java.group37.bejeweled.combination;
 
 import main.java.group37.bejeweled.board.Board;
 import main.java.group37.bejeweled.board.Tile;
-import main.java.group37.bejeweled.model.Combination.Type;
+import main.java.group37.bejeweled.combination.Combination.Type;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,14 +50,14 @@ public class CombinationFinder {
     for (int i = 0; i < board.getWidth(); i++) {      //for every tile on the board
       for (int j = 0; j < board.getHeight(); j++) {
         tile = getSingleCombinationX(board.getTileAt(i,j));
-        if (!tile.getTiles().isEmpty()) {
+        if (!(tile == null)) {
           if (!sameCombination(allcombinations, tile)) {
             allcombinations.add(tile);
           }
         }
 
         tile = getSingleCombinationY(board.getTileAt(i,j));
-        if (!tile.getTiles().isEmpty()) {
+        if (!(tile == null)) {
           if (!sameCombination(allcombinations, tile)) {
             allcombinations.add(tile);
           }
@@ -75,7 +75,7 @@ public class CombinationFinder {
    *      and second the list of tiles in de combi.
    */
   public Combination getSingleCombinationX(Tile tile) {
-    Combination combi = new Combination();
+    Combination combi = null;
     List<Tile> tiles = new ArrayList<Tile>();
 
     //check x direction
@@ -103,15 +103,15 @@ public class CombinationFinder {
       if (tiles.size() == 3) {
         List<Tile> specialShape = findLTshapeX(tiles);   // check for T and L shapes
         if (specialShape.isEmpty()) {
-          combi.setType(Type.NORMAL);
+          combi = CombinationFactory.makeCombination(Type.NORMAL);
         } else {
           tiles.addAll(specialShape);
-          combi.setType(Type.STAR);
+          combi = CombinationFactory.makeCombination(Type.STAR);
         }
       } else if (tiles.size() == 4) {
-        combi.setType(Type.FLAME);
+        combi = CombinationFactory.makeCombination(Type.FLAME);
       } else if (tiles.size() == 5) {
-        combi.setType(Type.HYPERCUBE);
+        combi = CombinationFactory.makeCombination(Type.HYPERCUBE);
       }
       combi.setTiles(tiles);
     }
@@ -126,7 +126,7 @@ public class CombinationFinder {
    *     and second the list of tiles in de combi.
    */
   public Combination getSingleCombinationY(Tile tile) {
-    Combination combi = new Combination();
+    Combination combi = null;
     List<Tile> tiles = new ArrayList<Tile>();
 
     //check y direction
@@ -151,18 +151,19 @@ public class CombinationFinder {
       if (tiles.size() == 3) {
         List<Tile> specialShape = findLTshapeY(tiles);   // check for T and L shapes
         if (specialShape.isEmpty()) {
-          combi.setType(Type.NORMAL);
+          combi = CombinationFactory.makeCombination(Type.NORMAL);
         } else {
           tiles.addAll(specialShape);
-          combi.setType(Type.STAR);
+          combi = CombinationFactory.makeCombination(Type.STAR);
         }
       } else if (tiles.size() == 4) {
-        combi.setType(Type.FLAME);
+        combi = CombinationFactory.makeCombination(Type.FLAME);
       } else if (tiles.size() == 5) {
-        combi.setType(Type.HYPERCUBE);
+        combi = CombinationFactory.makeCombination(Type.HYPERCUBE);
       }
       combi.setTiles(tiles);
     }
+    
     return combi;
   } 
   
@@ -244,4 +245,5 @@ public class CombinationFinder {
     }
     return newtiles;
   }
+  
 }

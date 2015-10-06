@@ -8,7 +8,9 @@ import main.java.group37.bejeweled.board.NormalTile;
 import main.java.group37.bejeweled.board.StarTile;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.board.TileFactory;
-import main.java.group37.bejeweled.model.Combination.Type;
+import main.java.group37.bejeweled.combination.Combination;
+import main.java.group37.bejeweled.combination.Combination.Type;
+import main.java.group37.bejeweled.combination.CombinationFinder;
 import main.java.group37.bejeweled.view.Main;
 import main.java.group37.bejeweled.view.StatusPanel;
 
@@ -225,6 +227,16 @@ public class Game {
           break;
         }
       }
+      
+      if (sum == 3) {
+        res = new NormalTile(tile.getX(), tile.getY());
+      }
+      if (sum == 4) {
+        res = new FlameTile(tile.getX(), tile.getY());
+      }
+      if (sum == 5) {
+        res = new HypercubeTile(tile.getX(), tile.getY());
+      }
 
       //check y direction
       sum = 1;
@@ -244,13 +256,13 @@ public class Game {
       }
 
       if (sum == 3) {
-        res = new NormalTile(t0.getX(), t0.getY());
+        res = new NormalTile(tile.getX(), tile.getY());
       }
       if (sum == 4) {
-        res = new FlameTile(t0.getX(), t0.getY());
+        res = new FlameTile(tile.getX(), tile.getY());
       }
       if (sum == 5) {
-        res = new HypercubeTile(t0.getX(), t0.getY());
+        res = new HypercubeTile(tile.getX(), tile.getY());
       }
     }
     //swap the tiles back to original position
@@ -328,18 +340,14 @@ public class Game {
     swapTiles(t0,t1);
 
     Type type = null;
-    if (!combiX0.getTiles().isEmpty()) {
+    if (!(combiX0 == null)) {
       type = combiX0.getType();
-      System.out.println("in1");
-    } else if (!combiX1.getTiles().isEmpty()) {
+    } else if (!(combiX1 == null)) {
       type = combiX1.getType();
-      System.out.println("in2");
-    } else if (!combiY0.getTiles().isEmpty()) {
+    } else if (!(combiY0 == null)) {
       type = combiY0.getType();
-      System.out.println("in3");
-    } else if (!combiY1.getTiles().isEmpty()) {
+    } else if (!(combiY1 == null)) {
       type = combiY1.getType();
-      System.out.println("in4");
     }
 
     if (t0 instanceof HypercubeTile || t1 instanceof HypercubeTile) {
@@ -379,27 +387,10 @@ public class Game {
 
   /**
    * Update score in the view.
-   * @param type change score based on the value of type.
+   * @param combi change score based on the type of combination.
    */
-  public void updateScore(Type type) {
-    int score = 0;
-    switch (type) {
-      case NORMAL:
-        score = 50;
-        break;
-      case FLAME:
-        score = 150;
-        break;
-      case HYPERCUBE:
-        score = 500;
-        break;
-      case STAR:
-        score = 150;
-        break;
-      default:
-        break;
-    }
-    this.score += score;
+  public void updateScore(Combination combi) {
+    this.score += combi.score();
     Logger.log("Add score: " + score);
     Logger.log("Total Score: " + this.score);
     panel.setScore(this.score);
@@ -486,18 +477,29 @@ public class Game {
     this.board = bo;
   }
   
-  public int getScore(){
+  /**
+   * Get the current score.
+   * @return the score
+   */
+  public int getScore() {
     return this.score;
   }
   
-  public void setScore(int score){
+  /**
+   * Set the current score.
+   * @param score the score to be set.
+   */
+  public void setScore(int score) {
     this.score = score;
   }
   
-  public int getLevel(){
+  /**
+   * Get the current level number.
+   * @return the level number.
+   */
+  public int getLevel() {
     return this.newlevel;
   }
-  
   
   /**
    * Get the list with the selected tiles to swap.
@@ -524,6 +526,10 @@ public class Game {
     this.finder = cf;
   }
 
+  /**
+   * Set the current level number.
+   * @param level1 the level number to be set.
+   */
   public void setLevel(Integer level1) {
     this.newlevel = level1; 
   }

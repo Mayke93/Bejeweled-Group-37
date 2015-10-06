@@ -5,7 +5,7 @@ import java.awt.Point;
 
 import javax.swing.ImageIcon;
 
-import main.java.group37.bejeweled.model.Combination.Type;
+import main.java.group37.bejeweled.combination.Combination.Type;
 
 
 /**
