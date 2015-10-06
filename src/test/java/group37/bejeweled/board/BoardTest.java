@@ -8,6 +8,7 @@ import static org.junit.Assert.assertTrue;
 
 import main.java.group37.bejeweled.board.Board;
 import main.java.group37.bejeweled.board.HypercubeTile;
+import main.java.group37.bejeweled.board.NormalTile;
 import main.java.group37.bejeweled.board.Tile;
 import org.junit.Test;
 
@@ -51,7 +52,7 @@ public class BoardTest {
   public void getSetTileAtTest() {
     Tile[][] tiles = new Tile[8][6];
     Board board = new Board(tiles);
-    Tile tile = new Tile(3,2);
+    Tile tile = new NormalTile(3,2);
     board.setTileAt(tile, 3, 2);
     assertEquals(board.getTileAt(3,2), tile);
   }
@@ -84,7 +85,7 @@ public class BoardTest {
   public void isEmptyFalseUnvalidTest() {
     Tile[][] tiles = new Tile[8][6];
     Board board = new Board(tiles);
-    Tile tile = new Tile(3,2);
+    Tile tile = new NormalTile(3,2);
     board.setTileAt(tile, 3, 2);
     assertFalse(board.isEmpty(8, 6));
     assertFalse(board.isEmpty(3, 2));   
@@ -97,7 +98,7 @@ public class BoardTest {
   public void isEmptyTrueTest() {
     Tile[][] tiles = new Tile[8][6];
     Board board = new Board(tiles);
-    Tile tile = new Tile(3,2);
+    Tile tile = new NormalTile(3,2);
     board.setTileAt(tile, 3, 2);
     assertTrue(board.isEmpty(3, 3));   
   }
@@ -109,7 +110,7 @@ public class BoardTest {
   public void clearTest() {
     Tile[][] tiles = new Tile[8][6];
     Board board = new Board(tiles);
-    Tile tile = new Tile(3,2);
+    Tile tile = new NormalTile(3,2);
     board.setTileAt(tile, 3, 2);
     assertEquals(board.getTileAt(3, 2), tile); 
     board.clear(3, 2);
@@ -125,7 +126,7 @@ public class BoardTest {
   public void getTilesToDeleteFlameTest() {
     Tile[][] tiles = new Tile[3][3];
     Board board = new Board(tiles);
-    Tile tile = new Tile(1,1);
+    Tile tile = new NormalTile(1,1);
     board.setTileAt(tile, 0, 0); board.setTileAt(tile, 0, 1); board.setTileAt(tile, 0, 2);
     board.setTileAt(tile, 1, 0); board.setTileAt(tile, 1, 1); board.setTileAt(tile, 1, 2);
     board.setTileAt(tile, 2, 0); board.setTileAt(tile, 2, 1); board.setTileAt(tile, 2, 2);
@@ -145,7 +146,7 @@ public class BoardTest {
   public void getTilesToDeleteInCornerFlameTest() {
     Tile[][] tiles = new Tile[3][3];
     Board board = new Board(tiles);
-    Tile tile = new Tile(0,0);
+    Tile tile = new NormalTile(0,0);
     board.setTileAt(tile, 0, 0); board.setTileAt(tile, 0, 1);
     board.setTileAt(tile, 1, 0); board.setTileAt(tile, 1, 1);
    
@@ -166,7 +167,7 @@ public class BoardTest {
     Tile[][] tiles = new Tile[3][3];
     Board board = new Board(tiles);
     Tile htile = new HypercubeTile(1,1);
-    Tile tile = new Tile(1,1);
+    Tile tile = new NormalTile(1,1);
     tile.setIndex(1);
     board.setTileAt(htile, 0, 0); board.setTileAt(tile, 0, 1); board.setTileAt(tile, 0, 2);
     board.setTileAt(tile, 1, 0); board.setTileAt(tile, 1, 1); board.setTileAt(tile, 1, 2);
@@ -188,10 +189,10 @@ public class BoardTest {
   public void getTilesToDeleteStarTest() {
     Tile[][] tiles = new Tile[2][2];
     Board board = new Board(tiles);
-    Tile tile = new Tile(1,1);
-    Tile tile2 = new Tile(0,1);
-    Tile tile3 = new Tile(0,0);
-    Tile tile4 = new Tile(1,0);
+    Tile tile = new NormalTile(1,1);
+    Tile tile2 = new NormalTile(0,1);
+    Tile tile3 = new NormalTile(0,0);
+    Tile tile4 = new NormalTile(1,0);
     board.setTileAt(tile3, 0, 0); 
     board.setTileAt(tile2, 0, 1);
     board.setTileAt(tile4, 1, 0); 
@@ -230,12 +231,12 @@ public class BoardTest {
   @Test
   public void equalsWithTilesTest() {
     Tile[][] t0 = new Tile[2][2];
-    Tile x0 = new Tile(1,1);
+    Tile x0 = new NormalTile(1,1);
     Board b0 = new Board(t0);
     b0.setTileAt(x0, 1, 1);
     
     Tile[][] t1 = new Tile[2][2];
-    Tile x1 = new Tile(1,1);
+    Tile x1 = new NormalTile(1,1);
     Board b1 = new Board(t1);
     b1.setTileAt(x1, 1, 1);
     assertTrue(b0.equals(b1));
@@ -254,12 +255,12 @@ public class BoardTest {
   @Test
   public void equalsWithDifferentTilesTest() {
     Tile[][] t0 = new Tile[2][2];
-    Tile x0 = new Tile(1,1);
+    Tile x0 = new NormalTile(1,1);
     Board b0 = new Board(t0);
     b0.setTileAt(x0, 1, 1);
     
     Tile[][] t1 = new Tile[2][2];
-    Tile x1 = new Tile(2,1);
+    Tile x1 = new NormalTile(2,1);
     Board b1 = new Board(t1);
     b1.setTileAt(x1, 1, 1);
     assertFalse(b0.equals(b1));

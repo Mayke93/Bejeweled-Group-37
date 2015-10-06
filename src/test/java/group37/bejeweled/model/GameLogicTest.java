@@ -6,11 +6,11 @@ import javax.swing.JFrame;
 
 import org.junit.Test;
 
-import main.java.group37.bejeweled.board.Board;
-import main.java.group37.bejeweled.board.Tile;
-import main.java.group37.bejeweled.model.CombinationFinder;
+//import main.java.group37.bejeweled.board.Board;
+//import main.java.group37.bejeweled.board.Tile;
+//import main.java.group37.bejeweled.model.CombinationFinder;
 import main.java.group37.bejeweled.model.Game;
-import main.java.group37.bejeweled.model.GameLogic;
+//import main.java.group37.bejeweled.model.GameLogic;
 import main.java.group37.bejeweled.view.Main;
 import main.java.group37.bejeweled.view.StatusPanel;
 
@@ -21,13 +21,13 @@ public class GameLogicTest {
    * @return a game object
    */
   public Game gameMaker() {
-   StatusPanel sp = new StatusPanel();
-   JFrame frame = new JFrame();
-   Main main = new Main(frame, sp);
-   Game game = new Game(main, sp);
-   return game;
+    StatusPanel sp = new StatusPanel();
+    JFrame frame = new JFrame();
+    Main main = new Main(frame, sp);
+    Game game = new Game(main, sp);
+    return game;
   }
-  
+
 //  /**
 //   * test for the constructor of gameLogic.
 //   */

@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import main.java.group37.bejeweled.board.FlameTile;
+import main.java.group37.bejeweled.board.NormalTile;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.model.Combination;
 import main.java.group37.bejeweled.model.Combination.Type;
@@ -27,9 +28,9 @@ public class CombinationTest {
    */
   public Combination combinationMaker() {
     ArrayList<Tile> tiles = new ArrayList<Tile>();
-    Tile a1 = new Tile(1, 1);
-    Tile b1 = new Tile(1, 2);
-    Tile c1 = new Tile(1, 3);
+    Tile a1 = new NormalTile(1, 1);
+    Tile b1 = new NormalTile(1, 2);
+    Tile c1 = new NormalTile(1, 3);
     tiles.add(a1);
     tiles.add(b1);
     tiles.add(c1);
@@ -65,7 +66,7 @@ public class CombinationTest {
   public void getSetTilesTest() {
     Combination x1 = combinationMaker();
     ArrayList<Tile> tiles = new ArrayList<Tile>();
-    Tile a1 = new Tile(1, 1);
+    Tile a1 = new NormalTile(1, 1);
     tiles.add(a1);
     x1.setTiles(tiles);
     assertEquals(tiles, x1.getTiles());
