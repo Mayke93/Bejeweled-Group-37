@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import main.java.group37.bejeweled.combination.Combination.Type;
 
 
+
 /**
  * Class for initialising a gem on the board.
  * @author Group 37
@@ -27,7 +28,7 @@ public abstract class Tile {
                            "src/img/gemOrange.png", "src/img/gemPurple.png",
                            "src/img/gemRed.png", "src/img/gemWhite.png",
                            "src/img/gemYellow.png"};
-  private Type nextType;
+  protected Type nextType;
 
   public static final String[] colors = {"Blue", "Green", "Orange", "Purple",
     "Red", "White", "Yellow"};
@@ -230,13 +231,7 @@ public abstract class Tile {
    * @param coordinateY row index.
    * @return clone of this.
    */
-  public Tile clone(int coordinateX, int coordinateY) {
-    Tile tile = new NormalTile(coordinateX,coordinateY);
-    tile.index = this.index;
-    tile.nextType = this.nextType;
-    tile.image = new ImageIcon(paths[index]);
-    return tile;
-  }
+  public abstract Tile clone(int coordinateX, int coordinateY);
 
   //tostring methods, only for printing!!
 

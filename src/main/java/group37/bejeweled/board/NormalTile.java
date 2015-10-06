@@ -28,6 +28,20 @@ public class NormalTile extends Tile {
   public String getType() {
     return "Normal"; 
   } 
+
+  /**
+   * Create clone of this object.
+   * @param coordinateX col index.
+   * @param coordinateY row index.
+   * @return clone of this.
+   */
+  public Tile clone(int coordinateX, int coordinateY) {
+    Tile tile = new NormalTile(coordinateX,coordinateY);
+    tile.index = this.index;
+    tile.nextType = this.nextType;
+    tile.image = new ImageIcon(paths[index]);
+    return tile;
+  }
   
   /**
    * Returns true iff the compared with object is a normaltile
