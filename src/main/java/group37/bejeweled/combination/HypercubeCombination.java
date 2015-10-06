@@ -39,4 +39,11 @@ public class HypercubeCombination extends Combination {
     return 500;
   }
   
+  /**
+   * Set the next type for the first tile in this combination.
+   */
+  public void setNextType() {
+    this.getTiles().get(0).setNextType(Type.HYPERCUBE);
+  }
+  
 }

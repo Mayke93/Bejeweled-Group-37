@@ -39,4 +39,11 @@ public class StarCombination extends Combination {
     return 150;
   }
   
+  /**
+   * Set the next type for the first tile in this combination.
+   */
+  public void setNextType() {
+    this.getTiles().get(0).setNextType(Type.STAR);
+  }
+  
 }

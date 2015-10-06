@@ -133,5 +133,10 @@ public abstract class Combination {
    * @return the score
    */
   public abstract int score();
+  
+  /**
+   * Set the next type for the gem.
+   */
+  public abstract void setNextType();
 
 }

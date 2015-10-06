@@ -477,18 +477,29 @@ public class Game {
     this.board = bo;
   }
   
-  public int getScore(){
+  /**
+   * Get the current score.
+   * @return the score
+   */
+  public int getScore() {
     return this.score;
   }
   
-  public void setScore(int score){
+  /**
+   * Set the current score.
+   * @param score the score to be set.
+   */
+  public void setScore(int score) {
     this.score = score;
   }
   
-  public int getLevel(){
+  /**
+   * Get the current level number.
+   * @return the level number.
+   */
+  public int getLevel() {
     return this.newlevel;
   }
-  
   
   /**
    * Get the list with the selected tiles to swap.
@@ -515,6 +526,10 @@ public class Game {
     this.finder = cf;
   }
 
+  /**
+   * Set the current level number.
+   * @param level1 the level number to be set.
+   */
   public void setLevel(Integer level1) {
     this.newlevel = level1; 
   }

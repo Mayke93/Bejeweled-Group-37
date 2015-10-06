@@ -1,6 +1,7 @@
 package main.java.group37.bejeweled.combination;
 
 import main.java.group37.bejeweled.board.Tile;
+import main.java.group37.bejeweled.combination.Combination.Type;
 
 import java.util.List;
 
@@ -36,6 +37,13 @@ public class NormalCombination extends Combination {
    */
   public int score() {
     return 50;
+  }
+  
+  /**
+   * Set the next type for the first tile in this combination.
+   */
+  public void setNextType() {
+    this.getTiles().get(0).setNextType(Type.NORMAL);
   }
   
 }
