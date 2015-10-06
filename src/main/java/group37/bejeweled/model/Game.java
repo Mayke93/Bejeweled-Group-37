@@ -330,16 +330,16 @@ public class Game {
     swapTiles(t0,t1);
 
     Type type = null;
-    if (!combiX0.getTiles().isEmpty()) {
+    if (!(combiX0 == null)) {
       type = combiX0.getType();
       System.out.println("in1");
-    } else if (!combiX1.getTiles().isEmpty()) {
+    } else if (!(combiX1 == null)) {
       type = combiX1.getType();
       System.out.println("in2");
-    } else if (!combiY0.getTiles().isEmpty()) {
+    } else if (!(combiY0 == null)) {
       type = combiY0.getType();
       System.out.println("in3");
-    } else if (!combiY1.getTiles().isEmpty()) {
+    } else if (!(combiY1 == null)) {
       type = combiY1.getType();
       System.out.println("in4");
     }

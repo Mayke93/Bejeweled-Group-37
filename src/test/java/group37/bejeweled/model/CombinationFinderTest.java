@@ -32,8 +32,7 @@ public class CombinationFinderTest {
     Board board = new Board(tiles);
     CombinationFinder cf = new  CombinationFinder(board);
     assertNotNull(cf);
-  }
-  
+  }  
 
   /**
    * test for setboard and getboard method.
@@ -100,5 +99,4 @@ public class CombinationFinderTest {
     assertTrue(cf.getAllCombinationsOnBoard().size() == list.size());
   }
   
-
 }

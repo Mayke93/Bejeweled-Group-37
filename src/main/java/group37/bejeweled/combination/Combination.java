@@ -95,9 +95,7 @@ public abstract class Combination {
    */
   public boolean isSpecialCombination() {
     boolean res = false;
-    if (this.getType() == Type.FLAME 
-        || this.getType() == Type.STAR 
-        || this.getType() == Type.HYPERCUBE) {
+    if (!(this.getType() == Type.NORMAL)) {
       res = true;
     }
     return res;
