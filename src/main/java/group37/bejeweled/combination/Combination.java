@@ -128,5 +128,10 @@ public abstract class Combination {
     return false;
   }
   
+  /**
+   * Get the score for making a combination.
+   * @return the score
+   */
+  public abstract int score();
 
 }

@@ -227,6 +227,16 @@ public class Game {
           break;
         }
       }
+      
+      if (sum == 3) {
+        res = new NormalTile(tile.getX(), tile.getY());
+      }
+      if (sum == 4) {
+        res = new FlameTile(tile.getX(), tile.getY());
+      }
+      if (sum == 5) {
+        res = new HypercubeTile(tile.getX(), tile.getY());
+      }
 
       //check y direction
       sum = 1;
@@ -246,13 +256,13 @@ public class Game {
       }
 
       if (sum == 3) {
-        res = new NormalTile(t0.getX(), t0.getY());
+        res = new NormalTile(tile.getX(), tile.getY());
       }
       if (sum == 4) {
-        res = new FlameTile(t0.getX(), t0.getY());
+        res = new FlameTile(tile.getX(), tile.getY());
       }
       if (sum == 5) {
-        res = new HypercubeTile(t0.getX(), t0.getY());
+        res = new HypercubeTile(tile.getX(), tile.getY());
       }
     }
     //swap the tiles back to original position
@@ -332,16 +342,12 @@ public class Game {
     Type type = null;
     if (!(combiX0 == null)) {
       type = combiX0.getType();
-      System.out.println("in1");
     } else if (!(combiX1 == null)) {
       type = combiX1.getType();
-      System.out.println("in2");
     } else if (!(combiY0 == null)) {
       type = combiY0.getType();
-      System.out.println("in3");
     } else if (!(combiY1 == null)) {
       type = combiY1.getType();
-      System.out.println("in4");
     }
 
     if (t0 instanceof HypercubeTile || t1 instanceof HypercubeTile) {
@@ -381,27 +387,10 @@ public class Game {
 
   /**
    * Update score in the view.
-   * @param type change score based on the value of type.
+   * @param combi change score based on the type of combination.
    */
-  public void updateScore(Type type) {
-    int score = 0;
-    switch (type) {
-      case NORMAL:
-        score = 50;
-        break;
-      case FLAME:
-        score = 150;
-        break;
-      case HYPERCUBE:
-        score = 500;
-        break;
-      case STAR:
-        score = 150;
-        break;
-      default:
-        break;
-    }
-    this.score += score;
+  public void updateScore(Combination combi) {
+    this.score += combi.score();
     Logger.log("Add score: " + score);
     Logger.log("Total Score: " + this.score);
     panel.setScore(this.score);

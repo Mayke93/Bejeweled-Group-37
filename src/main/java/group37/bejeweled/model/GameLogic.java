@@ -73,7 +73,7 @@ public class GameLogic {
     for (Combination comb: chains) {
       tiles.addAll(comb.getTiles());
       if (comb.containsSpecialGem() == null) {
-        game.updateScore(comb.getType());         //update normal score
+        game.updateScore(comb);         //update normal score
       }
       Logger.log("Comb type: " + comb.getType());
       System.out.println(comb.containsSpecialGem());

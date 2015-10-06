@@ -31,4 +31,12 @@ public class FlameCombination extends Combination{
     return false;
   }
   
+  /**
+   * Get the score for making this type of combination.
+   * @return the score
+   */
+  public int score() {
+    return 150;
+  }
+  
 }
