@@ -11,6 +11,7 @@ public class NormalCombination extends Combination {
    * @param tiles the tiles the combination consists of.
    */
   public NormalCombination() {
+    this.setType(Type.NORMAL);
   }
   
   /**

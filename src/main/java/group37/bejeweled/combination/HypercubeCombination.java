@@ -1,6 +1,7 @@
 package main.java.group37.bejeweled.combination;
 
 import main.java.group37.bejeweled.board.Tile;
+import main.java.group37.bejeweled.combination.Combination.Type;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ public class HypercubeCombination extends Combination {
    * @param tiles the tiles the combination consists of.
    */
   public HypercubeCombination() {
+    this.setType(Type.HYPERCUBE);
   }
   
   /**
