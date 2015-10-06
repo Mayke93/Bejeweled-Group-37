@@ -56,5 +56,20 @@ public class FlameTile extends Tile {
     tile.setImage(new ImageIcon(paths[index]));
     return tile;
   }
+  
+  /**
+   * Returns true iff the compared with object is a flametile
+   * and has the same index, X-co and Y-co.
+   * @param obj an objet to be compared
+   * @return a boolean, true iff the two objects are the same.
+   */
+  @Override
+  public boolean equals(Object obj) {
+    if (!(obj instanceof FlameTile)) {
+      return false;
+    }
+    Tile tile = (Tile)obj;
+    return (this.index == tile.index && tile.getX() == this.getX() && tile.getY() == this.getY());
+  }
 
 }

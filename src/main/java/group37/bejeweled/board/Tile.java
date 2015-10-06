@@ -189,7 +189,6 @@ public abstract class Tile {
     Tile tile = (Tile)obj;
     return (this.index == tile.index);
   }
-
   
   /**
    * Returns true iff the compared with object is a tile
