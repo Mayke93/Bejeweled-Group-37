@@ -96,9 +96,8 @@ public class CombinationFinderTest {
     List<Combination> list = new ArrayList<Combination>();
     list.add(x1);
     CombinationFinder cf = new CombinationFinder(board);
-//
-//   assertTrue(list.containsAll(cf.getAllCombinationsOnBoard()));
-//   assertTrue(cf.getAllCombinationsOnBoard().size() == list.size());
+    assertTrue(list.containsAll(cf.getAllCombinationsOnBoard()));
+    assertTrue(cf.getAllCombinationsOnBoard().size() == list.size());
   }
   
 

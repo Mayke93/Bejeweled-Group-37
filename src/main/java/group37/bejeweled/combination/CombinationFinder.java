@@ -50,14 +50,14 @@ public class CombinationFinder {
     for (int i = 0; i < board.getWidth(); i++) {      //for every tile on the board
       for (int j = 0; j < board.getHeight(); j++) {
         tile = getSingleCombinationX(board.getTileAt(i,j));
-        if (!tile.getTiles().isEmpty()) {
+        if (!(tile == null)) {
           if (!sameCombination(allcombinations, tile)) {
             allcombinations.add(tile);
           }
         }
 
         tile = getSingleCombinationY(board.getTileAt(i,j));
-        if (!tile.getTiles().isEmpty()) {
+        if (!(tile == null)) {
           if (!sameCombination(allcombinations, tile)) {
             allcombinations.add(tile);
           }
