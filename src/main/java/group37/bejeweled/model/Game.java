@@ -4,8 +4,10 @@ import main.java.group37.bejeweled.board.Board;
 import main.java.group37.bejeweled.board.BoardFactory;
 import main.java.group37.bejeweled.board.FlameTile;
 import main.java.group37.bejeweled.board.HypercubeTile;
+import main.java.group37.bejeweled.board.NormalTile;
 import main.java.group37.bejeweled.board.StarTile;
 import main.java.group37.bejeweled.board.Tile;
+import main.java.group37.bejeweled.board.TileFactory;
 import main.java.group37.bejeweled.model.Combination.Type;
 import main.java.group37.bejeweled.view.Main;
 import main.java.group37.bejeweled.view.StatusPanel;
@@ -115,7 +117,7 @@ public class Game {
    * @return a random tile as a Tile object
    */
   public Tile setRandomTile(int xi, int yi) { 
-    Tile tile = new Tile(xi, yi);
+    Tile tile = new NormalTile(xi, yi);
     Random random = new Random();
     tile.setIndex(random.nextInt(7));
     tile.setImage(new ImageIcon(tile.paths[tile.getIndex()]));
@@ -131,15 +133,8 @@ public class Game {
    */
   public Tile setSpecialTile(int xi, int yi, Type type) {
     Tile tile = null;
-    if (type == Type.NORMAL) {
-      tile = new Tile(xi,yi);
-    } else if (type == Type.FLAME) {
-      tile = new FlameTile(xi,yi);
-    } else if (type == Type.STAR) {
-      tile = new StarTile(xi,yi);
-    } else if (type == Type.HYPERCUBE) {
-      tile = new HypercubeTile(xi,yi);
-    }
+    tile = TileFactory.generateTile(type, xi, yi);
+    
     tile.setIndex(board.getTileAt(xi, yi).getIndex());
     Logger.log(type.toString() + " " + tile.getLoc());
     tile.setImage(new ImageIcon(tile.paths[tile.getIndex()]));
@@ -231,21 +226,6 @@ public class Game {
         }
       }
 
-      //TODO which tile changes into special tile? atm I've put in tile t0.
-      //TODO Startile?
-      if (sum == 3) {
-        //res = Tile.State.NORMAL;
-        res = new Tile(t0.getX(), t0.getY());
-      }
-      if (sum == 4) {
-       // res = Tile.State.FLAME;
-        
-        res = new FlameTile(t0.getX(), t0.getY());
-      }
-      if (sum == 5) {
-        res = new HypercubeTile(t0.getX(), t0.getY());
-      }
-
       //check y direction
       sum = 1;
       for (int q = tile.getY() + 1; q < SIZE; q++) {
@@ -264,10 +244,9 @@ public class Game {
       }
 
       if (sum == 3) {
-        res = new Tile(t0.getX(), t0.getY());
+        res = new NormalTile(t0.getX(), t0.getY());
       }
       if (sum == 4) {
-        //res = Tile.State.FLAME;
         res = new FlameTile(t0.getX(), t0.getY());
       }
       if (sum == 5) {
@@ -537,7 +516,7 @@ public class Game {
   }
   
   /**
-   * sets the CombinationFinder
+   * sets the CombinationFinder.
    * @param cf CombinationFinder object
    * @return a CombinationFinder object
    */

@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import main.java.group37.bejeweled.board.Board;
+import main.java.group37.bejeweled.board.NormalTile;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.model.Combination;
 import main.java.group37.bejeweled.model.Combination.Type;
@@ -55,11 +56,11 @@ public class CombinationFinderTest {
    * @return a combination
    */
   public Combination combinationMaker() {
-    Tile t0 = new Tile(0,0);
+    Tile t0 = new NormalTile(0,0);
     t0.setIndex(2);
-    Tile t1 = new Tile(1,0);
+    Tile t1 = new NormalTile(1,0);
     t1.setIndex(2);
-    Tile t2 = new Tile(2,0);
+    Tile t2 = new NormalTile(2,0);
     t2.setIndex(2);
     ArrayList<Tile> tiles = new ArrayList<Tile>();
     tiles.add(t0);
@@ -74,13 +75,13 @@ public class CombinationFinderTest {
    */
   @Test
   public void getAllCombinationsOnBoardTest() {
-    Tile t0 = new Tile(0,0);
+    Tile t0 = new NormalTile(0,0);
     t0.setIndex(2);
-    Tile t1 = new Tile(1,0);
+    Tile t1 = new NormalTile(1,0);
     t1.setIndex(2);
-    Tile t2 = new Tile(2,0);
+    Tile t2 = new NormalTile(2,0);
     t2.setIndex(2);
-    Tile t3 = new Tile(0,1);
+    Tile t3 = new NormalTile(0,1);
     t3.setIndex(1);
     Tile[][] tiles = new Tile[3][2];
     Board board = new Board(tiles);

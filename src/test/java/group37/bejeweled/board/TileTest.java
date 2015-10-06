@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 import main.java.group37.bejeweled.board.FlameTile;
 import main.java.group37.bejeweled.board.HypercubeTile;
+import main.java.group37.bejeweled.board.NormalTile;
 import main.java.group37.bejeweled.board.StarTile;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.model.Combination.Type;
@@ -30,7 +31,7 @@ public class TileTest {
    */
   @Test
   public void tileConstrTest() {
-    Tile tile = new Tile(1, 1);
+    Tile tile = new NormalTile(1, 1);
     assertNotNull(tile);
     Tile flametile = new FlameTile(1,1);
     assertNotNull(flametile);
@@ -45,7 +46,7 @@ public class TileTest {
    */
   @Test
   public void updateTranslationTest() {
-    Tile tile = new Tile(1, 1);
+    Tile tile = new NormalTile(1, 1);
     Point point = new Point(0,0);
     assertEquals(tile.getTranslation(), point);
     tile.updateTranslation(1, 1);
@@ -58,7 +59,7 @@ public class TileTest {
    */
   @Test
   public void saturateCoordinateTest() {
-    Tile tile = new Tile(1, 1);
+    Tile tile = new NormalTile(1, 1);
     int coord = 64;
     int coord2 = -64;
     tile.updateTranslation(coord, coord2);
@@ -71,7 +72,7 @@ public class TileTest {
    */
   @Test
   public void resetDTest() {
-    Tile tile = new Tile(1, 1);
+    Tile tile = new NormalTile(1, 1);
     Point point = new Point(0,0);
     assertEquals(tile.getTranslation(), point);
     tile.updateTranslation(1, 1);
@@ -86,7 +87,7 @@ public class TileTest {
    */
   @Test
   public void cloneTest() {
-    Tile tile = new Tile(1,1);
+    Tile tile = new NormalTile(1,1);
     tile.setIndex(2);
     tile.setImage(new ImageIcon(tile.paths[tile.getIndex()]));
     Tile clonedTile = tile.clone(1,1);
@@ -98,7 +99,7 @@ public class TileTest {
    */
   @Test
   public void increaseLevelTest() {
-    Tile tile = new Tile(1,1);
+    Tile tile = new NormalTile(1,1);
     assertEquals(tile.getLevel(), 0);
     tile.increaseLevel();
     assertEquals(tile.getLevel(), 1);
@@ -109,7 +110,7 @@ public class TileTest {
    */
   @Test
   public void getSetImage() {
-    Tile tile = new Tile(1,1);
+    Tile tile = new NormalTile(1,1);
     tile.setIndex(2);
     tile.setImage(new ImageIcon(tile.paths[tile.getIndex()]));
     ImageIcon image = new ImageIcon("src/img/gemOrange.png");
@@ -121,7 +122,7 @@ public class TileTest {
    */
   @Test
   public void getSetIndexTest() {
-    Tile tile = new Tile(1,1);
+    Tile tile = new NormalTile(1,1);
     tile.setIndex(3);
     assertEquals(tile.getIndex(), 3);
   }
@@ -131,7 +132,7 @@ public class TileTest {
    */
   @Test
   public void getXyTest() {
-    Tile tile = new Tile(3,5);
+    Tile tile = new NormalTile(3,5);
     assertEquals(tile.getX(), 3);
     assertEquals(tile.getY(), 5);
   }
@@ -141,7 +142,7 @@ public class TileTest {
    */
   @Test
   public void getSetLocTest() {
-    Tile tile = new Tile(6,2);
+    Tile tile = new NormalTile(6,2);
     Point point = new Point(6,2);
     assertEquals(tile.getLoc(), point);
     Point newPoint = new Point(3,2);
@@ -154,7 +155,7 @@ public class TileTest {
    */
   @Test
   public void getSetLevel() {
-    Tile tile = new Tile(6,2);
+    Tile tile = new NormalTile(6,2);
     assertEquals(tile.getLevel(), 0);
     tile.setLevel(4);
     assertEquals(tile.getLevel(), 4);
@@ -165,8 +166,8 @@ public class TileTest {
    */
   @Test
   public void equalsColorTest() {
-    Tile tile = new Tile(3,3);
-    Tile tile2 = new Tile(1,6);
+    Tile tile = new NormalTile(3,3);
+    Tile tile2 = new NormalTile(1,6);
     tile.setIndex(5);
     tile2.setIndex(5);
     assertTrue(tile.equalsColor(tile2));
@@ -179,8 +180,8 @@ public class TileTest {
    */
   @Test
   public void equalsTrueTest() {
-    Tile tile = new Tile(1,6);
-    Tile tile2 = new Tile(1,6);
+    Tile tile = new NormalTile(1,6);
+    Tile tile2 = new NormalTile(1,6);
     tile.setIndex(5);
     tile2.setIndex(5);
     assertTrue(tile.equals(tile2));
@@ -191,8 +192,8 @@ public class TileTest {
    */
   @Test
   public void equalsFalseTest() {
-    Tile tile = new Tile(6,1);
-    Tile tile2 = new Tile(1,6);
+    Tile tile = new NormalTile(6,1);
+    Tile tile2 = new NormalTile(1,6);
     tile.setIndex(5);
     tile2.setIndex(5);
     assertFalse(tile.equals(tile2));
@@ -206,9 +207,9 @@ public class TileTest {
    */
   @Test
   public void hashCodeTest() {
-    Tile tile = new Tile(1,1);
+    Tile tile = new NormalTile(1,1);
     tile.setIndex(2);
-    Tile tile2 = new Tile(1,1);
+    Tile tile2 = new NormalTile(1,1);
     tile2.setIndex(2);
     System.out.println();
     assertTrue(tile.hashCode() == tile2.hashCode());
@@ -219,7 +220,7 @@ public class TileTest {
    */
   @Test
   public void getTypeTest() {
-    Tile tile = new Tile(1,1);
+    Tile tile = new NormalTile(1,1);
     assertTrue(tile.getType().equals("Normal"));
     FlameTile flametile = new FlameTile(1,1);
     assertTrue(flametile.getType().equals("Flame"));
@@ -234,7 +235,7 @@ public class TileTest {
    */
   @Test
   public void toStringTest() {
-    Tile tile = new Tile(1,1);
+    Tile tile = new NormalTile(1,1);
     tile.setIndex(0);
     assertTrue(tile.toString().equals("(1,1) Blue"));
   }
@@ -244,7 +245,7 @@ public class TileTest {
    */
   @Test
   public void getSetnextTypeTest() { 
-    Tile tile = new Tile(1,1);
+    Tile tile = new NormalTile(1,1);
     tile.setNextType(Type.FLAME);
     assertEquals(tile.getNextType(), Type.FLAME);
   }
