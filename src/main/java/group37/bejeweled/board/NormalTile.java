@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 
 public class NormalTile extends Tile {
 
-  //private int score;
+  private int score;
   
   /**
    * Constructor for a normaltile.
@@ -13,7 +13,7 @@ public class NormalTile extends Tile {
    */
   public NormalTile(int transX, int transY) {
     super(transX, transY);
-    //score = 50; ?
+    score = 50; 
     String[] p1 = {"src/img/gemBlue.png", "src/img/gemGreen.png",
         "src/img/gemOrange.png", "src/img/gemPurple.png",
         "src/img/gemRed.png", "src/img/gemWhite.png",
@@ -59,12 +59,10 @@ public class NormalTile extends Tile {
   }
   
   /**
-   * When detonating a special gem, a 'special' score is also needed.
-   * @return the score for detonating tiles with a star tile.
+   * Get the score.
    */
-  @Override
-  public int scoreSpecialTile() {
-    return 0;
+  public int getScore() {
+    return score;
   }
   
 }

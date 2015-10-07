@@ -392,9 +392,9 @@ public class Game {
    */
   public void updateScoreSpecialGem(Combination combi, List<Tile> tiles) {
     for (int i = 0; i < tiles.size(); i++) {
-      this.score += combi.containsSpecialGem().scoreSpecialTile();
+      this.score += combi.containsSpecialGem().getScore();
     }
-    Logger.log("Add score: " + tiles.size() + "*" + combi.containsSpecialGem().scoreSpecialTile());
+    Logger.log("Add score: " + tiles.size() + "*" + combi.containsSpecialGem().getScore());
     Logger.log("Total Score: " + this.score);
     panel.setScore(this.score);
   }
