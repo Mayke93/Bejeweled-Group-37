@@ -119,7 +119,6 @@ public class GameLogic {
         }
       }
     }
-
     boardPanel.animations.setType(Animation.Type.REMOVE);
     boardPanel.animations.startRemove(tiles);
   }
@@ -149,13 +148,9 @@ public class GameLogic {
         if (tile.delete) {
           if (tile.getNextType() == Type.NORMAL) {
             board.setTileAt(game.setRandomTile(col,row), col, row);
-          } else if (tile.getNextType() == Type.FLAME) {
-            board.setTileAt(game.setSpecialTile(col,row,Type.FLAME), col, row);
-          } else if (tile.getNextType() == Type.STAR) {
-            board.setTileAt(game.setSpecialTile(col,row,Type.STAR), col, row);
-          } else if (tile.getNextType() == Type.HYPERCUBE) {
-            board.setTileAt(game.setSpecialTile(col,row,Type.HYPERCUBE), col, row);
-          }
+          } else if (!(tile.getNextType() == Type.NORMAL) && !(tile.getNextType() == null)) {
+            board.setTileAt(game.setSpecialTile(col,row,tile.getNextType()), col, row);
+          } 
           tile.setNextType(Type.NORMAL);
           tile.delete = false;
         }

@@ -39,12 +39,6 @@ public class Main extends JPanel {
 
   private final JFrame frame;
   public Animation animations;
-  private SavedGame saveGame;
-  //private BoardFactory boardfactory;
-
-  //Panel with score label and level label
-  private StatusPanel panel;
-
   private Game game;
 
   /**
@@ -54,7 +48,6 @@ public class Main extends JPanel {
    */
   public Main(final JFrame frame,StatusPanel panel) {
     this.frame = frame;
-    this.panel = panel;
     game = new Game(this,panel);
     panel.setGame(game);
     panel.setMain(this);

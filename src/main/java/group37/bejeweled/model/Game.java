@@ -5,7 +5,6 @@ import main.java.group37.bejeweled.board.BoardFactory;
 import main.java.group37.bejeweled.board.FlameTile;
 import main.java.group37.bejeweled.board.HypercubeTile;
 import main.java.group37.bejeweled.board.NormalTile;
-import main.java.group37.bejeweled.board.StarTile;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.board.TileFactory;
 import main.java.group37.bejeweled.combination.Combination;
@@ -21,8 +20,6 @@ import java.util.Random;
 
 import javax.swing.ImageIcon;
 
-//import javax.swing.JLabel;
-//import Tile.State;
 //TODO tile do not drop down anymore, but are replaced by random tiles.
 /**
  * Class that represents the current game.
@@ -93,7 +90,6 @@ public class Game {
     }
   }
 
-
   /**
    * Create a board of random jewels without a sequence of 3 or more tiles with the same color.
    */
@@ -136,13 +132,11 @@ public class Game {
   public Tile setSpecialTile(int xi, int yi, Type type) {
     Tile tile = null;
     tile = TileFactory.generateTile(type, xi, yi);
-    
     tile.setIndex(board.getTileAt(xi, yi).getIndex());
     Logger.log(type.toString() + " " + tile.getLoc());
     tile.setImage(new ImageIcon(tile.paths[tile.getIndex()]));
     return tile;
   }
-
 
   /**
    * Checks if column i that just has been added doesn't create a sequence of 3 or more colours.
@@ -326,9 +320,6 @@ public class Game {
    * Swap two tiles if it result in a sequence of 3 of more tiles with the same color.
    */
   public boolean canSwap() {
-    /*System.out.println(swapTiles.get(0).getX() + "," + swapTiles.get(0).getY());
-      System.out.println(swapTiles.get(1).getX() + "," + swapTiles.get(1).getY());*/
-
     Tile t0 = board.getTileAt(swapTiles.get(0).getX(), swapTiles.get(0).getY());
     Tile t1 = board.getTileAt(swapTiles.get(1).getX(), swapTiles.get(1).getY());
 
@@ -374,8 +365,6 @@ public class Game {
    * @return true if t0 and t1 are next to each other.
    */
   public boolean isNeighbour(Tile t0, Tile t1) {
-    /*System.out.println(t0.getX() + "," + t0.getY());
-      System.out.println(t1.getX() + "," + t1.getY());*/
     if (Math.abs(t0.getX() - t1.getX()) == 1 && Math.abs(t0.getY() - t1.getY()) == 0) {
       return true;
     }
@@ -402,19 +391,10 @@ public class Game {
    * @param tiles all the tiles deleted by the special gem
    */
   public void updateScoreSpecialGem(Combination combi, List<Tile> tiles) {
-    if (combi.containsSpecialGem() instanceof FlameTile) {
-      for (int i = 0; i < tiles.size(); i++) {
-        this.score += 20;
-      }
-      Logger.log("Add score: " + tiles.size() + "*" + 20);
+    for (int i = 0; i < tiles.size(); i++) {
+      this.score += combi.containsSpecialGem().scoreSpecialTile();
     }
-    if (combi.containsSpecialGem() instanceof StarTile 
-        || combi.containsSpecialGem() instanceof HypercubeTile) {
-      for (int i = 0; i < tiles.size(); i++) {
-        this.score += 50;
-      }
-      Logger.log("Add score: " + tiles.size() + "*" + 50);
-    }
+    Logger.log("Add score: " + tiles.size() + "*" + combi.containsSpecialGem().scoreSpecialTile());
     Logger.log("Total Score: " + this.score);
     panel.setScore(this.score);
   }

@@ -71,5 +71,14 @@ public class FlameTile extends Tile {
     Tile tile = (Tile)obj;
     return (this.index == tile.index && tile.getX() == this.getX() && tile.getY() == this.getY());
   }
+  
+  /**
+   * When detonating a special gem, a 'special' score is also needed.
+   * @return the score for detonating tiles with a flame tile.
+   */
+  @Override
+  public int scoreSpecialTile() {
+    return 20;
+  }
 
 }
