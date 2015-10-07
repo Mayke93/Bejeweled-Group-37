@@ -1,13 +1,10 @@
 package main.java.group37.bejeweled.board;
 
+import main.java.group37.bejeweled.combination.Combination.Type;
 
 import java.awt.Point;
 
 import javax.swing.ImageIcon;
-
-import main.java.group37.bejeweled.combination.Combination.Type;
-
-
 
 /**
  * Class for initialising a gem on the board.
@@ -253,4 +250,6 @@ public abstract class Tile {
   }
   
   public abstract String getType();
+
+  public abstract int getScore();
 }

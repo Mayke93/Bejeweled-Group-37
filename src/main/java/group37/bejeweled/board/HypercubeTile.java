@@ -68,4 +68,5 @@ public class HypercubeTile extends Tile {
     Tile tile = (Tile)obj;
     return (this.index == tile.index && tile.getX() == this.getX() && tile.getY() == this.getY());
   }
+  
 }

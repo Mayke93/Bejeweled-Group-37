@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 
 public class NormalTile extends Tile {
 
-  //private int score;
+  private int score;
   
   /**
    * Constructor for a normaltile.
@@ -13,7 +13,7 @@ public class NormalTile extends Tile {
    */
   public NormalTile(int transX, int transY) {
     super(transX, transY);
-    //score = 50; ?
+    score = 50; 
     String[] p1 = {"src/img/gemBlue.png", "src/img/gemGreen.png",
         "src/img/gemOrange.png", "src/img/gemPurple.png",
         "src/img/gemRed.png", "src/img/gemWhite.png",
@@ -56,6 +56,13 @@ public class NormalTile extends Tile {
     }
     Tile tile = (Tile)obj;
     return (this.index == tile.index && tile.getX() == this.getX() && tile.getY() == this.getY());
+  }
+  
+  /**
+   * Get the score.
+   */
+  public int getScore() {
+    return score;
   }
   
 }

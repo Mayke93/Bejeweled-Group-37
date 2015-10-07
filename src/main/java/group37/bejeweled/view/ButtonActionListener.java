@@ -3,8 +3,6 @@ package main.java.group37.bejeweled.view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import main.java.group37.bejeweled.model.Game;
-
 public class ButtonActionListener implements ActionListener{
   private StatusPanel panel;
 
