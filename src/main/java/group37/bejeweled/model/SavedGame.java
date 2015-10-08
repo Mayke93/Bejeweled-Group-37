@@ -44,8 +44,8 @@ public class SavedGame {
   public void saveGame() {
     Board board = game.getBoard();
     JSONObject obj = new JSONObject();
-    obj.put("score", game.getScore());
-    obj.put("level", game.getLevel());
+    obj.put("score", game.logic.getScore().getScore());
+    obj.put("level", game.logic.getLevel().getLevel());
 
     JSONArray list2 = new JSONArray();
 
@@ -131,7 +131,7 @@ public class SavedGame {
   private int getScore(JSONObject obj) {
     Long score = (Long) obj.get("score");
     Integer score1 = new Integer(score.intValue());
-    game.setScore(score1);
+    game.logic.getScore().setScore(score1);
     Logger.log(" Read Score: " + score);
     return score1;
   }
@@ -139,7 +139,7 @@ public class SavedGame {
   private int getLevel(JSONObject obj) {
     Long level = (Long) obj.get("level");
     Integer level1 = new Integer(level.intValue());
-    game.setLevel(level1);
+    game.logic.getLevel().setLevel(level1);
     Logger.log("Read Level: " + level);
     return level1;
   }

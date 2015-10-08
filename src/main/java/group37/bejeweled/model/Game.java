@@ -29,8 +29,6 @@ public class Game {
   private Board board = null;
   public BoardFactory boardFactory;
   public List<Tile> swapTiles;
-  private int score = 0;
-  private int newlevel = 1;
   private Tile[] swappedTiles; //Use this for special gems
   private Main boardPanel;
   private StatusPanel panel;
@@ -353,8 +351,6 @@ public class Game {
       Logger.error("t0 and t1 are not neighbours.");
       return false;
     }
-    System.out.println(type);
-    updateLevel();
     return true;
   }
 
@@ -372,50 +368,6 @@ public class Game {
       return true;
     }
     return false;
-  }
-
-  /**
-   * Update score in the view.
-   * @param combi change score based on the type of combination.
-   */
-  public void updateScore(Combination combi) {
-    this.score += combi.score();
-    Logger.log("Add score: " + score);
-    Logger.log("Total Score: " + this.score);
-    panel.setScore(this.score);
-  }
-  
-  /**
-   * Update the score in the view for points obtained by special gems.
-   * @param combi the combination containing the special gem
-   * @param tiles all the tiles deleted by the special gem
-   */
-  public void updateScoreSpecialGem(Combination combi, List<Tile> tiles) {
-    for (int i = 0; i < tiles.size(); i++) {
-      this.score += combi.containsSpecialGem().getScore();
-    }
-    Logger.log("Add score: " + tiles.size() + "*" + combi.containsSpecialGem().getScore());
-    Logger.log("Total Score: " + this.score);
-    panel.setScore(this.score);
-  }
-
-  /**
-   * Increase the levelnumber when a certain score is reached.
-   */
-  private void updateLevel() {
-    if (this.score >= 1000 && this.score < 3500) {
-      newlevel = 2;
-    }
-    if (this.score >= 3500 && this.score < 5500) {
-      newlevel = 3;
-    }
-    if (this.score >= 5500 && this.score < 8000) {
-      newlevel = 4;
-    }
-    if (this.score >= 8000 && this.score < 11000) {
-      newlevel = 5;
-    }
-    panel.setLevel(newlevel);
   }
   
   /**
@@ -435,7 +387,7 @@ public class Game {
    * Reset game.
    */
   public void reset() {
-    this.score = 0;
+    logic.getScore().resetScore();
     swapTiles = new ArrayList<Tile>();
     generateRandomBoard();
     boardPanel.repaint();
@@ -457,29 +409,13 @@ public class Game {
     this.board = bo;
   }
   
-  /**
-   * Get the current score.
-   * @return the score
-   */
-  public int getScore() {
-    return this.score;
-  }
-  
-  /**
-   * Set the current score.
-   * @param score the score to be set.
-   */
-  public void setScore(int score) {
-    this.score = score;
-  }
-  
-  /**
-   * Get the current level number.
-   * @return the level number.
-   */
-  public int getLevel() {
-    return this.newlevel;
-  }
+//  /**
+//   * Get the current level number.
+//   * @return the level number.
+//   */
+//  public int getLevel() {
+//    return this.newlevel;
+//  }
   
   /**
    * Get the list with the selected tiles to swap.
@@ -510,7 +446,7 @@ public class Game {
    * Set the current level number.
    * @param level1 the level number to be set.
    */
-  public void setLevel(Integer level1) {
-    this.newlevel = level1; 
-  }
+//  public void setLevel(Integer level1) {
+//    this.newlevel = level1; 
+//  }
 }

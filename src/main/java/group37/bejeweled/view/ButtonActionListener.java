@@ -13,8 +13,8 @@ public class ButtonActionListener implements ActionListener{
   @Override
   public void actionPerformed(ActionEvent event) {
     panel.game.generateRandomBoard();
-    panel.game.setLevel(1);
-    panel.game.setScore(0);
+    panel.game.logic.level.setLevel(1);
+    panel.game.logic.score.setScore(0);
     panel.setScore(0);
     panel.setLevel(1);
     panel.main.repaint();

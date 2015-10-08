@@ -2,8 +2,10 @@ package main.java.group37.bejeweled.view;
 
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.model.Game;
+import main.java.group37.bejeweled.model.Level;
 import main.java.group37.bejeweled.model.Logger;
 import main.java.group37.bejeweled.model.SavedGame;
+import main.java.group37.bejeweled.model.Score;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -57,12 +59,16 @@ public class Main extends JPanel {
     this.addMouseListener(new MouseListener(this));
     this.addMouseMotionListener(new MouseMotionListener(this));
     
+    System.out.println("hoi");
+    game.logic.score = new Score();
+    game.logic.score.registerObserver(panel);
+    game.logic.level = new Level();
+    game.logic.level.registerObserver(panel);
+    
     SavedGame.getInstance().setGame(game);
     SavedGame.getInstance().loadGame();
-    panel.setLevel(game.getLevel());
-    panel.setScore(game.getScore());
-    System.out.println("level:" + game.getLevel());
-    //boardfactory = new BoardFactory(game);
+    panel.setLevel(game.logic.getLevel().getLevel());
+    panel.setScore(game.logic.getScore().getScore());
   }
 
   /**
