@@ -26,17 +26,17 @@ import main.java.group37.bejeweled.view.StatusPanel;
  */
 public class GameTest {
 
-  /**
-   * makes a game.
-   * @return a game object
-   */
-  public Game gameMaker() {
-    StatusPanel sp = new StatusPanel();
-    JFrame frame = new JFrame();
-    Main main = new Main(frame, sp);
-    Game game = new Game(main, sp);
-    return game;
-  }
+//  /**
+//   * makes a game.
+//   * @return a game object
+//   */
+//  public Game gameMaker() {
+//    StatusPanel sp = new StatusPanel();
+//    JFrame frame = new JFrame();
+//    Main main = new Main(frame, sp);
+//    Game game = new Game(main, sp);
+//    return game;
+//  }
 //
 //  /**
 //   * test for the constructor of game.

@@ -30,7 +30,7 @@ public class Level extends Observable {
    */
   public void updateLevel(int score) {
     int oldlevel = level;
-    if (score >= 50 && score < 3500) {
+    if (score >= 1000 && score < 3500) {
       level = 2;
     }
     if (score >= 3500 && score < 5500) {
