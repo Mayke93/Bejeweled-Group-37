@@ -46,14 +46,6 @@ public class Launcher extends JFrame {
     Logger.init();
     startscreen = new StartScreen(this);
     add(startscreen);
-   // statusPanel = new StatusPanel();
-    
-    //Main board = new Main(this,statusPanel);
-    //statusPanel.setMain(board);
-    //board.setLayout(new BorderLayout());
-    
-    //board.add(statusPanel,BorderLayout.WEST);
-    //add(board);
 
     setSize(800, 619);
 

@@ -2,6 +2,7 @@ package test.java.group37.bejeweled.model;
 
 import static org.junit.Assert.assertEquals;
 
+import main.java.group37.bejeweled.Launcher;
 import main.java.group37.bejeweled.view.StatusPanel;
 
 import org.junit.Test;
@@ -12,7 +13,8 @@ import org.junit.Test;
  */
 public class StatusPanelTest {
 
-  StatusPanel test = new StatusPanel();
+  Launcher launcher = new Launcher();
+  StatusPanel test = new StatusPanel(launcher);
 
   /**
    * Test the setScore method.

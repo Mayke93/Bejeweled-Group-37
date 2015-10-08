@@ -28,14 +28,17 @@ public class StartScreen extends JPanel {
   private static final Font font = new Font("Serif", Font.BOLD, 35);
   
   private ButtonActionListener actionListener;
-  private StatusPanel statusPanel = new StatusPanel();
+  private StatusPanel statusPanel;
   private Launcher launcher;
+  public StartScreen startscreen;
   
   /**
    * constructor to initialise the start screen.
    */
   public StartScreen(Launcher launch) {
     launcher = launch;
+    startscreen = this;
+    statusPanel = new StatusPanel(launcher);
     this.actionListener = new ButtonActionListener(statusPanel, this, launcher);
     setLayout(new GridBagLayout());
     setBorder(BorderFactory.createEmptyBorder(10, 40, 10, 10));

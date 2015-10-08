@@ -27,22 +27,16 @@ public class ButtonActionListener implements ActionListener{
   @Override
   public void actionPerformed(ActionEvent event) {
     if (event.getSource() == panel.button) {
-      panel.game.generateRandomBoard();
-      panel.game.setLevel(1);
-      panel.game.setScore(0);
-      panel.setScore(0);
-      panel.setLevel(1);
-      panel.main.repaint();
-      panel.repaint();
+      launcher.getContentPane().remove(panel);
+      launcher.getContentPane().add(startscreen);
     }
     if (event.getSource() == startscreen.newGame) {
       launcher.getContentPane().remove(startscreen);
 
-      panel = new StatusPanel();
+      panel = new StatusPanel(launcher);
       Main main = new Main(launcher,panel);
       panel.setMain(main);
-      main.setLayout(new BorderLayout());
-      
+      main.setLayout(new BorderLayout());     
       main.add(panel,BorderLayout.WEST);
 
       launcher.getContentPane().add(main);
