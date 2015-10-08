@@ -2,6 +2,7 @@ package test.java.group37.bejeweled.model;
 
 import static org.junit.Assert.assertEquals;
 
+import main.java.group37.bejeweled.Launcher;
 import main.java.group37.bejeweled.view.StatusPanel;
 
 import org.junit.Test;

@@ -1,5 +1,6 @@
 package main.java.group37.bejeweled.view;
 
+import main.java.group37.bejeweled.Launcher;
 import main.java.group37.bejeweled.board.Board;
 import main.java.group37.bejeweled.model.Game;
 
@@ -22,7 +23,7 @@ import javax.swing.JPanel;
 public class StatusPanel extends JPanel{
   private JLabel scoreLabel = new JLabel("Score: ");
   private JLabel levelLabel = new JLabel("Level:");
-  private JButton button = new JButton("New Game");
+  protected JButton button = new JButton("Quit");
   private ButtonActionListener actionListener;
 
   private static final Font font = new Font("Serif", Font.BOLD, 35);
@@ -30,12 +31,15 @@ public class StatusPanel extends JPanel{
   public Game game;
   public Main main;
   public StatusPanel statusPanel;
+  private StartScreen start;
+  
 
   /**
    * Create labels for displaying the status of the game.
    */
   public StatusPanel() {
-    this.actionListener = new ButtonActionListener(this);
+    //start = new StartScreen(launch);
+    //this.actionListener = new ButtonActionListener(this, start, launch);
     setLayout(new GridBagLayout());
     setBorder(BorderFactory.createEmptyBorder(10, 40, 10, 10));
     setOpaque(false);
