@@ -128,10 +128,10 @@ public class Game {
    * @return tile object.
    */
   public Tile setSpecialTile(int xi, int yi, Type type) {
+    Logger.log("Creating special tile " + type + " at " + xi + "," + yi);
     Tile tile = null;
     tile = TileFactory.generateTile(type, xi, yi);
     tile.setIndex(board.getTileAt(xi, yi).getIndex());
-    Logger.log(type.toString() + " " + tile.getLoc());
     tile.setImage(new ImageIcon(tile.paths[tile.getIndex()]));
     return tile;
   }
@@ -168,7 +168,7 @@ public class Game {
       sum += (board.getTileAt(row - 2, j).equalsColor(board.getTileAt(row, j)) ? 1 : 0);
 
       if (sum == 2) {
-        System.out.println("i,j: " + row + "," + j);
+        Logger.log("i,j: " + row + "," + j);
         return true;
       }
     }

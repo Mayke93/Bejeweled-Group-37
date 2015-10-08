@@ -28,21 +28,19 @@ public abstract class Combination {
 
   /**
    * Constructor for the Combination.
-   * @param type
-   *              the type of the combination
-   * @param tiles
-   *              a list of tiles which are included in the combination
+   * @param tiles a list of tiles which are included in the combination
    */
   public Combination(List<Tile> tiles) {
     //this.type = ty;
     this.tiles = tiles;
+    this.type = Type.NORMAL;
   }
 
   /**
    * Empty constructor for Combination.
    */
   public Combination() {
-    this.type = null;
+    this.type = Type.NORMAL;
     this.tiles = new ArrayList<Tile>();
   }
 

@@ -86,7 +86,7 @@ public class GameLogic {
         score.updateScore(comb);         //update normal score
       }
       Logger.log("Comb type: " + comb.getType());
-      System.out.println(comb.containsSpecialGem());
+      Logger.log("containsSpecialGem: " + comb.containsSpecialGem());
       
       if (comb.containsSpecialGem() != null) {
         Logger.log("Special gem in combination: " + comb.getType());
