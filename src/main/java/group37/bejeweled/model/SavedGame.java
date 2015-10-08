@@ -41,22 +41,22 @@ public class SavedGame {
    * The status of the game gets saved in JSON format.
    */
   @SuppressWarnings("unchecked")
-  public void saveGame() {
+  public synchronized void saveGame() {
     Board board = game.getBoard();
     JSONObject obj = new JSONObject();
     obj.put("score", game.logic.getScore().getScore());
     obj.put("level", game.logic.getLevel().getLevel());
 
-    JSONArray list2 = new JSONArray();
+    JSONArray boardArray = new JSONArray();
 
     for (int row = 0; row < SIZE; row++) {
       JSONArray list = new JSONArray();
       for (int col = 0; col < SIZE; col++) {
         list.add(board.getTileAt(col, row).getIndex());
       }
-      list2.add(list);
+      boardArray.add(list);
     }
-    obj.put("board", list2);
+    obj.put("board", boardArray);
     writeToFile(obj);
   }
   
@@ -75,7 +75,7 @@ public class SavedGame {
   /**
    * The reader method.
    */
-  public void loadGame() {
+  public synchronized void loadGame() {
     JSONObject obj = parseJsonFromFile();
     if (obj == null ) {
       return;
