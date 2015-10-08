@@ -3,10 +3,14 @@ package main.java.group37.bejeweled.view;
 import main.java.group37.bejeweled.Launcher;
 import main.java.group37.bejeweled.board.Board;
 import main.java.group37.bejeweled.model.Game;
+import main.java.group37.bejeweled.model.Level;
+import main.java.group37.bejeweled.model.Score;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagLayout;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -20,7 +24,7 @@ import javax.swing.JPanel;
  * @author group37
  *
  */
-public class StatusPanel extends JPanel{
+public class StatusPanel extends JPanel implements Observer{
   private JLabel scoreLabel = new JLabel("Score: ");
   private JLabel levelLabel = new JLabel("Level:");
   protected JButton button = new JButton("Quit");
@@ -106,4 +110,17 @@ public class StatusPanel extends JPanel{
   public void setMain(Main main) {
     this.main = main;
   }
+
+  /**
+   * update the score label if there is a change in the score.
+   */
+  public void update(Observable op, Object arg) {
+    if (arg instanceof Score) {
+      this.setScore(((Score) arg).getScore());        
+    }
+    if (arg instanceof Level) {
+      this.setLevel((int) ((Level) arg).getLevel());        
+    }
+  }
+
 }

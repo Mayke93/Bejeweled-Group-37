@@ -17,6 +17,8 @@ import java.util.List;
 
 
 public class GameLogic {
+  public Score score;
+  public Level level;
   private static final int SIZE = Game.SIZE;
   private Board board;
   private Main boardPanel;
@@ -81,7 +83,7 @@ public class GameLogic {
     for (Combination comb: chains) {
       tiles.addAll(comb.getTiles());
       if (comb.containsSpecialGem() == null) {
-        game.updateScore(comb);         //update normal score
+        score.updateScore(comb);         //update normal score
       }
       Logger.log("Comb type: " + comb.getType());
       System.out.println(comb.containsSpecialGem());
@@ -89,7 +91,7 @@ public class GameLogic {
       if (comb.containsSpecialGem() != null) {
         Logger.log("Special gem in combination: " + comb.getType());
         List<Tile> gemtiles = getTilesToDeleteSpecialGem(comb);
-        game.updateScoreSpecialGem(comb, gemtiles); //update score for detonating special gem
+        score.updateScoreSpecialGem(comb, gemtiles); //update score for detonating special gem
         for (Tile t1 : gemtiles) {
           if (!tiles.contains(t1)) {
             tiles.add(t1);
@@ -102,6 +104,7 @@ public class GameLogic {
         generateSpecialGem(comb);                 //maak dan een special gem
       }
     }
+    level.updateLevel(score.getScore());
     deleteTiles(tiles);
   }
 
@@ -167,7 +170,6 @@ public class GameLogic {
     }
   }
 
-
   /**
    * Finds the type of the special combination and calls the method to generate this special gem.
    * @param combi the combination to find the type of.
@@ -197,4 +199,13 @@ public class GameLogic {
 
     return tiles;
   }
+  
+  public Score getScore() {
+    return score;
+  }
+
+  public Level getLevel() {
+    return level;
+  }
+  
 }

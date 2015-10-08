@@ -2,6 +2,7 @@ package main.java.group37.bejeweled;
 
 import main.java.group37.bejeweled.model.Logger;
 import main.java.group37.bejeweled.model.SavedGame;
+import main.java.group37.bejeweled.model.Score;
 import main.java.group37.bejeweled.view.Main;
 import main.java.group37.bejeweled.view.StartScreen;
 import main.java.group37.bejeweled.view.StatusPanel;
@@ -52,7 +53,7 @@ public class Launcher extends JFrame {
     setTitle("Bejeweled");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLocationRelativeTo(null);
-    setVisible(true);
+    setVisible(true);    
   }    
 
   /**
