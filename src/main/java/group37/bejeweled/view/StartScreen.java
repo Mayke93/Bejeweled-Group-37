@@ -1,29 +1,58 @@
 package main.java.group37.bejeweled.view;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JPanel;
 
-public class StartScreen {
+import main.java.group37.bejeweled.Launcher;
+
+@SuppressWarnings("serial")
+/**
+ * Class for displaying start and load buttons on the start screen.
+ * @author group37
+ *
+ */
+public class StartScreen extends JPanel {
   
-  private JButton newGame = new JButton("New Game");
-  private JButton loadGame = new JButton("Load Game");
+
+  protected JButton newGame = new JButton("New Game");
+  protected JButton loadGame = new JButton("Load Game");
   private JList lgList = new JList();
-  
-  private ButtonActionListener actionListener;
 
   private static final Font font = new Font("Serif", Font.BOLD, 35);
   
-  private StatusPanel statusPanel;
+  private ButtonActionListener actionListener;
+  private StatusPanel statusPanel = new StatusPanel();
+  private Launcher launcher;
   
   /**
-   * 
+   * constructor to initialise the start screen.
    */
-  public StartScreen() {
+  public StartScreen(Launcher launch) {
+    launcher = launch;
+    this.actionListener = new ButtonActionListener(statusPanel, this, launcher);
+    setLayout(new GridBagLayout());
+    setBorder(BorderFactory.createEmptyBorder(10, 40, 10, 10));
+    setOpaque(false);
+    
+    newGame.addActionListener(actionListener);
+    newGame.setFont(new Font("Serif",Font.PLAIN,25));
+    
+    loadGame.addActionListener(actionListener);
+    loadGame.setFont(new Font("Serif",Font.PLAIN,25));
 
+    Box box = Box.createVerticalBox();
+    box.add(Box.createVerticalGlue());
+    box.add(newGame);
+    box.add(loadGame);
+    box.add(Box.createVerticalGlue());
+    this.add(box);
     
   }
 

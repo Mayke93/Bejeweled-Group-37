@@ -22,7 +22,7 @@ import javax.swing.JPanel;
 public class StatusPanel extends JPanel{
   private JLabel scoreLabel = new JLabel("Score: ");
   private JLabel levelLabel = new JLabel("Level:");
-  private JButton button = new JButton("New Game");
+  protected JButton button = new JButton("New Game");
   private ButtonActionListener actionListener;
 
   private static final Font font = new Font("Serif", Font.BOLD, 35);
@@ -35,7 +35,7 @@ public class StatusPanel extends JPanel{
    * Create labels for displaying the status of the game.
    */
   public StatusPanel() {
-    this.actionListener = new ButtonActionListener(this);
+    //this.actionListener = new ButtonActionListener(this);
     setLayout(new GridBagLayout());
     setBorder(BorderFactory.createEmptyBorder(10, 40, 10, 10));
     setOpaque(false);

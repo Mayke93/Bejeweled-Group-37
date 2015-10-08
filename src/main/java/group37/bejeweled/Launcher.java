@@ -3,6 +3,7 @@ package main.java.group37.bejeweled;
 import main.java.group37.bejeweled.model.Logger;
 import main.java.group37.bejeweled.model.SavedGame;
 import main.java.group37.bejeweled.view.Main;
+import main.java.group37.bejeweled.view.StartScreen;
 import main.java.group37.bejeweled.view.StatusPanel;
 
 import java.awt.BorderLayout;
@@ -19,6 +20,7 @@ import javax.swing.JFrame;
  */
 public class Launcher extends JFrame {
   public StatusPanel statusPanel;
+  public StartScreen startscreen;
 
   /**
    * Constructor of the application.
@@ -42,14 +44,16 @@ public class Launcher extends JFrame {
   private void initUi() {
     setLayout(new BorderLayout());
     Logger.init();
-    statusPanel = new StatusPanel();
+    startscreen = new StartScreen(this);
+    add(startscreen);
+   // statusPanel = new StatusPanel();
     
-    Main board = new Main(this,statusPanel);
-    statusPanel.setMain(board);
-    board.setLayout(new BorderLayout());
+    //Main board = new Main(this,statusPanel);
+    //statusPanel.setMain(board);
+    //board.setLayout(new BorderLayout());
     
-    board.add(statusPanel,BorderLayout.WEST);
-    add(board);
+    //board.add(statusPanel,BorderLayout.WEST);
+    //add(board);
 
     setSize(800, 619);
 
@@ -66,7 +70,6 @@ public class Launcher extends JFrame {
   public static void main(String[] args) {
 
     EventQueue.invokeLater(new Runnable() {
-      //  @Override
       public void run() {
         Launcher ex = new Launcher();
         ex.setVisible(true);
