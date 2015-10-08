@@ -13,8 +13,7 @@ import org.junit.Test;
  */
 public class StatusPanelTest {
 
-  Launcher launcher = new Launcher();
-  StatusPanel test = new StatusPanel(launcher);
+  StatusPanel test = new StatusPanel();
 
   /**
    * Test the setScore method.

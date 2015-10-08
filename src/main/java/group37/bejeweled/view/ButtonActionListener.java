@@ -33,7 +33,7 @@ public class ButtonActionListener implements ActionListener{
     if (event.getSource() == startscreen.newGame) {
       launcher.getContentPane().remove(startscreen);
 
-      panel = new StatusPanel(launcher);
+      panel = new StatusPanel();
       Main main = new Main(launcher,panel);
       panel.setMain(main);
       main.setLayout(new BorderLayout());     

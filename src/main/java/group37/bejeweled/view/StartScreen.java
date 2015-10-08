@@ -38,7 +38,7 @@ public class StartScreen extends JPanel {
   public StartScreen(Launcher launch) {
     launcher = launch;
     startscreen = this;
-    statusPanel = new StatusPanel(launcher);
+    statusPanel = new StatusPanel();
     this.actionListener = new ButtonActionListener(statusPanel, this, launcher);
     setLayout(new GridBagLayout());
     setBorder(BorderFactory.createEmptyBorder(10, 40, 10, 10));

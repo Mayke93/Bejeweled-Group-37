@@ -37,7 +37,7 @@ public class StatusPanel extends JPanel{
   /**
    * Create labels for displaying the status of the game.
    */
-  public StatusPanel(Launcher launch) {
+  public StatusPanel() {
     //start = new StartScreen(launch);
     //this.actionListener = new ButtonActionListener(this, start, launch);
     setLayout(new GridBagLayout());
