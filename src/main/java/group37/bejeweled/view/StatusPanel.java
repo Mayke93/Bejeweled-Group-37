@@ -28,6 +28,7 @@ public class StatusPanel extends JPanel implements Observer{
   private JLabel scoreLabel = new JLabel("Score: ");
   private JLabel levelLabel = new JLabel("Level:");
   protected JButton button = new JButton("Quit");
+  protected JButton saveGame = new JButton("Save Game");
   private ButtonActionListener actionListener;
 
   private static final Font font = new Font("Serif", Font.BOLD, 35);
@@ -41,9 +42,9 @@ public class StatusPanel extends JPanel implements Observer{
   /**
    * Create labels for displaying the status of the game.
    */
-  public StatusPanel() {
-    //start = new StartScreen(launch);
-    //this.actionListener = new ButtonActionListener(this, start, launch);
+  public StatusPanel(Launcher launch, StartScreen startscreen) {
+    start = startscreen;
+    this.actionListener = new ButtonActionListener(this, start, launch);
     setLayout(new GridBagLayout());
     setBorder(BorderFactory.createEmptyBorder(10, 40, 10, 10));
     setOpaque(false);
@@ -62,6 +63,7 @@ public class StatusPanel extends JPanel implements Observer{
     box.add(scoreLabel);
     box.add(levelLabel);
     box.add(button);
+    box.add(saveGame);
     box.add(Box.createVerticalGlue());
     add(box);
 

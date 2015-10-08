@@ -18,23 +18,21 @@ public class ButtonActionListener implements ActionListener{
     this.startscreen = start;
     this.launcher = launch;
   }
+
   
-//
-//  public ButtonActionListener(StartScreen start) {
-//    this.startscreen = start;
-//  }
-//  
   @Override
   public void actionPerformed(ActionEvent event) {
-
+    if (event.getSource() == panel.saveGame) {
+      //code for saving the game.
+    }
     if (event.getSource() == panel.button) {
-      launcher.getContentPane().remove(panel);
+      launcher.getContentPane().remove(panel.main);
       launcher.getContentPane().add(startscreen);
     }
     if (event.getSource() == startscreen.newGame) {
       launcher.getContentPane().remove(startscreen);
 
-      panel = new StatusPanel();
+      panel = new StatusPanel(launcher, startscreen);
       Main main = new Main(launcher,panel);
       panel.setMain(main);
       main.setLayout(new BorderLayout());     
