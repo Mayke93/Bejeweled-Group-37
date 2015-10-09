@@ -41,7 +41,7 @@ public class Main extends JPanel {
 
   private final JFrame frame;
   public Animation animations;
-  private Game game;
+  protected Game game;
 
   /**
    * Initialize the board and create the mouse event listeners.
@@ -59,14 +59,13 @@ public class Main extends JPanel {
     this.addMouseListener(new MouseListener(this));
     this.addMouseMotionListener(new MouseMotionListener(this));
     
-    System.out.println("hoi");
     game.logic.score = new Score();
     game.logic.score.registerObserver(panel);
     game.logic.level = new Level();
     game.logic.level.registerObserver(panel);
     
     SavedGame.getInstance().setGame(game);
-    SavedGame.getInstance().loadGame();
+
     panel.setLevel(game.logic.getLevel().getLevel());
     panel.setScore(game.logic.getScore().getScore());
   }
@@ -77,6 +76,13 @@ public class Main extends JPanel {
    */
   public Game getGame() {
     return game;
+  }
+  
+  /**
+   * sets the game.
+   */
+  public void setGame(Game ga) {
+   this.game = ga;
   }
 
   /**

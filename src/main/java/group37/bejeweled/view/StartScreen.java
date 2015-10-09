@@ -1,8 +1,9 @@
 package main.java.group37.bejeweled.view;
 
-import java.awt.Color;
+import main.java.group37.bejeweled.Launcher;
+
+import java.awt.BorderLayout;
 import java.awt.Font;
-import java.awt.GridBagLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -10,7 +11,6 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
-import main.java.group37.bejeweled.Launcher;
 
 @SuppressWarnings("serial")
 /**
@@ -40,7 +40,7 @@ public class StartScreen extends JPanel {
     startscreen = this;
     statusPanel = new StatusPanel(launch, this);
     this.actionListener = new ButtonActionListener(statusPanel, this, launcher);
-    setLayout(new GridBagLayout());
+    setLayout(new BorderLayout());
     setBorder(BorderFactory.createEmptyBorder(10, 40, 10, 10));
     setOpaque(false);
     
@@ -55,7 +55,8 @@ public class StartScreen extends JPanel {
     box.add(newGame);
     box.add(loadGame);
     box.add(Box.createVerticalGlue());
-    this.add(box);
+    this.add(box, BorderLayout.WEST);
+    this.add(lgList, BorderLayout.EAST);
     
   }
 

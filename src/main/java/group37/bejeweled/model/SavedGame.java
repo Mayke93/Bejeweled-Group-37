@@ -20,7 +20,7 @@ import javax.swing.ImageIcon;
 public class SavedGame {
   public Game game;
   public static final int SIZE = 8;
-  private static final String path = "values.json";
+  //private static final String path = "values.json";
   public Board board;
   
   private static SavedGame sg = new SavedGame();
@@ -33,15 +33,27 @@ public class SavedGame {
     return sg;
   }
   
+  /**
+   * Gets the game.
+   * @return game, the game.
+   */
+  public Game getGame() {
+    return game;
+  }
+  
   public void setGame(Game game) {
     this.game = game;
+  }
+  
+  public void setBoard(Board bo) {
+    this.board = bo;
   }
 
   /**
    * The status of the game gets saved in JSON format.
    */
   @SuppressWarnings("unchecked")
-  public synchronized void saveGame() {
+  public synchronized void saveGame(String path) {
     Board board = game.getBoard();
     JSONObject obj = new JSONObject();
     obj.put("score", game.logic.getScore().getScore());
@@ -57,10 +69,10 @@ public class SavedGame {
       boardArray.add(list);
     }
     obj.put("board", boardArray);
-    writeToFile(obj);
+    writeToFile(obj, path);
   }
   
-  private void writeToFile(JSONObject obj) {
+  private void writeToFile(JSONObject obj, String path) {
     FileWriter file;
     try {
       file = new FileWriter(path);
@@ -75,8 +87,8 @@ public class SavedGame {
   /**
    * The reader method.
    */
-  public synchronized void loadGame() {
-    JSONObject obj = parseJsonFromFile();
+  public synchronized void loadGame(String path) {
+    JSONObject obj = parseJsonFromFile(path);
     if (obj == null ) {
       return;
     }
@@ -95,7 +107,7 @@ public class SavedGame {
    * Load JSON datd from file and parse the data into a JSON object.
    * @return object with parsed data from JSON file.
    */
-  private JSONObject parseJsonFromFile() {
+  protected JSONObject parseJsonFromFile(String path) {
     JSONParser parser = new JSONParser();
     JSONObject obj = null;
     try {
@@ -143,4 +155,5 @@ public class SavedGame {
     Logger.log("Read Level: " + level);
     return level1;
   }
+  
 }
