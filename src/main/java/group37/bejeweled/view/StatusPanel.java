@@ -37,6 +37,7 @@ public class StatusPanel extends JPanel implements Observer{
   public Main main;
   public StatusPanel statusPanel;
   private StartScreen start;
+  protected Launcher launcher;
   
 
   /**
@@ -44,6 +45,7 @@ public class StatusPanel extends JPanel implements Observer{
    */
   public StatusPanel(Launcher launch, StartScreen startscreen) {
     start = startscreen;
+    launcher = launch;
     this.actionListener = new ButtonActionListener(this, start, launch);
     setLayout(new GridBagLayout());
     setBorder(BorderFactory.createEmptyBorder(10, 40, 10, 10));
@@ -110,6 +112,15 @@ public class StatusPanel extends JPanel implements Observer{
   public void setGame(Game game) {
     this.game = game;
   }
+  
+  public StartScreen getStartScreen() {
+    return start;
+  }
+  
+  public Main getMain() {
+    return main;
+  }
+
   
   public void setMain(Main main) {
     this.main = main;
