@@ -82,28 +82,33 @@ public class ButtonActionListener implements ActionListener{
  
     }
     if (event.getSource() == startscreen.loadGame) {
-      Logger.log("Load Game clicked");
+   Logger.log("Load Game clicked");
       
-      launcher.getContentPane().remove(startscreen);
-      
-      panel = new StatusPanel(launcher, startscreen);
-      Main main = new Main(launcher,panel);
-      panel.setMain(main);
-      main.setLayout(new BorderLayout());     
-      main.add(panel,BorderLayout.WEST);
+      int result = fc.showOpenDialog(launcher);
 
-      launcher.getContentPane().add(main);
-      
-      fc.showOpenDialog(launcher);
-      Logger.log(fc.getSelectedFile().getName());
-      current = fc.getSelectedFile().getName();
-      System.out.println("current " + current);
-      
-      SavedGame.getInstance().loadGame(fc.getSelectedFile().getName());
-      SavedGame.getInstance().setGame(panel.main.game);
-           
-      panel.main.repaint();
-      panel.repaint();    
+      if (result == JFileChooser.APPROVE_OPTION) {  
+       
+        launcher.getContentPane().remove(startscreen);
+        
+        panel = new StatusPanel(launcher, startscreen);
+        Main main = new Main(launcher,panel);
+        panel.setMain(main);
+        main.setLayout(new BorderLayout());     
+        main.add(panel,BorderLayout.WEST);
+
+        launcher.getContentPane().add(main);
+        
+        SavedGame.getInstance().loadGame(fc.getSelectedFile().getName());
+        SavedGame.getInstance().setGame(panel.main.game);
+             
+        panel.main.repaint();
+        panel.repaint();
+       
+      } else if (result == JFileChooser.CANCEL_OPTION) {
+       Logger.log("Cancel was selected");
+       
+      }
+    
     }
     
     launcher.getContentPane().validate();
