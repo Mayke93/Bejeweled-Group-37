@@ -21,7 +21,6 @@ import javax.swing.JFrame;
  * @author group37
  */
 public class Launcher extends JFrame {
-  public StatusPanel statusPanel;
   public StartScreen startscreen;
 
   /**
@@ -29,7 +28,6 @@ public class Launcher extends JFrame {
    * Starts the setting up of the GUI.
    */
   public Launcher() {
-    //SavesList.makeSavesList();
     initUi();
     addWindowListener(new java.awt.event.WindowAdapter() {
       public void windowClosing(WindowEvent winEvt) {
