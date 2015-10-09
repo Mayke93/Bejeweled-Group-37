@@ -47,6 +47,7 @@ public class Score extends Observable {
   
   public void setScore(int sc) {
     this.score = sc;
+    notifyObservers(this, score);
   }
   
   /**

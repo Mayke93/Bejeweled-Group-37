@@ -65,6 +65,7 @@ public class Level extends Observable {
 
   public void setLevel(Integer level) {
     this.level = level;
+    notifyObservers(this,level);
   }
   
 }
