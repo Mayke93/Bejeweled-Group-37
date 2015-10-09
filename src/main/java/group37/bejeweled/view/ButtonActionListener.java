@@ -42,14 +42,17 @@ public class ButtonActionListener implements ActionListener{
       String path = getCurrentDate() + ".json";
       SavedGame.getInstance().saveGame(path);
       
+      Logger.log("Saved as:" + getCurrentDate() + ".json" + " in SavedGames");  
     }
     if (event.getSource() == panel.button) {
       Logger.log("Quit Game clicked");
+      
       launcher.getContentPane().remove(panel.main);
       launcher.getContentPane().add(startscreen);
     }
     if (event.getSource() == startscreen.newGame) {
       Logger.log("New Game clicked");
+      
       launcher.getContentPane().remove(startscreen);
 
       panel = new StatusPanel(launcher, startscreen);
@@ -71,6 +74,7 @@ public class ButtonActionListener implements ActionListener{
     }
     if (event.getSource() == startscreen.loadGame) {
       Logger.log("Load Game clicked");
+      
       launcher.getContentPane().remove(startscreen);
       
       panel = new StatusPanel(launcher, startscreen);
@@ -86,8 +90,7 @@ public class ButtonActionListener implements ActionListener{
       
       SavedGame.getInstance().loadGame(fc.getSelectedFile().getName());
       SavedGame.getInstance().setGame(panel.main.game);
-      
-      
+           
       panel.main.repaint();
       panel.repaint();
      
@@ -105,8 +108,9 @@ public class ButtonActionListener implements ActionListener{
   public static String getCurrentDate() {
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     Date now = new Date();
-    String strDate = sdf.format(now);
-    Logger.log(strDate);
+    Random rand = new Random(1);
+    int number = rand.nextInt(100) + 1;
+    String strDate = sdf.format(now) + " " + Integer.toString(number);
     return strDate;
   }
 }

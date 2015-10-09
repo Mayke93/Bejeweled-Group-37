@@ -29,13 +29,12 @@ public class Launcher extends JFrame {
    * Starts the setting up of the GUI.
    */
   public Launcher() {
-    SavesList.makeSavesList();
+    //SavesList.makeSavesList();
     initUi();
     addWindowListener(new java.awt.event.WindowAdapter() {
       public void windowClosing(WindowEvent winEvt) {
         Logger.log("# Exit Game");
         Logger.close();
-//        SavedGame.getInstance().saveGame();
         System.exit(0);
       }
     });

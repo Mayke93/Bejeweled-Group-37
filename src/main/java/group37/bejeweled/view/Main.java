@@ -39,9 +39,11 @@ public class Main extends JPanel {
   private static ImageIcon focusImage = new ImageIcon("src/img/focus.png");
   private Point focus = null;
 
+  protected JButton button = new JButton();
   private final JFrame frame;
   public Animation animations;
   protected Game game;
+  private StatusPanel statuspanel;
 
   /**
    * Initialize the board and create the mouse event listeners.
@@ -49,6 +51,7 @@ public class Main extends JPanel {
    * @param panel JPanel with the labels to display the status of the game
    */
   public Main(final JFrame frame,StatusPanel panel) {
+    statuspanel = panel;
     this.frame = frame;
     game = new Game(this,panel);
     panel.setGame(game);
@@ -133,30 +136,33 @@ public class Main extends JPanel {
    */
   public void endGame() {
     Logger.log("End Game");
-    this.frame.setLayout(new BorderLayout());
-    JPanel pl = new JPanel(new GridLayout(4,1));
-    pl.setBackground(Color.BLACK);
-
-    JButton button = new JButton();
+    JLabel label = new JLabel("No More Combinations! Press Quit", JLabel.CENTER);
     //Border thickBorder = new LineBorder(Color.BLACK, 12);
     button.setText("New Game");
     button.setSize(400, 50);
     button.setMinimumSize(new Dimension(400,200));
     button.setFont(new Font("Serif", Font.BOLD, 45)); 
     button.setForeground(Color.BLACK);
-    button.addActionListener(new ButtonListener());
+   // button.addActionListener(new ButtonActionListener(statuspanel, statuspanel.getStartScreen(), statuspanel.launcher));
 
-    JLabel label = new JLabel("GAME OVER", JLabel.CENTER);
+    //JLabel label = new JLabel("GAME OVER", JLabel.CENTER);
     label.setForeground(Color.WHITE);
     label.setVerticalTextPosition(JLabel.TOP);
     label.setHorizontalTextPosition(JLabel.CENTER);
     label.setFont(new Font("Serif", Font.BOLD, 45)); 
 
-    pl.setAlignmentX(Component.CENTER_ALIGNMENT);
-    pl.add(label);
-    pl.add(button);
-    this.frame.setContentPane(pl);
-    this.frame.setVisible(true);
+    setAlignmentX(Component.CENTER_ALIGNMENT);
+    add(label);
+    //add(button);
+    //this.frame.setContentPane(pl);
+    //this.frame.setVisible(true);
+    statuspanel.launcher.getContentPane().add(this);
+    statuspanel.main.repaint();
+    statuspanel.repaint();
+
+    statuspanel.launcher.getContentPane().validate();
+    statuspanel.launcher.getContentPane().repaint();
+
   }
 
   /**
