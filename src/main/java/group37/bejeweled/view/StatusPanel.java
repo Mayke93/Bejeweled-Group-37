@@ -57,6 +57,8 @@ public class StatusPanel extends JPanel implements Observer{
     
     button.addActionListener(actionListener);
     button.setFont(new Font("Serif",Font.PLAIN,25));
+    
+    saveGame.addActionListener(actionListener);
 
     Box box = Box.createVerticalBox();
     box.add(Box.createVerticalGlue());
