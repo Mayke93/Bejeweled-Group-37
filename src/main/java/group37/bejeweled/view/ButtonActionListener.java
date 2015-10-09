@@ -3,7 +3,9 @@ package main.java.group37.bejeweled.view;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
@@ -20,6 +22,7 @@ public class ButtonActionListener implements ActionListener{
   private StartScreen startscreen;
   private Launcher launcher;
   private final JFileChooser fc = new JFileChooser();
+  private static String current = null;
 
   /**
    * constructor for buttonactionlistener.
@@ -33,16 +36,22 @@ public class ButtonActionListener implements ActionListener{
     this.launcher = launch;
   }
 
-  
   @Override
   public void actionPerformed(ActionEvent event) {
     if (event.getSource() == panel.saveGame) {
       Logger.log("Save Game clicked");
       
-      String path = getCurrentDate() + ".json";
+      String path = null;
+      System.out.println("currr " + current);
+      if (!(current == null)) {
+        path = current;
+      } else {
+        path = getCurrentDate() + ".json";
+      }
+      
       SavedGame.getInstance().saveGame(path);
       
-      Logger.log("Saved as:" + getCurrentDate() + ".json" + " in SavedGames");  
+      Logger.log(path + " in SavedGames");  
     }
     if (event.getSource() == panel.button) {
       Logger.log("Quit Game clicked");
@@ -87,14 +96,14 @@ public class ButtonActionListener implements ActionListener{
       
       fc.showOpenDialog(launcher);
       Logger.log(fc.getSelectedFile().getName());
+      current = fc.getSelectedFile().getName();
+      System.out.println("current " + current);
       
       SavedGame.getInstance().loadGame(fc.getSelectedFile().getName());
       SavedGame.getInstance().setGame(panel.main.game);
            
       panel.main.repaint();
-      panel.repaint();
-     
-      
+      panel.repaint();    
     }
     
     launcher.getContentPane().validate();
@@ -108,9 +117,9 @@ public class ButtonActionListener implements ActionListener{
   public static String getCurrentDate() {
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     Date now = new Date();
-    Random rand = new Random(1);
-    int number = rand.nextInt(100) + 1;
-    String strDate = sdf.format(now) + " " + Integer.toString(number);
+    Calendar cal = Calendar.getInstance();
+    SimpleDateFormat time = new SimpleDateFormat("HH-mm-ss");
+    String strDate = sdf.format(now) + " " + time.format(cal.getTime());
     return strDate;
   }
 }
