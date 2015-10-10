@@ -61,6 +61,7 @@ public class ButtonActionListener implements ActionListener{
     }
     if (event.getSource() == startscreen.newGame) {
       Logger.log("New Game clicked");
+      current = null;
       
       launcher.getContentPane().remove(startscreen);
 
