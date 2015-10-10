@@ -101,6 +101,7 @@ public class ButtonActionListener implements ActionListener{
         
         SavedGame.getInstance().loadGame(fc.getSelectedFile().getName());
         SavedGame.getInstance().setGame(panel.main.game);
+        current = fc.getSelectedFile().getName();
              
         panel.main.repaint();
         panel.repaint();
