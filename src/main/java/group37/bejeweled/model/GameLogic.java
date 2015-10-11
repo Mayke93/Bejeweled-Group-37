@@ -81,7 +81,11 @@ public class GameLogic {
     List<Tile> tiles = new ArrayList<Tile>();
 
     for (Combination comb: chains) {
-      tiles.addAll(comb.getTiles());
+      for (Tile tile : comb.getTiles()) {
+        if (!tiles.contains(tiles)) {
+          tiles.add(tile);
+        }
+      }
       if (comb.containsSpecialGem() == null) {
         score.updateScore(comb);         //update normal score
       }
@@ -139,8 +143,8 @@ public class GameLogic {
           board.setTileAt(board.getTileAt(col, row).clone(col, row + level), col, row + level);
           board.getTileAt(col, row + level).setLevel(0);
           
-          if(board.getTileAt(col,row).getNextType() == Type.NORMAL)
-            board.getTileAt(col, row).delete = true;
+          board.getTileAt(col, row).delete = true;
+          board.getTileAt(col, row).setNextType(Type.NORMAL);
 
           board.getTileAt(col, row + level).delete = false;
           
@@ -152,12 +156,13 @@ public class GameLogic {
     for (int row = SIZE - 1; row >= 0; row--) {
       for (int col = 0; col < SIZE; col++) {
         tile = board.getTileAt(col, row);
-        if (tile.delete) {
+        if (tile.delete || tile.getNextType() != Type.NORMAL) {
           if (tile.getNextType() == Type.NORMAL) {
             board.setTileAt(game.setRandomTile(col,row), col, row);
           } else if (!(tile.getNextType() == Type.NORMAL) && !(tile.getNextType() == null)) {
             board.setTileAt(game.setSpecialTile(col,row,tile.getNextType()), col, row);
           } 
+          tile = board.getTileAt(col,row);
           tile.setNextType(Type.NORMAL);
           tile.delete = false;
         }
