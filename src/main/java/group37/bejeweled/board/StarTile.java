@@ -51,6 +51,8 @@ public class StarTile extends Tile {
     Tile tile = new StarTile(coordinateX,coordinateY);
     tile.setIndex(this.index);
     tile.setImage(new ImageIcon(paths[index]));
+    tile.setNextType(this.nextType);
+    tile.delete = this.delete;
     return tile;
   }
   

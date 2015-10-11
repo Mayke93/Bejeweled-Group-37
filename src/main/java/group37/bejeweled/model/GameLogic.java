@@ -138,8 +138,12 @@ public class GameLogic {
         if (level > 0) {
           board.setTileAt(board.getTileAt(col, row).clone(col, row + level), col, row + level);
           board.getTileAt(col, row + level).setLevel(0);
-          board.getTileAt(col, row).delete = true;
+          
+          if(board.getTileAt(col,row).getNextType() == Type.NORMAL)
+            board.getTileAt(col, row).delete = true;
+
           board.getTileAt(col, row + level).delete = false;
+          
           board.getTileAt(col, row).setLevel(0);
         }
       }

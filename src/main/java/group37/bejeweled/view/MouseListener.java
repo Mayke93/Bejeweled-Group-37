@@ -43,6 +43,7 @@ public class MouseListener extends MouseAdapter{
         + game.getBoard().getTileAt(col, row).getLoc().y + ") " 
         + Tile.colors[game.getBoard().getTileAt(col, row).getIndex()]
         + " " + game.getBoard().getTileAt(col, row).getType());
+    Logger.log(game.getBoard().getTileAt(col, row).toString());
   }
 
   /**

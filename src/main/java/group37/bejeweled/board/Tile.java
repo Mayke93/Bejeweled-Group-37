@@ -238,7 +238,11 @@ public abstract class Tile {
    */
   public String toString() {
     return "(" + Integer.toString(this.loc.x) + "," 
-           + Integer.toString(this.loc.y) + ") " + colors[this.index];
+           + Integer.toString(this.loc.y) + ") " + colors[this.index] + "\n"
+           + " del: " + this.delete + "\n"
+           + " remove: " + this.remove + "\n"
+           + " nextType: " + this.nextType + "\n"
+           + getType();
   }
 
   public Type getNextType() {

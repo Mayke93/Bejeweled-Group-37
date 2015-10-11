@@ -51,6 +51,8 @@ public class HypercubeTile extends Tile {
     Tile tile = new HypercubeTile(coordinateX,coordinateY);
     tile.setIndex(this.index);
     tile.setImage(new ImageIcon(paths[index]));
+    tile.delete = this.delete;
+    tile.setNextType(this.nextType);
     return tile;
   }
   

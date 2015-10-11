@@ -38,8 +38,9 @@ public class NormalTile extends Tile {
   public Tile clone(int coordinateX, int coordinateY) {
     Tile tile = new NormalTile(coordinateX,coordinateY);
     tile.index = this.index;
-    tile.nextType = this.nextType;
     tile.image = new ImageIcon(paths[index]);
+    tile.delete = this.delete;
+    tile.setNextType(this.nextType);
     return tile;
   }
   
