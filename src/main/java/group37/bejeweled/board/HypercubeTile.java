@@ -17,10 +17,10 @@ public class HypercubeTile extends Tile {
   public HypercubeTile(int transX, int transY) {
     super(transX, transY);
     score = 50;
-    String[] p1 = {"src/img/hypercube/gem.jpg", 
-        "src/img/hypercube/gem.jpg", "src/img/hypercube/gem.jpg", 
-        "src/img/hypercube/gem.jpg", "src/img/hypercube/gem.jpg", 
-        "src/img/hypercube/gem.jpg", "src/img/hypercube/gem.jpg"};
+    String[] p1 = {"src/img/hypercube.png", 
+        "src/img/hypercube.png","src/img/hypercube.png",
+        "src/img/hypercube.png","src/img/hypercube.png",
+        "src/img/hypercube.png","src/img/hypercube.png"};
     paths = p1;
   }
 
