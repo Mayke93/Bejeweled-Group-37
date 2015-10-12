@@ -236,7 +236,8 @@ public class TileTest {
   public void toStringTest() {
     Tile tile = new NormalTile(1,1);
     tile.setIndex(0);
-    assertTrue(tile.toString().equals("(1,1) Blue"));
+    System.out.println("hoi " + tile.toString());
+    assertEquals(tile.toString(), ("(1,1) Blue\n del: false\n remove: false\n nextType: NORMAL\nNormal"));
   }
   
   /**
