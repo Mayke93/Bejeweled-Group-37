@@ -60,9 +60,6 @@ public class Main extends JPanel {
     game.logic.level.registerObserver(panel);
     
     SavedGame.getInstance().setGame(game);
-
-    panel.setLevel(game.logic.getLevel().getLevel());
-    panel.setScore(game.logic.getScore().getScore());
   }
 
   /**
