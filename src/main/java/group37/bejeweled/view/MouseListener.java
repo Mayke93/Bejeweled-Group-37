@@ -51,6 +51,6 @@ public class MouseListener extends MouseAdapter{
    */
   @Override
   public void mouseReleased(MouseEvent event) {
-    board.getGame().getSwaptiles().clear();
+    board.getGame().getSwapHandler().getSwapTiles().clear();
   }  
 }
