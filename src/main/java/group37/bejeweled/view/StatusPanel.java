@@ -103,19 +103,6 @@ public class StatusPanel extends JPanel implements Observer{
   public JLabel getLevelLabel() {
     return levelLabel;
   }
-  
-  public void setGame(Game game) {
-    this.game = game;
-  }
-
-  public Main getMain() {
-    return main;
-  }
-
-  
-  public void setMain(Main main) {
-    this.main = main;
-  }
 
   /**
    * update the score label if there is a change in the score.
