@@ -197,10 +197,10 @@ public class GameLogic {
     List<Tile> tiles = new ArrayList<Tile>();
 
     if (combi.containsSpecialGem() instanceof FlameTile) {
-      tiles = board.getTilesToDeleteFlame(combi.containsSpecialGem());
+      tiles = game.getSwapHandler().getTilesToDeleteFlame(combi.containsSpecialGem());
     }
     if (combi.containsSpecialGem() instanceof StarTile) {
-      tiles = board.getTilesToDeleteStar(combi.containsSpecialGem());
+      tiles = game.getSwapHandler().getTilesToDeleteStar(combi.containsSpecialGem());
     }
 //    if (combi.containsSpecialGem() instanceof HypercubeTile) {
 //      tiles = board.getTilesToDeleteHypercube(combi.containsSpecialGem());

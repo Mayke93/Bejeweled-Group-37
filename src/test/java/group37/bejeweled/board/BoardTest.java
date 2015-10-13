@@ -118,94 +118,94 @@ public class BoardTest {
   }
   
   
-  /**
-   * Test getTilesToDeleteFlame method.
-   */
-  @Test
- // @SuppressWarnings("OneStatementPerLine")
-  public void getTilesToDeleteFlameTest() {
-    Tile[][] tiles = new Tile[3][3];
-    Board board = new Board(tiles);
-    Tile tile = new NormalTile(1,1);
-    board.setTileAt(tile, 0, 0); board.setTileAt(tile, 0, 1); board.setTileAt(tile, 0, 2);
-    board.setTileAt(tile, 1, 0); board.setTileAt(tile, 1, 1); board.setTileAt(tile, 1, 2);
-    board.setTileAt(tile, 2, 0); board.setTileAt(tile, 2, 1); board.setTileAt(tile, 2, 2);
-   
-    List<Tile> newList = new ArrayList<Tile>();
-    newList.add(tile); newList.add(tile); newList.add(tile);
-    newList.add(tile); newList.add(tile); newList.add(tile);
-    List<Tile> list = board.getTilesToDeleteFlame(tile);
-    assertFalse(list.equals(newList));
-    newList.add(tile); newList.add(tile); newList.add(tile);
-    assertTrue(list.equals(newList));
-  }
-  /**
-   * Test getTilesToDeleteFlame method, with the flame tile in a corner.
-   */
-  @Test
-  public void getTilesToDeleteInCornerFlameTest() {
-    Tile[][] tiles = new Tile[3][3];
-    Board board = new Board(tiles);
-    Tile tile = new NormalTile(0,0);
-    board.setTileAt(tile, 0, 0); board.setTileAt(tile, 0, 1);
-    board.setTileAt(tile, 1, 0); board.setTileAt(tile, 1, 1);
-   
-    List<Tile> newList = new ArrayList<Tile>();
-    newList.add(tile); 
-    newList.add(tile); 
-    List<Tile> list = board.getTilesToDeleteFlame(tile);
-    assertFalse(list.equals(newList));
-    newList.add(tile); newList.add(tile);
-    assertTrue(list.equals(newList));
-  }
-  
-  /**
-   * Test getTilesToDeleteHypercube method.
-   */
-  @Test
-  public void getTilesToDeleteHypercubeTest() {
-    Tile[][] tiles = new Tile[3][3];
-    Board board = new Board(tiles);
-    Tile htile = new HypercubeTile(1,1);
-    Tile tile = new NormalTile(1,1);
-    tile.setIndex(1);
-    board.setTileAt(htile, 0, 0); board.setTileAt(tile, 0, 1); board.setTileAt(tile, 0, 2);
-    board.setTileAt(tile, 1, 0); board.setTileAt(tile, 1, 1); board.setTileAt(tile, 1, 2);
-    board.setTileAt(tile, 2, 0); board.setTileAt(tile, 2, 1); board.setTileAt(tile, 2, 2);
-   
-    List<Tile> newList = new ArrayList<Tile>();
-    newList.add(htile); newList.add(tile); newList.add(tile);
-    newList.add(tile); newList.add(tile); newList.add(tile);
-    List<Tile> list = board.getTilesToDeleteHypercube(tile, htile);
-    assertFalse(list.equals(newList));
-    newList.add(tile); newList.add(tile); newList.add(tile);
-    assertTrue(list.equals(newList));
-  }
-  
-  /**
-   * Test getTilesToDeleteStar method.
-   */
-  @Test
-  public void getTilesToDeleteStarTest() {
-    Tile[][] tiles = new Tile[2][2];
-    Board board = new Board(tiles);
-    Tile tile = new NormalTile(1,1);
-    Tile tile2 = new NormalTile(0,1);
-    Tile tile3 = new NormalTile(0,0);
-    Tile tile4 = new NormalTile(1,0);
-    board.setTileAt(tile3, 0, 0); 
-    board.setTileAt(tile2, 0, 1);
-    board.setTileAt(tile4, 1, 0); 
-    board.setTileAt(tile, 1, 1); 
-   
-    List<Tile> newList = new ArrayList<Tile>();
-    List<Tile> list = board.getTilesToDeleteStar(tile);
-    assertFalse(list.equals(newList));
-    newList.add(tile); 
-    newList.add(tile2); 
-    newList.add(tile4);
-    assertTrue(list.equals(newList));
-  }
+//  /**
+//   * Test getTilesToDeleteFlame method.
+//   */
+//  @Test
+// // @SuppressWarnings("OneStatementPerLine")
+//  public void getTilesToDeleteFlameTest() {
+//    Tile[][] tiles = new Tile[3][3];
+//    Board board = new Board(tiles);
+//    Tile tile = new NormalTile(1,1);
+//    board.setTileAt(tile, 0, 0); board.setTileAt(tile, 0, 1); board.setTileAt(tile, 0, 2);
+//    board.setTileAt(tile, 1, 0); board.setTileAt(tile, 1, 1); board.setTileAt(tile, 1, 2);
+//    board.setTileAt(tile, 2, 0); board.setTileAt(tile, 2, 1); board.setTileAt(tile, 2, 2);
+//   
+//    List<Tile> newList = new ArrayList<Tile>();
+//    newList.add(tile); newList.add(tile); newList.add(tile);
+//    newList.add(tile); newList.add(tile); newList.add(tile);
+//    List<Tile> list = board.getTilesToDeleteFlame(tile);
+//    assertFalse(list.equals(newList));
+//    newList.add(tile); newList.add(tile); newList.add(tile);
+//    assertTrue(list.equals(newList));
+//  }
+//  /**
+//   * Test getTilesToDeleteFlame method, with the flame tile in a corner.
+//   */
+//  @Test
+//  public void getTilesToDeleteInCornerFlameTest() {
+//    Tile[][] tiles = new Tile[3][3];
+//    Board board = new Board(tiles);
+//    Tile tile = new NormalTile(0,0);
+//    board.setTileAt(tile, 0, 0); board.setTileAt(tile, 0, 1);
+//    board.setTileAt(tile, 1, 0); board.setTileAt(tile, 1, 1);
+//   
+//    List<Tile> newList = new ArrayList<Tile>();
+//    newList.add(tile); 
+//    newList.add(tile); 
+//    List<Tile> list = board.getTilesToDeleteFlame(tile);
+//    assertFalse(list.equals(newList));
+//    newList.add(tile); newList.add(tile);
+//    assertTrue(list.equals(newList));
+//  }
+//  
+//  /**
+//   * Test getTilesToDeleteHypercube method.
+//   */
+//  @Test
+//  public void getTilesToDeleteHypercubeTest() {
+//    Tile[][] tiles = new Tile[3][3];
+//    Board board = new Board(tiles);
+//    Tile htile = new HypercubeTile(1,1);
+//    Tile tile = new NormalTile(1,1);
+//    tile.setIndex(1);
+//    board.setTileAt(htile, 0, 0); board.setTileAt(tile, 0, 1); board.setTileAt(tile, 0, 2);
+//    board.setTileAt(tile, 1, 0); board.setTileAt(tile, 1, 1); board.setTileAt(tile, 1, 2);
+//    board.setTileAt(tile, 2, 0); board.setTileAt(tile, 2, 1); board.setTileAt(tile, 2, 2);
+//   
+//    List<Tile> newList = new ArrayList<Tile>();
+//    newList.add(htile); newList.add(tile); newList.add(tile);
+//    newList.add(tile); newList.add(tile); newList.add(tile);
+//    List<Tile> list = board.getTilesToDeleteHypercube(tile, htile);
+//    assertFalse(list.equals(newList));
+//    newList.add(tile); newList.add(tile); newList.add(tile);
+//    assertTrue(list.equals(newList));
+//  }
+//  
+//  /**
+//   * Test getTilesToDeleteStar method.
+//   */
+//  @Test
+//  public void getTilesToDeleteStarTest() {
+//    Tile[][] tiles = new Tile[2][2];
+//    Board board = new Board(tiles);
+//    Tile tile = new NormalTile(1,1);
+//    Tile tile2 = new NormalTile(0,1);
+//    Tile tile3 = new NormalTile(0,0);
+//    Tile tile4 = new NormalTile(1,0);
+//    board.setTileAt(tile3, 0, 0); 
+//    board.setTileAt(tile2, 0, 1);
+//    board.setTileAt(tile4, 1, 0); 
+//    board.setTileAt(tile, 1, 1); 
+//   
+//    List<Tile> newList = new ArrayList<Tile>();
+//    List<Tile> list = board.getTilesToDeleteStar(tile);
+//    assertFalse(list.equals(newList));
+//    newList.add(tile); 
+//    newList.add(tile2); 
+//    newList.add(tile4);
+//    assertTrue(list.equals(newList));
+//  }
   
   /**
    * test for the equals method, with a board that only contains null tiles.

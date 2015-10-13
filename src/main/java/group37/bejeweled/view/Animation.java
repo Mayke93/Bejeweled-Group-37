@@ -151,11 +151,11 @@ public class Animation implements ActionListener{
 
     t0.resetD();
     t1.resetD();
-    game.swapTiles(t0,t1);
+    game.getSwapHandler().swapTiles(t0,t1);
     if (t0 instanceof HypercubeTile) {
-      game.logic.deleteTiles(game.getBoard().getTilesToDeleteHypercube(t1,t0));
+      game.logic.deleteTiles(game.getSwapHandler().getTilesToDeleteHypercube(t1,t0));
     } else if (t1 instanceof HypercubeTile) {
-      game.logic.deleteTiles(game.getBoard().getTilesToDeleteHypercube(t0,t1));
+      game.logic.deleteTiles(game.getSwapHandler().getTilesToDeleteHypercube(t0,t1));
     } else {
       game.logic.deleteChains();
     }

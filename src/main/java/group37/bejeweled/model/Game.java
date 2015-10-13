@@ -26,12 +26,13 @@ import javax.swing.ImageIcon;
  * @author group37
  */
 public class Game {
+  
   private Board board = null;
+  private SwapHandler swapHandler;
   public BoardFactory boardFactory;
   public List<Tile> swapTiles;
   private Tile[] swappedTiles; //Use this for special gems
   private Main boardPanel;
-  private StatusPanel panel;
   private CombinationFinder finder;
   
   public GameLogic logic;
@@ -46,7 +47,6 @@ public class Game {
     this.boardPanel = boardPanel;
     this.boardFactory = new BoardFactory(this);
     this.board = new Board(new Tile[Main.SIZE][Main.SIZE]); 
-    this.panel = panel;
     this.finder = new CombinationFinder(board);
 
     this.logic = new GameLogic(this);
@@ -57,6 +57,8 @@ public class Game {
     swapTiles = new ArrayList<Tile>();
     swappedTiles = new Tile[2];
     generateRandomBoard();
+    
+    swapHandler = new SwapHandler(board, swapTiles, swappedTiles);
   }
 
   /**
@@ -69,7 +71,7 @@ public class Game {
     if (!swapTiles.contains(board.getTileAt(col, row))) {
       swapTiles.add(board.getTileAt(col, row));
       boardPanel.setFocus(loc);
-      if (swapTiles.size() == 2 && canSwap()) {              
+      if (swapTiles.size() == 2 && swapHandler.canSwap()) {              
         boardPanel.swapTiles(swapTiles);
         swapTiles.clear();
       }
@@ -191,7 +193,7 @@ public class Game {
     Tile tile = null;
     String color = null;
     //swap tiles to look in the rows where the tile will be in case it can be switched
-    swapTiles(t0,t1);
+    swapHandler.swapTiles(t0,t1);
 
     for (int i = 1; i < 3; i++) {
 
@@ -259,7 +261,7 @@ public class Game {
       }
     }
     //swap the tiles back to original position
-    swapTiles(t0,t1);
+    swapHandler.swapTiles(t0,t1);
     return res;
   }
 
@@ -297,104 +299,6 @@ public class Game {
   }
 
   /**
-   * Switch tile t0 and t1 on the board.
-   * @param t0 first tile to swap
-   * @param t1 second tile to swap
-   */
-  public void swapTiles(Tile t0, Tile t1) {
-    Tile temp = board.getTileAt(t0.getX(), t0.getY());
-    board.setTileAt(board.getTileAt(t1.getX(), t1.getY()), t0.getX(), t0.getY());
-    board.setTileAt(temp, t1.getX(), t1.getY());
-
-    int xc = t0.getX();
-    int yc = t0.getY();
-    t0.setLoc(t1.getX(),t1.getY());
-    t1.setLoc(xc, yc);
-    
-    swappedTiles[0] = t0;
-    swappedTiles[1] = t1;
-  }
-
-  /**
-   * Swap two tiles if it result in a sequence of 3 of more tiles with the same color.
-   */
-  public boolean canSwap() {
-    Tile t0 = board.getTileAt(swapTiles.get(0).getX(), swapTiles.get(0).getY());
-    Tile t1 = board.getTileAt(swapTiles.get(1).getX(), swapTiles.get(1).getY());
-
-    swapTiles(t0,t1);
-    Combination combiX0 = finder.getSingleCombinationX(t0);
-    Combination combiX1 = finder.getSingleCombinationX(t1);
-    Combination combiY0 = finder.getSingleCombinationY(t0);
-    Combination combiY1 = finder.getSingleCombinationY(t1);
-    swapTiles(t0,t1);
-
-    Type type = null;
-    if (!(combiX0 == null)) {
-      type = combiX0.getType();
-    } else if (!(combiX1 == null)) {
-      type = combiX1.getType();
-    } else if (!(combiY0 == null)) {
-      type = combiY0.getType();
-    } else if (!(combiY1 == null)) {
-      type = combiY1.getType();
-    }
-
-    if (t0 instanceof HypercubeTile || t1 instanceof HypercubeTile) {
-      return true;
-    }
-
-    if (type == null) {
-      return false;
-    }
-
-    if (!isNeighbour(t0,t1)) {
-      Logger.error("t0 and t1 are not neighbours.");
-      return false;
-    }
-    return true;
-  }
-
-  /**
-   * Return true if t0 and t1 are neighbours.
-   * @param t0 tile 1.
-   * @param t1 tile 2.
-   * @return true if t0 and t1 are next to each other.
-   */
-  public boolean isNeighbour(Tile t0, Tile t1) {
-    if (Math.abs(t0.getX() - t1.getX()) == 1 && Math.abs(t0.getY() - t1.getY()) == 0) {
-      return true;
-    }
-    if (Math.abs(t0.getX() - t1.getX()) == 0 && Math.abs(t0.getY() - t1.getY()) == 1) {
-      return true;
-    }
-    return false;
-  }
-  
-  /**
-   * End game if there is no possible combination.
-   
-  public void endGame() {
-    JLabel label1 = new JLabel("No possible combination",JLabel.CENTER);
-    label1.setVerticalTextPosition(JLabel.TOP);
-    label1.setHorizontalTextPosition(JLabel.CENTER);
-    if (!(possibleMove())) {
-      this.boardPanel.add(label1);
-      return;
-    }
-  }
-*/
-  /**
-   * Reset game.
-   */
-  public void reset() {
-    logic.getScore().resetScore();
-    swapTiles = new ArrayList<Tile>();
-    generateRandomBoard();
-    boardPanel.repaint();
-  }
-
-  /**
    * Get board object.
    * @return the board
    */
@@ -410,14 +314,10 @@ public class Game {
     this.board = bo;
   }
   
-//  /**
-//   * Get the current level number.
-//   * @return the level number.
-//   */
-//  public int getLevel() {
-//    return this.newlevel;
-//  }
-  
+  public SwapHandler getSwapHandler() {
+    return swapHandler;
+  }
+   
   /**
    * Get the list with the selected tiles to swap.
    * @return the list swapTiles
@@ -425,29 +325,4 @@ public class Game {
   public List<Tile> getSwaptiles() {
     return this.swapTiles;
   }
-  
-  /**
-   * Get the CombinationFinder of the game.
-   * @return CombinationFinder
-   */
-  public CombinationFinder getFinder() {
-    return finder;
-  }
-  
-  /**
-   * sets the CombinationFinder.
-   * @param cf CombinationFinder object
-   * @return a CombinationFinder object
-   */
-  public void setFinder(CombinationFinder cf) {
-    this.finder = cf;
-  }
-
-  /**
-   * Set the current level number.
-   * @param level1 the level number to be set.
-   */
-//  public void setLevel(Integer level1) {
-//    this.newlevel = level1; 
-//  }
 }
