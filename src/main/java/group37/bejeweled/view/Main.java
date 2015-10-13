@@ -41,7 +41,6 @@ public class Main extends JPanel {
 
   /**
    * Initialize the board and create the mouse event listeners.
-   * @param frame JFrame of the game
    * @param panel JPanel with the labels to display the status of the game
    */
   public Main(StatusPanel panel) {

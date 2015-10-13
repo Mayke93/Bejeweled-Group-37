@@ -93,12 +93,7 @@ public class ButtonActionListener implements ActionListener{
     main.add(panel,BorderLayout.WEST);
 
     Launcher.launcher.getContentPane().add(main);
-     
-    panel.game.generateRandomBoard();
-    panel.game.logic.level.setLevel(1);
-    panel.game.logic.score.setScore(0);
-    panel.setScore(0);
-    panel.setLevel(1);
+
     panel.main.repaint();
     panel.repaint();
   }
