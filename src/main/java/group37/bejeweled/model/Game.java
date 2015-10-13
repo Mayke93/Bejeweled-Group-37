@@ -13,14 +13,11 @@ import main.java.group37.bejeweled.combination.CombinationFinder;
 import main.java.group37.bejeweled.view.Main;
 import main.java.group37.bejeweled.view.StatusPanel;
 
-import java.awt.Point;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
 
-//TODO tile do not drop down anymore, but are replaced by random tiles.
 /**
  * Class that represents the current game.
  * @author group37
@@ -30,9 +27,6 @@ public class Game {
   private Board board = null;
   private SwapHandler swapHandler;
   public BoardFactory boardFactory;
-  public List<Tile> swapTiles;
-  private Tile[] swappedTiles; //Use this for special gems
-  private Main boardPanel;
   private CombinationFinder finder;
   
   public GameLogic logic;
@@ -44,7 +38,6 @@ public class Game {
    * @param panel object for updating the labels.
    */
   public Game(Main boardPanel,StatusPanel panel) {
-    this.boardPanel = boardPanel;
     this.boardFactory = new BoardFactory(this);
     this.board = new Board(new Tile[Main.SIZE][Main.SIZE]); 
     this.finder = new CombinationFinder(board);
@@ -53,30 +46,12 @@ public class Game {
     this.logic.setFinder(finder);
     this.logic.setBoard(board);
     this.logic.setBoardPanel(boardPanel);
-    
-    swapTiles = new ArrayList<Tile>();
-    swappedTiles = new Tile[2];
+
     generateRandomBoard();
     
-    swapHandler = new SwapHandler(board, swapTiles, swappedTiles);
+    swapHandler = new SwapHandler(board, boardPanel);
   }
 
-  /**
-   * Add tile to swapTiles based on location from the mouseEvent.
-   * @param loc location of tile
-   */
-  public void addTile(Point loc) {
-    int col = loc.x;
-    int row = loc.y;
-    if (!swapTiles.contains(board.getTileAt(col, row))) {
-      swapTiles.add(board.getTileAt(col, row));
-      boardPanel.setFocus(loc);
-      if (swapTiles.size() == 2 && swapHandler.canSwap()) {              
-        boardPanel.swapTiles(swapTiles);
-        swapTiles.clear();
-      }
-    }
-  }
 
   /**
    * Prints the combinations obtained by getAllCombinationsOnBoard().
@@ -300,12 +275,5 @@ public class Game {
   public SwapHandler getSwapHandler() {
     return swapHandler;
   }
-   
-  /**
-   * Get the list with the selected tiles to swap.
-   * @return the list swapTiles
-   */
-  public List<Tile> getSwaptiles() {
-    return this.swapTiles;
-  }
+  
 }

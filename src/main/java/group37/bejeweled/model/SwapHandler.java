@@ -1,15 +1,17 @@
 package main.java.group37.bejeweled.model;
 
-import java.awt.Point;
-import java.util.ArrayList;
-import java.util.List;
-
 import main.java.group37.bejeweled.board.Board;
 import main.java.group37.bejeweled.board.HypercubeTile;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.combination.Combination;
 import main.java.group37.bejeweled.combination.Combination.Type;
 import main.java.group37.bejeweled.combination.CombinationFinder;
+import main.java.group37.bejeweled.view.Main;
+
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Contains methods related to swappig tiles.
@@ -22,17 +24,37 @@ public class SwapHandler {
   public List<Tile> swapTiles;
   private Tile[] swappedTiles;
   private CombinationFinder finder;
+  private Main main;
   
   /**
    * .
-   * @param Bo a board object
+   * @param bo a board object.
    */
-  public SwapHandler(Board bo, List<Tile> st, Tile[] swappedT) {
-    board = bo;    
-    swapTiles = st;
-    swappedTiles = swappedT;
+  public SwapHandler(Board bo, Main ma) {
+    board = bo;   
+    main = ma;
+    
+    swapTiles = new ArrayList<Tile>();
+    swappedTiles = new Tile[2];
     
     finder = new CombinationFinder(board);
+  }
+  
+  /**
+   * Add tile to swapTiles based on location from the mouseEvent.
+   * @param loc location of tile
+   */
+  public void addTile(Point loc) {
+    int col = loc.x;
+    int row = loc.y;
+    if (!swapTiles.contains(board.getTileAt(col, row))) {
+      swapTiles.add(board.getTileAt(col, row));
+      main.setFocus(loc);
+      if (swapTiles.size() == 2 && canSwap()) {              
+        main.swapTiles(swapTiles);
+        swapTiles.clear();
+      }
+    }
   }
   
   /**
@@ -173,5 +195,9 @@ public class SwapHandler {
       }
     }
     return tiles;
+  }
+  
+  public List<Tile> getSwapTiles() {
+    return swapTiles;
   }
 }
