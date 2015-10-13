@@ -81,11 +81,7 @@ public class GameLogic {
     List<Tile> tiles = new ArrayList<Tile>();
 
     for (Combination comb: chains) {
-      for (Tile tile : comb.getTiles()) {
-        if (!tiles.contains(tiles)) {
-          tiles.add(tile);
-        }
-      }
+      addTiles(comb.getTiles(), tiles);
       if (comb.containsSpecialGem() == null) {
         score.updateScore(comb);         //update normal score
       }
@@ -94,14 +90,10 @@ public class GameLogic {
       
       if (comb.containsSpecialGem() != null) {
         Logger.log("Special gem in combination: " + comb.getType());
-        List<Tile> gemtiles = getTilesToDeleteSpecialGem(comb);
-        score.updateScoreSpecialGem(comb, gemtiles); //update score for detonating special gem
-        for (Tile t1 : gemtiles) {
-          if (!tiles.contains(t1)) {
-            tiles.add(t1);
-          }
-        }
-        Logger.log("Delete " + gemtiles.size() + " additional tiles");
+        List<Tile> gemTiles = getTilesToDeleteSpecialGem(comb);
+        score.updateScoreSpecialGem(comb, gemTiles); //update score for detonating special gem
+        addTiles(gemTiles,tiles);
+        Logger.log("Delete " + gemTiles.size() + " additional tiles");
       }
 
       if (comb.isSpecialCombination()) {          //als er speciale combi is
@@ -110,6 +102,14 @@ public class GameLogic {
     }
     level.updateLevel(score.getScore());
     deleteTiles(tiles);
+  }
+  
+  private void addTiles(List<Tile> tilesToAdd, List<Tile> list) {
+    for (Tile tile : tilesToAdd) {
+      if (!list.contains(tile)) {
+        list.add(tile);
+      }
+    }
   }
 
   /**

@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
 public abstract class Tile {
  
   protected ImageIcon image;
-  private Point loc;
+  public Point loc;
   public Point translation;
   public int size;
   private int level;
@@ -239,10 +239,10 @@ public abstract class Tile {
   public String toString() {
     return "(" + Integer.toString(this.loc.x) + "," 
            + Integer.toString(this.loc.y) + ") " + colors[this.index] + "\n"
-           + " del: " + this.delete + "\n"
-           + " remove: " + this.remove + "\n"
-           + " nextType: " + this.nextType + "\n"
-           + getType();
+           + "\tDelete: " + this.delete + "\n"
+           + "\tRemove: " + this.remove + "\n"
+           + "\tNextType: " + this.nextType + "\n"
+           + "\tType: " + getType();
   }
 
   public Type getNextType() {
