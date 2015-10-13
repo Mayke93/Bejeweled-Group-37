@@ -56,11 +56,7 @@ public class Board {
     }
     return result;
   }
-  
-  public Tile[][] getTiles() {
-    return this.board;
-  }
-  
+
   /**
    * methos to set a tile in a specific place.
    * @param tile the tile to be placed at position (x,y)

@@ -8,19 +8,14 @@ import main.java.group37.bejeweled.model.Logger;
 import main.java.group37.bejeweled.model.SavedGame;
 import main.java.group37.bejeweled.model.Score;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.awt.Point;
 import java.util.List;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -40,8 +35,6 @@ public class Main extends JPanel {
   private static ImageIcon focusImage = new ImageIcon("src/img/focus.png");
   private Point focus = null;
 
-  protected JButton button = new JButton();
-  private final JFrame frame;
   public Animation animations;
   protected Game game;
   private StatusPanel statuspanel;
@@ -51,9 +44,8 @@ public class Main extends JPanel {
    * @param frame JFrame of the game
    * @param panel JPanel with the labels to display the status of the game
    */
-  public Main(final JFrame frame,StatusPanel panel) {
+  public Main(StatusPanel panel) {
     statuspanel = panel;
-    this.frame = frame;
     game = new Game(this,panel);
     panel.setGame(game);
     panel.setMain(this);
@@ -86,7 +78,7 @@ public class Main extends JPanel {
    * sets the game.
    */
   public void setGame(Game ga) {
-   this.game = ga;
+    this.game = ga;
   }
 
   /**
@@ -137,16 +129,8 @@ public class Main extends JPanel {
    */
   public void endGame() {
     Logger.log("End Game");
-    JLabel label = new JLabel("No More Combinations! Press Quit", JLabel.CENTER);
-    //Border thickBorder = new LineBorder(Color.BLACK, 12);
-    button.setText("New Game");
-    button.setSize(400, 50);
-    button.setMinimumSize(new Dimension(400,200));
-    button.setFont(new Font("Serif", Font.BOLD, 45)); 
-    button.setForeground(Color.BLACK);
-   // button.addActionListener(new ButtonActionListener(statuspanel, statuspanel.getStartScreen(), statuspanel.launcher));
 
-    //JLabel label = new JLabel("GAME OVER", JLabel.CENTER);
+    JLabel label = new JLabel("<html>No More Combinations!<br>Press Quit</html>", JLabel.CENTER);
     label.setForeground(Color.WHITE);
     label.setVerticalTextPosition(JLabel.TOP);
     label.setHorizontalTextPosition(JLabel.CENTER);
@@ -154,16 +138,13 @@ public class Main extends JPanel {
 
     setAlignmentX(Component.CENTER_ALIGNMENT);
     add(label);
-    //add(button);
-    //this.frame.setContentPane(pl);
-    //this.frame.setVisible(true);
+
     Launcher.launcher.getContentPane().add(this);
     statuspanel.main.repaint();
     statuspanel.repaint();
 
     Launcher.launcher.getContentPane().validate();
     Launcher.launcher.getContentPane().repaint();
-
   }
 
   /**

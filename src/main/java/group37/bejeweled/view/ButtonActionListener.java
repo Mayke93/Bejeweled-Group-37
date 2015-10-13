@@ -1,21 +1,17 @@
 package main.java.group37.bejeweled.view;
 
-import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Random;
-
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-
 import main.java.group37.bejeweled.Launcher;
 import main.java.group37.bejeweled.model.Logger;
 import main.java.group37.bejeweled.model.SavedGame;
-import main.java.group37.bejeweled.model.SavesList;
+
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import javax.swing.JFileChooser;
 
 public class ButtonActionListener implements ActionListener{
   private StatusPanel panel;
@@ -91,7 +87,7 @@ public class ButtonActionListener implements ActionListener{
     Launcher.launcher.getContentPane().remove(Launcher.startscreen);
 
     panel = new StatusPanel();
-    Main main = new Main(Launcher.launcher, panel);
+    Main main = new Main(panel);
     panel.setMain(main);
     main.setLayout(new BorderLayout());     
     main.add(panel,BorderLayout.WEST);
@@ -119,7 +115,7 @@ public class ButtonActionListener implements ActionListener{
       Launcher.launcher.getContentPane().remove(Launcher.startscreen);
       
       panel = new StatusPanel();
-      Main main = new Main(Launcher.launcher,panel);
+      Main main = new Main(panel);
       panel.setMain(main);
       main.setLayout(new BorderLayout());     
       main.add(panel,BorderLayout.WEST);

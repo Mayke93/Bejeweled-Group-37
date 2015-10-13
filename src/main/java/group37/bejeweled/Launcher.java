@@ -1,12 +1,7 @@
 package main.java.group37.bejeweled;
 
 import main.java.group37.bejeweled.model.Logger;
-import main.java.group37.bejeweled.model.SavedGame;
-import main.java.group37.bejeweled.model.SavesList;
-import main.java.group37.bejeweled.model.Score;
-import main.java.group37.bejeweled.view.Main;
 import main.java.group37.bejeweled.view.StartScreen;
-import main.java.group37.bejeweled.view.StatusPanel;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

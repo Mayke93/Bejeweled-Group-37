@@ -1,6 +1,5 @@
 package main.java.group37.bejeweled.view;
 
-import main.java.group37.bejeweled.Launcher;
 import main.java.group37.bejeweled.board.Board;
 import main.java.group37.bejeweled.model.Game;
 import main.java.group37.bejeweled.model.Level;
@@ -36,16 +35,12 @@ public class StatusPanel extends JPanel implements Observer{
   public Game game;
   public Main main;
   public StatusPanel statusPanel;
-  //private StartScreen start;
-  //protected Launcher launcher;
   
 
   /**
    * Create labels for displaying the status of the game.
    */
   public StatusPanel() {
-    //start = startscreen;
-    //launcher = launch;
     this.actionListener = new ButtonActionListener(this);
     setLayout(new GridBagLayout());
     setBorder(BorderFactory.createEmptyBorder(10, 40, 10, 10));

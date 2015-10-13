@@ -1,14 +1,11 @@
 package main.java.group37.bejeweled.view;
 
-import main.java.group37.bejeweled.Launcher;
-
 import java.awt.BorderLayout;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JButton;
-import javax.swing.JList;
 import javax.swing.JPanel;
 
 
@@ -23,20 +20,16 @@ public class StartScreen extends JPanel {
 
   protected JButton newGame = new JButton("New Game");
   protected JButton loadGame = new JButton("Load Game");
-  private JList lgList = new JList();
-
-  private static final Font font = new Font("Serif", Font.BOLD, 35);
+  //private static final Font font = new Font("Serif", Font.BOLD, 35);
   
   private ButtonActionListener actionListener;
   private StatusPanel statusPanel;
-  //private Launcher launcher;
   public StartScreen startscreen;
   
   /**
    * constructor to initialise the start screen.
    */
   public StartScreen() {
-    //launcher = launch;
     startscreen = this;
     statusPanel = new StatusPanel();
     this.actionListener = new ButtonActionListener(statusPanel);
@@ -55,9 +48,7 @@ public class StartScreen extends JPanel {
     box.add(newGame);
     box.add(loadGame);
     box.add(Box.createVerticalGlue());
-    this.add(box, BorderLayout.WEST);
-    this.add(lgList, BorderLayout.EAST);
-    
+    this.add(box, BorderLayout.WEST);   
   }
 
 }
