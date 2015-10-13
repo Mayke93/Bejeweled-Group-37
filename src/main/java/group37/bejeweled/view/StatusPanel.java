@@ -31,10 +31,8 @@ public class StatusPanel extends JPanel implements Observer{
   private ButtonActionListener actionListener;
 
   private static final Font font = new Font("Serif", Font.BOLD, 35);
-  public Board board;
   public Game game;
   public Main main;
-  public StatusPanel statusPanel;
   
 
   /**
