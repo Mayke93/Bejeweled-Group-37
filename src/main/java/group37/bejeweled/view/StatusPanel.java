@@ -108,11 +108,6 @@ public class StatusPanel extends JPanel implements Observer{
     this.game = game;
   }
 
-  public Main getMain() {
-    return main;
-  }
-
-  
   public void setMain(Main main) {
     this.main = main;
   }
