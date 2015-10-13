@@ -1,0 +1,991 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="3.0.1" sequence="0" timestamp="1444128030814" analysisTimestamp="1444128072666" release="">
+  <Project projectName="Bejeweled-Group-37">
+    <Jar>M:\Repositories\Bejeweled-Group-37\target\classes</Jar>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\codehaus\mojo\findbugs-maven-plugin\3.0.1\findbugs-maven-plugin-3.0.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\com\google\code\findbugs\findbugs\3.0.1\findbugs-3.0.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\net\jcip\jcip-annotations\1.0\jcip-annotations-1.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\com\google\code\findbugs\jsr305\2.0.1\jsr305-2.0.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\com\google\code\findbugs\bcel-findbugs\6.0\bcel-findbugs-6.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\com\google\code\findbugs\jFormatString\2.0.1\jFormatString-2.0.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\dom4j\dom4j\1.6.1\dom4j-1.6.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\xml-apis\xml-apis\1.0.b2\xml-apis-1.0.b2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\ow2\asm\asm-debug-all\5.0.2\asm-debug-all-5.0.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\ow2\asm\asm-commons\5.0.2\asm-commons-5.0.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\ow2\asm\asm-tree\5.0.2\asm-tree-5.0.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\ow2\asm\asm\5.0.2\asm-5.0.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\commons-lang\commons-lang\2.6\commons-lang-2.6.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\com\apple\AppleJavaExtensions\1.4\AppleJavaExtensions-1.4.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\jaxen\jaxen\1.1.6\jaxen-1.1.6.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\codehaus\gmavenplus\gmavenplus-plugin\1.3\gmavenplus-plugin-1.3.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\maven\maven-project\2.2.1\maven-project-2.2.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\maven\maven-settings\2.2.1\maven-settings-2.2.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\maven\maven-profile\2.2.1\maven-profile-2.2.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\codehaus\plexus\plexus-interpolation\1.11\plexus-interpolation-1.11.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\maven\maven-core\2.2.1\maven-core-2.2.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\maven\maven-plugin-parameter-documenter\2.2.1\maven-plugin-parameter-documenter-2.2.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\slf4j\slf4j-jdk14\1.5.6\slf4j-jdk14-1.5.6.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\slf4j\slf4j-api\1.5.6\slf4j-api-1.5.6.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\slf4j\jcl-over-slf4j\1.5.6\jcl-over-slf4j-1.5.6.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\maven\maven-repository-metadata\2.2.1\maven-repository-metadata-2.2.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\maven\maven-error-diagnostics\2.2.1\maven-error-diagnostics-2.2.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\commons-cli\commons-cli\1.2\commons-cli-1.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\codehaus\plexus\plexus-interactivity-api\1.0-alpha-4\plexus-interactivity-api-1.0-alpha-4.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\maven\maven-monitor\2.2.1\maven-monitor-2.2.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\sonatype\plexus\plexus-sec-dispatcher\1.3\plexus-sec-dispatcher-1.3.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\sonatype\plexus\plexus-cipher\1.4\plexus-cipher-1.4.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\maven\shared\file-management\1.2.1\file-management-1.2.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\maven\shared\maven-shared-io\1.1\maven-shared-io-1.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\maven\wagon\wagon-provider-api\1.0-alpha-6\wagon-provider-api-1.0-alpha-6.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\codehaus\plexus\plexus-classworlds\2.5.2\plexus-classworlds-2.5.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\maven\maven-plugin-registry\2.2.1\maven-plugin-registry-2.2.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\fusesource\jansi\jansi\1.11\jansi-1.11.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\jline\jline\2.12\jline-2.12.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\ant\ant\1.9.4\ant-1.9.4.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\ant\ant-launcher\1.9.4\ant-launcher-1.9.4.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\ivy\ivy\2.4.0\ivy-2.4.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\codehaus\groovy\groovy-all\2.4.0\groovy-all-2.4.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\maven\reporting\maven-reporting-impl\2.1\maven-reporting-impl-2.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\commons-validator\commons-validator\1.2.0\commons-validator-1.2.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\commons-beanutils\commons-beanutils\1.7.0\commons-beanutils-1.7.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\commons-digester\commons-digester\1.6\commons-digester-1.6.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\commons-logging\commons-logging\1.0.4\commons-logging-1.0.4.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\oro\oro\2.0.8\oro-2.0.8.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\maven\maven-plugin-api\2.0\maven-plugin-api-2.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\maven\maven-plugin-descriptor\2.2.1\maven-plugin-descriptor-2.2.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\maven\maven-artifact\2.2.1\maven-artifact-2.2.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\maven\doxia\doxia-core\1.4\doxia-core-1.4.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\maven\doxia\doxia-logging-api\1.4\doxia-logging-api-1.4.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\codehaus\plexus\plexus-component-annotations\1.5.5\plexus-component-annotations-1.5.5.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\xerces\xercesImpl\2.9.1\xercesImpl-2.9.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\httpcomponents\httpclient\4.0.2\httpclient-4.0.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\commons-codec\commons-codec\1.3\commons-codec-1.3.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\httpcomponents\httpcore\4.0.1\httpcore-4.0.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\maven\doxia\doxia-decoration-model\1.4\doxia-decoration-model-1.4.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\maven\doxia\doxia-module-xhtml\1.4\doxia-module-xhtml-1.4.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\maven\doxia\doxia-module-fml\1.4\doxia-module-fml-1.4.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\codehaus\plexus\plexus-i18n\1.0-beta-7\plexus-i18n-1.0-beta-7.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\codehaus\plexus\plexus-velocity\1.1.7\plexus-velocity-1.1.7.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\velocity\velocity\1.5\velocity-1.5.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\velocity\velocity-tools\2.0\velocity-tools-2.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\commons-chain\commons-chain\1.1\commons-chain-1.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\sslext\sslext\1.2-0\sslext-1.2-0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\struts\struts-core\1.3.8\struts-core-1.3.8.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\antlr\antlr\2.7.2\antlr-2.7.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\struts\struts-taglib\1.3.8\struts-taglib-1.3.8.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\struts\struts-tiles\1.3.8\struts-tiles-1.3.8.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\commons-collections\commons-collections\3.2.1\commons-collections-3.2.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\maven\shared\maven-doxia-tools\1.2.1\maven-doxia-tools-1.2.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\commons-io\commons-io\1.4\commons-io-1.4.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\maven\maven-artifact-manager\2.0.6\maven-artifact-manager-2.0.6.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\apache\maven\maven-model\2.0.6\maven-model-2.0.6.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\codehaus\plexus\plexus-container-default\1.0-alpha-9\plexus-container-default-1.0-alpha-9.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\classworlds\classworlds\1.1-alpha-2\classworlds-1.1-alpha-2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\codehaus\plexus\plexus-resources\1.0-alpha-7\plexus-resources-1.0-alpha-7.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\codehaus\plexus\plexus-utils\1.5.6\plexus-utils-1.5.6.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\org\sonatype\plexus\plexus-build-api\0.0.7\plexus-build-api-0.0.7.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\junit\junit\4.0\junit-4.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Mayke\.m2\repository\com\googlecode\json-simple\json-simple\1.1\json-simple-1.1.jar</AuxClasspathEntry>
+  </Project>
+  <BugInstance type="EI_EXPOSE_REP2" priority="2" rank="18" abbrev="EI2" category="MALICIOUS_CODE" instanceHash="16d3cfcc2b1c06aa0d3fee74b02a88b4" instanceOccurrenceNum="0" instanceOccurrenceMax="0" cweid="374">
+    <ShortMessage>May expose internal representation by incorporating reference to mutable object</ShortMessage>
+    <LongMessage>new main.java.group37.bejeweled.board.Board(Tile[][]) may expose internal representation by storing an externally mutable object into Board.board</LongMessage>
+    <Class classname="main.java.group37.bejeweled.board.Board" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.board.Board" start="14" end="210" sourcefile="Board.java" sourcepath="main/java/group37/bejeweled/board/Board.java">
+        <Message>At Board.java:[lines 14-210]</Message>
+      </SourceLine>
+      <Message>In class main.java.group37.bejeweled.board.Board</Message>
+    </Class>
+    <Method classname="main.java.group37.bejeweled.board.Board" name="&lt;init&gt;" signature="([[Lmain/java/group37/bejeweled/board/Tile;)V" isStatic="false" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.board.Board" start="25" end="28" startBytecode="0" endBytecode="91" sourcefile="Board.java" sourcepath="main/java/group37/bejeweled/board/Board.java"/>
+      <Message>In method new main.java.group37.bejeweled.board.Board(Tile[][])</Message>
+    </Method>
+    <Field classname="main.java.group37.bejeweled.board.Board" name="board" signature="[[Lmain/java/group37/bejeweled/board/Tile;" isStatic="false" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.board.Board" sourcefile="Board.java" sourcepath="main/java/group37/bejeweled/board/Board.java">
+        <Message>In Board.java</Message>
+      </SourceLine>
+      <Message>Field main.java.group37.bejeweled.board.Board.board</Message>
+    </Field>
+    <LocalVariable name="bi" register="1" pc="24" role="LOCAL_VARIABLE_NAMED">
+      <Message>Local variable named bi</Message>
+    </LocalVariable>
+    <SourceLine classname="main.java.group37.bejeweled.board.Board" primary="true" start="27" end="27" startBytecode="24" endBytecode="24" sourcefile="Board.java" sourcepath="main/java/group37/bejeweled/board/Board.java">
+      <Message>At Board.java:[line 27]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="HE_EQUALS_NO_HASHCODE" priority="2" rank="16" abbrev="HE" category="BAD_PRACTICE" instanceHash="1f3e70c13e7f2a7ebbdcd3fcdfb41093" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Class defines equals() but not hashCode()</ShortMessage>
+    <LongMessage>main.java.group37.bejeweled.board.FlameTile defines equals but not hashCode</LongMessage>
+    <Class classname="main.java.group37.bejeweled.board.FlameTile" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.board.FlameTile" start="21" end="72" sourcefile="FlameTile.java" sourcepath="main/java/group37/bejeweled/board/FlameTile.java">
+        <Message>At FlameTile.java:[lines 21-72]</Message>
+      </SourceLine>
+      <Message>In class main.java.group37.bejeweled.board.FlameTile</Message>
+    </Class>
+    <Method classname="main.java.group37.bejeweled.board.FlameTile" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.board.FlameTile" start="68" end="72" startBytecode="0" endBytecode="126" sourcefile="FlameTile.java" sourcepath="main/java/group37/bejeweled/board/FlameTile.java"/>
+      <Message>In method main.java.group37.bejeweled.board.FlameTile.equals(Object)</Message>
+    </Method>
+    <SourceLine classname="main.java.group37.bejeweled.board.FlameTile" start="68" end="72" startBytecode="0" endBytecode="126" sourcefile="FlameTile.java" sourcepath="main/java/group37/bejeweled/board/FlameTile.java" synthetic="true">
+      <Message>At FlameTile.java:[lines 68-72]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="HE_EQUALS_NO_HASHCODE" priority="2" rank="16" abbrev="HE" category="BAD_PRACTICE" instanceHash="62b5a84de7fd0ed4d348bef998ca4541" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Class defines equals() but not hashCode()</ShortMessage>
+    <LongMessage>main.java.group37.bejeweled.board.HypercubeTile defines equals but not hashCode</LongMessage>
+    <Class classname="main.java.group37.bejeweled.board.HypercubeTile" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.board.HypercubeTile" start="18" end="69" sourcefile="HypercubeTile.java" sourcepath="main/java/group37/bejeweled/board/HypercubeTile.java">
+        <Message>At HypercubeTile.java:[lines 18-69]</Message>
+      </SourceLine>
+      <Message>In class main.java.group37.bejeweled.board.HypercubeTile</Message>
+    </Class>
+    <Method classname="main.java.group37.bejeweled.board.HypercubeTile" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.board.HypercubeTile" start="65" end="69" startBytecode="0" endBytecode="126" sourcefile="HypercubeTile.java" sourcepath="main/java/group37/bejeweled/board/HypercubeTile.java"/>
+      <Message>In method main.java.group37.bejeweled.board.HypercubeTile.equals(Object)</Message>
+    </Method>
+    <SourceLine classname="main.java.group37.bejeweled.board.HypercubeTile" start="65" end="69" startBytecode="0" endBytecode="126" sourcefile="HypercubeTile.java" sourcepath="main/java/group37/bejeweled/board/HypercubeTile.java" synthetic="true">
+      <Message>At HypercubeTile.java:[lines 65-69]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="HE_EQUALS_NO_HASHCODE" priority="2" rank="16" abbrev="HE" category="BAD_PRACTICE" instanceHash="18bbcdd15703b1d6dea141cbebbbbdb2" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Class defines equals() but not hashCode()</ShortMessage>
+    <LongMessage>main.java.group37.bejeweled.board.StarTile defines equals but not hashCode</LongMessage>
+    <Class classname="main.java.group37.bejeweled.board.StarTile" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.board.StarTile" start="18" end="69" sourcefile="StarTile.java" sourcepath="main/java/group37/bejeweled/board/StarTile.java">
+        <Message>At StarTile.java:[lines 18-69]</Message>
+      </SourceLine>
+      <Message>In class main.java.group37.bejeweled.board.StarTile</Message>
+    </Class>
+    <Method classname="main.java.group37.bejeweled.board.StarTile" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.board.StarTile" start="65" end="69" startBytecode="0" endBytecode="126" sourcefile="StarTile.java" sourcepath="main/java/group37/bejeweled/board/StarTile.java"/>
+      <Message>In method main.java.group37.bejeweled.board.StarTile.equals(Object)</Message>
+    </Method>
+    <SourceLine classname="main.java.group37.bejeweled.board.StarTile" start="65" end="69" startBytecode="0" endBytecode="126" sourcefile="StarTile.java" sourcepath="main/java/group37/bejeweled/board/StarTile.java" synthetic="true">
+      <Message>At StarTile.java:[lines 65-69]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="MS_MUTABLE_ARRAY" priority="1" rank="16" abbrev="MS" category="MALICIOUS_CODE" instanceHash="819d480616f91024a49003e4d7357da" instanceOccurrenceNum="0" instanceOccurrenceMax="0" cweid="218">
+    <ShortMessage>Field is a mutable array</ShortMessage>
+    <LongMessage>main.java.group37.bejeweled.board.Tile.colors is a mutable array</LongMessage>
+    <Class classname="main.java.group37.bejeweled.board.Tile" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.board.Tile" start="26" end="258" sourcefile="Tile.java" sourcepath="main/java/group37/bejeweled/board/Tile.java">
+        <Message>At Tile.java:[lines 26-258]</Message>
+      </SourceLine>
+      <Message>In class main.java.group37.bejeweled.board.Tile</Message>
+    </Class>
+    <Field classname="main.java.group37.bejeweled.board.Tile" name="colors" signature="[Ljava/lang/String;" isStatic="true" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.board.Tile" sourcefile="Tile.java" sourcepath="main/java/group37/bejeweled/board/Tile.java">
+        <Message>In Tile.java</Message>
+      </SourceLine>
+      <Message>Field main.java.group37.bejeweled.board.Tile.colors</Message>
+    </Field>
+    <SourceLine classname="main.java.group37.bejeweled.board.Tile" primary="true" start="32" end="32" startBytecode="41" endBytecode="41" sourcefile="Tile.java" sourcepath="main/java/group37/bejeweled/board/Tile.java">
+      <Message>At Tile.java:[line 32]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE" priority="2" rank="18" abbrev="RCN" category="STYLE" instanceHash="2ac72c1aabfa74b16763de805ab4c47e" instanceOccurrenceNum="0" instanceOccurrenceMax="0" cweid="476">
+    <ShortMessage>Redundant nullcheck of value known to be non-null</ShortMessage>
+    <LongMessage>Redundant nullcheck of obj, which is known to be non-null in main.java.group37.bejeweled.board.Tile.equalsColor(Object)</LongMessage>
+    <Class classname="main.java.group37.bejeweled.board.Tile" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.board.Tile" start="26" end="258" sourcefile="Tile.java" sourcepath="main/java/group37/bejeweled/board/Tile.java">
+        <Message>At Tile.java:[lines 26-258]</Message>
+      </SourceLine>
+      <Message>In class main.java.group37.bejeweled.board.Tile</Message>
+    </Class>
+    <Method classname="main.java.group37.bejeweled.board.Tile" name="equalsColor" signature="(Ljava/lang/Object;)Z" isStatic="false" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.board.Tile" start="186" end="190" startBytecode="0" endBytecode="108" sourcefile="Tile.java" sourcepath="main/java/group37/bejeweled/board/Tile.java"/>
+      <Message>In method main.java.group37.bejeweled.board.Tile.equalsColor(Object)</Message>
+    </Method>
+    <LocalVariable name="obj" register="1" pc="7" role="LOCAL_VARIABLE_VALUE_OF">
+      <Message>Value loaded from obj</Message>
+    </LocalVariable>
+    <SourceLine classname="main.java.group37.bejeweled.board.Tile" primary="true" start="186" end="186" startBytecode="8" endBytecode="8" sourcefile="Tile.java" sourcepath="main/java/group37/bejeweled/board/Tile.java" role="SOURCE_REDUNDANT_NULL_CHECK">
+      <Message>Redundant null check at Tile.java:[line 186]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="NP_NULL_ON_SOME_PATH" priority="2" rank="8" abbrev="NP" category="CORRECTNESS" instanceHash="6782dfe2ab5ae95b7268463b26bab90c" instanceOccurrenceNum="0" instanceOccurrenceMax="0" cweid="476">
+    <ShortMessage>Possible null pointer dereference</ShortMessage>
+    <LongMessage>Possible null pointer dereference of combi in main.java.group37.bejeweled.combination.CombinationFinder.getSingleCombinationX(Tile)</LongMessage>
+    <Class classname="main.java.group37.bejeweled.combination.CombinationFinder" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.combination.CombinationFinder" start="23" end="246" sourcefile="CombinationFinder.java" sourcepath="main/java/group37/bejeweled/combination/CombinationFinder.java">
+        <Message>At CombinationFinder.java:[lines 23-246]</Message>
+      </SourceLine>
+      <Message>In class main.java.group37.bejeweled.combination.CombinationFinder</Message>
+    </Class>
+    <Method classname="main.java.group37.bejeweled.combination.CombinationFinder" name="getSingleCombinationX" signature="(Lmain/java/group37/bejeweled/board/Tile;)Lmain/java/group37/bejeweled/combination/Combination;" isStatic="false" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.combination.CombinationFinder" start="78" end="118" startBytecode="0" endBytecode="507" sourcefile="CombinationFinder.java" sourcepath="main/java/group37/bejeweled/combination/CombinationFinder.java"/>
+      <Message>In method main.java.group37.bejeweled.combination.CombinationFinder.getSingleCombinationX(Tile)</Message>
+    </Method>
+    <LocalVariable name="combi" register="2" pc="260" role="LOCAL_VARIABLE_VALUE_OF">
+      <Message>Value loaded from combi</Message>
+    </LocalVariable>
+    <SourceLine classname="main.java.group37.bejeweled.combination.CombinationFinder" primary="true" start="116" end="116" startBytecode="273" endBytecode="273" sourcefile="CombinationFinder.java" sourcepath="main/java/group37/bejeweled/combination/CombinationFinder.java" role="SOURCE_LINE_DEREF">
+      <Message>Dereferenced at CombinationFinder.java:[line 116]</Message>
+    </SourceLine>
+    <SourceLine classname="main.java.group37.bejeweled.combination.CombinationFinder" start="78" end="78" startBytecode="0" endBytecode="0" sourcefile="CombinationFinder.java" sourcepath="main/java/group37/bejeweled/combination/CombinationFinder.java" role="SOURCE_LINE_NULL_VALUE">
+      <Message>Null value at CombinationFinder.java:[line 78]</Message>
+    </SourceLine>
+    <SourceLine classname="main.java.group37.bejeweled.combination.CombinationFinder" start="113" end="113" startBytecode="261" endBytecode="261" sourcefile="CombinationFinder.java" sourcepath="main/java/group37/bejeweled/combination/CombinationFinder.java" role="SOURCE_LINE_KNOWN_NULL">
+      <Message>Known null at CombinationFinder.java:[line 113]</Message>
+    </SourceLine>
+    <Property name="edu.umd.cs.findbugs.detect.NullDerefProperty.LONG_RANGE_NULL_SOURCE" value="true"/>
+  </BugInstance>
+  <BugInstance type="NP_NULL_ON_SOME_PATH" priority="2" rank="8" abbrev="NP" category="CORRECTNESS" instanceHash="1b9b3519c6aadad5f480d6568cb0ac6a" instanceOccurrenceNum="0" instanceOccurrenceMax="0" cweid="476">
+    <ShortMessage>Possible null pointer dereference</ShortMessage>
+    <LongMessage>Possible null pointer dereference of combi in main.java.group37.bejeweled.combination.CombinationFinder.getSingleCombinationY(Tile)</LongMessage>
+    <Class classname="main.java.group37.bejeweled.combination.CombinationFinder" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.combination.CombinationFinder" start="23" end="246" sourcefile="CombinationFinder.java" sourcepath="main/java/group37/bejeweled/combination/CombinationFinder.java">
+        <Message>At CombinationFinder.java:[lines 23-246]</Message>
+      </SourceLine>
+      <Message>In class main.java.group37.bejeweled.combination.CombinationFinder</Message>
+    </Class>
+    <Method classname="main.java.group37.bejeweled.combination.CombinationFinder" name="getSingleCombinationY" signature="(Lmain/java/group37/bejeweled/board/Tile;)Lmain/java/group37/bejeweled/combination/Combination;" isStatic="false" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.combination.CombinationFinder" start="129" end="167" startBytecode="0" endBytecode="487" sourcefile="CombinationFinder.java" sourcepath="main/java/group37/bejeweled/combination/CombinationFinder.java"/>
+      <Message>In method main.java.group37.bejeweled.combination.CombinationFinder.getSingleCombinationY(Tile)</Message>
+    </Method>
+    <LocalVariable name="combi" register="2" pc="244" role="LOCAL_VARIABLE_VALUE_OF">
+      <Message>Value loaded from combi</Message>
+    </LocalVariable>
+    <SourceLine classname="main.java.group37.bejeweled.combination.CombinationFinder" primary="true" start="164" end="164" startBytecode="257" endBytecode="257" sourcefile="CombinationFinder.java" sourcepath="main/java/group37/bejeweled/combination/CombinationFinder.java" role="SOURCE_LINE_DEREF">
+      <Message>Dereferenced at CombinationFinder.java:[line 164]</Message>
+    </SourceLine>
+    <SourceLine classname="main.java.group37.bejeweled.combination.CombinationFinder" start="129" end="129" startBytecode="0" endBytecode="0" sourcefile="CombinationFinder.java" sourcepath="main/java/group37/bejeweled/combination/CombinationFinder.java" role="SOURCE_LINE_NULL_VALUE">
+      <Message>Null value at CombinationFinder.java:[line 129]</Message>
+    </SourceLine>
+    <SourceLine classname="main.java.group37.bejeweled.combination.CombinationFinder" start="161" end="161" startBytecode="245" endBytecode="245" sourcefile="CombinationFinder.java" sourcepath="main/java/group37/bejeweled/combination/CombinationFinder.java" role="SOURCE_LINE_KNOWN_NULL">
+      <Message>Known null at CombinationFinder.java:[line 161]</Message>
+    </SourceLine>
+    <Property name="edu.umd.cs.findbugs.detect.NullDerefProperty.LONG_RANGE_NULL_SOURCE" value="true"/>
+  </BugInstance>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="1" rank="15" abbrev="DLS" category="STYLE" instanceHash="ce6c9f03ca1c33ab2767e873d7acf9cc" instanceOccurrenceNum="0" instanceOccurrenceMax="0" cweid="563">
+    <ShortMessage>Dead store to local variable</ShortMessage>
+    <LongMessage>Dead store to tiles in main.java.group37.bejeweled.model.GameLogic.dropTiles()</LongMessage>
+    <Class classname="main.java.group37.bejeweled.model.GameLogic" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.model.GameLogic" start="26" end="204" sourcefile="GameLogic.java" sourcepath="main/java/group37/bejeweled/model/GameLogic.java">
+        <Message>At GameLogic.java:[lines 26-204]</Message>
+      </SourceLine>
+      <Message>In class main.java.group37.bejeweled.model.GameLogic</Message>
+    </Class>
+    <Method classname="main.java.group37.bejeweled.model.GameLogic" name="dropTiles" signature="()V" isStatic="false" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.model.GameLogic" start="123" end="166" startBytecode="0" endBytecode="199" sourcefile="GameLogic.java" sourcepath="main/java/group37/bejeweled/model/GameLogic.java"/>
+      <Message>In method main.java.group37.bejeweled.model.GameLogic.dropTiles()</Message>
+    </Method>
+    <LocalVariable name="tiles" register="2" pc="10" role="LOCAL_VARIABLE_NAMED">
+      <Message>Local variable named tiles</Message>
+    </LocalVariable>
+    <SourceLine classname="main.java.group37.bejeweled.model.GameLogic" primary="true" start="124" end="124" startBytecode="9" endBytecode="9" sourcefile="GameLogic.java" sourcepath="main/java/group37/bejeweled/model/GameLogic.java">
+      <Message>At GameLogic.java:[line 124]</Message>
+    </SourceLine>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.DEAD_OBJECT_STORE" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="tiles"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
+  </BugInstance>
+  <BugInstance type="DM_DEFAULT_ENCODING" priority="1" rank="19" abbrev="Dm" category="I18N" instanceHash="44b28b076b06894a07dbfde253d0085f" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Reliance on default encoding</ShortMessage>
+    <LongMessage>Found reliance on default encoding in main.java.group37.bejeweled.model.Logger.init(): new java.io.FileWriter(String, boolean)</LongMessage>
+    <Class classname="main.java.group37.bejeweled.model.Logger" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.model.Logger" start="11" end="77" sourcefile="Logger.java" sourcepath="main/java/group37/bejeweled/model/Logger.java">
+        <Message>At Logger.java:[lines 11-77]</Message>
+      </SourceLine>
+      <Message>In class main.java.group37.bejeweled.model.Logger</Message>
+    </Class>
+    <Method classname="main.java.group37.bejeweled.model.Logger" name="init" signature="()V" isStatic="true" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.model.Logger" start="30" end="38" startBytecode="0" endBytecode="123" sourcefile="Logger.java" sourcepath="main/java/group37/bejeweled/model/Logger.java"/>
+      <Message>In method main.java.group37.bejeweled.model.Logger.init()</Message>
+    </Method>
+    <Method classname="java.io.FileWriter" name="&lt;init&gt;" signature="(Ljava/lang/String;Z)V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.io.FileWriter" start="78" end="79" startBytecode="0" endBytecode="41" sourcefile="FileWriter.java" sourcepath="java/io/FileWriter.java"/>
+      <Message>Called method new java.io.FileWriter(String, boolean)</Message>
+    </Method>
+    <SourceLine classname="main.java.group37.bejeweled.model.Logger" primary="true" start="31" end="31" startBytecode="13" endBytecode="13" sourcefile="Logger.java" sourcepath="main/java/group37/bejeweled/model/Logger.java">
+      <Message>At Logger.java:[line 31]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="LI_LAZY_INIT_UPDATE_STATIC" priority="1" rank="6" abbrev="LI" category="MT_CORRECTNESS" instanceHash="293e0f573024aa4a4fbefcfb02228a39" instanceOccurrenceNum="0" instanceOccurrenceMax="0" cweid="543">
+    <ShortMessage>Incorrect lazy initialization and update of static field</ShortMessage>
+    <LongMessage>Incorrect lazy initialization and update of static field main.java.group37.bejeweled.model.Logger.fileWriter in main.java.group37.bejeweled.model.Logger.init()</LongMessage>
+    <Class classname="main.java.group37.bejeweled.model.Logger" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.model.Logger" start="11" end="77" sourcefile="Logger.java" sourcepath="main/java/group37/bejeweled/model/Logger.java">
+        <Message>At Logger.java:[lines 11-77]</Message>
+      </SourceLine>
+      <Message>In class main.java.group37.bejeweled.model.Logger</Message>
+    </Class>
+    <Method classname="main.java.group37.bejeweled.model.Logger" name="init" signature="()V" isStatic="true" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.model.Logger" start="30" end="38" startBytecode="0" endBytecode="19" sourcefile="Logger.java" sourcepath="main/java/group37/bejeweled/model/Logger.java"/>
+      <Message>In method main.java.group37.bejeweled.model.Logger.init()</Message>
+    </Method>
+    <Field classname="main.java.group37.bejeweled.model.Logger" name="fileWriter" signature="Ljava/io/FileWriter;" isStatic="true" primary="true" role="FIELD_ON">
+      <SourceLine classname="main.java.group37.bejeweled.model.Logger" sourcefile="Logger.java" sourcepath="main/java/group37/bejeweled/model/Logger.java">
+        <Message>In Logger.java</Message>
+      </SourceLine>
+      <Message>On field main.java.group37.bejeweled.model.Logger.fileWriter</Message>
+    </Field>
+    <SourceLine classname="main.java.group37.bejeweled.model.Logger" primary="true" start="30" end="31" startBytecode="0" endBytecode="16" sourcefile="Logger.java" sourcepath="main/java/group37/bejeweled/model/Logger.java">
+      <Message>At Logger.java:[lines 30-31]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="MS_SHOULD_BE_FINAL" priority="2" rank="18" abbrev="MS" category="MALICIOUS_CODE" instanceHash="8d19e6de71e764e745d9e33c078f94cd" instanceOccurrenceNum="0" instanceOccurrenceMax="0" cweid="218">
+    <ShortMessage>Field isn&apos;t final but should be</ShortMessage>
+    <LongMessage>main.java.group37.bejeweled.model.Logger.consoleLog isn&apos;t final but should be</LongMessage>
+    <Class classname="main.java.group37.bejeweled.model.Logger" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.model.Logger" start="11" end="77" sourcefile="Logger.java" sourcepath="main/java/group37/bejeweled/model/Logger.java">
+        <Message>At Logger.java:[lines 11-77]</Message>
+      </SourceLine>
+      <Message>In class main.java.group37.bejeweled.model.Logger</Message>
+    </Class>
+    <Field classname="main.java.group37.bejeweled.model.Logger" name="consoleLog" signature="Z" isStatic="true" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.model.Logger" sourcefile="Logger.java" sourcepath="main/java/group37/bejeweled/model/Logger.java">
+        <Message>In Logger.java</Message>
+      </SourceLine>
+      <Message>Field main.java.group37.bejeweled.model.Logger.consoleLog</Message>
+    </Field>
+    <SourceLine classname="main.java.group37.bejeweled.model.Logger" primary="true" start="13" end="13" startBytecode="9" endBytecode="9" sourcefile="Logger.java" sourcepath="main/java/group37/bejeweled/model/Logger.java">
+      <Message>At Logger.java:[line 13]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="STCAL_INVOKE_ON_STATIC_DATE_FORMAT_INSTANCE" priority="1" rank="6" abbrev="STCAL" category="MT_CORRECTNESS" instanceHash="b1d9b0a0123e0fc92e5721c9106988b" instanceOccurrenceNum="0" instanceOccurrenceMax="0" cweid="366">
+    <ShortMessage>Call to static DateFormat</ShortMessage>
+    <LongMessage>Call to method of static java.text.DateFormat in main.java.group37.bejeweled.model.Logger.writeToLog(String)</LongMessage>
+    <Class classname="main.java.group37.bejeweled.model.Logger" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.model.Logger" start="11" end="77" sourcefile="Logger.java" sourcepath="main/java/group37/bejeweled/model/Logger.java">
+        <Message>At Logger.java:[lines 11-77]</Message>
+      </SourceLine>
+      <Message>In class main.java.group37.bejeweled.model.Logger</Message>
+    </Class>
+    <Method classname="main.java.group37.bejeweled.model.Logger" name="writeToLog" signature="(Ljava/lang/String;)V" isStatic="false" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.model.Logger" start="53" end="62" startBytecode="0" endBytecode="170" sourcefile="Logger.java" sourcepath="main/java/group37/bejeweled/model/Logger.java"/>
+      <Message>In method main.java.group37.bejeweled.model.Logger.writeToLog(String)</Message>
+    </Method>
+    <Method classname="java.text.SimpleDateFormat" name="format" signature="(Ljava/util/Date;)Ljava/lang/String;" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.text.SimpleDateFormat" sourcefile="SimpleDateFormat.java" sourcepath="java/text/SimpleDateFormat.java"/>
+      <Message>Called method java.text.SimpleDateFormat.format(Date)</Message>
+    </Method>
+    <Field classname="main.java.group37.bejeweled.model.Logger" name="dateFormat" signature="Ljava/text/DateFormat;" isStatic="true" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.model.Logger" sourcefile="Logger.java" sourcepath="main/java/group37/bejeweled/model/Logger.java">
+        <Message>In Logger.java</Message>
+      </SourceLine>
+      <Message>Field main.java.group37.bejeweled.model.Logger.dateFormat</Message>
+    </Field>
+    <SourceLine classname="main.java.group37.bejeweled.model.Logger" primary="true" start="55" end="55" startBytecode="35" endBytecode="35" sourcefile="Logger.java" sourcepath="main/java/group37/bejeweled/model/Logger.java">
+      <Message>At Logger.java:[line 55]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="DM_DEFAULT_ENCODING" priority="1" rank="19" abbrev="Dm" category="I18N" instanceHash="c81be7e2a0496f207bfb577c5f8e9ee7" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Reliance on default encoding</ShortMessage>
+    <LongMessage>Found reliance on default encoding in main.java.group37.bejeweled.model.SavedGame.parseJsonFromFile(): new java.io.FileReader(String)</LongMessage>
+    <Class classname="main.java.group37.bejeweled.model.SavedGame" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" start="26" end="144" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java">
+        <Message>At SavedGame.java:[lines 26-144]</Message>
+      </SourceLine>
+      <Message>In class main.java.group37.bejeweled.model.SavedGame</Message>
+    </Class>
+    <Method classname="main.java.group37.bejeweled.model.SavedGame" name="parseJsonFromFile" signature="()Lorg/json/simple/JSONObject;" isStatic="false" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" start="99" end="110" startBytecode="0" endBytecode="216" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java"/>
+      <Message>In method main.java.group37.bejeweled.model.SavedGame.parseJsonFromFile()</Message>
+    </Method>
+    <Method classname="java.io.FileReader" name="&lt;init&gt;" signature="(Ljava/lang/String;)V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.io.FileReader" start="58" end="59" startBytecode="0" endBytecode="40" sourcefile="FileReader.java" sourcepath="java/io/FileReader.java"/>
+      <Message>Called method new java.io.FileReader(String)</Message>
+    </Method>
+    <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" primary="true" start="102" end="102" startBytecode="17" endBytecode="17" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java">
+      <Message>At SavedGame.java:[line 102]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="DM_DEFAULT_ENCODING" priority="1" rank="19" abbrev="Dm" category="I18N" instanceHash="2bfef2c9e5a8f5341b8d0114b0a5a727" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Reliance on default encoding</ShortMessage>
+    <LongMessage>Found reliance on default encoding in main.java.group37.bejeweled.model.SavedGame.writeToFile(JSONObject): new java.io.FileWriter(String)</LongMessage>
+    <Class classname="main.java.group37.bejeweled.model.SavedGame" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" start="26" end="144" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java">
+        <Message>At SavedGame.java:[lines 26-144]</Message>
+      </SourceLine>
+      <Message>In class main.java.group37.bejeweled.model.SavedGame</Message>
+    </Class>
+    <Method classname="main.java.group37.bejeweled.model.SavedGame" name="writeToFile" signature="(Lorg/json/simple/JSONObject;)V" isStatic="false" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" start="66" end="73" startBytecode="0" endBytecode="142" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java"/>
+      <Message>In method main.java.group37.bejeweled.model.SavedGame.writeToFile(JSONObject)</Message>
+    </Method>
+    <Method classname="java.io.FileWriter" name="&lt;init&gt;" signature="(Ljava/lang/String;)V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.io.FileWriter" start="63" end="64" startBytecode="0" endBytecode="40" sourcefile="FileWriter.java" sourcepath="java/io/FileWriter.java"/>
+      <Message>Called method new java.io.FileWriter(String)</Message>
+    </Method>
+    <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" primary="true" start="66" end="66" startBytecode="6" endBytecode="6" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java">
+      <Message>At SavedGame.java:[line 66]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="DM_NUMBER_CTOR" priority="2" rank="18" abbrev="Bx" category="PERFORMANCE" instanceHash="24f9f160c42ba1a2e3dc40de2eaf1bda" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Method invokes inefficient Number constructor; use static valueOf instead</ShortMessage>
+    <LongMessage>main.java.group37.bejeweled.model.SavedGame.getLevel(JSONObject) invokes inefficient new Integer(int) constructor; use Integer.valueOf(int) instead</LongMessage>
+    <Class classname="main.java.group37.bejeweled.model.SavedGame" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" start="26" end="144" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java">
+        <Message>At SavedGame.java:[lines 26-144]</Message>
+      </SourceLine>
+      <Message>In class main.java.group37.bejeweled.model.SavedGame</Message>
+    </Class>
+    <Method classname="main.java.group37.bejeweled.model.SavedGame" name="getLevel" signature="(Lorg/json/simple/JSONObject;)I" isStatic="false" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" start="140" end="144" startBytecode="0" endBytecode="144" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java"/>
+      <Message>In method main.java.group37.bejeweled.model.SavedGame.getLevel(JSONObject)</Message>
+    </Method>
+    <Method classname="java.lang.Integer" name="&lt;init&gt;" signature="(I)V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.lang.Integer" start="849" end="851" startBytecode="0" endBytecode="41" sourcefile="Integer.java" sourcepath="java/lang/Integer.java"/>
+      <Message>Called method new Integer(int)</Message>
+    </Method>
+    <Method classname="java.lang.Integer" name="valueOf" signature="(I)Ljava/lang/Integer;" isStatic="true" role="SHOULD_CALL">
+      <SourceLine classname="java.lang.Integer" start="830" end="832" startBytecode="0" endBytecode="72" sourcefile="Integer.java" sourcepath="java/lang/Integer.java"/>
+      <Message>Should call Integer.valueOf(int) instead</Message>
+    </Method>
+    <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" primary="true" start="141" end="141" startBytecode="18" endBytecode="18" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java">
+      <Message>At SavedGame.java:[line 141]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="DM_NUMBER_CTOR" priority="2" rank="18" abbrev="Bx" category="PERFORMANCE" instanceHash="ce055c9f07bb6fb98de872b479ac171" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Method invokes inefficient Number constructor; use static valueOf instead</ShortMessage>
+    <LongMessage>main.java.group37.bejeweled.model.SavedGame.getScore(JSONObject) invokes inefficient new Integer(int) constructor; use Integer.valueOf(int) instead</LongMessage>
+    <Class classname="main.java.group37.bejeweled.model.SavedGame" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" start="26" end="144" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java">
+        <Message>At SavedGame.java:[lines 26-144]</Message>
+      </SourceLine>
+      <Message>In class main.java.group37.bejeweled.model.SavedGame</Message>
+    </Class>
+    <Method classname="main.java.group37.bejeweled.model.SavedGame" name="getScore" signature="(Lorg/json/simple/JSONObject;)I" isStatic="false" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" start="132" end="136" startBytecode="0" endBytecode="147" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java"/>
+      <Message>In method main.java.group37.bejeweled.model.SavedGame.getScore(JSONObject)</Message>
+    </Method>
+    <Method classname="java.lang.Integer" name="&lt;init&gt;" signature="(I)V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.lang.Integer" start="849" end="851" startBytecode="0" endBytecode="41" sourcefile="Integer.java" sourcepath="java/lang/Integer.java"/>
+      <Message>Called method new Integer(int)</Message>
+    </Method>
+    <Method classname="java.lang.Integer" name="valueOf" signature="(I)Ljava/lang/Integer;" isStatic="true" role="SHOULD_CALL">
+      <SourceLine classname="java.lang.Integer" start="830" end="832" startBytecode="0" endBytecode="72" sourcefile="Integer.java" sourcepath="java/lang/Integer.java"/>
+      <Message>Should call Integer.valueOf(int) instead</Message>
+    </Method>
+    <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" primary="true" start="133" end="133" startBytecode="18" endBytecode="18" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java">
+      <Message>At SavedGame.java:[line 133]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="OBL_UNSATISFIED_OBLIGATION" priority="2" rank="20" abbrev="OBL" category="EXPERIMENTAL" instanceHash="c5b8991fe247c30019f4d695763a9b53" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Method may fail to clean up stream or resource</ShortMessage>
+    <LongMessage>main.java.group37.bejeweled.model.SavedGame.parseJsonFromFile() may fail to clean up java.io.Reader</LongMessage>
+    <Class classname="main.java.group37.bejeweled.model.SavedGame" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" start="26" end="144" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java">
+        <Message>At SavedGame.java:[lines 26-144]</Message>
+      </SourceLine>
+      <Message>In class main.java.group37.bejeweled.model.SavedGame</Message>
+    </Class>
+    <Method classname="main.java.group37.bejeweled.model.SavedGame" name="parseJsonFromFile" signature="()Lorg/json/simple/JSONObject;" isStatic="false" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" start="99" end="110" startBytecode="0" endBytecode="216" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java"/>
+      <Message>In method main.java.group37.bejeweled.model.SavedGame.parseJsonFromFile()</Message>
+    </Method>
+    <Class classname="java.io.Reader" role="CLASS_REFTYPE">
+      <SourceLine classname="java.io.Reader" start="66" end="249" sourcefile="Reader.java" sourcepath="java/io/Reader.java">
+        <Message>At Reader.java:[lines 66-249]</Message>
+      </SourceLine>
+      <Message>Reference type java.io.Reader</Message>
+    </Class>
+    <Int value="1" role="INT_OBLIGATIONS_REMAINING">
+      <Message>1 instances of obligation remaining</Message>
+    </Int>
+    <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" primary="true" start="102" end="102" startBytecode="17" endBytecode="17" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java" role="SOURCE_LINE_OBLIGATION_CREATED">
+      <Message>Obligation to clean up resource created at SavedGame.java:[line 102] is not discharged</Message>
+    </SourceLine>
+    <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" start="109" end="109" startBytecode="27" endBytecode="27" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java" role="SOURCE_LINE_PATH_CONTINUES">
+      <Message>Path continues at SavedGame.java:[line 109]</Message>
+    </SourceLine>
+    <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" start="110" end="110" startBytecode="51" endBytecode="51" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java" role="SOURCE_LINE_PATH_CONTINUES">
+      <Message>Path continues at SavedGame.java:[line 110]</Message>
+    </SourceLine>
+    <String value="{Reader x 1}" role="STRING_REMAINING_OBLIGATIONS">
+      <Message>Remaining obligations: {Reader x 1}</Message>
+    </String>
+  </BugInstance>
+  <BugInstance type="OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE" priority="2" rank="20" abbrev="OBL" category="EXPERIMENTAL" instanceHash="a215e928ddb6d31acf11acbdddcede5b" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Method may fail to clean up stream or resource on checked exception</ShortMessage>
+    <LongMessage>main.java.group37.bejeweled.model.SavedGame.writeToFile(JSONObject) may fail to clean up java.io.Writer on checked exception</LongMessage>
+    <Class classname="main.java.group37.bejeweled.model.SavedGame" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" start="26" end="144" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java">
+        <Message>At SavedGame.java:[lines 26-144]</Message>
+      </SourceLine>
+      <Message>In class main.java.group37.bejeweled.model.SavedGame</Message>
+    </Class>
+    <Method classname="main.java.group37.bejeweled.model.SavedGame" name="writeToFile" signature="(Lorg/json/simple/JSONObject;)V" isStatic="false" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" start="66" end="73" startBytecode="0" endBytecode="142" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java"/>
+      <Message>In method main.java.group37.bejeweled.model.SavedGame.writeToFile(JSONObject)</Message>
+    </Method>
+    <Class classname="java.io.Writer" role="CLASS_REFTYPE">
+      <SourceLine classname="java.io.Writer" start="50" end="294" sourcefile="Writer.java" sourcepath="java/io/Writer.java">
+        <Message>At Writer.java:[lines 50-294]</Message>
+      </SourceLine>
+      <Message>Reference type java.io.Writer</Message>
+    </Class>
+    <Int value="1" role="INT_OBLIGATIONS_REMAINING">
+      <Message>1 instances of obligation remaining</Message>
+    </Int>
+    <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" primary="true" start="66" end="66" startBytecode="6" endBytecode="6" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java" role="SOURCE_LINE_OBLIGATION_CREATED">
+      <Message>Obligation to clean up resource created at SavedGame.java:[line 66] is not discharged</Message>
+    </SourceLine>
+    <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" start="67" end="67" startBytecode="10" endBytecode="10" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java" role="SOURCE_LINE_PATH_CONTINUES">
+      <Message>Path continues at SavedGame.java:[line 67]</Message>
+    </SourceLine>
+    <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" start="70" end="70" startBytecode="29" endBytecode="29" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java" role="SOURCE_LINE_PATH_CONTINUES">
+      <Message>Path continues at SavedGame.java:[line 70]</Message>
+    </SourceLine>
+    <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" start="71" end="71" startBytecode="30" endBytecode="30" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java" role="SOURCE_LINE_PATH_CONTINUES">
+      <Message>Path continues at SavedGame.java:[line 71]</Message>
+    </SourceLine>
+    <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" start="73" end="73" startBytecode="34" endBytecode="34" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java" role="SOURCE_LINE_PATH_CONTINUES">
+      <Message>Path continues at SavedGame.java:[line 73]</Message>
+    </SourceLine>
+    <String value="{Writer x 1}" role="STRING_REMAINING_OBLIGATIONS">
+      <Message>Remaining obligations: {Writer x 1}</Message>
+    </String>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_PUBLIC_OR_PROTECTED_FIELD" priority="2" rank="17" abbrev="UuF" category="STYLE" instanceHash="249df3f312f2b8bd82bdbc048e15e6c7" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Unused public or protected field</ShortMessage>
+    <LongMessage>Unused public or protected field: main.java.group37.bejeweled.model.SavedGame.board</LongMessage>
+    <Class classname="main.java.group37.bejeweled.model.SavedGame" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" start="26" end="144" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java">
+        <Message>At SavedGame.java:[lines 26-144]</Message>
+      </SourceLine>
+      <Message>In class main.java.group37.bejeweled.model.SavedGame</Message>
+    </Class>
+    <Field classname="main.java.group37.bejeweled.model.SavedGame" name="board" signature="Lmain/java/group37/bejeweled/board/Board;" isStatic="false" primary="true">
+      <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java">
+        <Message>In SavedGame.java</Message>
+      </SourceLine>
+      <Message>Field main.java.group37.bejeweled.model.SavedGame.board</Message>
+    </Field>
+    <SourceLine classname="main.java.group37.bejeweled.model.SavedGame" sourcefile="SavedGame.java" sourcepath="main/java/group37/bejeweled/model/SavedGame.java" synthetic="true">
+      <Message>In SavedGame.java</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugCategory category="BAD_PRACTICE">
+    <Description>Bad practice</Description>
+  </BugCategory>
+  <BugCategory category="MALICIOUS_CODE">
+    <Description>Malicious code vulnerability</Description>
+  </BugCategory>
+  <BugCategory category="CORRECTNESS">
+    <Description>Correctness</Description>
+  </BugCategory>
+  <BugCategory category="PERFORMANCE">
+    <Description>Performance</Description>
+  </BugCategory>
+  <BugCategory category="STYLE">
+    <Description>Dodgy code</Description>
+  </BugCategory>
+  <BugCategory category="EXPERIMENTAL">
+    <Description>Experimental</Description>
+  </BugCategory>
+  <BugCategory category="MT_CORRECTNESS">
+    <Description>Multithreaded correctness</Description>
+  </BugCategory>
+  <BugCategory category="I18N">
+    <Description>Internationalization</Description>
+  </BugCategory>
+  <BugPattern type="DLS_DEAD_LOCAL_STORE" abbrev="DLS" category="STYLE">
+    <ShortDescription>Dead store to local variable</ShortDescription>
+    <Details><![CDATA[
+
+<p>
+This instruction assigns a value to a local variable,
+but the value is not read or used in any subsequent instruction.
+Often, this indicates an error, because the value computed is never
+used.
+</p>
+<p>
+Note that Sun's javac compiler often generates dead stores for
+final local variables.  Because FindBugs is a bytecode-based tool,
+there is no easy way to eliminate these false positives.
+</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="EI_EXPOSE_REP2" abbrev="EI2" category="MALICIOUS_CODE" cweid="374">
+    <ShortDescription>May expose internal representation by incorporating reference to mutable object</ShortDescription>
+    <Details><![CDATA[
+
+  <p> This code stores a reference to an externally mutable object into the
+  internal representation of the object.&nbsp;
+   If instances
+   are accessed by untrusted code, and unchecked changes to
+   the mutable object would compromise security or other
+   important properties, you will need to do something different.
+  Storing a copy of the object is better approach in many situations.</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="NP_NULL_ON_SOME_PATH" abbrev="NP" category="CORRECTNESS">
+    <ShortDescription>Possible null pointer dereference</ShortDescription>
+    <Details><![CDATA[
+
+<p> There is a branch of statement that, <em>if executed,</em>  guarantees that
+a null value will be dereferenced, which
+would generate a <code>NullPointerException</code> when the code is executed.
+Of course, the problem might be that the branch or statement is infeasible and that
+the null pointer exception can't ever be executed; deciding that is beyond the ability of FindBugs.
+</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="MS_SHOULD_BE_FINAL" abbrev="MS" category="MALICIOUS_CODE">
+    <ShortDescription>Field isn&apos;t final but should be</ShortDescription>
+    <Details><![CDATA[
+
+   <p>
+This static field public but not final, and
+could be changed by malicious code or
+        by accident from another package.
+        The field could be made final to avoid
+        this vulnerability.</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="STCAL_INVOKE_ON_STATIC_DATE_FORMAT_INSTANCE" abbrev="STCAL" category="MT_CORRECTNESS">
+    <ShortDescription>Call to static DateFormat</ShortDescription>
+    <Details><![CDATA[
+
+<p>As the JavaDoc states, DateFormats are inherently unsafe for multithreaded use.
+The detector has found a call to an instance of DateFormat that has been obtained via a static
+field. This looks suspicous.</p>
+<p>For more information on this see <a href="http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6231579">Sun Bug #6231579</a>
+and <a href="http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6178997">Sun Bug #6178997</a>.</p>
+
+]]></Details>
+  </BugPattern>
+  <BugPattern type="UUF_UNUSED_PUBLIC_OR_PROTECTED_FIELD" abbrev="UuF" category="STYLE">
+    <ShortDescription>Unused public or protected field</ShortDescription>
+    <Details><![CDATA[
+
+  <p> This field is never used.&nbsp;
+The field is public or protected, so perhaps
+    it is intended to be used with classes not seen as part of the analysis. If not,
+consider removing it from the class.</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="HE_EQUALS_NO_HASHCODE" abbrev="HE" category="BAD_PRACTICE">
+    <ShortDescription>Class defines equals() but not hashCode()</ShortDescription>
+    <Details><![CDATA[
+
+  <p> This class overrides <code>equals(Object)</code>, but does not
+  override <code>hashCode()</code>.&nbsp; Therefore, the class may violate the
+  invariant that equal objects must have equal hashcodes.</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="OBL_UNSATISFIED_OBLIGATION" abbrev="OBL" category="EXPERIMENTAL">
+    <ShortDescription>Method may fail to clean up stream or resource</ShortDescription>
+    <Details><![CDATA[
+          
+          <p>
+          This method may fail to clean up (close, dispose of) a stream,
+          database object, or other
+          resource requiring an explicit cleanup operation.
+          </p>
+
+          <p>
+          In general, if a method opens a stream or other resource,
+          the method should use a try/finally block to ensure that
+          the stream or resource is cleaned up before the method
+          returns.
+          </p>
+
+          <p>
+          This bug pattern is essentially the same as the
+          OS_OPEN_STREAM and ODR_OPEN_DATABASE_RESOURCE
+          bug patterns, but is based on a different
+          (and hopefully better) static analysis technique.
+          We are interested is getting feedback about the
+          usefulness of this bug pattern.
+          To send feedback, either:
+          </p>
+          <ul>
+            <li>send email to findbugs@cs.umd.edu</li>
+            <li>file a bug report: <a href="http://findbugs.sourceforge.net/reportingBugs.html">http://findbugs.sourceforge.net/reportingBugs.html</a></li>
+          </ul>
+
+          <p>
+          In particular,
+          the false-positive suppression heuristics for this
+          bug pattern have not been extensively tuned, so
+          reports about false positives are helpful to us.
+          </p>
+
+          <p>
+          See Weimer and Necula, <i>Finding and Preventing Run-Time Error Handling Mistakes</i>, for
+          a description of the analysis technique.
+          </p>
+          
+      ]]></Details>
+  </BugPattern>
+  <BugPattern type="MS_MUTABLE_ARRAY" abbrev="MS" category="MALICIOUS_CODE">
+    <ShortDescription>Field is a mutable array</ShortDescription>
+    <Details><![CDATA[
+
+<p> A final static field references an array
+   and can be accessed by malicious code or
+        by accident from another package.
+   This code can freely modify the contents of the array.</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE" abbrev="RCN" category="STYLE">
+    <ShortDescription>Redundant nullcheck of value known to be non-null</ShortDescription>
+    <Details><![CDATA[
+
+<p> This method contains a redundant check of a known non-null value against
+the constant null.</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="LI_LAZY_INIT_UPDATE_STATIC" abbrev="LI" category="MT_CORRECTNESS" cweid="543">
+    <ShortDescription>Incorrect lazy initialization and update of static field</ShortDescription>
+    <Details><![CDATA[
+
+<p> This method contains an unsynchronized lazy initialization of a static field.
+After the field is set, the object stored into that location is further updated or accessed.
+The setting of the field is visible to other threads as soon as it is set. If the
+futher accesses in the method that set the field serve to initialize the object, then
+you have a <em>very serious</em> multithreading bug, unless something else prevents
+any other thread from accessing the stored object until it is fully initialized.
+</p>
+<p>Even if you feel confident that the method is never called by multiple
+threads, it might be better to not set the static field until the value
+you are setting it to is fully populated/initialized.
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="DM_DEFAULT_ENCODING" abbrev="Dm" category="I18N">
+    <ShortDescription>Reliance on default encoding</ShortDescription>
+    <Details><![CDATA[
+
+<p> Found a call to a method which will perform a byte to String (or String to byte) conversion, and will assume that the default platform encoding is suitable. This will cause the application behaviour to vary between platforms. Use an alternative API and specify a charset name or Charset object explicitly.  </p>
+
+      ]]></Details>
+  </BugPattern>
+  <BugPattern type="DM_NUMBER_CTOR" abbrev="Bx" category="PERFORMANCE">
+    <ShortDescription>Method invokes inefficient Number constructor; use static valueOf instead</ShortDescription>
+    <Details><![CDATA[
+      
+      <p>
+      Using <code>new Integer(int)</code> is guaranteed to always result in a new object whereas
+      <code>Integer.valueOf(int)</code> allows caching of values to be done by the compiler, class library, or JVM.
+      Using of cached values avoids object allocation and the code will be faster.
+      </p>
+      <p>
+      Values between -128 and 127 are guaranteed to have corresponding cached instances
+      and using <code>valueOf</code> is approximately 3.5 times faster than using constructor.
+      For values outside the constant range the performance of both styles is the same.
+      </p>
+      <p>
+      Unless the class must be compatible with JVMs predating Java 1.5,
+      use either autoboxing or the <code>valueOf()</code> method when creating instances of
+      <code>Long</code>, <code>Integer</code>, <code>Short</code>, <code>Character</code>, and <code>Byte</code>.
+      </p>
+      
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE" abbrev="OBL" category="EXPERIMENTAL">
+    <ShortDescription>Method may fail to clean up stream or resource on checked exception</ShortDescription>
+    <Details><![CDATA[
+          
+          <p>
+          This method may fail to clean up (close, dispose of) a stream,
+          database object, or other
+          resource requiring an explicit cleanup operation.
+          </p>
+
+          <p>
+          In general, if a method opens a stream or other resource,
+          the method should use a try/finally block to ensure that
+          the stream or resource is cleaned up before the method
+          returns.
+          </p>
+
+          <p>
+          This bug pattern is essentially the same as the
+          OS_OPEN_STREAM and ODR_OPEN_DATABASE_RESOURCE
+          bug patterns, but is based on a different
+          (and hopefully better) static analysis technique.
+          We are interested is getting feedback about the
+          usefulness of this bug pattern.
+          To send feedback, either:
+          </p>
+          <ul>
+            <li>send email to findbugs@cs.umd.edu</li>
+            <li>file a bug report: <a href="http://findbugs.sourceforge.net/reportingBugs.html">http://findbugs.sourceforge.net/reportingBugs.html</a></li>
+          </ul>
+
+          <p>
+          In particular,
+          the false-positive suppression heuristics for this
+          bug pattern have not been extensively tuned, so
+          reports about false positives are helpful to us.
+          </p>
+
+          <p>
+          See Weimer and Necula, <i>Finding and Preventing Run-Time Error Handling Mistakes</i>, for
+          a description of the analysis technique.
+          </p>
+          
+      ]]></Details>
+  </BugPattern>
+  <BugCode abbrev="NP" cweid="476">
+    <Description>Null pointer dereference</Description>
+  </BugCode>
+  <BugCode abbrev="STCAL" cweid="366">
+    <Description>Static use of type Calendar or DateFormat</Description>
+  </BugCode>
+  <BugCode abbrev="MS" cweid="218">
+    <Description>Mutable static field</Description>
+  </BugCode>
+  <BugCode abbrev="Bx">
+    <Description>Questionable Boxing of primitive value</Description>
+  </BugCode>
+  <BugCode abbrev="UuF">
+    <Description>Unused field</Description>
+  </BugCode>
+  <BugCode abbrev="OBL">
+    <Description>Unsatisfied obligation to clean up stream or resource</Description>
+  </BugCode>
+  <BugCode abbrev="Dm">
+    <Description>Dubious method used</Description>
+  </BugCode>
+  <BugCode abbrev="DLS" cweid="563">
+    <Description>Dead local store</Description>
+  </BugCode>
+  <BugCode abbrev="RCN" cweid="476">
+    <Description>Redundant comparison to null</Description>
+  </BugCode>
+  <BugCode abbrev="HE">
+    <Description>Equal objects must have equal hashcodes</Description>
+  </BugCode>
+  <BugCode abbrev="LI">
+    <Description>Unsynchronized Lazy Initialization</Description>
+  </BugCode>
+  <BugCode abbrev="EI2">
+    <Description>Storing reference to mutable object</Description>
+  </BugCode>
+  <Errors errors="0" missingClasses="0"></Errors>
+  <FindBugsSummary timestamp="Tue, 6 Oct 2015 12:40:30 +0200" total_classes="41" referenced_classes="387" total_bugs="20" total_size="1898" num_packages="9" java_version="1.8.0_60" vm_version="25.60-b23" cpu_seconds="45.80" clock_seconds="10.29" peak_mbytes="242.46" alloc_mbytes="455.50" gc_seconds="0.32" priority_2="13" priority_1="7">
+    <FileStats path="main/java/group37/bejeweled/Launcher.java" bugCount="0" size="42"/>
+    <FileStats path="main/java/group37/bejeweled/board/Board.java" bugCount="1" size="84" bugHash="e5e9b43bf028319b34d0bd78741be37e"/>
+    <FileStats path="main/java/group37/bejeweled/board/BoardFactory.java" bugCount="0" size="36"/>
+    <FileStats path="main/java/group37/bejeweled/board/FlameTile.java" bugCount="1" size="22" bugHash="b426604431e56731e3a25af8583be63b"/>
+    <FileStats path="main/java/group37/bejeweled/board/HypercubeTile.java" bugCount="1" size="22" bugHash="69c82aab074ca3a6379c923151628b38"/>
+    <FileStats path="main/java/group37/bejeweled/board/NormalTile.java" bugCount="0" size="13"/>
+    <FileStats path="main/java/group37/bejeweled/board/StarTile.java" bugCount="1" size="22" bugHash="ee883989e8ce385ee32a447e989e822c"/>
+    <FileStats path="main/java/group37/bejeweled/board/Tile.java" bugCount="2" size="107" bugHash="a4c7735bb10d30f57166db601a44f63a"/>
+    <FileStats path="main/java/group37/bejeweled/board/TileFactory.java" bugCount="0" size="14"/>
+    <FileStats path="main/java/group37/bejeweled/combination/Combination.java" bugCount="0" size="60"/>
+    <FileStats path="main/java/group37/bejeweled/combination/CombinationFactory.java" bugCount="0" size="13"/>
+    <FileStats path="main/java/group37/bejeweled/combination/CombinationFinder.java" bugCount="2" size="120" bugHash="564e245207270678c714df7dfc617d0a"/>
+    <FileStats path="main/java/group37/bejeweled/combination/FlameCombination.java" bugCount="0" size="11"/>
+    <FileStats path="main/java/group37/bejeweled/combination/HypercubeCombination.java" bugCount="0" size="11"/>
+    <FileStats path="main/java/group37/bejeweled/combination/NormalCombination.java" bugCount="0" size="11"/>
+    <FileStats path="main/java/group37/bejeweled/combination/StarCombination.java" bugCount="0" size="11"/>
+    <FileStats path="main/java/group37/bejeweled/model/Game.java" bugCount="0" size="262"/>
+    <FileStats path="main/java/group37/bejeweled/model/GameLogic.java" bugCount="1" size="109" bugHash="96dec8506dabc77045e26885e9042ab7"/>
+    <FileStats path="main/java/group37/bejeweled/model/Logger.java" bugCount="4" size="45" bugHash="81616f5876013b0c11744862485c4d4a"/>
+    <FileStats path="main/java/group37/bejeweled/model/SavedGame.java" bugCount="7" size="87" bugHash="012a4a097b4a37b81de0a08d22952c38"/>
+    <FileStats path="main/java/group37/bejeweled/view/Animation.java" bugCount="0" size="112"/>
+    <FileStats path="main/java/group37/bejeweled/view/ButtonActionListener.java" bugCount="0" size="15"/>
+    <FileStats path="main/java/group37/bejeweled/view/ButtonListener.java" bugCount="0" size="7"/>
+    <FileStats path="main/java/group37/bejeweled/view/Main.java" bugCount="0" size="85"/>
+    <FileStats path="main/java/group37/bejeweled/view/MouseListener.java" bugCount="0" size="22"/>
+    <FileStats path="main/java/group37/bejeweled/view/MouseMotionListener.java" bugCount="0" size="14"/>
+    <FileStats path="main/java/group37/bejeweled/view/StatusPanel.java" bugCount="0" size="53"/>
+    <FileStats path="test/java/group37/bejeweled/LauncherE2ETest.java" bugCount="0" size="5"/>
+    <FileStats path="test/java/group37/bejeweled/board/BoardTest.java" bugCount="0" size="169"/>
+    <FileStats path="test/java/group37/bejeweled/board/TileTest.java" bugCount="0" size="144"/>
+    <FileStats path="test/java/group37/bejeweled/combination/CombinationFinderTest.java" bugCount="0" size="57"/>
+    <FileStats path="test/java/group37/bejeweled/combination/NormalCombinationTest.java" bugCount="0" size="71"/>
+    <FileStats path="test/java/group37/bejeweled/model/GameLogicTest.java" bugCount="0" size="9"/>
+    <FileStats path="test/java/group37/bejeweled/model/GameTest.java" bugCount="0" size="9"/>
+    <FileStats path="test/java/group37/bejeweled/model/SavedGameTest.java" bugCount="0" size="9"/>
+    <FileStats path="test/java/group37/bejeweled/model/StatusPanelTest.java" bugCount="0" size="15"/>
+    <PackageStats package="main.java.group37.bejeweled" total_bugs="0" total_types="3" total_size="42">
+      <ClassStats class="main.java.group37.bejeweled.Launcher" sourceFile="Launcher.java" interface="false" size="25" bugs="0"/>
+      <ClassStats class="main.java.group37.bejeweled.Launcher$1" sourceFile="Launcher.java" interface="false" size="10" bugs="0"/>
+      <ClassStats class="main.java.group37.bejeweled.Launcher$2" sourceFile="Launcher.java" interface="false" size="7" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="main.java.group37.bejeweled.board" total_bugs="6" total_types="8" total_size="320" priority_2="5" priority_1="1">
+      <ClassStats class="main.java.group37.bejeweled.board.Board" sourceFile="Board.java" interface="false" size="84" bugs="1" priority_2="1"/>
+      <ClassStats class="main.java.group37.bejeweled.board.BoardFactory" sourceFile="BoardFactory.java" interface="false" size="36" bugs="0"/>
+      <ClassStats class="main.java.group37.bejeweled.board.FlameTile" sourceFile="FlameTile.java" interface="false" size="22" bugs="1" priority_2="1"/>
+      <ClassStats class="main.java.group37.bejeweled.board.HypercubeTile" sourceFile="HypercubeTile.java" interface="false" size="22" bugs="1" priority_2="1"/>
+      <ClassStats class="main.java.group37.bejeweled.board.NormalTile" sourceFile="NormalTile.java" interface="false" size="13" bugs="0"/>
+      <ClassStats class="main.java.group37.bejeweled.board.StarTile" sourceFile="StarTile.java" interface="false" size="22" bugs="1" priority_2="1"/>
+      <ClassStats class="main.java.group37.bejeweled.board.Tile" sourceFile="Tile.java" interface="false" size="107" bugs="2" priority_2="1" priority_1="1"/>
+      <ClassStats class="main.java.group37.bejeweled.board.TileFactory" sourceFile="TileFactory.java" interface="false" size="14" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="main.java.group37.bejeweled.combination" total_bugs="2" total_types="8" total_size="237" priority_2="2">
+      <ClassStats class="main.java.group37.bejeweled.combination.Combination" sourceFile="Combination.java" interface="false" size="48" bugs="0"/>
+      <ClassStats class="main.java.group37.bejeweled.combination.Combination$Type" sourceFile="Combination.java" interface="false" size="12" bugs="0"/>
+      <ClassStats class="main.java.group37.bejeweled.combination.CombinationFactory" sourceFile="CombinationFactory.java" interface="false" size="13" bugs="0"/>
+      <ClassStats class="main.java.group37.bejeweled.combination.CombinationFinder" sourceFile="CombinationFinder.java" interface="false" size="120" bugs="2" priority_2="2"/>
+      <ClassStats class="main.java.group37.bejeweled.combination.FlameCombination" sourceFile="FlameCombination.java" interface="false" size="11" bugs="0"/>
+      <ClassStats class="main.java.group37.bejeweled.combination.HypercubeCombination" sourceFile="HypercubeCombination.java" interface="false" size="11" bugs="0"/>
+      <ClassStats class="main.java.group37.bejeweled.combination.NormalCombination" sourceFile="NormalCombination.java" interface="false" size="11" bugs="0"/>
+      <ClassStats class="main.java.group37.bejeweled.combination.StarCombination" sourceFile="StarCombination.java" interface="false" size="11" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="main.java.group37.bejeweled.model" total_bugs="12" total_types="5" total_size="503" priority_2="6" priority_1="6">
+      <ClassStats class="main.java.group37.bejeweled.model.Game" sourceFile="Game.java" interface="false" size="258" bugs="0"/>
+      <ClassStats class="main.java.group37.bejeweled.model.Game$1" sourceFile="Game.java" interface="false" size="4" bugs="0"/>
+      <ClassStats class="main.java.group37.bejeweled.model.GameLogic" sourceFile="GameLogic.java" interface="false" size="109" bugs="1" priority_1="1"/>
+      <ClassStats class="main.java.group37.bejeweled.model.Logger" sourceFile="Logger.java" interface="false" size="45" bugs="4" priority_2="1" priority_1="3"/>
+      <ClassStats class="main.java.group37.bejeweled.model.SavedGame" sourceFile="SavedGame.java" interface="false" size="87" bugs="7" priority_2="5" priority_1="2"/>
+    </PackageStats>
+    <PackageStats package="main.java.group37.bejeweled.view" total_bugs="0" total_types="8" total_size="308">
+      <ClassStats class="main.java.group37.bejeweled.view.Animation" sourceFile="Animation.java" interface="false" size="101" bugs="0"/>
+      <ClassStats class="main.java.group37.bejeweled.view.Animation$Type" sourceFile="Animation.java" interface="false" size="11" bugs="0"/>
+      <ClassStats class="main.java.group37.bejeweled.view.ButtonActionListener" sourceFile="ButtonActionListener.java" interface="false" size="15" bugs="0"/>
+      <ClassStats class="main.java.group37.bejeweled.view.ButtonListener" sourceFile="ButtonListener.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="main.java.group37.bejeweled.view.Main" sourceFile="Main.java" interface="false" size="85" bugs="0"/>
+      <ClassStats class="main.java.group37.bejeweled.view.MouseListener" sourceFile="MouseListener.java" interface="false" size="22" bugs="0"/>
+      <ClassStats class="main.java.group37.bejeweled.view.MouseMotionListener" sourceFile="MouseMotionListener.java" interface="false" size="14" bugs="0"/>
+      <ClassStats class="main.java.group37.bejeweled.view.StatusPanel" sourceFile="StatusPanel.java" interface="false" size="53" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="test.java.group37.bejeweled" total_bugs="0" total_types="1" total_size="5">
+      <ClassStats class="test.java.group37.bejeweled.LauncherE2ETest" sourceFile="LauncherE2ETest.java" interface="false" size="5" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="test.java.group37.bejeweled.board" total_bugs="0" total_types="2" total_size="313">
+      <ClassStats class="test.java.group37.bejeweled.board.BoardTest" sourceFile="BoardTest.java" interface="false" size="169" bugs="0"/>
+      <ClassStats class="test.java.group37.bejeweled.board.TileTest" sourceFile="TileTest.java" interface="false" size="144" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="test.java.group37.bejeweled.combination" total_bugs="0" total_types="2" total_size="128">
+      <ClassStats class="test.java.group37.bejeweled.combination.CombinationFinderTest" sourceFile="CombinationFinderTest.java" interface="false" size="57" bugs="0"/>
+      <ClassStats class="test.java.group37.bejeweled.combination.NormalCombinationTest" sourceFile="NormalCombinationTest.java" interface="false" size="71" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="test.java.group37.bejeweled.model" total_bugs="0" total_types="4" total_size="42">
+      <ClassStats class="test.java.group37.bejeweled.model.GameLogicTest" sourceFile="GameLogicTest.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="test.java.group37.bejeweled.model.GameTest" sourceFile="GameTest.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="test.java.group37.bejeweled.model.SavedGameTest" sourceFile="SavedGameTest.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="test.java.group37.bejeweled.model.StatusPanelTest" sourceFile="StatusPanelTest.java" interface="false" size="15" bugs="0"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="1175" invocations="1656" avgMicrosecondsPerInvocation="709" maxMicrosecondsPerInvocation="34324" standardDeviationMircosecondsPerInvocation="1902"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="899" invocations="1660" avgMicrosecondsPerInvocation="542" maxMicrosecondsPerInvocation="1548" standardDeviationMircosecondsPerInvocation="265"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="807" invocations="387" avgMicrosecondsPerInvocation="2087" maxMicrosecondsPerInvocation="49622" standardDeviationMircosecondsPerInvocation="4496"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="777" invocations="387" avgMicrosecondsPerInvocation="2008" maxMicrosecondsPerInvocation="47272" standardDeviationMircosecondsPerInvocation="4287"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="528" invocations="1025" avgMicrosecondsPerInvocation="515" maxMicrosecondsPerInvocation="16377" standardDeviationMircosecondsPerInvocation="834"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="299" invocations="262" avgMicrosecondsPerInvocation="1142" maxMicrosecondsPerInvocation="31822" standardDeviationMircosecondsPerInvocation="2689"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="289" invocations="262" avgMicrosecondsPerInvocation="1104" maxMicrosecondsPerInvocation="15645" standardDeviationMircosecondsPerInvocation="1732"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="249" invocations="262" avgMicrosecondsPerInvocation="952" maxMicrosecondsPerInvocation="16655" standardDeviationMircosecondsPerInvocation="1906"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="240" invocations="268" avgMicrosecondsPerInvocation="896" maxMicrosecondsPerInvocation="15131" standardDeviationMircosecondsPerInvocation="1822"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="227" invocations="387" avgMicrosecondsPerInvocation="588" maxMicrosecondsPerInvocation="22957" standardDeviationMircosecondsPerInvocation="1644"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="225" invocations="264" avgMicrosecondsPerInvocation="852" maxMicrosecondsPerInvocation="18288" standardDeviationMircosecondsPerInvocation="1796"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="174" invocations="262" avgMicrosecondsPerInvocation="664" maxMicrosecondsPerInvocation="22505" standardDeviationMircosecondsPerInvocation="1491"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="165" invocations="203" avgMicrosecondsPerInvocation="813" maxMicrosecondsPerInvocation="10041" standardDeviationMircosecondsPerInvocation="1350"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CalledMethods" totalMilliseconds="149" invocations="387" avgMicrosecondsPerInvocation="385" maxMicrosecondsPerInvocation="15899" standardDeviationMircosecondsPerInvocation="1162"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.ExplicitSerialization" totalMilliseconds="147" invocations="387" avgMicrosecondsPerInvocation="382" maxMicrosecondsPerInvocation="24570" standardDeviationMircosecondsPerInvocation="2288"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="139" invocations="387" avgMicrosecondsPerInvocation="361" maxMicrosecondsPerInvocation="8117" standardDeviationMircosecondsPerInvocation="654"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="129" invocations="468" avgMicrosecondsPerInvocation="276" maxMicrosecondsPerInvocation="24514" standardDeviationMircosecondsPerInvocation="1199"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="125" invocations="1605" avgMicrosecondsPerInvocation="77" maxMicrosecondsPerInvocation="2788" standardDeviationMircosecondsPerInvocation="165"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="124" invocations="387" avgMicrosecondsPerInvocation="322" maxMicrosecondsPerInvocation="7185" standardDeviationMircosecondsPerInvocation="660"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="114" invocations="387" avgMicrosecondsPerInvocation="296" maxMicrosecondsPerInvocation="16124" standardDeviationMircosecondsPerInvocation="907"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>
