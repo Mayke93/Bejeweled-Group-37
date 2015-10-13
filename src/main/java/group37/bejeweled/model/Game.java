@@ -185,9 +185,8 @@ public class Game {
    * @param t1 second tile to swap
    * @return true iff swapping tiles t0 and t1 results in a valid combination.
    */
-  public Tile checktype(Tile t0, Tile t1) {
-    //Tile.State res = null;
-    Tile res = null;
+  public boolean createsCombination(Tile t0, Tile t1) {
+    boolean res = false;;
     String c1 = Tile.colors[board.getTileAt(t0.getX(), t0.getY()).getIndex()];
     String c2 = Tile.colors[board.getTileAt(t1.getX(), t1.getY()).getIndex()];
     Tile tile = null;
@@ -196,7 +195,6 @@ public class Game {
     swapHandler.swapTiles(t0,t1);
 
     for (int i = 1; i < 3; i++) {
-
       if (i == 1) {
         tile = t0;
         color = c1;
@@ -222,15 +220,8 @@ public class Game {
           break;
         }
       }
-      
-      if (sum == 3) {
-        res = new NormalTile(tile.getX(), tile.getY());
-      }
-      if (sum == 4) {
-        res = new FlameTile(tile.getX(), tile.getY());
-      }
-      if (sum == 5) {
-        res = new HypercubeTile(tile.getX(), tile.getY());
+      if (sum > 2 && sum < 6) {
+        res = true;
       }
 
       //check y direction
@@ -250,14 +241,8 @@ public class Game {
         }
       }
 
-      if (sum == 3) {
-        res = new NormalTile(tile.getX(), tile.getY());
-      }
-      if (sum == 4) {
-        res = new FlameTile(tile.getX(), tile.getY());
-      }
-      if (sum == 5) {
-        res = new HypercubeTile(tile.getX(), tile.getY());
+      if (sum > 2 && sum < 6) {
+        res = true;
       }
     }
     //swap the tiles back to original position
@@ -279,9 +264,7 @@ public class Game {
       for (int j = 0; j < 7; j++) {
         t0 = board.getTileAt(j, i);
         t1 = board.getTileAt(j + 1, i);
-        if (!(checktype(t0,t1) == null)) {
-          possiblemove = true;
-        }
+        possiblemove = createsCombination(t0,t1);;
       }
     }
 
@@ -290,8 +273,8 @@ public class Game {
       for (int j = 0; j < 7; j++) {
         t0 = board.getTileAt(i, j);
         t1 = board.getTileAt(i, j + 1);
-        if (!(checktype(t0,t1) == null)) {
-          possiblemove = true;
+        if (!possiblemove) {
+          possiblemove = createsCombination(t0,t1);;
         }
       }
     }
