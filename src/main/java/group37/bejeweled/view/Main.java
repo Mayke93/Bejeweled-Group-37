@@ -1,5 +1,6 @@
 package main.java.group37.bejeweled.view;
 
+import main.java.group37.bejeweled.Launcher;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.model.Game;
 import main.java.group37.bejeweled.model.Level;
@@ -156,12 +157,12 @@ public class Main extends JPanel {
     //add(button);
     //this.frame.setContentPane(pl);
     //this.frame.setVisible(true);
-    statuspanel.launcher.getContentPane().add(this);
+    Launcher.launcher.getContentPane().add(this);
     statuspanel.main.repaint();
     statuspanel.repaint();
 
-    statuspanel.launcher.getContentPane().validate();
-    statuspanel.launcher.getContentPane().repaint();
+    Launcher.launcher.getContentPane().validate();
+    Launcher.launcher.getContentPane().repaint();
 
   }
 

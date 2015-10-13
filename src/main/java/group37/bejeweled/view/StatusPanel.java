@@ -36,17 +36,17 @@ public class StatusPanel extends JPanel implements Observer{
   public Game game;
   public Main main;
   public StatusPanel statusPanel;
-  private StartScreen start;
-  protected Launcher launcher;
+  //private StartScreen start;
+  //protected Launcher launcher;
   
 
   /**
    * Create labels for displaying the status of the game.
    */
-  public StatusPanel(Launcher launch, StartScreen startscreen) {
-    start = startscreen;
-    launcher = launch;
-    this.actionListener = new ButtonActionListener(this, start, launch);
+  public StatusPanel() {
+    //start = startscreen;
+    //launcher = launch;
+    this.actionListener = new ButtonActionListener(this);
     setLayout(new GridBagLayout());
     setBorder(BorderFactory.createEmptyBorder(10, 40, 10, 10));
     setOpaque(false);
@@ -112,11 +112,7 @@ public class StatusPanel extends JPanel implements Observer{
   public void setGame(Game game) {
     this.game = game;
   }
-  
-  public StartScreen getStartScreen() {
-    return start;
-  }
-  
+
   public Main getMain() {
     return main;
   }

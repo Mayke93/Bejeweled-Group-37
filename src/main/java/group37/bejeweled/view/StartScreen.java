@@ -29,17 +29,17 @@ public class StartScreen extends JPanel {
   
   private ButtonActionListener actionListener;
   private StatusPanel statusPanel;
-  private Launcher launcher;
+  //private Launcher launcher;
   public StartScreen startscreen;
   
   /**
    * constructor to initialise the start screen.
    */
-  public StartScreen(Launcher launch) {
-    launcher = launch;
+  public StartScreen() {
+    //launcher = launch;
     startscreen = this;
-    statusPanel = new StatusPanel(launch, this);
-    this.actionListener = new ButtonActionListener(statusPanel, this, launcher);
+    statusPanel = new StatusPanel();
+    this.actionListener = new ButtonActionListener(statusPanel);
     setLayout(new BorderLayout());
     setBorder(BorderFactory.createEmptyBorder(10, 40, 10, 10));
     setOpaque(false);

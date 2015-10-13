@@ -19,8 +19,6 @@ import main.java.group37.bejeweled.model.SavesList;
 
 public class ButtonActionListener implements ActionListener{
   private StatusPanel panel;
-  private StartScreen startscreen;
-  private Launcher launcher;
   private final JFileChooser fc = new JFileChooser();
   private static String current = null;
 
@@ -30,91 +28,115 @@ public class ButtonActionListener implements ActionListener{
    * @param start startscreen object
    * @param launch launcher object
    */
-  public ButtonActionListener(StatusPanel panel, StartScreen start, Launcher launch) {
+  public ButtonActionListener(StatusPanel panel) {
     this.panel = panel;
-    this.startscreen = start;
-    this.launcher = launch;
   }
 
   @Override
   public void actionPerformed(ActionEvent event) {
     if (event.getSource() == panel.saveGame) {
       Logger.log("Save Game clicked");
-      
-      String path = null;
-      System.out.println("currr " + current);
-      if (!(current == null)) {
-        path = current;
-      } else {
-        path = getCurrentDate() + ".json";
-      }
-      
-      SavedGame.getInstance().saveGame(path);
-      
-      Logger.log(path + " in SavedGames");  
+      handleSaveGame();
     }
     if (event.getSource() == panel.button) {
       Logger.log("Quit Game clicked");
-      
-      launcher.getContentPane().remove(panel.main);
-      launcher.getContentPane().add(startscreen);
+      handleQuitGame();
     }
-    if (event.getSource() == startscreen.newGame) {
+    if (event.getSource() == Launcher.startscreen.newGame) {
       Logger.log("New Game clicked");
-      current = null;
-      
-      launcher.getContentPane().remove(startscreen);
+      handleNewGame();
+ 
+    }
+    if (event.getSource() == Launcher.startscreen.loadGame) {
+      Logger.log("Load Game clicked");
+      handleLoadGame();
+    }
+    
+    Launcher.launcher.getContentPane().validate();
+    Launcher.launcher.getContentPane().repaint();
+  }
+  
+  /**
+   * This method handles the action taken when the save game button is clicked.
+   */
+  public void handleSaveGame() {
+    String path = null;
+    System.out.println("currr " + current);
+    
+    if (!(current == null)) {
+      path = current;
+    } else {
+      path = getCurrentDate() + ".json";
+    }
+    
+    SavedGame.getInstance().saveGame(path);
+    
+    Logger.log("Saved in: " + path + " in SavedGames");  
+  }
+  
+  /**
+   * This method handles the action taken when the quit game button is clicked.
+   */
+  public void handleQuitGame() {
+    Launcher.launcher.getContentPane().remove(panel.main);
+    Launcher.launcher.getContentPane().add(Launcher.startscreen);
+  }
+  
+  /**
+   * handles the actions of the button new game.
+   */
+  public void handleNewGame() {
+    current = null;
+    
+    Launcher.launcher.getContentPane().remove(Launcher.startscreen);
 
-      panel = new StatusPanel(launcher, startscreen);
-      Main main = new Main(launcher,panel);
+    panel = new StatusPanel();
+    Main main = new Main(Launcher.launcher, panel);
+    panel.setMain(main);
+    main.setLayout(new BorderLayout());     
+    main.add(panel,BorderLayout.WEST);
+
+    Launcher.launcher.getContentPane().add(main);
+     
+    panel.game.generateRandomBoard();
+    panel.game.logic.level.setLevel(1);
+    panel.game.logic.score.setScore(0);
+    panel.setScore(0);
+    panel.setLevel(1);
+    panel.main.repaint();
+    panel.repaint();
+  }
+  
+  /**
+   * handles actiond for load game.
+   */
+  public void handleLoadGame() {
+    
+    int result = fc.showOpenDialog(Launcher.launcher);
+
+    if (result == JFileChooser.APPROVE_OPTION) {  
+     
+      Launcher.launcher.getContentPane().remove(Launcher.startscreen);
+      
+      panel = new StatusPanel();
+      Main main = new Main(Launcher.launcher,panel);
       panel.setMain(main);
       main.setLayout(new BorderLayout());     
       main.add(panel,BorderLayout.WEST);
 
-      launcher.getContentPane().add(main);
-       
-      panel.game.generateRandomBoard();
-      panel.game.logic.level.setLevel(1);
-      panel.game.logic.score.setScore(0);
-      panel.setScore(0);
-      panel.setLevel(1);
+      Launcher.launcher.getContentPane().add(main);
+      
+      SavedGame.getInstance().loadGame(fc.getSelectedFile().getName());
+      SavedGame.getInstance().setGame(panel.main.game);
+      current = fc.getSelectedFile().getName();
+           
       panel.main.repaint();
       panel.repaint();
- 
+     
+    } else if (result == JFileChooser.CANCEL_OPTION) {
+      Logger.log("Cancel was selected");
+     
     }
-    if (event.getSource() == startscreen.loadGame) {
-   Logger.log("Load Game clicked");
-      
-      int result = fc.showOpenDialog(launcher);
-
-      if (result == JFileChooser.APPROVE_OPTION) {  
-       
-        launcher.getContentPane().remove(startscreen);
-        
-        panel = new StatusPanel(launcher, startscreen);
-        Main main = new Main(launcher,panel);
-        panel.setMain(main);
-        main.setLayout(new BorderLayout());     
-        main.add(panel,BorderLayout.WEST);
-
-        launcher.getContentPane().add(main);
-        
-        SavedGame.getInstance().loadGame(fc.getSelectedFile().getName());
-        SavedGame.getInstance().setGame(panel.main.game);
-        current = fc.getSelectedFile().getName();
-             
-        panel.main.repaint();
-        panel.repaint();
-       
-      } else if (result == JFileChooser.CANCEL_OPTION) {
-       Logger.log("Cancel was selected");
-       
-      }
-    
-    }
-    
-    launcher.getContentPane().validate();
-    launcher.getContentPane().repaint();
   }
   
   /**

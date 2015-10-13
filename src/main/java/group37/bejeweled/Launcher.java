@@ -21,7 +21,8 @@ import javax.swing.JFrame;
  * @author group37
  */
 public class Launcher extends JFrame {
-  public StartScreen startscreen;
+  public static StartScreen startscreen;
+  public static Launcher launcher;
 
   /**
    * Constructor of the application.
@@ -44,7 +45,7 @@ public class Launcher extends JFrame {
   private void initUi() {
     setLayout(new BorderLayout());
     Logger.init();
-    startscreen = new StartScreen(this);
+    startscreen = new StartScreen();
     add(startscreen);
 
     setSize(800, 619);
@@ -63,8 +64,8 @@ public class Launcher extends JFrame {
 
     EventQueue.invokeLater(new Runnable() {
       public void run() {
-        Launcher ex = new Launcher();
-        ex.setVisible(true);
+        launcher = new Launcher();
+        launcher.setVisible(true);
       }
     });
   }
