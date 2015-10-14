@@ -11,6 +11,7 @@ import main.java.group37.bejeweled.combination.Combination.Type;
 import main.java.group37.bejeweled.combination.CombinationFinder;
 import main.java.group37.bejeweled.view.Animation;
 import main.java.group37.bejeweled.view.Main;
+import main.java.group37.bejeweled.view.StatusPanel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -213,6 +214,17 @@ public class GameLogic {
 
   public Level getLevel() {
     return level;
+  }
+  
+  /**
+   * Initialize the score and level and set the observer.
+   * @param sp the observer to be set.
+   */
+  public void init(StatusPanel sp) {
+    score = new Score();
+    score.registerObserver(sp);
+    level = new Level();
+    level.registerObserver(sp);
   }
   
 }

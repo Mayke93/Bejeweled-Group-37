@@ -57,10 +57,7 @@ public class Main extends JPanel {
     this.addMouseListener(new MouseListener(this));
     this.addMouseMotionListener(new MouseMotionListener(this));
     
-    game.logic.score = new Score();
-    game.logic.score.registerObserver(panel);
-    game.logic.level = new Level();
-    game.logic.level.registerObserver(panel);
+    game.logic.init(panel);
     
     SavedGame.getInstance().setGame(game);
   }
