@@ -91,15 +91,6 @@ public class Main extends JPanel {
   }
 
   /**
-   * Check if index x is within the boundaries of the board.
-   * @param x index to check
-   * @return true iff x is inside the boundaries.
-   */
-  public static boolean withinBoundaries(int ix) {
-    return (ix >= 0 && ix < SIZE);
-  }
-
-  /**
    * Get the index of the focused jewel based on the coordinated of the mouse event.
    * @param loc location of the mouse event
    */
