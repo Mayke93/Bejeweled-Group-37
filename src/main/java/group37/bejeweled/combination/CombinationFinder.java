@@ -245,5 +245,17 @@ public class CombinationFinder {
     }
     return newtiles;
   }
+
+  /**
+   * Prints the combinations obtained by getAllCombinationsOnBoard().
+   */
+  public void printCombinations() {
+    List<Combination> res = this.getAllCombinationsOnBoard();
+    System.out.println("chains: " + res.size());
+    for (Combination combi : res) {
+      System.out.println("\tType: " + combi.getType());
+      System.out.println("\t" + combi.getTiles());
+    }
+  }
   
 }

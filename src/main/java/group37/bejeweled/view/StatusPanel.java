@@ -1,6 +1,5 @@
 package main.java.group37.bejeweled.view;
 
-import main.java.group37.bejeweled.board.Board;
 import main.java.group37.bejeweled.model.Game;
 import main.java.group37.bejeweled.model.Level;
 import main.java.group37.bejeweled.model.Score;
