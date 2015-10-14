@@ -18,7 +18,7 @@ import javax.swing.Timer;
  */
 public class Animation implements ActionListener{
   private Game game;
-  private Main board;
+  private Main main;
   private Timer timer;
   private int frame;
   private Tile t0;
@@ -38,7 +38,7 @@ public class Animation implements ActionListener{
    */
   public Animation(Game game, Main board) {
     this.game = game;
-    this.board = board;
+    this.main = board;
     this.timer = new Timer(10,this);
     this.frame = 0;
     this.t0 = null;
@@ -104,7 +104,7 @@ public class Animation implements ActionListener{
           t1.updateTranslation(-speed * direction, 0);
         }
       }    
-      board.repaint();
+      main.repaint();
     } else if (this.type == Type.REMOVE) {
       frame++;
       int speed = 1;
@@ -117,7 +117,7 @@ public class Animation implements ActionListener{
           t.size += 2 * speed;
         }
       }
-      board.repaint();
+      main.repaint();
     }
     /*else if (this.type == Type.DROP) {
 
@@ -137,7 +137,7 @@ public class Animation implements ActionListener{
     }
     game.logic.dropTiles();
     if (!game.possibleMove()) {
-      board.endGame();
+      main.endGame();
     }
   }
 
