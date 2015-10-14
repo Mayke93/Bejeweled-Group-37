@@ -4,10 +4,8 @@ import main.java.group37.bejeweled.Launcher;
 import main.java.group37.bejeweled.board.BoardFactory;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.model.Game;
-import main.java.group37.bejeweled.model.Level;
 import main.java.group37.bejeweled.model.Logger;
 import main.java.group37.bejeweled.model.SavedGame;
-import main.java.group37.bejeweled.model.Score;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -28,12 +26,10 @@ import javax.swing.JPanel;
  */
 public class Main extends JPanel {
 
-  public static final int SIZE = 8; //Board size is 8x8
   public static final Point LOCATION = new Point(241,40);
   public static final int SPACE_X = 65;
   public static final int SPACE_Y = 65;
-  private static ImageIcon boardImage  = new ImageIcon("src/img/board.png");
-  private static ImageIcon focusImage = new ImageIcon("src/img/focus.png");
+  
   private Point focus = null;
   private BoardFactory boardFactory;
 
@@ -75,16 +71,6 @@ public class Main extends JPanel {
    */
   public void setGame(Game ga) {
     this.game = ga;
-  }
-
-  /**
-   * swap the tiles in the list.
-   * @param swapTiles the list of (two) tiles that should be swapped.
-   */
-  public void swapTiles(List<Tile> swapTiles) {
-    animations.setType(Animation.Type.SWAP);
-    animations.swap(swapTiles.get(0), swapTiles.get(1));
-    Logger.log("Swap tiles: " + swapTiles.get(0).getLoc() + ", " + swapTiles.get(1).getLoc());
   }
 
   /**
@@ -140,7 +126,9 @@ public class Main extends JPanel {
   @Override
   public void paintComponent(Graphics graphics) {
     super.paintComponent(graphics);
-
+    ImageIcon boardImage  = new ImageIcon("src/img/board.png");
+    ImageIcon focusImage = new ImageIcon("src/img/focus.png");
+    
     graphics.drawImage(boardImage.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
     boardFactory.paintComponent(graphics);
     

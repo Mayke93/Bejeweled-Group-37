@@ -23,7 +23,7 @@ public class Game {
   private CombinationFinder finder;
   
   public GameLogic logic;
-  public static final int SIZE = Main.SIZE;
+  public static final int SIZE = 8;
 
   /**
    * Create game object.
@@ -31,7 +31,7 @@ public class Game {
    * @param panel object for updating the labels.
    */
   public Game(Main main) {
-    this.board = new Board(new Tile[Main.SIZE][Main.SIZE]); 
+    this.board = new Board(new Tile[SIZE][SIZE]); 
     this.finder = new CombinationFinder(board);
 
     this.logic = new GameLogic(this, board);
@@ -47,8 +47,8 @@ public class Game {
    */
   public void generateRandomBoard() {
     Logger.log("Create new board");
-    for (int i = 0; i < Main.SIZE; i++) {
-      for (int j = 0; j < Main.SIZE; j++) {
+    for (int i = 0; i < SIZE; i++) {
+      for (int j = 0; j < SIZE; j++) {
         board.setTileAt(setRandomTile(i,j), i , j);
       }
 
@@ -99,7 +99,7 @@ public class Game {
   private boolean hasSequence(int row) {
     int sum = 0;
     //Find sequence in row i
-    for (int j = 1; j < Main.SIZE; j++) {
+    for (int j = 1; j < SIZE; j++) {
       if (board.getTileAt(row, j).equalsColor(board.getTileAt(row, j - 1))) {
         sum++;
       } else {
@@ -117,7 +117,7 @@ public class Game {
     }
 
     //Find horizonal sequences
-    for (int j = 0; j < Main.SIZE; j++) {
+    for (int j = 0; j < SIZE; j++) {
       sum = 0;
       sum += (board.getTileAt(row - 1, j).equalsColor(board.getTileAt(row, j)) ? 1 : 0);
       sum += (board.getTileAt(row - 2, j).equalsColor(board.getTileAt(row, j)) ? 1 : 0);

@@ -6,6 +6,7 @@ import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.combination.Combination;
 import main.java.group37.bejeweled.combination.Combination.Type;
 import main.java.group37.bejeweled.combination.CombinationFinder;
+import main.java.group37.bejeweled.view.Animation;
 import main.java.group37.bejeweled.view.Main;
 
 import java.awt.Point;
@@ -51,7 +52,7 @@ public class SwapHandler {
       swapTiles.add(board.getTileAt(col, row));
       main.setFocus(loc);
       if (swapTiles.size() == 2 && canSwap()) {              
-        main.swapTiles(swapTiles);
+        swapTiles(swapTiles);
         swapTiles.clear();
       }
     }
@@ -272,6 +273,17 @@ public class SwapHandler {
     //swap the tiles back to original position
     swapTiles(t0,t1);
     return res;
+  }
+  
+
+  /**
+   * swap the tiles in the list.
+   * @param swapTiles the list of (two) tiles that should be swapped.
+   */
+  public void swapTiles(List<Tile> swapTiles) {
+    main.animations.setType(Animation.Type.SWAP);
+    main.animations.swap(swapTiles.get(0), swapTiles.get(1));
+    Logger.log("Swap tiles: " + swapTiles.get(0).getLoc() + ", " + swapTiles.get(1).getLoc());
   }
   
 }
