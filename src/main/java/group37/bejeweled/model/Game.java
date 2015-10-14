@@ -28,7 +28,6 @@ public class Game {
   /**
    * Create game object.
    * @param main object for GUI.
-   * @param panel object for updating the labels.
    */
   public Game(Main main) {
     this.board = new Board(new Tile[SIZE][SIZE]); 
