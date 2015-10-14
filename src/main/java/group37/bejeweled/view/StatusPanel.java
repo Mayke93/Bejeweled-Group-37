@@ -1,10 +1,13 @@
 package main.java.group37.bejeweled.view;
 
+import main.java.group37.bejeweled.Launcher;
 import main.java.group37.bejeweled.model.Game;
 import main.java.group37.bejeweled.model.Level;
+import main.java.group37.bejeweled.model.Logger;
 import main.java.group37.bejeweled.model.Score;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.util.Observable;
@@ -65,6 +68,30 @@ public class StatusPanel extends JPanel implements Observer{
 
     setScore(0);
     setLevel(1);
+  }
+
+  /**
+   * This shows the text that will end the game.
+   * 
+   */
+  public void endGame() {
+    Logger.log("End Game");
+
+    JLabel label = new JLabel("<html>No More Combinations!<br>Press Quit</html>", JLabel.CENTER);
+    label.setForeground(Color.WHITE);
+    label.setVerticalTextPosition(JLabel.TOP);
+    label.setHorizontalTextPosition(JLabel.CENTER);
+    label.setFont(new Font("Serif", Font.BOLD, 45)); 
+
+    setAlignmentX(Component.CENTER_ALIGNMENT);
+    add(label);
+
+    Launcher.launcher.getContentPane().add(this);
+    this.main.repaint();
+    this.repaint();
+
+    Launcher.launcher.getContentPane().validate();
+    Launcher.launcher.getContentPane().repaint();
   }
 
   /**

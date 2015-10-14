@@ -137,7 +137,7 @@ public class Animation implements ActionListener{
     }
     game.logic.dropTiles();
     if (!game.possibleMove()) {
-      board.endGame();
+      board.getStatusPanel().endGame();
     }
   }
 

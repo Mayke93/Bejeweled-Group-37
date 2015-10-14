@@ -95,30 +95,7 @@ public class Main extends JPanel {
     int row = (iy - LOCATION.y) / SPACE_Y;
     return new Point(col,row);
   }
-   
-  /**
-   * This shows the text that will end the game.
-   * 
-   */
-  public void endGame() {
-    Logger.log("End Game");
 
-    JLabel label = new JLabel("<html>No More Combinations!<br>Press Quit</html>", JLabel.CENTER);
-    label.setForeground(Color.WHITE);
-    label.setVerticalTextPosition(JLabel.TOP);
-    label.setHorizontalTextPosition(JLabel.CENTER);
-    label.setFont(new Font("Serif", Font.BOLD, 45)); 
-
-    setAlignmentX(Component.CENTER_ALIGNMENT);
-    add(label);
-
-    Launcher.launcher.getContentPane().add(this);
-    statuspanel.main.repaint();
-    statuspanel.repaint();
-
-    Launcher.launcher.getContentPane().validate();
-    Launcher.launcher.getContentPane().repaint();
-  }
 
   /**
    * Draw board on the screen.
@@ -135,5 +112,9 @@ public class Main extends JPanel {
     if (focus != null) {
       graphics.drawImage(focusImage.getImage(), focus.x, focus.y,SPACE_X,SPACE_Y, null);
     }
+  }
+
+  public StatusPanel getStatusPanel() {
+    return statuspanel;
   }
 }
