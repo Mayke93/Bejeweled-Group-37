@@ -25,8 +25,10 @@ public class GameLogic {
   private CombinationFinder finder;
   private Game game;
 
-  public GameLogic(Game game) {
+  public GameLogic(Game game, Board board) {
     this.game = game;
+    this.board = board;
+    this.finder = new CombinationFinder(board);
   }
 
   public void setFinder(CombinationFinder finder) {
@@ -202,10 +204,6 @@ public class GameLogic {
     if (combi.containsSpecialGem() instanceof StarTile) {
       tiles = game.getSwapHandler().getTilesToDeleteStar(combi.containsSpecialGem());
     }
-//    if (combi.containsSpecialGem() instanceof HypercubeTile) {
-//      tiles = board.getTilesToDeleteHypercube(combi.containsSpecialGem());
-//    }
-
     return tiles;
   }
   

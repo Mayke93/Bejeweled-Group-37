@@ -165,7 +165,7 @@ public class SwapHandler {
     
     for (int row = 0; row < board.getWidth(); row++) {        //loop through board
       for (int col = 0; col < board.getHeight(); col++) {
-        if (index == board.getTileAt(row, col).getIndex()) {    //add tile tile if colors are the same
+        if (index == board.getTileAt(row, col).getIndex()) {  //add tile tile if colors are the same
           tiles.add(board.getTileAt(row, col));
         }
       }    
@@ -200,4 +200,78 @@ public class SwapHandler {
   public List<Tile> getSwapTiles() {
     return swapTiles;
   }
+  
+
+  /**
+   * Check if two tiles can be swapped and
+   * what kind of jewel should be created based on the size of the found sequence.
+   * @param t0 first tile to swap
+   * @param t1 second tile to swap
+   * @return true iff swapping tiles t0 and t1 results in a valid combination.
+   */
+  public boolean createsCombination(Tile t0, Tile t1) {
+    boolean res = false;;
+    String c1 = Tile.colors[board.getTileAt(t0.getX(), t0.getY()).getIndex()];
+    String c2 = Tile.colors[board.getTileAt(t1.getX(), t1.getY()).getIndex()];
+    Tile tile = null;
+    String color = null;
+    //swap tiles to look in the rows where the tile will be in case it can be switched
+    swapTiles(t0,t1);
+
+    for (int i = 1; i < 3; i++) {
+      if (i == 1) {
+        tile = t0;
+        color = c1;
+      }
+      if (i == 2) {
+        tile = t1;
+        color = c2;
+      }
+
+      //check x direction
+      int sum = 1;
+      for (int q = tile.getX() + 1; q < board.getHeight(); q++) {
+        if (Tile.colors[board.getTileAt(q, tile.getY()).getIndex()].equals(color)) {
+          sum++;
+        } else {
+          break;
+        }
+      }
+      for (int q = tile.getX() - 1; q >= 0; q--) {
+        if (Tile.colors[board.getTileAt(q, tile.getY()).getIndex()].equals(color)) {
+          sum++;
+        } else {
+          break;
+        }
+      }
+      if (sum > 2 && sum < 6) {
+        res = true;
+      }
+
+      //check y direction
+      sum = 1;
+      for (int q = tile.getY() + 1; q < board.getHeight(); q++) {
+        if (Tile.colors[board.getTileAt(tile.getX(), q).getIndex()].equals(color)) {
+          sum++;
+        } else {
+          break;
+        }
+      }
+      for (int q = tile.getY() - 1; q >= 0; q--) {
+        if (Tile.colors[board.getTileAt(tile.getX(), q).getIndex()].equals(color)) {
+          sum++;
+        } else {
+          break;
+        }
+      }
+
+      if (sum > 2 && sum < 6) {
+        res = true;
+      }
+    }
+    //swap the tiles back to original position
+    swapTiles(t0,t1);
+    return res;
+  }
+  
 }

@@ -20,7 +20,6 @@ import javax.swing.ImageIcon;
 public class SavedGame {
   public Game game;
   public static final int SIZE = 8;
-  //private static final String path = "values.json";
   public Board board;
   
   private static SavedGame sg = new SavedGame();

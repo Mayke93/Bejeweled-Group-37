@@ -1,6 +1,7 @@
 package main.java.group37.bejeweled.view;
 
 import main.java.group37.bejeweled.Launcher;
+import main.java.group37.bejeweled.board.BoardFactory;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.model.Game;
 import main.java.group37.bejeweled.model.Level;
@@ -34,6 +35,7 @@ public class Main extends JPanel {
   private static ImageIcon boardImage  = new ImageIcon("src/img/board.png");
   private static ImageIcon focusImage = new ImageIcon("src/img/focus.png");
   private Point focus = null;
+  private BoardFactory boardFactory;
 
   public Animation animations;
   protected Game game;
@@ -46,6 +48,7 @@ public class Main extends JPanel {
   public Main(StatusPanel panel) {
     statuspanel = panel;
     game = new Game(this,panel);
+    boardFactory = new BoardFactory(game);
     panel.setGame(game);
     panel.setMain(this);
     animations = new Animation(game,this);
@@ -151,7 +154,7 @@ public class Main extends JPanel {
     super.paintComponent(graphics);
 
     graphics.drawImage(boardImage.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
-    game.boardFactory.paintComponent(graphics);
+    boardFactory.paintComponent(graphics);
     
     if (focus != null) {
       graphics.drawImage(focusImage.getImage(), focus.x, focus.y,SPACE_X,SPACE_Y, null);

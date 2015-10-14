@@ -1,19 +1,14 @@
 package main.java.group37.bejeweled.model;
 
 import main.java.group37.bejeweled.board.Board;
-import main.java.group37.bejeweled.board.BoardFactory;
-import main.java.group37.bejeweled.board.FlameTile;
-import main.java.group37.bejeweled.board.HypercubeTile;
 import main.java.group37.bejeweled.board.NormalTile;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.board.TileFactory;
-import main.java.group37.bejeweled.combination.Combination;
 import main.java.group37.bejeweled.combination.Combination.Type;
 import main.java.group37.bejeweled.combination.CombinationFinder;
 import main.java.group37.bejeweled.view.Main;
 import main.java.group37.bejeweled.view.StatusPanel;
 
-import java.util.List;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
@@ -26,7 +21,6 @@ public class Game {
   
   private Board board = null;
   private SwapHandler swapHandler;
-  public BoardFactory boardFactory;
   private CombinationFinder finder;
   
   public GameLogic logic;
@@ -38,31 +32,15 @@ public class Game {
    * @param panel object for updating the labels.
    */
   public Game(Main boardPanel,StatusPanel panel) {
-    this.boardFactory = new BoardFactory(this);
     this.board = new Board(new Tile[Main.SIZE][Main.SIZE]); 
     this.finder = new CombinationFinder(board);
 
-    this.logic = new GameLogic(this);
-    this.logic.setFinder(finder);
-    this.logic.setBoard(board);
+    this.logic = new GameLogic(this, board);
     this.logic.setBoardPanel(boardPanel);
 
     generateRandomBoard();
     
     swapHandler = new SwapHandler(board, boardPanel);
-  }
-
-
-  /**
-   * Prints the combinations obtained by getAllCombinationsOnBoard().
-   */
-  public void printCombinations() {
-    List<Combination> res = finder.getAllCombinationsOnBoard();
-    System.out.println("chains: " + res.size());
-    for (Combination combi : res) {
-      System.out.println("\tType: " + combi.getType());
-      System.out.println("\t" + combi.getTiles());
-    }
   }
 
   /**
@@ -153,77 +131,6 @@ public class Game {
     return false;
   }
 
-  /**
-   * Check if two tiles can be swapped and
-   * what kind of jewel should be created based on the size of the found sequence.
-   * @param t0 first tile to swap
-   * @param t1 second tile to swap
-   * @return true iff swapping tiles t0 and t1 results in a valid combination.
-   */
-  public boolean createsCombination(Tile t0, Tile t1) {
-    boolean res = false;;
-    String c1 = Tile.colors[board.getTileAt(t0.getX(), t0.getY()).getIndex()];
-    String c2 = Tile.colors[board.getTileAt(t1.getX(), t1.getY()).getIndex()];
-    Tile tile = null;
-    String color = null;
-    //swap tiles to look in the rows where the tile will be in case it can be switched
-    swapHandler.swapTiles(t0,t1);
-
-    for (int i = 1; i < 3; i++) {
-      if (i == 1) {
-        tile = t0;
-        color = c1;
-      }
-      if (i == 2) {
-        tile = t1;
-        color = c2;
-      }
-
-      //check x direction
-      int sum = 1;
-      for (int q = tile.getX() + 1; q < SIZE; q++) {
-        if (Tile.colors[board.getTileAt(q, tile.getY()).getIndex()].equals(color)) {
-          sum++;
-        } else {
-          break;
-        }
-      }
-      for (int q = tile.getX() - 1; q >= 0; q--) {
-        if (Tile.colors[board.getTileAt(q, tile.getY()).getIndex()].equals(color)) {
-          sum++;
-        } else {
-          break;
-        }
-      }
-      if (sum > 2 && sum < 6) {
-        res = true;
-      }
-
-      //check y direction
-      sum = 1;
-      for (int q = tile.getY() + 1; q < SIZE; q++) {
-        if (Tile.colors[board.getTileAt(tile.getX(), q).getIndex()].equals(color)) {
-          sum++;
-        } else {
-          break;
-        }
-      }
-      for (int q = tile.getY() - 1; q >= 0; q--) {
-        if (Tile.colors[board.getTileAt(tile.getX(), q).getIndex()].equals(color)) {
-          sum++;
-        } else {
-          break;
-        }
-      }
-
-      if (sum > 2 && sum < 6) {
-        res = true;
-      }
-    }
-    //swap the tiles back to original position
-    swapHandler.swapTiles(t0,t1);
-    return res;
-  }
 
   /**
    * Method to check whether there are possible moves left in the game
@@ -239,7 +146,7 @@ public class Game {
       for (int j = 0; j < 7; j++) {
         t0 = board.getTileAt(j, i);
         t1 = board.getTileAt(j + 1, i);
-        possiblemove = createsCombination(t0,t1);;
+        possiblemove = swapHandler.createsCombination(t0,t1);;
       }
     }
 
@@ -249,7 +156,7 @@ public class Game {
         t0 = board.getTileAt(i, j);
         t1 = board.getTileAt(i, j + 1);
         if (!possiblemove) {
-          possiblemove = createsCombination(t0,t1);;
+          possiblemove = swapHandler.createsCombination(t0,t1);;
         }
       }
     }
