@@ -19,11 +19,6 @@ public class BoardFactory extends JPanel {
   private static ImageIcon focusImage = new ImageIcon("src/img/focus.png");
   private Point focus = null;
 
-  //public Animation animations;
-
-  //Panel with score label and level label
-  //private StatusPanel panel;
-
   private Game game;
 
   
