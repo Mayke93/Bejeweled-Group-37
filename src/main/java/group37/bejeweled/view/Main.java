@@ -47,7 +47,7 @@ public class Main extends JPanel {
    */
   public Main(StatusPanel panel) {
     statuspanel = panel;
-    game = new Game(this,panel);
+    game = new Game(this);
     boardFactory = new BoardFactory(game);
     panel.setGame(game);
     panel.setMain(this);

@@ -7,7 +7,6 @@ import main.java.group37.bejeweled.board.TileFactory;
 import main.java.group37.bejeweled.combination.Combination.Type;
 import main.java.group37.bejeweled.combination.CombinationFinder;
 import main.java.group37.bejeweled.view.Main;
-import main.java.group37.bejeweled.view.StatusPanel;
 
 import java.util.Random;
 
@@ -28,19 +27,19 @@ public class Game {
 
   /**
    * Create game object.
-   * @param boardPanel object for GUI.
+   * @param main object for GUI.
    * @param panel object for updating the labels.
    */
-  public Game(Main boardPanel,StatusPanel panel) {
+  public Game(Main main) {
     this.board = new Board(new Tile[Main.SIZE][Main.SIZE]); 
     this.finder = new CombinationFinder(board);
 
     this.logic = new GameLogic(this, board);
-    this.logic.setBoardPanel(boardPanel);
+    this.logic.setBoardPanel(main);
 
     generateRandomBoard();
     
-    swapHandler = new SwapHandler(board, boardPanel);
+    swapHandler = new SwapHandler(board, main);
   }
 
   /**
