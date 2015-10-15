@@ -82,11 +82,12 @@ public class StatusPanel extends JPanel implements Observer{
     label.setVerticalTextPosition(JLabel.TOP);
     label.setHorizontalTextPosition(JLabel.CENTER);
     label.setFont(new Font("Serif", Font.BOLD, 45)); 
-
+    label.setOpaque(true);
+    label.setBackground(Color.BLACK);
     setAlignmentX(Component.CENTER_ALIGNMENT);
     add(label);
-
-    Launcher.launcher.getContentPane().add(this);
+    saveGame.setVisible(false);
+    
     this.main.repaint();
     this.repaint();
 
