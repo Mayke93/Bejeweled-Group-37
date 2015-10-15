@@ -18,7 +18,6 @@ import javax.swing.ImageIcon;
 public class Game {
   
   private Board board = null;
-  private SwapHandler swapHandler;
   
   public static final int SIZE = 8;
 
@@ -28,12 +27,10 @@ public class Game {
    */
   public Game(Main main) {
     this.board = new Board(new Tile[SIZE][SIZE]);
-
-    new GameLogic(this, board, main);
-    
     generateRandomBoard();
     
-    swapHandler = new SwapHandler(board, main);
+    new GameLogic(this, board, main);    
+    new SwapHandler(board, main);
   }
 
   /**
@@ -138,7 +135,7 @@ public class Game {
       for (int j = 0; j < 7; j++) {
         t0 = board.getTileAt(j, i);
         t1 = board.getTileAt(j + 1, i);
-        possiblemove = swapHandler.createsCombination(t0,t1);
+        possiblemove = SwapHandler.createsCombination(t0,t1);
       }
     }
 
@@ -148,7 +145,7 @@ public class Game {
         t0 = board.getTileAt(i, j);
         t1 = board.getTileAt(i, j + 1);
         if (!possiblemove) {
-          possiblemove = swapHandler.createsCombination(t0,t1);
+          possiblemove = SwapHandler.createsCombination(t0,t1);
         }
       }
     }
@@ -169,10 +166,6 @@ public class Game {
    */
   public void setBoard(Board bo) {
     this.board = bo;
-  }
-  
-  public SwapHandler getSwapHandler() {
-    return swapHandler;
   }
   
 }

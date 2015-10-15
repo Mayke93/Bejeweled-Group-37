@@ -4,6 +4,8 @@ import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import main.java.group37.bejeweled.model.SwapHandler;
+
 /**
  * Class to listen to motions of the mouse.
  * @author group37
@@ -31,6 +33,6 @@ public class MouseMotionListener extends MouseAdapter{
     if (!main.getGame().getBoard().validBorders(col, row)) {
       return;
     }
-    main.getGame().getSwapHandler().addTile(loc);
+    SwapHandler.addTile(loc);
   }
 }

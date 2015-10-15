@@ -3,6 +3,7 @@ package main.java.group37.bejeweled.view;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.model.Game;
 import main.java.group37.bejeweled.model.Logger;
+import main.java.group37.bejeweled.model.SwapHandler;
 
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
@@ -51,6 +52,6 @@ public class MouseListener extends MouseAdapter{
    */
   @Override
   public void mouseReleased(MouseEvent event) {
-    main.getGame().getSwapHandler().getSwapTiles().clear();
+    SwapHandler.getSwapTiles().clear();
   }  
 }

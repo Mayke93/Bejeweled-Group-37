@@ -161,10 +161,10 @@ public final class GameLogic {
     List<Tile> tiles = new ArrayList<Tile>();
 
     if (combi.containsSpecialGem() instanceof FlameTile) {
-      tiles = game.getSwapHandler().getTilesToDeleteFlame(combi.containsSpecialGem());
+      tiles = SwapHandler.getTilesToDeleteFlame(combi.containsSpecialGem());
     }
     if (combi.containsSpecialGem() instanceof StarTile) {
-      tiles = game.getSwapHandler().getTilesToDeleteStar(combi.containsSpecialGem());
+      tiles = SwapHandler.getTilesToDeleteStar(combi.containsSpecialGem());
     }
     return tiles;
   }
