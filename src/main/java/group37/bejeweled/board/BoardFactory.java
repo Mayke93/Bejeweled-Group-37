@@ -13,10 +13,6 @@ public class BoardFactory extends JPanel {
   
   public static final int SIZE = 8; //Board size is 8x8
   public static final Point LOCATION = new Point(241,40);
-  public static final int SPACE_X = 65;
-  public static final int SPACE_Y = 65;
-  private static ImageIcon boardImage  = new ImageIcon("src/img/board.png");
-  private static ImageIcon focusImage = new ImageIcon("src/img/focus.png");
   private Point focus = null;
 
   private Game game;
@@ -32,8 +28,11 @@ public class BoardFactory extends JPanel {
   @Override
   public void paintComponent(Graphics graphics) {
     super.paintComponent(graphics);
+    int spaceX = 65;
+    int spaceY = 65;
 
     Board board = game.getBoard();
+    ImageIcon boardImage  = new ImageIcon("src/img/board.png");
     graphics.drawImage(boardImage.getImage(), 0, 0, board.getWidth(), board.getHeight(), null);
     int ix = LOCATION.x;
     int iy = LOCATION.y;
@@ -41,19 +40,20 @@ public class BoardFactory extends JPanel {
 
     for (int i = 0,x = ix, y = iy; i < SIZE; i++) {
       x = ix;
-      for (int j = 0; j < SIZE; j++, x += SPACE_X) {
+      for (int j = 0; j < SIZE; j++, x += spaceX) {
         tile = board.getTileAt(j, i);
         if (tile.remove) {
           continue;
         }
         graphics.drawImage(tile.getImage().getImage(), x + tile.translation.x , 
-            y + tile.translation.y,SPACE_X - tile.size,SPACE_Y - tile.size, null);
+            y + tile.translation.y,spaceX - tile.size,spaceY - tile.size, null);
       }
-      y += SPACE_Y;
+      y += spaceY;
     }
 
     if (focus != null) {
-      graphics.drawImage(focusImage.getImage(), focus.x, focus.y,SPACE_X,SPACE_Y, null);
+      ImageIcon focusImage = new ImageIcon("src/img/focus.png");
+      graphics.drawImage(focusImage.getImage(), focus.x, focus.y,spaceX,spaceY, null);
     }
   }
 
