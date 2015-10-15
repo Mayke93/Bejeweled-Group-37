@@ -135,7 +135,9 @@ public class Game {
       for (int j = 0; j < 7; j++) {
         t0 = board.getTileAt(j, i);
         t1 = board.getTileAt(j + 1, i);
-        possiblemove = SwapHandler.createsCombination(t0,t1);
+        if (!possiblemove) { 
+          possiblemove = SwapHandler.createsCombination(t0,t1);
+        }
       }
     }
 
