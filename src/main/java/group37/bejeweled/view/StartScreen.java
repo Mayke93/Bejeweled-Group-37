@@ -2,9 +2,11 @@ package main.java.group37.bejeweled.view;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.awt.Graphics;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -49,6 +51,19 @@ public class StartScreen extends JPanel {
     box.add(loadGame);
     box.add(Box.createVerticalGlue());
     this.add(box, BorderLayout.WEST);   
+  }
+  
+
+  /**
+   * Draw background on the screen.
+   */
+  @Override
+  public void paintComponent(Graphics graphics) {
+    super.paintComponent(graphics);
+    ImageIcon boardImage  = new ImageIcon("src/img/board.png");
+    
+    graphics.drawImage(boardImage.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
+  
   }
 
 }
