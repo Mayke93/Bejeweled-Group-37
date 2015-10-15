@@ -5,7 +5,6 @@ import main.java.group37.bejeweled.board.NormalTile;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.board.TileFactory;
 import main.java.group37.bejeweled.combination.Combination.Type;
-import main.java.group37.bejeweled.combination.CombinationFinder;
 import main.java.group37.bejeweled.view.Main;
 
 import java.util.Random;
@@ -20,9 +19,7 @@ public class Game {
   
   private Board board = null;
   private SwapHandler swapHandler;
-  private CombinationFinder finder;
   
-  public GameLogic logic;
   public static final int SIZE = 8;
 
   /**
@@ -30,12 +27,10 @@ public class Game {
    * @param main object for GUI.
    */
   public Game(Main main) {
-    this.board = new Board(new Tile[SIZE][SIZE]); 
-    this.finder = new CombinationFinder(board);
+    this.board = new Board(new Tile[SIZE][SIZE]);
 
-    this.logic = new GameLogic(this, board);
-    this.logic.setBoardPanel(main);
-
+    new GameLogic(this, board, main);
+    
     generateRandomBoard();
     
     swapHandler = new SwapHandler(board, main);
@@ -56,7 +51,6 @@ public class Game {
         i--;
       }
     }
-    finder.setBoard(this.board);
   }
   
   /**
@@ -144,7 +138,7 @@ public class Game {
       for (int j = 0; j < 7; j++) {
         t0 = board.getTileAt(j, i);
         t1 = board.getTileAt(j + 1, i);
-        possiblemove = swapHandler.createsCombination(t0,t1);;
+        possiblemove = swapHandler.createsCombination(t0,t1);
       }
     }
 
@@ -154,7 +148,7 @@ public class Game {
         t0 = board.getTileAt(i, j);
         t1 = board.getTileAt(i, j + 1);
         if (!possiblemove) {
-          possiblemove = swapHandler.createsCombination(t0,t1);;
+          possiblemove = swapHandler.createsCombination(t0,t1);
         }
       }
     }

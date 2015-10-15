@@ -3,6 +3,7 @@ package main.java.group37.bejeweled.view;
 import main.java.group37.bejeweled.board.HypercubeTile;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.model.Game;
+import main.java.group37.bejeweled.model.GameLogic;
 
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -135,7 +136,7 @@ public class Animation implements ActionListener{
       t.translation = new Point(0,0);
       t.size = 0;
     }
-    game.logic.dropTiles();
+    GameLogic.dropTiles();
     if (!game.possibleMove()) {
       main.getStatusPanel().endGame();
     }
@@ -153,11 +154,11 @@ public class Animation implements ActionListener{
     t1.resetD();
     game.getSwapHandler().swapTiles(t0,t1);
     if (t0 instanceof HypercubeTile) {
-      game.logic.deleteTiles(game.getSwapHandler().getTilesToDeleteHypercube(t1,t0));
+      GameLogic.deleteTiles(game.getSwapHandler().getTilesToDeleteHypercube(t1,t0));
     } else if (t1 instanceof HypercubeTile) {
-      game.logic.deleteTiles(game.getSwapHandler().getTilesToDeleteHypercube(t0,t1));
+      GameLogic.deleteTiles(game.getSwapHandler().getTilesToDeleteHypercube(t0,t1));
     } else {
-      game.logic.deleteChains();
+      GameLogic.deleteChains();
     }
   }
 

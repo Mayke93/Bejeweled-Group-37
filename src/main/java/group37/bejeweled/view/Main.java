@@ -4,6 +4,7 @@ import main.java.group37.bejeweled.Launcher;
 import main.java.group37.bejeweled.board.BoardFactory;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.model.Game;
+import main.java.group37.bejeweled.model.GameLogic;
 import main.java.group37.bejeweled.model.Logger;
 import main.java.group37.bejeweled.model.SavedGame;
 
@@ -53,7 +54,7 @@ public class Main extends JPanel {
     this.addMouseListener(new MouseListener(this));
     this.addMouseMotionListener(new MouseMotionListener(this));
     
-    game.logic.init(panel);
+    GameLogic.init(panel);
     
     SavedGame.getInstance().setGame(game);
   }
