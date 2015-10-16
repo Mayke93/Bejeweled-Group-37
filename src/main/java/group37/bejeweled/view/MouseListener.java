@@ -3,6 +3,7 @@ package main.java.group37.bejeweled.view;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.model.Game;
 import main.java.group37.bejeweled.model.Logger;
+import main.java.group37.bejeweled.model.SwapHandler;
 
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
@@ -16,14 +17,14 @@ import java.awt.event.MouseEvent;
  */
 public class MouseListener extends MouseAdapter{
 
-  private Main board;
+  private Main main;
 
   /**
    * Constructor of the mouse listener.
    * @param board, the board of the game where the mouse event takes place.
    */
   public MouseListener(Main board) {
-    this.board = board;
+    this.main = board;
   }
 
   /**
@@ -34,11 +35,11 @@ public class MouseListener extends MouseAdapter{
     Point loc = Main.getColAndRow(event.getX(),event.getY());
     int col = loc.x;
     int row = loc.y;
-    if (!Main.withinBoundaries(col) || !Main.withinBoundaries(row)) {
+    if (!main.getGame().getBoard().validBorders(col, row)) {
       return;
     }
-    board.setFocus(loc);
-    Game game = board.getGame();
+    main.setFocus(loc);
+    Game game = main.getGame();
     Logger.log("Mouse Clicked: (" + game.getBoard().getTileAt(col, row).getLoc().x + ", " 
         + game.getBoard().getTileAt(col, row).getLoc().y + ") " 
         + Tile.colors[game.getBoard().getTileAt(col, row).getIndex()]
@@ -51,6 +52,6 @@ public class MouseListener extends MouseAdapter{
    */
   @Override
   public void mouseReleased(MouseEvent event) {
-    board.getGame().getSwapHandler().getSwapTiles().clear();
+    SwapHandler.getSwapTiles().clear();
   }  
 }

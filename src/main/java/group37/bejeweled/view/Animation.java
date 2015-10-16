@@ -3,6 +3,8 @@ package main.java.group37.bejeweled.view;
 import main.java.group37.bejeweled.board.HypercubeTile;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.model.Game;
+import main.java.group37.bejeweled.model.GameLogic;
+import main.java.group37.bejeweled.model.SwapHandler;
 
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -18,7 +20,7 @@ import javax.swing.Timer;
  */
 public class Animation implements ActionListener{
   private Game game;
-  private Main board;
+  private Main main;
   private Timer timer;
   private int frame;
   private Tile t0;
@@ -38,7 +40,7 @@ public class Animation implements ActionListener{
    */
   public Animation(Game game, Main board) {
     this.game = game;
-    this.board = board;
+    this.main = board;
     this.timer = new Timer(10,this);
     this.frame = 0;
     this.t0 = null;
@@ -104,7 +106,7 @@ public class Animation implements ActionListener{
           t1.updateTranslation(-speed * direction, 0);
         }
       }    
-      board.repaint();
+      main.repaint();
     } else if (this.type == Type.REMOVE) {
       frame++;
       int speed = 1;
@@ -117,7 +119,7 @@ public class Animation implements ActionListener{
           t.size += 2 * speed;
         }
       }
-      board.repaint();
+      main.repaint();
     }
     /*else if (this.type == Type.DROP) {
 
@@ -135,9 +137,9 @@ public class Animation implements ActionListener{
       t.translation = new Point(0,0);
       t.size = 0;
     }
-    game.logic.dropTiles();
+    GameLogic.dropTiles();
     if (!game.possibleMove()) {
-      board.endGame();
+      main.getStatusPanel().endGame();
     }
   }
 
@@ -151,13 +153,13 @@ public class Animation implements ActionListener{
 
     t0.resetD();
     t1.resetD();
-    game.getSwapHandler().swapTiles(t0,t1);
+    SwapHandler.swappedTiles(t0,t1);
     if (t0 instanceof HypercubeTile) {
-      game.logic.deleteTiles(game.getSwapHandler().getTilesToDeleteHypercube(t1,t0));
+      GameLogic.deleteTiles(SwapHandler.getTilesToDeleteHypercube(t1,t0));
     } else if (t1 instanceof HypercubeTile) {
-      game.logic.deleteTiles(game.getSwapHandler().getTilesToDeleteHypercube(t0,t1));
+      GameLogic.deleteTiles(SwapHandler.getTilesToDeleteHypercube(t0,t1));
     } else {
-      game.logic.deleteChains();
+      GameLogic.deleteChains();
     }
   }
 

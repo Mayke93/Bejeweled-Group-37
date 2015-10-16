@@ -56,7 +56,7 @@ public class Score extends Observable {
    */
   public void updateScore(Combination combi) {
     this.score += combi.score();
-    Logger.log("Add score: " + score);
+    Logger.log("Add score: " + combi.score());
     Logger.log("Total Score: " + this.score);
     notifyObservers(this, score);
   }

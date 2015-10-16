@@ -5,9 +5,7 @@ import main.java.group37.bejeweled.board.NormalTile;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.board.TileFactory;
 import main.java.group37.bejeweled.combination.Combination.Type;
-import main.java.group37.bejeweled.combination.CombinationFinder;
 import main.java.group37.bejeweled.view.Main;
-import main.java.group37.bejeweled.view.StatusPanel;
 
 import java.util.Random;
 
@@ -20,27 +18,19 @@ import javax.swing.ImageIcon;
 public class Game {
   
   private Board board = null;
-  private SwapHandler swapHandler;
-  private CombinationFinder finder;
   
-  public GameLogic logic;
-  public static final int SIZE = Main.SIZE;
+  public static final int SIZE = 8;
 
   /**
    * Create game object.
-   * @param boardPanel object for GUI.
-   * @param panel object for updating the labels.
+   * @param main object for GUI.
    */
-  public Game(Main boardPanel,StatusPanel panel) {
-    this.board = new Board(new Tile[Main.SIZE][Main.SIZE]); 
-    this.finder = new CombinationFinder(board);
-
-    this.logic = new GameLogic(this, board);
-    this.logic.setBoardPanel(boardPanel);
-
+  public Game(Main main) {
+    this.board = new Board(new Tile[SIZE][SIZE]);
     generateRandomBoard();
     
-    swapHandler = new SwapHandler(board, boardPanel);
+    new GameLogic(this, board, main);    
+    new SwapHandler(board, main);
   }
 
   /**
@@ -48,8 +38,8 @@ public class Game {
    */
   public void generateRandomBoard() {
     Logger.log("Create new board");
-    for (int i = 0; i < Main.SIZE; i++) {
-      for (int j = 0; j < Main.SIZE; j++) {
+    for (int i = 0; i < SIZE; i++) {
+      for (int j = 0; j < SIZE; j++) {
         board.setTileAt(setRandomTile(i,j), i , j);
       }
 
@@ -58,7 +48,6 @@ public class Game {
         i--;
       }
     }
-    finder.setBoard(this.board);
   }
   
   /**
@@ -100,7 +89,7 @@ public class Game {
   private boolean hasSequence(int row) {
     int sum = 0;
     //Find sequence in row i
-    for (int j = 1; j < Main.SIZE; j++) {
+    for (int j = 1; j < SIZE; j++) {
       if (board.getTileAt(row, j).equalsColor(board.getTileAt(row, j - 1))) {
         sum++;
       } else {
@@ -118,7 +107,7 @@ public class Game {
     }
 
     //Find horizonal sequences
-    for (int j = 0; j < Main.SIZE; j++) {
+    for (int j = 0; j < SIZE; j++) {
       sum = 0;
       sum += (board.getTileAt(row - 1, j).equalsColor(board.getTileAt(row, j)) ? 1 : 0);
       sum += (board.getTileAt(row - 2, j).equalsColor(board.getTileAt(row, j)) ? 1 : 0);
@@ -146,7 +135,9 @@ public class Game {
       for (int j = 0; j < 7; j++) {
         t0 = board.getTileAt(j, i);
         t1 = board.getTileAt(j + 1, i);
-        possiblemove = swapHandler.createsCombination(t0,t1);;
+        if (!possiblemove) { 
+          possiblemove = SwapHandler.createsCombination(t0,t1);
+        }
       }
     }
 
@@ -156,7 +147,7 @@ public class Game {
         t0 = board.getTileAt(i, j);
         t1 = board.getTileAt(i, j + 1);
         if (!possiblemove) {
-          possiblemove = swapHandler.createsCombination(t0,t1);;
+          possiblemove = SwapHandler.createsCombination(t0,t1);
         }
       }
     }
@@ -177,10 +168,6 @@ public class Game {
    */
   public void setBoard(Board bo) {
     this.board = bo;
-  }
-  
-  public SwapHandler getSwapHandler() {
-    return swapHandler;
   }
   
 }

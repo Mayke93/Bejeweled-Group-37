@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="2" failures="0" name="test.java.group37.bejeweled.model.StatusPanelTest" time="0.016" errors="0" skipped="0">
+<testsuite tests="2" failures="0" name="test.java.group37.bejeweled.model.StatusPanelTest" time="0.357" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_60\jre\bin"/>
@@ -28,7 +28,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 7"/>
-    <property name="classworlds.conf" value="M:\Eclipse Workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf3664588885856711756.tmp"/>
+    <property name="classworlds.conf" value="M:\Eclipse Workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf8413406665381583419.tmp"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
     <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_60\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jre1.8.0_60/bin/server;C:/Program Files/Java/jre1.8.0_60/bin;C:/Program Files/Java/jre1.8.0_60/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;G:\Windows Folders\Matlab\runtime\win64;G:\Windows Folders\Matlab\bin;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;G:\Windows Folders\Downloads\Eclipse Mars\eclipse;;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
@@ -63,6 +63,6 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="test.java.group37.bejeweled.model.StatusPanelTest" name="testSetScore" time="0.009"/>
-  <testcase classname="test.java.group37.bejeweled.model.StatusPanelTest" name="testSetLevel" time="0.007"/>
+  <testcase classname="test.java.group37.bejeweled.model.StatusPanelTest" name="testSetScore" time="0.322"/>
+  <testcase classname="test.java.group37.bejeweled.model.StatusPanelTest" name="testSetLevel" time="0.035"/>
 </testsuite>
