@@ -6,6 +6,7 @@ import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.combination.Combination;
 import main.java.group37.bejeweled.combination.Combination.Type;
 import main.java.group37.bejeweled.combination.CombinationFinder;
+import main.java.group37.bejeweled.view.Animation;
 import main.java.group37.bejeweled.view.Main;
 
 import java.awt.Point;
@@ -20,11 +21,11 @@ import java.util.List;
  */
 public class SwapHandler {
 
-  private Board board;
-  public List<Tile> swapTiles;
-  private Tile[] swappedTiles;
-  private CombinationFinder finder;
-  private Main main;
+  private static Board board;
+  public static List<Tile> swapTiles;
+  private static Tile[] swappedTiles;
+  private static CombinationFinder finder;
+  private static Main main;
   
   /**
    * .
@@ -44,14 +45,14 @@ public class SwapHandler {
    * Add tile to swapTiles based on location from the mouseEvent.
    * @param loc location of tile
    */
-  public void addTile(Point loc) {
+  public static void addTile(Point loc) {
     int col = loc.x;
     int row = loc.y;
     if (!swapTiles.contains(board.getTileAt(col, row))) {
       swapTiles.add(board.getTileAt(col, row));
       main.setFocus(loc);
       if (swapTiles.size() == 2 && canSwap()) {              
-        main.swapTiles(swapTiles);
+        swapTiles(swapTiles);
         swapTiles.clear();
       }
     }
@@ -62,7 +63,7 @@ public class SwapHandler {
    * @param t0 first tile to swap
    * @param t1 second tile to swap
    */
-  public void swapTiles(Tile t0, Tile t1) {
+  public static void swappedTiles(Tile t0, Tile t1) {
     Tile temp = board.getTileAt(t0.getX(), t0.getY());
     board.setTileAt(board.getTileAt(t1.getX(), t1.getY()), t0.getX(), t0.getY());
     board.setTileAt(temp, t1.getX(), t1.getY());
@@ -79,16 +80,16 @@ public class SwapHandler {
   /**
    * Swap two tiles if it result in a sequence of 3 of more tiles with the same color.
    */
-  public boolean canSwap() {
+  public static boolean canSwap() {
     Tile t0 = board.getTileAt(swapTiles.get(0).getX(), swapTiles.get(0).getY());
     Tile t1 = board.getTileAt(swapTiles.get(1).getX(), swapTiles.get(1).getY());
 
-    swapTiles(t0,t1);
+    swappedTiles(t0,t1);
     Combination combiX0 = finder.getSingleCombinationX(t0);
     Combination combiX1 = finder.getSingleCombinationX(t1);
     Combination combiY0 = finder.getSingleCombinationY(t0);
     Combination combiY1 = finder.getSingleCombinationY(t1);
-    swapTiles(t0,t1);
+    swappedTiles(t0,t1);
 
     Type type = null;
     if (!(combiX0 == null)) {
@@ -122,7 +123,7 @@ public class SwapHandler {
    * @param t1 tile 2.
    * @return true if t0 and t1 are next to each other.
    */
-  public boolean isNeighbour(Tile t0, Tile t1) {
+  public static boolean isNeighbour(Tile t0, Tile t1) {
     if (Math.abs(t0.getX() - t1.getX()) == 1 && Math.abs(t0.getY() - t1.getY()) == 0) {
       return true;
     }
@@ -137,7 +138,7 @@ public class SwapHandler {
    * @param tile the flame gem
    * @return tiles, the list of tiles to be deleted.
    */
-  public List<Tile> getTilesToDeleteFlame(Tile tile) {
+  public static List<Tile> getTilesToDeleteFlame(Tile tile) {
     List<Tile> tiles = new ArrayList<Tile>();
     final Point[] translations = {new Point(1,0), new Point(1,1), new Point(0,1),
                                   new Point(-1,1), new Point(-1,0), new Point(-1,-1),
@@ -158,7 +159,7 @@ public class SwapHandler {
    * @param t1 the hypercube gem
    * @return tiles, the list of tiles to be deleted.
    */
-  public List<Tile> getTilesToDeleteHypercube(Tile t1, Tile hyper) {
+  public static List<Tile> getTilesToDeleteHypercube(Tile t1, Tile hyper) {
     List<Tile> tiles = new ArrayList<Tile>();
     tiles.add(hyper);
     int index = t1.getIndex();
@@ -178,7 +179,7 @@ public class SwapHandler {
    * @param tile the hypercube gem
    * @return tiles, the list of tiles to be deleted.
    */
-  public List<Tile> getTilesToDeleteStar(Tile tile) {
+  public static List<Tile> getTilesToDeleteStar(Tile tile) {
     List<Tile> tiles = new ArrayList<Tile>();
     tiles.add(tile);
     
@@ -197,7 +198,7 @@ public class SwapHandler {
     return tiles;
   }
   
-  public List<Tile> getSwapTiles() {
+  public static List<Tile> getSwapTiles() {
     return swapTiles;
   }
   
@@ -209,14 +210,14 @@ public class SwapHandler {
    * @param t1 second tile to swap
    * @return true iff swapping tiles t0 and t1 results in a valid combination.
    */
-  public boolean createsCombination(Tile t0, Tile t1) {
+  public static boolean createsCombination(Tile t0, Tile t1) {
     boolean res = false;;
     String c1 = Tile.colors[board.getTileAt(t0.getX(), t0.getY()).getIndex()];
     String c2 = Tile.colors[board.getTileAt(t1.getX(), t1.getY()).getIndex()];
     Tile tile = null;
     String color = null;
     //swap tiles to look in the rows where the tile will be in case it can be switched
-    swapTiles(t0,t1);
+    swappedTiles(t0,t1);
 
     for (int i = 1; i < 3; i++) {
       if (i == 1) {
@@ -270,8 +271,19 @@ public class SwapHandler {
       }
     }
     //swap the tiles back to original position
-    swapTiles(t0,t1);
+    swappedTiles(t0,t1);
     return res;
+  }
+  
+
+  /**
+   * swap the tiles in the list.
+   * @param swapTiles the list of (two) tiles that should be swapped.
+   */
+  public static void swapTiles(List<Tile> swapTiles) {
+    main.animations.setType(Animation.Type.SWAP);
+    main.animations.swap(swapTiles.get(0), swapTiles.get(1));
+    Logger.log("Swap tiles: " + swapTiles.get(0).getLoc() + ", " + swapTiles.get(1).getLoc());
   }
   
 }

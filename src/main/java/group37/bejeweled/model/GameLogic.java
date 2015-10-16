@@ -11,74 +11,36 @@ import main.java.group37.bejeweled.combination.Combination.Type;
 import main.java.group37.bejeweled.combination.CombinationFinder;
 import main.java.group37.bejeweled.view.Animation;
 import main.java.group37.bejeweled.view.Main;
+import main.java.group37.bejeweled.view.StatusPanel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class GameLogic {
-  public Score score;
-  public Level level;
-  private static final int SIZE = Game.SIZE;
-  private Board board;
-  private Main boardPanel;
-  private CombinationFinder finder;
-  private Game game;
-
-  public GameLogic(Game game, Board board) {
-    this.game = game;
-    this.board = board;
-    this.finder = new CombinationFinder(board);
-  }
-
-  public void setFinder(CombinationFinder finder) {
-    this.finder = finder;
-  }
-
+public final class GameLogic {
+  public static Score score;
+  public static Level level;
+  private static Board board;
+  private static Main boardPanel;
+  private static CombinationFinder finder;
+  private static Game game;
+   
   /**
-   * gets the combinationfinder.
-   * @return a CombinationFinder object
+   * Create a gameLogic object.
+   * @param gm the game
+   * @param brd the board
+   * @param main the main
    */
-  public CombinationFinder getFinder() {
-    return this.finder;
-  }
-  
-  /**
-   * Set the board.
-   * @param board the board to be set.
-   */
-  public void setBoard(Board board) {
-    this.board = board;
-  }
-  
-  /**
-   * gets the board.
-   * @return a Board object
-   */
-  public Board getBoard() {
-    return this.board;
-  }
-
-  /**
-   * Set the current boardpanel.
-   * @param boardPanel the panel to be set to. 
-   */
-  public void setBoardPanel(Main boardPanel) {
-    this.boardPanel = boardPanel;
-  }
-  
-  /**
-   * gets the main.
-   * @return a main object
-   */
-  public Main getBoardPanel() {
-    return this.boardPanel;
+  public GameLogic(Game gm, Board brd, Main main) {
+    game = gm;
+    board = brd;
+    boardPanel = main;
+    finder = new CombinationFinder(board);
   }
 
   /**
    * Delete all combinations found on the board.
    */
-  public void deleteChains() {
+  public static void deleteChains() {
     List<Combination> chains = finder.getAllCombinationsOnBoard();
     List<Tile> tiles = new ArrayList<Tile>();
 
@@ -106,7 +68,7 @@ public class GameLogic {
     deleteTiles(tiles);
   }
   
-  private void addTiles(List<Tile> tilesToAdd, List<Tile> list) {
+  private static void addTiles(List<Tile> tilesToAdd, List<Tile> list) {
     for (Tile tile : tilesToAdd) {
       if (!list.contains(tile)) {
         list.add(tile);
@@ -118,7 +80,7 @@ public class GameLogic {
    * Delete all the tiles in 'tiles' from the board.
    * @param tiles list of tiles to delete.
    */
-  public void deleteTiles(List<Tile> tiles) {
+  public static void deleteTiles(List<Tile> tiles) {
     for (Tile tile: tiles) {
       board.getTileAt(tile.getX(), tile.getY()).delete = true;
       Logger.log("Delete Tile: " + tile);
@@ -135,10 +97,10 @@ public class GameLogic {
   /**
    * If there are empty spaces, this method 'drops' the tile above this space into this space.
    */
-  public void dropTiles() {    
+  public static void dropTiles() {    
     int level = 0;
-    for (int row = SIZE - 1; row >= 0; row--) {
-      for (int col = 0; col < SIZE; col++) {
+    for (int row = board.getWidth() - 1; row >= 0; row--) {
+      for (int col = 0; col < board.getWidth(); col++) {
         level = board.getTileAt(col, row).getLevel();
 
         if (level > 0) {
@@ -155,8 +117,8 @@ public class GameLogic {
       }
     }
     Tile tile = new NormalTile(0,0);
-    for (int row = SIZE - 1; row >= 0; row--) {
-      for (int col = 0; col < SIZE; col++) {
+    for (int row = board.getWidth() - 1; row >= 0; row--) {
+      for (int col = 0; col < board.getWidth(); col++) {
         tile = board.getTileAt(col, row);
         if (tile.delete || tile.getNextType() != Type.NORMAL) {
           if (tile.getNextType() == Type.NORMAL) {
@@ -185,7 +147,7 @@ public class GameLogic {
    * Finds the type of the special combination and calls the method to generate this special gem.
    * @param combi the combination to find the type of.
    */
-  public void generateSpecialGem(Combination combi) {
+  public static void generateSpecialGem(Combination combi) {
     Logger.log("Generate special gem");
     combi.setNextType();
   }
@@ -195,24 +157,35 @@ public class GameLogic {
    * @param combi original tiles from the combination.
    * @return list of all tiles.
    */
-  public List<Tile> getTilesToDeleteSpecialGem(Combination combi) {
+  public static List<Tile> getTilesToDeleteSpecialGem(Combination combi) {
     List<Tile> tiles = new ArrayList<Tile>();
 
     if (combi.containsSpecialGem() instanceof FlameTile) {
-      tiles = game.getSwapHandler().getTilesToDeleteFlame(combi.containsSpecialGem());
+      tiles = SwapHandler.getTilesToDeleteFlame(combi.containsSpecialGem());
     }
     if (combi.containsSpecialGem() instanceof StarTile) {
-      tiles = game.getSwapHandler().getTilesToDeleteStar(combi.containsSpecialGem());
+      tiles = SwapHandler.getTilesToDeleteStar(combi.containsSpecialGem());
     }
     return tiles;
   }
   
-  public Score getScore() {
+  public static Score getScore() {
     return score;
   }
 
-  public Level getLevel() {
+  public static Level getLevel() {
     return level;
+  }
+  
+  /**
+   * Initialize the score and level and set the observer.
+   * @param sp the observer to be set.
+   */
+  public static void init(StatusPanel sp) {
+    score = new Score();
+    score.registerObserver(sp);
+    level = new Level();
+    level.registerObserver(sp);
   }
   
 }
