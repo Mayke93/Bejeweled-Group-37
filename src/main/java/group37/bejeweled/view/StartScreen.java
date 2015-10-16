@@ -1,6 +1,8 @@
 package main.java.group37.bejeweled.view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 
@@ -22,7 +24,6 @@ public class StartScreen extends JPanel {
 
   protected JButton newGame = new JButton("New Game");
   protected JButton loadGame = new JButton("Load Game");
-  //private static final Font font = new Font("Serif", Font.BOLD, 35);
   
   private ButtonActionListener actionListener;
   private StatusPanel statusPanel;
@@ -40,20 +41,33 @@ public class StartScreen extends JPanel {
     setOpaque(false);
     
     newGame.addActionListener(actionListener);
-    newGame.setFont(new Font("Serif",Font.PLAIN,25));
-    
+    buttonLayout(newGame);
     loadGame.addActionListener(actionListener);
-    loadGame.setFont(new Font("Serif",Font.PLAIN,25));
+    buttonLayout(loadGame);
 
     Box box = Box.createVerticalBox();
     box.add(Box.createVerticalGlue());
     box.add(newGame);
+    box.add(Box.createVerticalStrut(3));
     box.add(loadGame);
     box.add(Box.createVerticalGlue());
+    
     this.add(box, BorderLayout.WEST);   
   }
   
-
+  /**
+   * method for the button layout.
+   */
+  public static void buttonLayout(JButton jb) {
+    jb.setMaximumSize(new Dimension(200,75));
+    jb.setMinimumSize(new Dimension(200,75));
+    jb.setFocusPainted(false);
+    jb.setFont(new Font("Euphemia UCAS",Font.PLAIN,22));
+    jb.setBackground(new Color(206,30,157));
+    jb.setForeground(new Color(192,192,192));
+  }
+  
+  
   /**
    * Draw background on the screen.
    */

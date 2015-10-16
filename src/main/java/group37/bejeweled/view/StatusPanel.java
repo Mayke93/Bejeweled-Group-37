@@ -32,7 +32,6 @@ public class StatusPanel extends JPanel implements Observer{
   protected JButton saveGame = new JButton("Save Game");
   private ButtonActionListener actionListener;
 
-  private static final Font font = new Font("Serif", Font.BOLD, 35);
   public Game game;
   public Main main;
   
@@ -46,22 +45,24 @@ public class StatusPanel extends JPanel implements Observer{
     setBorder(BorderFactory.createEmptyBorder(10, 40, 10, 10));
     setOpaque(false);
 
-    scoreLabel.setFont(font);
-    scoreLabel.setForeground(Color.white);
+    scoreLabel.setFont(new Font("Euphemia UCAS",Font.PLAIN,30));
+    scoreLabel.setForeground(new Color(192,192,192));
 
-    levelLabel.setFont(font);
-    levelLabel.setForeground(Color.white);
+    levelLabel.setFont(new Font("Euphemia UCAS",Font.PLAIN,30));
+    levelLabel.setForeground(new Color(192,192,192));
     
     button.addActionListener(actionListener);
-    button.setFont(new Font("Serif",Font.PLAIN,25));
-    
+    StartScreen.buttonLayout(button);  
     saveGame.addActionListener(actionListener);
+    StartScreen.buttonLayout(saveGame);
 
     Box box = Box.createVerticalBox();
     box.add(Box.createVerticalGlue());
     box.add(scoreLabel);
     box.add(levelLabel);
+    box.add(Box.createVerticalStrut(5));
     box.add(button);
+    box.add(Box.createVerticalStrut(3));
     box.add(saveGame);
     box.add(Box.createVerticalGlue());
     add(box);
@@ -81,7 +82,7 @@ public class StatusPanel extends JPanel implements Observer{
     label.setForeground(Color.WHITE);
     label.setVerticalTextPosition(JLabel.TOP);
     label.setHorizontalTextPosition(JLabel.CENTER);
-    label.setFont(new Font("Serif", Font.BOLD, 45)); 
+    label.setFont(new Font("Euphemia UCAS",Font.PLAIN,40)); 
     label.setOpaque(true);
     label.setBackground(Color.BLACK);
     setAlignmentX(Component.CENTER_ALIGNMENT);
