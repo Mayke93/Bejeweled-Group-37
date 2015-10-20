@@ -4,6 +4,8 @@ import javax.swing.JPanel;
 
 public abstract class Layout extends JPanel {
   
-  
+  public Layout() {
+    
+  }
 
 }

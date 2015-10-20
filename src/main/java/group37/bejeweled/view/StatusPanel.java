@@ -25,7 +25,7 @@ import javax.swing.JPanel;
  * @author group37
  *
  */
-public class StatusPanel extends JPanel implements Observer{
+public class StatusPanel extends Layout implements Observer{
   private JLabel scoreLabel = new JLabel("Score: ");
   private JLabel levelLabel = new JLabel("Level:");
   protected JButton button = new JButton("Quit");

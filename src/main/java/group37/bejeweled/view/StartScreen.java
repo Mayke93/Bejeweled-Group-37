@@ -19,7 +19,7 @@ import javax.swing.JPanel;
  * @author group37
  *
  */
-public class StartScreen extends JPanel {
+public class StartScreen extends Layout {
   
 
   protected JButton newGame = new JButton("New Game");
