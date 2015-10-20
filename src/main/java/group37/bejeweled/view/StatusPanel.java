@@ -67,8 +67,9 @@ public class StatusPanel extends JPanel implements Observer{
     box.add(button);
     box.add(Box.createVerticalStrut(3));
     box.add(saveGame);
-    box.add(Box.createVerticalGlue());
+    box.add(Box.createVerticalStrut(3));
     box.add(hint);
+    box.add(Box.createVerticalGlue());
     add(box);
 
     setScore(0);

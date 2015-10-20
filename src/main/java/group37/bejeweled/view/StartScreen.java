@@ -63,8 +63,8 @@ public class StartScreen extends JPanel {
     jb.setMinimumSize(new Dimension(200,75));
     jb.setFocusPainted(false);
     jb.setFont(new Font("Euphemia UCAS",Font.PLAIN,22));
-    jb.setBackground(new Color(206,30,157));
-    jb.setForeground(new Color(192,192,192));
+    jb.setBackground(Color.WHITE);
+    jb.setForeground(new Color(100,100,100));
   }
   
   
