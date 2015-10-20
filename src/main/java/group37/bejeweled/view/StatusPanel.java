@@ -56,7 +56,7 @@ public class StatusPanel extends JPanel implements Observer{
     StartScreen.buttonLayout(button);  
     saveGame.addActionListener(actionListener);
     StartScreen.buttonLayout(saveGame);
-    //hint.addActionListener(actionListener);
+    hint.addActionListener(actionListener);
     StartScreen.buttonLayout(hint);
 
     Box box = Box.createVerticalBox();

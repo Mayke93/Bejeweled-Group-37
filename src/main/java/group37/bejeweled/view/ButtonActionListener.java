@@ -1,6 +1,8 @@
 package main.java.group37.bejeweled.view;
 
 import main.java.group37.bejeweled.Launcher;
+import main.java.group37.bejeweled.board.Tile;
+import main.java.group37.bejeweled.model.GameLogic;
 import main.java.group37.bejeweled.model.Logger;
 import main.java.group37.bejeweled.model.SavedGame;
 
@@ -8,6 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -60,7 +63,8 @@ public class ButtonActionListener implements ActionListener{
    * This method handles the action taken when the hint button is clicked.
    */
   public void handleHint() {
-    
+    ArrayList<Tile> hint = GameLogic.getHint();
+    panel.main.setFocusHint(hint.get(0).getLoc(), hint.get(1).getLoc());
   }
   
   /**
