@@ -1,6 +1,7 @@
 package main.java.group37.bejeweled;
 
 import main.java.group37.bejeweled.model.Logger;
+import main.java.group37.bejeweled.view.LayoutScreen;
 import main.java.group37.bejeweled.view.StartScreen;
 
 import java.awt.BorderLayout;
@@ -18,6 +19,7 @@ import javax.swing.JFrame;
 public class Launcher extends JFrame {
   public static StartScreen startscreen;
   public static Launcher launcher;
+  public static LayoutScreen ls = new LayoutScreen();
 
   /**
    * Constructor of the application.

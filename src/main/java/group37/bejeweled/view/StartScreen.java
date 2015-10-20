@@ -24,6 +24,7 @@ public class StartScreen extends JPanel {
 
   protected JButton newGame = new JButton("New Game");
   protected JButton loadGame = new JButton("Load Game");
+  protected JButton layOut = new JButton("Layout");
   
   private ButtonActionListener actionListener;
   private StatusPanel statusPanel;
@@ -44,12 +45,16 @@ public class StartScreen extends JPanel {
     buttonLayout(newGame);
     loadGame.addActionListener(actionListener);
     buttonLayout(loadGame);
+    layOut.addActionListener(new LayoutActionListener());
+    buttonLayout(layOut);
 
     Box box = Box.createVerticalBox();
     box.add(Box.createVerticalGlue());
     box.add(newGame);
     box.add(Box.createVerticalStrut(3));
     box.add(loadGame);
+    box.add(Box.createVerticalStrut(3));
+    box.add(layOut);
     box.add(Box.createVerticalGlue());
     
     this.add(box, BorderLayout.WEST);   
