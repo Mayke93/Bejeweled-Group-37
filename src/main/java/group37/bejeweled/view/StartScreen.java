@@ -36,6 +36,13 @@ public class StartScreen extends Layout {
   public StartScreen() {
     startscreen = this;
     statusPanel = new StatusPanel();
+    init();
+  }
+  
+
+
+  @Override
+  public void init() {
     this.actionListener = new ButtonActionListener(statusPanel);
     setLayout(new BorderLayout());
     setBorder(BorderFactory.createEmptyBorder(10, 40, 10, 10));
@@ -57,7 +64,8 @@ public class StartScreen extends Layout {
     box.add(layOut);
     box.add(Box.createVerticalGlue());
     
-    this.add(box, BorderLayout.WEST);   
+    this.add(box, BorderLayout.WEST); 
+    
   }
   
   /**

@@ -16,7 +16,12 @@ public class LayoutScreen extends Layout{
    * init layout screen.
    */
   public LayoutScreen() {
+    init();
     
+  }
+
+  @Override
+  public void init() {
     setLayout(new BorderLayout());
     setBorder(BorderFactory.createEmptyBorder(10, 40, 10, 10));
     setOpaque(false);
@@ -32,7 +37,6 @@ public class LayoutScreen extends Layout{
     this.add(box, BorderLayout.WEST);   
     
   }
-  
   
   /**
    * Draw background on the screen.

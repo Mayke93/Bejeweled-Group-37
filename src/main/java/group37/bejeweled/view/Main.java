@@ -43,15 +43,27 @@ public class Main extends Layout {
     boardFactory = new BoardFactory(game);
     panel.setGame(game);
     panel.setMain(this);
+    
+    init();
+  }
+  
+
+
+  /**
+   * init main.
+   */
+  @Override
+  public void init() {
     animations = new Animation(game,this);
     setOpaque(true);
     Logger.log("# Start new game");
     this.addMouseListener(new MouseListener(this));
     this.addMouseMotionListener(new MouseMotionListener(this));
     
-    GameLogic.init(panel);
+    GameLogic.init(statuspanel);
     
     SavedGame.getInstance().setGame(game);
+    
   }
 
   /**

@@ -41,6 +41,18 @@ public class StatusPanel extends Layout implements Observer{
    * Create labels for displaying the status of the game.
    */
   public StatusPanel() {
+    init();
+
+    setScore(0);
+    setLevel(1);
+  }
+  
+ /**
+  * init statuspanel.
+  */
+
+  @Override
+  public void init() {
     this.actionListener = new ButtonActionListener(this);
     setLayout(new GridBagLayout());
     setBorder(BorderFactory.createEmptyBorder(10, 40, 10, 10));
@@ -70,11 +82,9 @@ public class StatusPanel extends Layout implements Observer{
     box.add(Box.createVerticalStrut(3));
     box.add(hint);
     box.add(Box.createVerticalGlue());
-    add(box);
-
-    setScore(0);
-    setLevel(1);
+    add(box); 
   }
+  
 
   /**
    * This shows the text that will end the game.
