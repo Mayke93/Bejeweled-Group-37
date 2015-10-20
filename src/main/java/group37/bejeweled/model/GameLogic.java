@@ -15,6 +15,7 @@ import main.java.group37.bejeweled.view.StatusPanel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public final class GameLogic {
   public static Score score;
@@ -186,6 +187,44 @@ public final class GameLogic {
     score.registerObserver(sp);
     level = new Level();
     level.registerObserver(sp);
+  }
+  
+  public static ArrayList<Tile> getHint() {
+    ArrayList<ArrayList<Tile>> res = new ArrayList<ArrayList<Tile>>();
+    ArrayList<Tile> combi;
+    Tile t0 = null;
+    Tile t1 = null;
+    
+  //check combinations in x direction
+    for (int i = 0; i < board.getHeight(); i++) {
+      for (int j = 0; j < 7; j++) {
+        t0 = board.getTileAt(j, i);
+        t1 = board.getTileAt(j + 1, i);
+        if (SwapHandler.createsCombination(t0,t1)) {
+          combi = new ArrayList<Tile>();
+          combi.add(t0);
+          combi.add(t1);
+          res.add(combi);
+        }
+      }
+    }
+    
+  //check combinations in y direction
+    for (int i = 0; i < board.getHeight(); i++) {
+      for (int j = 0; j < 7; j++) {
+        t0 = board.getTileAt(i, j);
+        t1 = board.getTileAt(i, j + 1);
+        if (SwapHandler.createsCombination(t0,t1)) {
+          combi = new ArrayList<Tile>();
+          combi.add(t0);
+          combi.add(t1);
+          res.add(combi);
+        }
+      }
+    }
+    Random r = new Random();
+    double rand = r.nextDouble();
+    return res.get((int) rand * (res.size() - 1));
   }
   
 }
