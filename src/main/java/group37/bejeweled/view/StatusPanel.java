@@ -30,6 +30,7 @@ public class StatusPanel extends JPanel implements Observer{
   private JLabel levelLabel = new JLabel("Level:");
   protected JButton button = new JButton("Quit");
   protected JButton saveGame = new JButton("Save Game");
+  protected JButton hint = new JButton("Hint");
   private ButtonActionListener actionListener;
 
   public Game game;
@@ -55,6 +56,8 @@ public class StatusPanel extends JPanel implements Observer{
     StartScreen.buttonLayout(button);  
     saveGame.addActionListener(actionListener);
     StartScreen.buttonLayout(saveGame);
+    //hint.addActionListener(actionListener);
+    StartScreen.buttonLayout(hint);
 
     Box box = Box.createVerticalBox();
     box.add(Box.createVerticalGlue());
@@ -65,6 +68,7 @@ public class StatusPanel extends JPanel implements Observer{
     box.add(Box.createVerticalStrut(3));
     box.add(saveGame);
     box.add(Box.createVerticalGlue());
+    box.add(hint);
     add(box);
 
     setScore(0);
