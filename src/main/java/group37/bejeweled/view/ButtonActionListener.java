@@ -47,9 +47,20 @@ public class ButtonActionListener implements ActionListener{
       Logger.log("Load Game clicked");
       handleLoadGame();
     }
+    if (event.getSource() == panel.hint) {
+      Logger.log("Hint clicked");
+      handleHint();
+    }
     
     Launcher.launcher.getContentPane().validate();
     Launcher.launcher.getContentPane().repaint();
+  }
+  
+  /**
+   * This method handles the action taken when the hint button is clicked.
+   */
+  public void handleHint() {
+    
   }
   
   /**

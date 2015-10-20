@@ -189,6 +189,10 @@ public final class GameLogic {
     level.registerObserver(sp);
   }
   
+  /**
+   * Method for getting an arrayList with two Tiles, which can be switched to form a combination.
+   * @return the arraylist with the tiles.
+   */
   public static ArrayList<Tile> getHint() {
     ArrayList<ArrayList<Tile>> res = new ArrayList<ArrayList<Tile>>();
     ArrayList<Tile> combi;
@@ -222,8 +226,8 @@ public final class GameLogic {
         }
       }
     }
-    Random r = new Random();
-    double rand = r.nextDouble();
+    Random rd = new Random();
+    double rand = rd.nextDouble();
     return res.get((int) rand * (res.size() - 1));
   }
   
