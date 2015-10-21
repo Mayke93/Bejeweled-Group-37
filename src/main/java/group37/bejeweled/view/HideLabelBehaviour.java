@@ -16,5 +16,4 @@ public class HideLabelBehaviour implements HideComponentBehaviour {
     }
   }
   
-
 }
