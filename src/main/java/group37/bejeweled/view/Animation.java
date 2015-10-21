@@ -138,9 +138,10 @@ public class Animation implements ActionListener{
       t.size = 0;
     }
     GameLogic.dropTiles();
-    if (!game.possibleMove() && main.getStatusPanel() instanceof StatusPanel) {
-      ((StatusPanel) main.getStatusPanel()).endGame();
+    if (!game.possibleMove()) {
+      (main.getStatusPanel()).endGame();
     }
+    // TODO if timer = 0 -> end game 
   }
 
   /**
