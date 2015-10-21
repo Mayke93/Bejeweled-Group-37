@@ -20,7 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class Panel extends JPanel implements Observer {
+public abstract class Panel extends JPanel implements Observer {
   
   private JLabel scoreLabel = new JLabel("Score: ");
   private JLabel levelLabel = new JLabel("Level:");
@@ -30,6 +30,8 @@ public class Panel extends JPanel implements Observer {
   private ButtonActionListener actionListener;
   protected JLabel timeLabel = new JLabel("Time: 60");
   protected static boolean gameover;
+  
+  protected HideComponentBehaviour hcb;
 
   public Game game;
   public Main main;
@@ -80,6 +82,11 @@ public class Panel extends JPanel implements Observer {
     setLevel(1);
   }
 
+  /**
+   * this method should be implemented if certain components need not be on the screen.
+   */
+  public abstract void hide();
+  
   /**
    * This shows the text that will end the game.
    * 

@@ -2,6 +2,7 @@ package main.java.group37.bejeweled.view;
 
 import main.java.group37.bejeweled.model.Game;
 
+import java.awt.Component;
 import java.util.Observer;
 
 import javax.swing.JButton;
@@ -19,7 +20,15 @@ public class StatusPanel extends Panel implements Observer{
    * Create labels for displaying the status of the game.
    */
   public StatusPanel() {
-    timeLabel.setVisible(false);
+    hcb = new HideTimeBehaviour();
+    //timeLabel.setVisible(false);
+    hide();
+  }
+
+  @Override
+  public void hide() {
+    hcb.hide(this.timeLabel);
+    
   }
 
 }
