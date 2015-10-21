@@ -1,2 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd-cpd/>
+<pmd-cpd>
+   <duplication lines="25" tokens="100">
+      <file line="104"
+            path="D:\Users\Irene\Documents\School\SEM\Bejeweled-Group-37\src\main\java\group37\bejeweled\combination\CombinationFinder.java"/>
+      <file line="152"
+            path="D:\Users\Irene\Documents\School\SEM\Bejeweled-Group-37\src\main\java\group37\bejeweled\combination\CombinationFinder.java"/>
+      <codefragment><![CDATA[        List<Tile> specialShape = findLTshapeX(tiles);   // check for T and L shapes
+        if (specialShape.isEmpty()) {
+          combi = CombinationFactory.makeCombination(Type.NORMAL);
+        } else {
+          tiles.addAll(specialShape);
+          combi = CombinationFactory.makeCombination(Type.STAR);
+        }
+      } else if (tiles.size() == 4) {
+        combi = CombinationFactory.makeCombination(Type.FLAME);
+      } else if (tiles.size() == 5) {
+        combi = CombinationFactory.makeCombination(Type.HYPERCUBE);
+      }
+      combi.setTiles(tiles);
+    }
+    return combi;
+  }
+
+  /**
+   * Sees whether 
+   * @param tile
+   * makes a valid combination in y direction on the board,
+   * @return a list with first the state of the combination,
+   *     and second the list of tiles in de combi.
+   */
+  public Combination getSingleCombinationY(Tile tile) {]]></codefragment>
+   </duplication>
+</pmd-cpd>

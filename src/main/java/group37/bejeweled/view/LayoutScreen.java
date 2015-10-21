@@ -12,15 +12,16 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 
+@SuppressWarnings("serial")
 public class LayoutScreen extends Layout{
   
   protected JButton back = new JButton("Back");
-  protected DefaultListModel<String> buttonList = new DefaultListModel<>();
-  protected JList<String> blist = new JList<>(buttonList);
-  protected DefaultListModel<String> labelList = new DefaultListModel<>();
-  protected JList<String> llist = new JList<>(labelList);
-  protected DefaultListModel<String> backList = new DefaultListModel<>();
-  protected JList<String> balist = new JList<>(backList);
+  protected DefaultListModel<String> buttonList = new DefaultListModel<String>();
+  protected JList<String> blist = new JList<String>(buttonList);
+  protected DefaultListModel<String> labelList = new DefaultListModel<String>();
+  protected JList<String> llist = new JList<String>(labelList);
+  protected DefaultListModel<String> backList = new DefaultListModel<String>();
+  protected JList<String> balist = new JList<String>(backList);
   
   private JLabel buttonlabel = new JLabel("Button color");
   private JLabel labellabel = new JLabel("label color");
