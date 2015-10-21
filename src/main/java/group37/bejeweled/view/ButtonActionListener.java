@@ -37,7 +37,7 @@ public class ButtonActionListener implements ActionListener{
       Logger.log("Save Game clicked");
       handleSaveGame();
     }
-    if (event.getSource() == panel.button) {
+    if (event.getSource() == panel.quit) {
       Logger.log("Quit Game clicked");
       handleQuitGame();
     }

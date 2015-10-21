@@ -24,7 +24,7 @@ public class Panel extends JPanel implements Observer {
   
   private JLabel scoreLabel = new JLabel("Score: ");
   private JLabel levelLabel = new JLabel("Level:");
-  protected JButton button = new JButton("Quit");
+  protected JButton quit = new JButton("Quit");
   protected JButton saveGame = new JButton("Save Game");
   protected JButton hint = new JButton("Hint");
   private ButtonActionListener actionListener;
@@ -52,8 +52,8 @@ public class Panel extends JPanel implements Observer {
     timeLabel.setFont(new Font("Euphemia UCAS",Font.PLAIN,30));
     timeLabel.setForeground(new Color(192,192,192));
     
-    button.addActionListener(actionListener);
-    StartScreen.buttonLayout(button);  
+    quit.addActionListener(actionListener);
+    StartScreen.buttonLayout(quit);  
     saveGame.addActionListener(actionListener);
     StartScreen.buttonLayout(saveGame);
     hint.addActionListener(actionListener);
@@ -66,7 +66,7 @@ public class Panel extends JPanel implements Observer {
     box.add(scoreLabel);
     box.add(levelLabel);
     box.add(Box.createVerticalStrut(5));
-    box.add(button);
+    box.add(quit);
     box.add(Box.createVerticalStrut(3));
     box.add(saveGame);
     box.add(Box.createVerticalStrut(3));
