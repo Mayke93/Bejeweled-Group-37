@@ -13,12 +13,7 @@ import javax.swing.JButton;
  *
  */
 public class StatusPanel extends Panel implements Observer{
-  protected JButton button = new JButton("Quit");
-  protected JButton saveGame = new JButton("Save Game");
-  protected JButton hint = new JButton("Hint");
 
-  public Game game;
-  public Main main;  
 
   /**
    * Create labels for displaying the status of the game.
