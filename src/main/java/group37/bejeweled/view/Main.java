@@ -31,13 +31,13 @@ public class Main extends JPanel {
   private BoardFactory boardFactory;
   public Animation animations;
   protected Game game;
-  private StatusPanel statuspanel;
+  private Panel statuspanel;
 
   /**
    * Initialize the board and create the mouse event listeners.
    * @param panel JPanel with the labels to display the status of the game
    */
-  public Main(StatusPanel panel) {
+  public Main(Panel panel) {
     statuspanel = panel;
     game = new Game(this);
     boardFactory = new BoardFactory(game);
@@ -132,7 +132,7 @@ public class Main extends JPanel {
     t1 = null;   
   }
 
-  public StatusPanel getStatusPanel() {
+  public Panel getStatusPanel() {
     return statuspanel;
   }
 }

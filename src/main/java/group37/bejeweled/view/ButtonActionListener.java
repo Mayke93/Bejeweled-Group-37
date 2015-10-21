@@ -17,18 +17,18 @@ import java.util.Date;
 import javax.swing.JFileChooser;
 
 public class ButtonActionListener implements ActionListener{
-  private StatusPanel panel;
+  private Panel panel;
   private final JFileChooser fc = new JFileChooser();
   private static String current = null;
 
   /**
    * constructor for buttonactionlistener.
-   * @param panel statuspanel object
+   * @param panel2 statuspanel object
    * @param start startscreen object
    * @param launch launcher object
    */
-  public ButtonActionListener(StatusPanel panel) {
-    this.panel = panel;
+  public ButtonActionListener(Panel panel2) {
+    this.panel = panel2;
   }
 
   @Override
@@ -44,7 +44,10 @@ public class ButtonActionListener implements ActionListener{
     if (event.getSource() == Launcher.startscreen.newGame) {
       Logger.log("New Game clicked");
       handleNewGame();
- 
+    }
+    if (event.getSource() == Launcher.startscreen.timeMode) {
+      Logger.log("New Time Mode Game clicked");
+      handleNewTimeGame();
     }
     if (event.getSource() == Launcher.startscreen.loadGame) {
       Logger.log("Load Game clicked");
@@ -102,6 +105,26 @@ public class ButtonActionListener implements ActionListener{
     Launcher.launcher.getContentPane().remove(Launcher.startscreen);
 
     panel = new StatusPanel();
+    Main main = new Main(panel);
+    panel.setMain(main);
+    main.setLayout(new BorderLayout());     
+    main.add(panel,BorderLayout.WEST);
+
+    Launcher.launcher.getContentPane().add(main);
+
+    panel.main.repaint();
+    panel.repaint();
+  }
+  
+  /**
+   * handles the actions of the button new game.
+   */
+  public void handleNewTimeGame() {
+    current = null;
+    
+    Launcher.launcher.getContentPane().remove(Launcher.startscreen);
+
+    panel = new StatusPanelTime();
     Main main = new Main(panel);
     panel.setMain(main);
     main.setLayout(new BorderLayout());     
