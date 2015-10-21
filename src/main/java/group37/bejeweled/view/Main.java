@@ -18,7 +18,7 @@ import javax.swing.JPanel;
  * Class that is responsible for the frames, images and text in the GUI.
  * @author group37
  */
-public class Main extends Layout {
+public class Main extends JPanel {
 
   public static final Point LOCATION = new Point(241,40);
   public static final int SPACE_X = 65;

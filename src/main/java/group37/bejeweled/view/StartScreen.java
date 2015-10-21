@@ -19,12 +19,12 @@ import javax.swing.JPanel;
  * @author group37
  *
  */
-public class StartScreen extends Layout {
+public class StartScreen extends JPanel {
   
 
   protected JButton newGame = new JButton("New Game");
   protected JButton loadGame = new JButton("Load Game");
-  protected JButton layOut = new JButton("Layout");
+  protected JButton timeMode = new JButton("Time Mode");
   
   private ButtonActionListener actionListener;
   private StatusPanel statusPanel;
@@ -36,6 +36,11 @@ public class StartScreen extends Layout {
   public StartScreen() {
     startscreen = this;
     statusPanel = new StatusPanel();
+    init();
+  }
+  
+
+  public void init() {
     this.actionListener = new ButtonActionListener(statusPanel);
     setLayout(new BorderLayout());
     setBorder(BorderFactory.createEmptyBorder(10, 40, 10, 10));
@@ -45,8 +50,8 @@ public class StartScreen extends Layout {
     buttonLayout(newGame);
     loadGame.addActionListener(actionListener);
     buttonLayout(loadGame);
-    layOut.addActionListener(new LayoutActionListener());
-    buttonLayout(layOut);
+    timeMode.addActionListener(actionListener);
+    buttonLayout(timeMode);
 
     Box box = Box.createVerticalBox();
     box.add(Box.createVerticalGlue());
@@ -54,10 +59,11 @@ public class StartScreen extends Layout {
     box.add(Box.createVerticalStrut(3));
     box.add(loadGame);
     box.add(Box.createVerticalStrut(3));
-    box.add(layOut);
+    box.add(timeMode);
     box.add(Box.createVerticalGlue());
     
-    this.add(box, BorderLayout.WEST);   
+    this.add(box, BorderLayout.WEST); 
+    
   }
   
   /**
