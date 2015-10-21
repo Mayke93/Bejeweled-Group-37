@@ -25,6 +25,9 @@ public class StatusPanelTime extends Panel {
     saveGame.setVisible(false);
     timer = new Timer();
     timer.schedule(tm,1000,1000);
+    
+    hcb = new HideButtonBehaviour();
+    hide();
   }
 
   TimerTask tm = new TimerTask(){
@@ -73,6 +76,11 @@ public class StatusPanelTime extends Panel {
     Launcher.launcher.getContentPane().repaint();
     
     Logger.log("End game - out of time");
+  }
+
+  @Override
+  public void hide() {
+    hcb.hide(saveGame);   
   }
 
 }
