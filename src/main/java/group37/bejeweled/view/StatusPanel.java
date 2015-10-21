@@ -7,7 +7,6 @@ import main.java.group37.bejeweled.model.Logger;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
-
 import java.util.Observer;
 
 import javax.swing.JButton;
@@ -32,7 +31,6 @@ public class StatusPanel extends Panel implements Observer{
    * Create labels for displaying the status of the game.
    */
   public StatusPanel() {
-    
   }
 
   /**
