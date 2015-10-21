@@ -28,6 +28,8 @@ public class Panel extends JPanel implements Observer {
   protected JButton saveGame = new JButton("Save Game");
   protected JButton hint = new JButton("Hint");
   private ButtonActionListener actionListener;
+  protected JLabel timeLabel = new JLabel("Time: 60");
+  protected static boolean gameover;
 
   public Game game;
   public Main main;
@@ -47,6 +49,9 @@ public class Panel extends JPanel implements Observer {
     levelLabel.setFont(new Font("Euphemia UCAS",Font.PLAIN,30));
     levelLabel.setForeground(new Color(192,192,192));
     
+    timeLabel.setFont(new Font("Euphemia UCAS",Font.PLAIN,30));
+    timeLabel.setForeground(new Color(192,192,192));
+    
     button.addActionListener(actionListener);
     StartScreen.buttonLayout(button);  
     saveGame.addActionListener(actionListener);
@@ -56,6 +61,8 @@ public class Panel extends JPanel implements Observer {
 
     Box box = Box.createVerticalBox();
     box.add(Box.createVerticalGlue());
+    box.add(timeLabel);
+    
     box.add(scoreLabel);
     box.add(levelLabel);
     box.add(Box.createVerticalStrut(5));
@@ -67,6 +74,8 @@ public class Panel extends JPanel implements Observer {
     box.add(Box.createVerticalGlue());
     add(box);
 
+    Panel.gameover = false;
+    
     setScore(0);
     setLevel(1);
   }
@@ -150,5 +159,10 @@ public class Panel extends JPanel implements Observer {
       this.setLevel((int) ((Level) arg).getLevel());        
     }
   }
+  
+  public static boolean getGameOver() {
+    return gameover;
+  }
+  
   
 }

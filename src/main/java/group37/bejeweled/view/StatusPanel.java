@@ -24,6 +24,7 @@ public class StatusPanel extends Panel implements Observer{
    * Create labels for displaying the status of the game.
    */
   public StatusPanel() {
+    timeLabel.setVisible(false);
   }
 
 }

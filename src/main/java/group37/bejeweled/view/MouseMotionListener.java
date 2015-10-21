@@ -1,10 +1,10 @@
 package main.java.group37.bejeweled.view;
 
+import main.java.group37.bejeweled.model.SwapHandler;
+
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
-import main.java.group37.bejeweled.model.SwapHandler;
 
 /**
  * Class to listen to motions of the mouse.
@@ -26,13 +26,16 @@ public class MouseMotionListener extends MouseAdapter{
    */
   @Override
   public void mouseDragged(MouseEvent event) {
-    Point loc = Main.getColAndRow(event.getX(),event.getY());
-    int col = loc.x;
-    int row = loc.y;
+    if (Panel.getGameOver() == false) {
+      Point loc = Main.getColAndRow(event.getX(),event.getY());
+      int col = loc.x;
+      int row = loc.y;
 
-    if (!main.getGame().getBoard().validBorders(col, row)) {
-      return;
+      if (!main.getGame().getBoard().validBorders(col, row)) {
+        return;
+      }
+      SwapHandler.addTile(loc);
     }
-    SwapHandler.addTile(loc);
   }
+
 }
