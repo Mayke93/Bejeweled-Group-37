@@ -17,18 +17,18 @@ import java.util.Date;
 import javax.swing.JFileChooser;
 
 public class ButtonActionListener implements ActionListener{
-  private StatusPanel panel;
+  private Panel panel;
   private final JFileChooser fc = new JFileChooser();
   private static String current = null;
 
   /**
    * constructor for buttonactionlistener.
-   * @param panel statuspanel object
+   * @param panel2 statuspanel object
    * @param start startscreen object
    * @param launch launcher object
    */
-  public ButtonActionListener(StatusPanel panel) {
-    this.panel = panel;
+  public ButtonActionListener(Panel panel2) {
+    this.panel = panel2;
   }
 
   @Override
