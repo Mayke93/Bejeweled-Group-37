@@ -20,7 +20,7 @@ public class StatusPanel extends Panel implements Observer{
    * Create labels for displaying the status of the game.
    */
   public StatusPanel() {
-    hcb = new HideTimeBehaviour();
+    hcb = new HideLabelBehaviour();
     //timeLabel.setVisible(false);
     hide();
   }

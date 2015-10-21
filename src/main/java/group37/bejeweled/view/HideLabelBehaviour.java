@@ -5,7 +5,7 @@ import java.awt.Component;
 
 import javax.swing.JLabel;
 
-public class HideTimeBehaviour implements HideComponentBehaviour {
+public class HideLabelBehaviour implements HideComponentBehaviour {
   
   /**
    * hides a label.
