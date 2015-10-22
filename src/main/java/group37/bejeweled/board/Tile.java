@@ -1,23 +1,17 @@
 package main.java.group37.bejeweled.board;
 
 import main.java.group37.bejeweled.combination.Combination.Type;
-import main.java.group37.bejeweled.model.Game;
-import main.java.group37.bejeweled.view.Main;
 
 import java.awt.Point;
-import java.awt.Graphics;
 
 import javax.swing.ImageIcon;
-import javax.tools.DocumentationTool.Location;
 
 /**
  * Class for initialising a gem on the board.
  * @author Group 37
  */
-public abstract class Tile implements IDrawable {
-   
-  public static final int SIZE = 8;
-  protected Game game;
+public abstract class Tile {
+ 
   protected ImageIcon image;
   public Point loc;
   public Point translation;
@@ -32,9 +26,6 @@ public abstract class Tile implements IDrawable {
                            "src/img/gemRed.png", "src/img/gemWhite.png",
                            "src/img/gemYellow.png"};
   protected Type nextType;
-  public static int spaceX = 65;
-  public static int spaceY = 65;
-  private Point focus = null;
 
   public static final String[] colors = {"Blue", "Green", "Orange", "Purple",
     "Red", "White", "Yellow"};
@@ -46,7 +37,6 @@ public abstract class Tile implements IDrawable {
    * @param transY location of Tile on the board.
    */
   public Tile(int transX, int transY) {
-    //game = new Game(this);
     this.loc = new Point(transX,transY);
     this.translation = new Point(0,0);
     this.level = 0;
@@ -54,21 +44,6 @@ public abstract class Tile implements IDrawable {
     this.delete = false;
     this.size = 0;
     this.nextType = Type.NORMAL;
-  }
- /*
-   * Paints the tiles on the board
-   * 
-   */
-  public void paintComponent(Graphics graphics, int positionX, int positionY) {
-    if (this.remove) {
-      return;
-    }
-    graphics.drawImage(this.getImage().getImage(),
-             positionX + this.translation.x ,
-             positionY + this.translation.y ,
-             spaceX - this.size,
-             spaceY - this.size,
-             null); 
   }
 
   //logic for tiles used in other classes
