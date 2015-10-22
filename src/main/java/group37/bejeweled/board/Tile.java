@@ -246,6 +246,34 @@ public abstract class Tile implements IDrawable {
         + ((translation == null) ? 0 : translation.hashCode());
     return result;
   }
+  /**
+   * 
+   * @param graphics used to colour the tiles.
+   */
+  public void paintTile(Graphics graphics) {
+
+    Board board = game.getBoard();
+    ImageIcon boardImage = new ImageIcon();
+    graphics.drawImage(boardImage.getImage(), 0, 0, this.getX(), this.getY(), null);
+    int ix = this.getX();
+    int iy = this.getY();
+       Tile tile = null;
+       
+    for (int i = 0, x = ix, y = iy; i < SIZE; i++) {
+      x = ix;
+      for (int j = 0; j < SIZE; j++, x += spaceX) {
+        IDrawable draw = board.getTileAt(j, i);
+        draw.paintComponent(graphics, x, y);
+      }
+      y += spaceY;
+    }
+       
+    if (focus != null) {
+      ImageIcon focusImage = new ImageIcon("src/img/focus.png");
+      graphics.drawImage(focusImage.getImage(), focus.x, focus.y,spaceX,spaceY, null);
+    }
+	   
+   }
   
   /**
    * Create clone of this object.
