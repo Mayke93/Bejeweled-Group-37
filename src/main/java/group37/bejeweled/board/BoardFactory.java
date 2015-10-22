@@ -36,7 +36,6 @@ public class BoardFactory extends JPanel {
     graphics.drawImage(boardImage.getImage(), 0, 0, board.getWidth(), board.getHeight(), null);
     int ix = LOCATION.x;
     int iy = LOCATION.y;
-    Tile tile = null;
 
     for (int i = 0, x = ix, y = iy; i < SIZE; i++) {
       x = ix;
