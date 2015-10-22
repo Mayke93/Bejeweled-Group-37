@@ -2,6 +2,7 @@ package main.java.group37.bejeweled.model;
 
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.combination.Combination;
+import main.java.group37.bejeweled.view.Panel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +22,8 @@ public class Score extends Observable {
     this.score = 0;
   }
 
-  public void registerObserver(Observer observer) {
-    obs.add(observer);    
+  public void registerObserver(Panel panel) {
+    obs.add(panel);    
   }
 
   public void removeObserver(Observer observer) {

@@ -32,19 +32,21 @@ public class MouseListener extends MouseAdapter{
    */
   @Override
   public void mouseClicked(MouseEvent event) {
-    Point loc = Main.getColAndRow(event.getX(),event.getY());
-    int col = loc.x;
-    int row = loc.y;
-    if (!main.getGame().getBoard().validBorders(col, row)) {
-      return;
+    if (Panel.getGameOver() == false) {
+      Point loc = Main.getColAndRow(event.getX(),event.getY());
+      int col = loc.x;
+      int row = loc.y;
+      if (!main.getGame().getBoard().validBorders(col, row)) {
+        return;
+      }
+      main.setFocus(loc);
+      Game game = main.getGame();
+      Logger.log("Mouse Clicked: (" + game.getBoard().getTileAt(col, row).getLoc().x + ", " 
+          + game.getBoard().getTileAt(col, row).getLoc().y + ") " 
+          + Tile.colors[game.getBoard().getTileAt(col, row).getIndex()]
+              + " " + game.getBoard().getTileAt(col, row).getType());
+      Logger.log(game.getBoard().getTileAt(col, row).toString());
     }
-    main.setFocus(loc);
-    Game game = main.getGame();
-    Logger.log("Mouse Clicked: (" + game.getBoard().getTileAt(col, row).getLoc().x + ", " 
-        + game.getBoard().getTileAt(col, row).getLoc().y + ") " 
-        + Tile.colors[game.getBoard().getTileAt(col, row).getIndex()]
-        + " " + game.getBoard().getTileAt(col, row).getType());
-    Logger.log(game.getBoard().getTileAt(col, row).toString());
   }
 
   /**
