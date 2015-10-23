@@ -25,17 +25,19 @@ public class Main extends JPanel {
   public static final int SPACE_Y = 65;
   
   private Point focus = null;
+  private Point t0 = null;
+  private Point t1 = null;
+  
   private BoardFactory boardFactory;
-
   public Animation animations;
   protected Game game;
-  private StatusPanel statuspanel;
+  private Panel statuspanel;
 
   /**
    * Initialize the board and create the mouse event listeners.
    * @param panel JPanel with the labels to display the status of the game
    */
-  public Main(StatusPanel panel) {
+  public Main(Panel panel) {
     statuspanel = panel;
     game = new Game(this);
     boardFactory = new BoardFactory(game);
@@ -77,6 +79,21 @@ public class Main extends JPanel {
     focus = new Point(ix,iy);
     repaint();
   }
+  
+  /**
+   * Get the index of the focused jewel based on the coordinated of the mouse event.
+   * @param t00 first tile that can be swapped
+   * @param t11 second tile that can be swapped with the first one.
+   */
+  public void setFocusHint(Point t00, Point t11) {
+    int ix = t00.x * SPACE_X + LOCATION.x;
+    int iy = t00.y * SPACE_Y + LOCATION.y;
+    int jx = t11.x * SPACE_X + LOCATION.x;
+    int jy = t11.y * SPACE_Y + LOCATION.y;
+    t0 = new Point(ix,iy);
+    t1 = new Point(jx, jy);
+    repaint();
+  }
 
   /**
    * Get the col and row index based on the coordinates on the screen.
@@ -99,6 +116,7 @@ public class Main extends JPanel {
     super.paintComponent(graphics);
     ImageIcon boardImage  = new ImageIcon("src/img/board.png");
     ImageIcon focusImage = new ImageIcon("src/img/focus.png");
+    ImageIcon focusHintImage = new ImageIcon("src/img/focusHint.png");
     
     graphics.drawImage(boardImage.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
     boardFactory.paintComponent(graphics);
@@ -106,9 +124,15 @@ public class Main extends JPanel {
     if (focus != null) {
       graphics.drawImage(focusImage.getImage(), focus.x, focus.y,SPACE_X,SPACE_Y, null);
     }
+    if (t0 != null && t1 != null) {
+      graphics.drawImage(focusHintImage.getImage(), t0.x, t0.y,SPACE_X,SPACE_Y, null);
+      graphics.drawImage(focusHintImage.getImage(), t1.x, t1.y,SPACE_X,SPACE_Y, null);
+    }
+    t0 = null;
+    t1 = null;   
   }
 
-  public StatusPanel getStatusPanel() {
+  public Panel getStatusPanel() {
     return statuspanel;
   }
 }
