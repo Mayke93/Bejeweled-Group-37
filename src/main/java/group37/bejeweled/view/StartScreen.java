@@ -24,6 +24,7 @@ public class StartScreen extends JPanel {
 
   protected JButton newGame = new JButton("New Game");
   protected JButton loadGame = new JButton("Load Game");
+  protected JButton timeMode = new JButton("Time Mode");
   
   private ButtonActionListener actionListener;
   private StatusPanel statusPanel;
@@ -35,6 +36,11 @@ public class StartScreen extends JPanel {
   public StartScreen() {
     startscreen = this;
     statusPanel = new StatusPanel();
+    init();
+  }
+  
+
+  public void init() {
     this.actionListener = new ButtonActionListener(statusPanel);
     setLayout(new BorderLayout());
     setBorder(BorderFactory.createEmptyBorder(10, 40, 10, 10));
@@ -44,15 +50,20 @@ public class StartScreen extends JPanel {
     buttonLayout(newGame);
     loadGame.addActionListener(actionListener);
     buttonLayout(loadGame);
+    timeMode.addActionListener(actionListener);
+    buttonLayout(timeMode);
 
     Box box = Box.createVerticalBox();
     box.add(Box.createVerticalGlue());
     box.add(newGame);
     box.add(Box.createVerticalStrut(3));
     box.add(loadGame);
+    box.add(Box.createVerticalStrut(3));
+    box.add(timeMode);
     box.add(Box.createVerticalGlue());
     
-    this.add(box, BorderLayout.WEST);   
+    this.add(box, BorderLayout.WEST); 
+    
   }
   
   /**
@@ -63,8 +74,8 @@ public class StartScreen extends JPanel {
     jb.setMinimumSize(new Dimension(200,75));
     jb.setFocusPainted(false);
     jb.setFont(new Font("Euphemia UCAS",Font.PLAIN,22));
-    jb.setBackground(new Color(206,30,157));
-    jb.setForeground(new Color(192,192,192));
+    jb.setBackground(Color.WHITE);
+    jb.setForeground(new Color(100,100,100));
   }
   
   

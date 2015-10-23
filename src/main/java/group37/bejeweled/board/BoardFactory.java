@@ -36,21 +36,16 @@ public class BoardFactory extends JPanel {
     graphics.drawImage(boardImage.getImage(), 0, 0, board.getWidth(), board.getHeight(), null);
     int ix = LOCATION.x;
     int iy = LOCATION.y;
-    Tile tile = null;
 
-    for (int i = 0,x = ix, y = iy; i < SIZE; i++) {
+    for (int i = 0, x = ix, y = iy; i < SIZE; i++) {
       x = ix;
       for (int j = 0; j < SIZE; j++, x += spaceX) {
-        tile = board.getTileAt(j, i);
-        if (tile.remove) {
-          continue;
-        }
-        graphics.drawImage(tile.getImage().getImage(), x + tile.translation.x , 
-            y + tile.translation.y,spaceX - tile.size,spaceY - tile.size, null);
+        IDrawable draw = board.getTileAt(j, i);
+        draw.paintComponent(graphics, x, y);
       }
       y += spaceY;
     }
-
+         
     if (focus != null) {
       ImageIcon focusImage = new ImageIcon("src/img/focus.png");
       graphics.drawImage(focusImage.getImage(), focus.x, focus.y,spaceX,spaceY, null);

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+import main.java.group37.bejeweled.view.Panel;
+
 public class Level extends Observable {
   
   public int level;
@@ -17,8 +19,8 @@ public class Level extends Observable {
     this.level = 1;
   }
   
-  public void registerObserver(Observer observer) {
-    obs.add(observer);    
+  public void registerObserver(Panel panel) {
+    obs.add(panel);    
   }
 
   public void removeObserver(Observer observer) {
