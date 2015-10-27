@@ -81,15 +81,18 @@ public final class GameLogic {
    * @param tiles list of tiles to delete.
    */
   public static void deleteTiles(List<Tile> tiles) {
+    List<Tile> tilesToDrop = new ArrayList<Tile>();
     for (Tile tile: tiles) {
       board.getTileAt(tile.getX(), tile.getY()).delete = true;
       Logger.log("Delete Tile: " + tile);
       if (tile.getNextType() == Type.NORMAL) {
         for (int i = tile.getY() - 1; i >= 0; i--) {
           board.getTileAt(tile.getX(), i).increaseLevel();
+          tilesToDrop.add(board.getTileAt(tile.getX(), i));
         }
       }
     }
+    boardPanel.animations.setDropTiles(tilesToDrop);
     boardPanel.animations.setType(Animation.Type.REMOVE);
     boardPanel.animations.startRemove(tiles);
   }
