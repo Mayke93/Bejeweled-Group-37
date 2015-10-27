@@ -32,7 +32,6 @@ public abstract class Tile implements IDrawable {
   protected Type nextType;
   public static int spaceX = 65;
   public static int spaceY = 65;
-  private Point focus = null;
 
   public static final String[] colors = {"Blue", "Green", "Orange", "Purple",
     "Red", "White", "Yellow"};

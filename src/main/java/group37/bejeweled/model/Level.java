@@ -1,10 +1,10 @@
 package main.java.group37.bejeweled.model;
 
+import main.java.group37.bejeweled.view.Panel;
+
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
-
-import main.java.group37.bejeweled.view.Panel;
 
 public class Level extends Observable {
   

@@ -3,7 +3,6 @@ package main.java.group37.bejeweled.model;
 import main.java.group37.bejeweled.board.Board;
 import main.java.group37.bejeweled.board.FlameTile;
 import main.java.group37.bejeweled.board.NormalTile;
-//import main.java.group37.bejeweled.board.HypercubeTile;
 import main.java.group37.bejeweled.board.StarTile;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.combination.Combination;
@@ -12,7 +11,6 @@ import main.java.group37.bejeweled.combination.CombinationFinder;
 import main.java.group37.bejeweled.view.Animation;
 import main.java.group37.bejeweled.view.Main;
 import main.java.group37.bejeweled.view.Panel;
-import main.java.group37.bejeweled.view.StatusPanel;
 
 import java.util.ArrayList;
 import java.util.List;

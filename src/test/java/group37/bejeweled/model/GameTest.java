@@ -1,20 +1,20 @@
 package test.java.group37.bejeweled.model;
 
-import static org.junit.Assert.*;
-
-import java.awt.Point;
-
-import javax.swing.JFrame;
-
-import org.junit.Test;
-
-import main.java.group37.bejeweled.board.Board;
-import main.java.group37.bejeweled.board.Tile;
-import main.java.group37.bejeweled.combination.CombinationFinder;
-import main.java.group37.bejeweled.combination.Combination.Type;
-import main.java.group37.bejeweled.model.Game;
-import main.java.group37.bejeweled.view.Main;
-import main.java.group37.bejeweled.view.StatusPanel;
+//import static org.junit.Assert.*;
+//
+//import java.awt.Point;
+//
+//import javax.swing.JFrame;
+//
+//import org.junit.Test;
+//
+//import main.java.group37.bejeweled.board.Board;
+//import main.java.group37.bejeweled.board.Tile;
+//import main.java.group37.bejeweled.combination.CombinationFinder;
+//import main.java.group37.bejeweled.combination.Combination.Type;
+//import main.java.group37.bejeweled.model.Game;
+//import main.java.group37.bejeweled.view.Main;
+//import main.java.group37.bejeweled.view.StatusPanel;
 
 //import org.junit.Test;
 
@@ -22,7 +22,6 @@ import main.java.group37.bejeweled.view.StatusPanel;
 /**
  * Simple basic test for class Game.
  * @author Mayke Kloppenburg
- * cannot be fully tested yet
  */
 public class GameTest {
 

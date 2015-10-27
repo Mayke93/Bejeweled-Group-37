@@ -39,7 +39,9 @@ public class StartScreen extends JPanel {
     init();
   }
   
-
+  /**
+   * Init method for setting up the startscreen.
+   */
   public void init() {
     this.actionListener = new ButtonActionListener(statusPanel);
     setLayout(new BorderLayout());
