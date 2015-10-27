@@ -4,6 +4,7 @@ import main.java.group37.bejeweled.board.HypercubeTile;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.model.Game;
 import main.java.group37.bejeweled.model.GameLogic;
+import main.java.group37.bejeweled.model.Logger;
 import main.java.group37.bejeweled.model.SwapHandler;
 
 import java.awt.Point;
@@ -26,6 +27,7 @@ public class Animation implements ActionListener{
   private Tile t0;
   private Tile t1;
   private List<Tile> tiles;
+  private List<Tile> tilesToDrop;
 
   public static enum Type{
     SWAP,REMOVE,DROP;
@@ -46,6 +48,7 @@ public class Animation implements ActionListener{
     this.t0 = null;
     this.t1 = null;
     this.tiles = null;
+    this.tilesToDrop = null;
     this.type = Type.SWAP;
   }
 
@@ -75,6 +78,18 @@ public class Animation implements ActionListener{
     }
     timer.setDelay(2);
     timer.start();
+  }
+  
+  /**
+   * Start drop animations.
+   */
+  public void startDrop() {
+    this.frame = 0;
+    if (this.tilesToDrop != null) {
+      Logger.log("Start DROP animation");
+      timer.setDelay(2);
+      timer.start();
+    }
   }
 
   /**
@@ -120,10 +135,31 @@ public class Animation implements ActionListener{
         }
       }
       main.repaint();
+    } else if (this.type == Type.DROP) {
+      frame ++;
+      if (frame > 17) {
+        endDrop();
+      }
+      int speed = 1;
+      for (Tile tile: this.tilesToDrop) {
+        tile.updateTranslation(0, speed * tile.getLevel());
+      }
+      main.repaint();
     }
-    /*else if (this.type == Type.DROP) {
+  }
+  
+  /**
+   * Ends the drop tile action.
+   */
+  public void endDrop() {
+    Logger.log("END drop animations");
+    this.timer.stop();
+    this.frame = 0;
 
-    }*/
+    GameLogic.dropTiles();
+    if (!game.possibleMove()) {
+      main.getStatusPanel().endGame();
+    }
   }
 
   /**
@@ -137,10 +173,10 @@ public class Animation implements ActionListener{
       t.translation = new Point(0,0);
       t.size = 0;
     }
-    GameLogic.dropTiles();
-    if (!game.possibleMove()) {
-      main.getStatusPanel().endGame();
-    }
+
+    setType(Type.DROP);
+    startDrop();
+    
   }
 
   /**
@@ -169,6 +205,10 @@ public class Animation implements ActionListener{
    */
   public void setTiles(List<Tile> tiles) {
     this.tiles = tiles;
+  }
+  
+  public void setDropTiles(List<Tile> tilesToDrop) {
+    this.tilesToDrop = tilesToDrop;
   }
 
   /**
