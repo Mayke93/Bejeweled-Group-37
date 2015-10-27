@@ -7,13 +7,13 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import main.java.group37.bejeweled.board.Board;
-import main.java.group37.bejeweled.board.HypercubeTile;
+//import main.java.group37.bejeweled.board.HypercubeTile;
 import main.java.group37.bejeweled.board.NormalTile;
 import main.java.group37.bejeweled.board.Tile;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 
 /**
  * Simple basic test for the board class.

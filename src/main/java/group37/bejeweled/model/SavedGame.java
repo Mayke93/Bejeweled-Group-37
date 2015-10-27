@@ -66,16 +66,16 @@ public class SavedGame {
     for (int row = 0; row < SIZE; row++) {
       JSONArray list = new JSONArray();
       for (int col = 0; col < SIZE; col++) {
-        if(board.getTileAt(col, row) instanceof NormalTile){
+        if (board.getTileAt(col, row) instanceof NormalTile) {
           list.add(board.getTileAt(col, row).getIndex());
         }
-        if(board.getTileAt(col, row) instanceof StarTile){
+        if (board.getTileAt(col, row) instanceof StarTile) {
           list.add(board.getTileAt(col, row).getIndex() + 10);
         }
-        if(board.getTileAt(col, row) instanceof FlameTile){
+        if (board.getTileAt(col, row) instanceof FlameTile) {
           list.add(board.getTileAt(col, row).getIndex() + 20);
         }
-        if(board.getTileAt(col, row) instanceof HypercubeTile){
+        if (board.getTileAt(col, row) instanceof HypercubeTile) {
           list.add(board.getTileAt(col, row).getIndex() + 30);
         }
       }
