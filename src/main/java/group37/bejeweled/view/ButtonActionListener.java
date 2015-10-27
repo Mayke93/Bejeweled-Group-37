@@ -67,7 +67,9 @@ public class ButtonActionListener implements ActionListener{
    */
   public void handleHint() {
     ArrayList<Tile> hint = GameLogic.getHint();
-    panel.main.setFocusHint(hint.get(0).getLoc(), hint.get(1).getLoc());
+    if (!hint.isEmpty()) {
+      panel.main.setFocusHint(hint.get(0).getLoc(), hint.get(1).getLoc());
+    }
   }
   
   /**
