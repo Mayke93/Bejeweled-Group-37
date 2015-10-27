@@ -15,6 +15,7 @@ import main.java.group37.bejeweled.view.Panel;
 import main.java.group37.bejeweled.view.StatusPanel;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -48,13 +49,13 @@ public final class GameLogic {
 
     for (Combination comb: chains) {
       addTiles(comb.getTiles(), tiles);
-      if (comb.containsSpecialGem() == null) {
+      if (!comb.containsSpecialGem()) {
         score.updateScore(comb);         //update normal score
       }
       Logger.log("Comb type: " + comb.getType());
       Logger.log("containsSpecialGem: " + comb.containsSpecialGem());
       
-      if (comb.containsSpecialGem() != null) {
+      if (comb.containsSpecialGem()) {
         Logger.log("Special gem in combination: " + comb.getType());
         List<Tile> gemTiles = getTilesToDeleteSpecialGem(comb);
         score.updateScoreSpecialGem(comb, gemTiles); //update score for detonating special gem
@@ -70,7 +71,12 @@ public final class GameLogic {
     deleteTiles(tiles);
   }
   
-  private static void addTiles(List<Tile> tilesToAdd, List<Tile> list) {
+  /**
+   * Merge two tiles list together without any duplicates.
+   * @param tilesToAdd list to add to another list.
+   * @param list list where the tiles will be added.
+   */
+  public static void addTiles(List<Tile> tilesToAdd, List<Tile> list) {
     for (Tile tile : tilesToAdd) {
       if (!list.contains(tile)) {
         list.add(tile);
@@ -164,12 +170,18 @@ public final class GameLogic {
    */
   public static List<Tile> getTilesToDeleteSpecialGem(Combination combi) {
     List<Tile> tiles = new ArrayList<Tile>();
-
-    if (combi.containsSpecialGem() instanceof FlameTile) {
-      tiles = SwapHandler.getTilesToDeleteFlame(combi.containsSpecialGem());
-    }
-    if (combi.containsSpecialGem() instanceof StarTile) {
-      tiles = SwapHandler.getTilesToDeleteStar(combi.containsSpecialGem());
+    List<Tile> tempTiles = null;
+    for (Tile tile: combi.getSpecialTiles()) {
+      tempTiles = null;
+      if (tile instanceof FlameTile) {
+        tempTiles = SwapHandler.getTilesToDeleteFlame(combi.getSpecialGem());
+      } else if (tile instanceof StarTile) {
+        tempTiles = SwapHandler.getTilesToDeleteStar(combi.getSpecialGem());
+      }
+      
+      if (tempTiles != null) {
+        addTiles(tempTiles,tiles);
+      }
     }
     return tiles;
   }

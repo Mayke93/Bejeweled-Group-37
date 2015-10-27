@@ -23,6 +23,7 @@ public abstract class Tile implements IDrawable {
   private int level;
   public boolean remove;
   public boolean delete;
+  public boolean detonate;
   //index is a number that point to the place in de paths and colors array
   protected int index;
   public String[] paths = {"src/img/gemBlue.png", "src/img/gemGreen.png",
@@ -32,7 +33,6 @@ public abstract class Tile implements IDrawable {
   protected Type nextType;
   public static int spaceX = 65;
   public static int spaceY = 65;
-  private Point focus = null;
 
   public static final String[] colors = {"Blue", "Green", "Orange", "Purple",
     "Red", "White", "Yellow"};
@@ -50,6 +50,7 @@ public abstract class Tile implements IDrawable {
     this.level = 0;
     this.remove = false;
     this.delete = false;
+    this.detonate = false;
     this.size = 0;
     this.nextType = Type.NORMAL;
   }

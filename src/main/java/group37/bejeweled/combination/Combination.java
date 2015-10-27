@@ -4,6 +4,7 @@ import main.java.group37.bejeweled.board.FlameTile;
 import main.java.group37.bejeweled.board.HypercubeTile;
 import main.java.group37.bejeweled.board.StarTile;
 import main.java.group37.bejeweled.board.Tile;
+import main.java.group37.bejeweled.model.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,13 +79,36 @@ public abstract class Combination {
   /** Checks whether there is a special gem in a combination.
    * @return true iff there is a special gem in the combination.
    */
-  public Tile containsSpecialGem() {
+  public Tile getSpecialGem() {
     for (Tile t1 : this.getTiles()) {
       if (t1 instanceof FlameTile || t1 instanceof HypercubeTile || t1 instanceof StarTile) {
         return t1;
       }
     }
     return null;
+  }
+  
+  /**
+   * Check if combination contains a special gem.
+   * @return if combination has special gem.
+   */
+  public boolean containsSpecialGem() {
+    return (getSpecialGem() != null ? true : false);
+  }
+  
+  /**
+   * Return list of special gems in this combination.
+   * @return list with speial gems.
+   */
+  public List<Tile> getSpecialTiles() {
+    List<Tile> specialTiles = new ArrayList<Tile>();
+    for (Tile tile: this.getTiles()) {
+      if (tile instanceof FlameTile || tile instanceof HypercubeTile || tile instanceof StarTile) {
+        specialTiles.add(tile);
+        Logger.log("--Specilal tile");
+      }
+    }
+    return specialTiles;
   }
   
   /**

@@ -1,7 +1,9 @@
 package main.java.group37.bejeweled.model;
 
 import main.java.group37.bejeweled.board.Board;
+import main.java.group37.bejeweled.board.FlameTile;
 import main.java.group37.bejeweled.board.HypercubeTile;
+import main.java.group37.bejeweled.board.StarTile;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.combination.Combination;
 import main.java.group37.bejeweled.combination.Combination.Type;
@@ -145,14 +147,49 @@ public class SwapHandler {
                                   new Point(0,-1), new Point(1,-1)};
     int tx = tile.getX();
     int ty = tile.getY();
-    tiles.add(tile);
+    tile.detonate = true;
+    Tile ti = null;
     for (Point translation: translations) {
       if (board.validBorders(tx + translation.x, ty + translation.y)) {
-        tiles.add(board.getTileAt(tx + translation.x, ty + translation.y));
+        ti = board.getTileAt(tx + translation.x, ty + translation.y);
+        if (!ti.detonate) {
+          tiles.add(ti);
+        }
       }
+    }
+    
+    checkForSpecialTile(tiles);
+
+    if (!tiles.contains(tile)) {
+      tiles.add(tile);
     }
     return tiles;
   }
+  
+  private static void checkForSpecialTile(List<Tile> list) {
+    List<Tile> res = new ArrayList<Tile>();
+    
+    List<Tile> tempTiles = null;
+    for (Tile t : list) {
+      tempTiles = null;
+      if (t instanceof FlameTile && !t.detonate) {
+        tempTiles = getTilesToDeleteFlame(t);
+      } else if (t instanceof StarTile && !t.detonate) {
+        tempTiles = getTilesToDeleteStar(t);
+      }
+      
+      if (tempTiles != null) {
+        for (Tile tt: tempTiles) {
+          if (!list.contains(tt)) {
+            res.add(tt);
+          }
+        }
+      }
+    }
+    
+    GameLogic.addTiles(res,list);
+  }
+  
   
   /**
    * Gets the tiles that need to be deleted due to the detonating of the hypercube gem.
@@ -181,20 +218,22 @@ public class SwapHandler {
    */
   public static List<Tile> getTilesToDeleteStar(Tile tile) {
     List<Tile> tiles = new ArrayList<Tile>();
+    tile.detonate = true;
     tiles.add(tile);
     
     int tx = tile.getX();
     int ty = tile.getY();
     for (int col = 0; col < board.getHeight(); col++) {
-      if (col != tx) {
+      if (col != tx && !board.getTileAt(col,ty).detonate) {
         tiles.add(board.getTileAt(col,ty));
       }
     }
     for (int row = 0; row < board.getWidth(); row++) {
-      if (row != ty) {
+      if (row != ty && !board.getTileAt(tx,row).detonate) {
         tiles.add(board.getTileAt(tx,row));
       }
     }
+    checkForSpecialTile(tiles);
     return tiles;
   }
   

@@ -69,9 +69,9 @@ public class Score extends Observable {
    */
   public void updateScoreSpecialGem(Combination combi, List<Tile> tiles) {
     for (int i = 0; i < tiles.size(); i++) {
-      this.score += combi.containsSpecialGem().getScore();
+      this.score += combi.getSpecialGem().getScore();
     }
-    Logger.log("Add score: " + tiles.size() + "*" + combi.containsSpecialGem().getScore());
+    Logger.log("Add score: " + tiles.size() + "*" + combi.getSpecialGem().getScore());
     Logger.log("Total Score: " + this.score);
     notifyObservers(this, score);
   }

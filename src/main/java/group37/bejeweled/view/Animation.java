@@ -87,7 +87,7 @@ public class Animation implements ActionListener{
     this.frame = 0;
     if (this.tilesToDrop != null) {
       Logger.log("Start DROP animation");
-      timer.setDelay(2);
+      timer.setDelay(4);
       timer.start();
     }
   }
@@ -136,8 +136,8 @@ public class Animation implements ActionListener{
       }
       main.repaint();
     } else if (this.type == Type.DROP) {
-      frame ++;
-      if (frame > 17) {
+      frame++;
+      if (frame > 20) {
         endDrop();
       }
       int speed = 1;

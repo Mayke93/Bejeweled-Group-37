@@ -77,7 +77,7 @@ public class Game {
     tile = TileFactory.generateTile(type, xi, yi);
     tile.setIndex(board.getTileAt(xi, yi).getIndex());
     tile.setImage(new ImageIcon(tile.paths[tile.getIndex()]));
-    Logger.log("$$$$$$ setSpecialTile: " + tile.remove);
+    Logger.log("setSpecialTile: " + tile.remove);
     return tile;
   }
 
