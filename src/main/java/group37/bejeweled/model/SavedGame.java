@@ -150,19 +150,19 @@ public class SavedGame {
           bd[col][row].setIndex(index);
           bd[col][row].setImage(new ImageIcon(bd[col][row].paths[index]));
         }
-        if (((Long)rowJ.get(col)).intValue() > 10 && ((Long)rowJ.get(col)).intValue() < 20) {
+        if (((Long)rowJ.get(col)).intValue() >= 10 && ((Long)rowJ.get(col)).intValue() < 20) {
           bd[col][row] = new StarTile(col,row);
           index = ((Long)rowJ.get(col)).intValue() - 10;
           bd[col][row].setIndex(index);
           bd[col][row].setImage(new ImageIcon(bd[col][row].paths[index]));
         }
-        if (((Long)rowJ.get(col)).intValue() > 20 && ((Long)rowJ.get(col)).intValue() < 30) {
+        if (((Long)rowJ.get(col)).intValue() >= 20 && ((Long)rowJ.get(col)).intValue() < 30) {
           bd[col][row] = new FlameTile(col,row);
           index = ((Long)rowJ.get(col)).intValue() - 20;
           bd[col][row].setIndex(index);
           bd[col][row].setImage(new ImageIcon(bd[col][row].paths[index]));
         }
-        if (((Long)rowJ.get(col)).intValue() > 30) {
+        if (((Long)rowJ.get(col)).intValue() >= 30) {
           bd[col][row] = new HypercubeTile(col,row);
           index = ((Long)rowJ.get(col)).intValue() - 30;
           bd[col][row].setIndex(index);
