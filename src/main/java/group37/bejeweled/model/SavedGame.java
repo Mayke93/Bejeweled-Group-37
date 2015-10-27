@@ -144,30 +144,19 @@ public class SavedGame {
     for (int row = 0; row < SIZE; row++) {
       JSONArray rowJ = (JSONArray) tiles.get(row);
       for (int col = 0; col < SIZE; col++) {
-        if (((Long)rowJ.get(col)).intValue() < 10) {
+        int newIndex = ((Long)rowJ.get(col)).intValue();
+        if (newIndex < 10) {
           bd[col][row] = new NormalTile(col,row);
-          index = ((Long)rowJ.get(col)).intValue();
-          bd[col][row].setIndex(index);
-          bd[col][row].setImage(new ImageIcon(bd[col][row].paths[index]));
-        }
-        if (((Long)rowJ.get(col)).intValue() >= 10 && ((Long)rowJ.get(col)).intValue() < 20) {
+        } else if (newIndex >= 10 && newIndex < 20) {
           bd[col][row] = new StarTile(col,row);
-          index = ((Long)rowJ.get(col)).intValue() - 10;
-          bd[col][row].setIndex(index);
-          bd[col][row].setImage(new ImageIcon(bd[col][row].paths[index]));
-        }
-        if (((Long)rowJ.get(col)).intValue() >= 20 && ((Long)rowJ.get(col)).intValue() < 30) {
+        } else if (newIndex >= 20 && newIndex < 30) {
           bd[col][row] = new FlameTile(col,row);
-          index = ((Long)rowJ.get(col)).intValue() - 20;
-          bd[col][row].setIndex(index);
-          bd[col][row].setImage(new ImageIcon(bd[col][row].paths[index]));
-        }
-        if (((Long)rowJ.get(col)).intValue() >= 30) {
+        } else if (newIndex >= 30) {
           bd[col][row] = new HypercubeTile(col,row);
-          index = ((Long)rowJ.get(col)).intValue() - 30;
-          bd[col][row].setIndex(index);
-          bd[col][row].setImage(new ImageIcon(bd[col][row].paths[index]));
         }
+        index = newIndex % 10;
+        bd[col][row].setIndex(index);
+        bd[col][row].setImage(new ImageIcon(bd[col][row].paths[index]));
       }
     }
     return true;

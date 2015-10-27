@@ -176,8 +176,8 @@ public class SwapHandler {
         tempTiles = getTilesToDeleteFlame(t);
       } else if (t instanceof StarTile && !t.detonate) {
         tempTiles = getTilesToDeleteStar(t);
-      }
-      
+      }      
+
       if (tempTiles != null) {
         for (Tile tt: tempTiles) {
           if (!list.contains(tt)) {
@@ -199,12 +199,16 @@ public class SwapHandler {
   public static List<Tile> getTilesToDeleteHypercube(Tile t1, Tile hyper) {
     List<Tile> tiles = new ArrayList<Tile>();
     tiles.add(hyper);
+    hyper.detonate = true;
     int index = t1.getIndex();
     
+    Tile tempTile = null;
     for (int row = 0; row < board.getWidth(); row++) {        //loop through board
       for (int col = 0; col < board.getHeight(); col++) {
-        if (index == board.getTileAt(row, col).getIndex()) {  //add tile tile if colors are the same
-          tiles.add(board.getTileAt(row, col));
+        tempTile = board.getTileAt(row, col);
+        if (index == tempTile.getIndex() && !tempTile.detonate) {  
+          //add tile tile if colors are the same
+          tiles.add(tempTile);
         }
       }    
     }
