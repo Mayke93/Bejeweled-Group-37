@@ -43,7 +43,11 @@ public class Launcher extends JFrame {
     startscreen = new StartScreen();
     add(startscreen);
 
-    setSize(800, 619);
+    if (System.getProperty("os.name").startsWith("Windows")) {
+      setSize(815, 643);
+    } else {
+      setSize(800,619);
+    }
 
     setTitle("Bejeweled");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
