@@ -232,7 +232,10 @@ public final class GameLogic {
     }
     Random rd = new Random();
     double rand = rd.nextDouble();
-    return res.get((int) rand * (res.size() - 1));
+    if (!res.isEmpty()) {
+      return res.get((int) rand * (res.size() - 1));
+    } 
+    return null;
   }
   
 }

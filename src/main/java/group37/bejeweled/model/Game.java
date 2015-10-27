@@ -1,6 +1,7 @@
 package main.java.group37.bejeweled.model;
 
 import main.java.group37.bejeweled.board.Board;
+import main.java.group37.bejeweled.board.HypercubeTile;
 import main.java.group37.bejeweled.board.NormalTile;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.board.TileFactory;
@@ -135,6 +136,9 @@ public class Game {
       for (int j = 0; j < 7; j++) {
         t0 = board.getTileAt(j, i);
         t1 = board.getTileAt(j + 1, i);
+        if (t0 instanceof HypercubeTile || t1 instanceof HypercubeTile) {
+          return true;
+        }
         if (!possiblemove) { 
           possiblemove = SwapHandler.createsCombination(t0,t1);
         }
