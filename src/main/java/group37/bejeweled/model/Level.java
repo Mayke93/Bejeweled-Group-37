@@ -31,19 +31,13 @@ public class Level extends Observable {
    * Increase the levelnumber when a certain score is reached.
    */
   public void updateLevel(int score) {
+    
     int oldlevel = level;
-    if (score >= 1000 && score < 3500) {
-      level = 2;
+    if (score >= 1000) {
+      level = (int) (score / 1000) + 1;
     }
-    if (score >= 3500 && score < 5500) {
-      level = 3;
-    }
-    if (score >= 5500 && score < 8000) {
-      level = 4;
-    }
-    if (score >= 8000 && score < 11000) {
-      level = 5;
-    }
+
+    
     if (!(level == oldlevel)) {
       System.out.println("level changed!");
       notifyObservers(this,level);
