@@ -92,6 +92,9 @@ public class ButtonActionListener implements ActionListener{
    * This method handles the action taken when the quit game button is clicked.
    */
   public void handleQuitGame() {
+    if (panel instanceof StatusPanelTime) {
+      ((StatusPanelTime) panel).getTimer().cancel();
+    }
     Launcher.launcher.getContentPane().remove(panel.main);
     Launcher.launcher.getContentPane().add(Launcher.startscreen);
   }
