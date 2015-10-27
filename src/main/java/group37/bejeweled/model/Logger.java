@@ -13,7 +13,7 @@ public class Logger {
   public static boolean consoleLog = true;
   private static DateFormat dateFormat = new SimpleDateFormat("dd-MM-yy HH:mm:ss.SSS");
 
-  private static Logger logger = new Logger();
+  private static Logger logger;
   
   private Logger() {
   }
@@ -25,9 +25,10 @@ public class Logger {
   /**
    * Initialize logger.
    */
-  public static void init() {
+  public static synchronized void init() {
     try {
-      if (fileWriter == null) {
+      if (logger == null) {
+        logger = new Logger();
         fileWriter = new FileWriter(LOG_FILE,true);
         writer = new PrintWriter(fileWriter);
       }

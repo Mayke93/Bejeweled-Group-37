@@ -2,13 +2,11 @@ package main.java.group37.bejeweled.board;
 
 import main.java.group37.bejeweled.combination.Combination.Type;
 import main.java.group37.bejeweled.model.Game;
-import main.java.group37.bejeweled.view.Main;
 
-import java.awt.Point;
 import java.awt.Graphics;
+import java.awt.Point;
 
 import javax.swing.ImageIcon;
-import javax.tools.DocumentationTool.Location;
 
 /**
  * Class for initialising a gem on the board.
@@ -55,9 +53,9 @@ public abstract class Tile implements IDrawable {
     this.size = 0;
     this.nextType = Type.NORMAL;
   }
- /*
-   * Paints the tiles on the board
-   * 
+  
+  /**
+   * Paints the tiles on the board.
    */
   public void paintComponent(Graphics graphics, int positionX, int positionY) {
     if (this.remove) {
