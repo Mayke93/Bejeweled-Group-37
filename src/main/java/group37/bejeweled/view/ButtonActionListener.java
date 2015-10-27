@@ -18,7 +18,7 @@ import javax.swing.JFileChooser;
 
 public class ButtonActionListener implements ActionListener{
   private Panel panel;
-  private final JFileChooser fc = new JFileChooser();
+  private final JFileChooser fc = new JFileChooser(System.getProperty("user.dir"));
   private static String current = null;
 
   /**

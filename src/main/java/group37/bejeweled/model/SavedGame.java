@@ -1,7 +1,10 @@
 package main.java.group37.bejeweled.model;
 
 import main.java.group37.bejeweled.board.Board;
+import main.java.group37.bejeweled.board.FlameTile;
+import main.java.group37.bejeweled.board.HypercubeTile;
 import main.java.group37.bejeweled.board.NormalTile;
+import main.java.group37.bejeweled.board.StarTile;
 import main.java.group37.bejeweled.board.Tile;
 
 import org.json.simple.JSONArray;
@@ -21,17 +24,17 @@ public class SavedGame {
   public Game game;
   public static final int SIZE = 8;
   public Board board;
-  
+
   private static SavedGame sg = new SavedGame();
 
   private SavedGame() {
 
   }
-  
+
   public static SavedGame getInstance() {
     return sg;
   }
-  
+
   /**
    * Gets the game.
    * @return game, the game.
@@ -39,11 +42,11 @@ public class SavedGame {
   public Game getGame() {
     return game;
   }
-  
+
   public void setGame(Game game) {
     this.game = game;
   }
-  
+
   public void setBoard(Board bo) {
     this.board = bo;
   }
@@ -63,14 +66,25 @@ public class SavedGame {
     for (int row = 0; row < SIZE; row++) {
       JSONArray list = new JSONArray();
       for (int col = 0; col < SIZE; col++) {
-        list.add(board.getTileAt(col, row).getIndex());
+        if(board.getTileAt(col, row) instanceof NormalTile){
+          list.add(board.getTileAt(col, row).getIndex());
+        }
+        if(board.getTileAt(col, row) instanceof StarTile){
+          list.add(board.getTileAt(col, row).getIndex() + 10);
+        }
+        if(board.getTileAt(col, row) instanceof FlameTile){
+          list.add(board.getTileAt(col, row).getIndex() + 20);
+        }
+        if(board.getTileAt(col, row) instanceof HypercubeTile){
+          list.add(board.getTileAt(col, row).getIndex() + 30);
+        }
       }
       boardArray.add(list);
     }
     obj.put("board", boardArray);
     writeToFile(obj, path);
   }
-  
+
   private void writeToFile(JSONObject obj, String path) {
     FileWriter file;
     try {
@@ -101,7 +115,7 @@ public class SavedGame {
       game.generateRandomBoard();
     }
   }
-  
+
   /**
    * Load JSON datd from file and parse the data into a JSON object.
    * @return object with parsed data from JSON file.
@@ -120,7 +134,7 @@ public class SavedGame {
     }
     return obj;
   }
-  
+
   private boolean getBoard(JSONObject obj,Tile[][] bd) {
     JSONArray tiles = (JSONArray) obj.get("board");
     if (tiles == null) {
@@ -130,10 +144,30 @@ public class SavedGame {
     for (int row = 0; row < SIZE; row++) {
       JSONArray rowJ = (JSONArray) tiles.get(row);
       for (int col = 0; col < SIZE; col++) {
-        bd[col][row] = new NormalTile(col,row);
-        index = ((Long)rowJ.get(col)).intValue();
-        bd[col][row].setIndex(index);
-        bd[col][row].setImage(new ImageIcon(bd[col][row].paths[index]));
+        if (((Long)rowJ.get(col)).intValue() < 10) {
+          bd[col][row] = new NormalTile(col,row);
+          index = ((Long)rowJ.get(col)).intValue();
+          bd[col][row].setIndex(index);
+          bd[col][row].setImage(new ImageIcon(bd[col][row].paths[index]));
+        }
+        if (((Long)rowJ.get(col)).intValue() >= 10 && ((Long)rowJ.get(col)).intValue() < 20) {
+          bd[col][row] = new StarTile(col,row);
+          index = ((Long)rowJ.get(col)).intValue() - 10;
+          bd[col][row].setIndex(index);
+          bd[col][row].setImage(new ImageIcon(bd[col][row].paths[index]));
+        }
+        if (((Long)rowJ.get(col)).intValue() >= 20 && ((Long)rowJ.get(col)).intValue() < 30) {
+          bd[col][row] = new FlameTile(col,row);
+          index = ((Long)rowJ.get(col)).intValue() - 20;
+          bd[col][row].setIndex(index);
+          bd[col][row].setImage(new ImageIcon(bd[col][row].paths[index]));
+        }
+        if (((Long)rowJ.get(col)).intValue() >= 30) {
+          bd[col][row] = new HypercubeTile(col,row);
+          index = ((Long)rowJ.get(col)).intValue() - 30;
+          bd[col][row].setIndex(index);
+          bd[col][row].setImage(new ImageIcon(bd[col][row].paths[index]));
+        }
       }
     }
     return true;
@@ -146,7 +180,7 @@ public class SavedGame {
     Logger.log(" Read Score: " + score);
     return score1;
   }
-  
+
   private int getLevel(JSONObject obj) {
     Long level = (Long) obj.get("level");
     Integer level1 = new Integer(level.intValue());
@@ -154,5 +188,5 @@ public class SavedGame {
     Logger.log("Read Level: " + level);
     return level1;
   }
-  
+
 }

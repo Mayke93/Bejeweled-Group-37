@@ -93,6 +93,7 @@ public abstract class Panel extends JPanel implements Observer {
    */
   public void endGame() {
     Logger.log("End Game");
+    gameover = true;
 
     JLabel label = new JLabel("<html>No More Combinations!<br>Press Quit</html>", JLabel.CENTER);
     label.setForeground(Color.WHITE);
@@ -104,6 +105,7 @@ public abstract class Panel extends JPanel implements Observer {
     setAlignmentX(Component.CENTER_ALIGNMENT);
     add(label);
     saveGame.setVisible(false);
+    hint.setVisible(false);
     
     this.main.repaint();
     this.repaint();
