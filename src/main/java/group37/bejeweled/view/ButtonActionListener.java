@@ -18,7 +18,7 @@ import javax.swing.JFileChooser;
 
 public class ButtonActionListener implements ActionListener{
   private Panel panel;
-  private final JFileChooser fc = new JFileChooser();
+  private final JFileChooser fc = new JFileChooser(System.getProperty("user.dir"));
   private static String current = null;
 
   /**
@@ -67,7 +67,9 @@ public class ButtonActionListener implements ActionListener{
    */
   public void handleHint() {
     ArrayList<Tile> hint = GameLogic.getHint();
-    panel.main.setFocusHint(hint.get(0).getLoc(), hint.get(1).getLoc());
+    if (!(hint == null)) {
+      panel.main.setFocusHint(hint.get(0).getLoc(), hint.get(1).getLoc());
+    }
   }
   
   /**

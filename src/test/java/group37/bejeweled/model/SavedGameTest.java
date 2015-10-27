@@ -1,20 +1,19 @@
 package test.java.group37.bejeweled.model;
 
-import static org.junit.Assert.*;
-
-import javax.swing.JFrame;
-
-import org.junit.Test;
-
-import main.java.group37.bejeweled.model.Game;
-import main.java.group37.bejeweled.model.SavedGame;
-import main.java.group37.bejeweled.view.Main;
-import main.java.group37.bejeweled.view.StatusPanel;
+//import static org.junit.Assert.*;
+//
+//import javax.swing.JFrame;
+//
+//import org.junit.Test;
+//
+//import main.java.group37.bejeweled.model.Game;
+//import main.java.group37.bejeweled.model.SavedGame;
+//import main.java.group37.bejeweled.view.Main;
+//import main.java.group37.bejeweled.view.StatusPanel;
 
 /**
  * class for testing saved game.
  * @author Mayke
- * Not yet  implemented
  */
 public class SavedGameTest {
 //

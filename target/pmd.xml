@@ -1,85 +1,213 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="5.1.2" timestamp="2015-09-23T21:07:48.001">
-<file name="M:\Repositories\Bejeweled-Group-37\src\main\java\group37\bejeweled\Board\Board.java">
-<violation beginline="3" endline="3" begincolumn="1" endcolumn="53" rule="UnusedImports" ruleset="Import Statements" package="main.java.group37.bejeweled.Board" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
-Avoid unused imports such as 'main.java.group37.bejeweled.model.Combination'
+<pmd version="5.1.2" timestamp="2015-10-27T10:18:40.421">
+<file name="M:\Repositories\Bejeweled-Group-37\src\main\java\group37\bejeweled\board\Board.java">
+<violation beginline="3" endline="3" begincolumn="1" endcolumn="22" rule="UnusedImports" ruleset="Import Statements" package="main.java.group37.bejeweled.board" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.awt.Point'
 </violation>
-<violation beginline="86" endline="86" begincolumn="13" endcolumn="69" rule="UselessParentheses" ruleset="Unnecessary" package="main.java.group37.bejeweled.Board" class="Board" method="validBorders" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/unnecessary.html#UselessParentheses" priority="4">
+<violation beginline="4" endline="4" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statements" package="main.java.group37.bejeweled.board" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.util.ArrayList'
+</violation>
+<violation beginline="6" endline="6" begincolumn="1" endcolumn="22" rule="UnusedImports" ruleset="Import Statements" package="main.java.group37.bejeweled.board" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.util.List'
+</violation>
+<violation beginline="79" endline="79" begincolumn="13" endcolumn="69" rule="UselessParentheses" ruleset="Unnecessary" package="main.java.group37.bejeweled.board" class="Board" method="validBorders" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/unnecessary.html#UselessParentheses" priority="4">
 Useless parentheses.
 </violation>
-<violation beginline="97" endline="99" begincolumn="7" endcolumn="7" rule="CollapsibleIfStatements" ruleset="Basic" package="main.java.group37.bejeweled.Board" class="Board" method="isEmpty" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/basic.html#CollapsibleIfStatements" priority="3">
+<violation beginline="90" endline="92" begincolumn="7" endcolumn="7" rule="CollapsibleIfStatements" ruleset="Basic" package="main.java.group37.bejeweled.board" class="Board" method="isEmpty" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/basic.html#CollapsibleIfStatements" priority="3">
 These nested if statements could be combined
 </violation>
-<violation beginline="220" endline="222" begincolumn="15" endcolumn="15" rule="CollapsibleIfStatements" ruleset="Basic" package="main.java.group37.bejeweled.Board" class="Board" method="equals" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/basic.html#CollapsibleIfStatements" priority="3">
+<violation beginline="124" endline="126" begincolumn="15" endcolumn="15" rule="CollapsibleIfStatements" ruleset="Basic" package="main.java.group37.bejeweled.board" class="Board" method="equals" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/basic.html#CollapsibleIfStatements" priority="3">
 These nested if statements could be combined
 </violation>
 </file>
-<file name="M:\Repositories\Bejeweled-Group-37\src\main\java\group37\bejeweled\Board\Tile.java">
-<violation beginline="3" endline="3" begincolumn="1" endcolumn="22" rule="UnusedImports" ruleset="Import Statements" package="main.java.group37.bejeweled.Board" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
-Avoid unused imports such as 'java.awt.Image'
+<file name="M:\Repositories\Bejeweled-Group-37\src\main\java\group37\bejeweled\board\FlameTile.java">
+<violation beginline="69" endline="69" begincolumn="18" endcolumn="35" rule="OverrideBothEqualsAndHashcode" ruleset="Basic" package="main.java.group37.bejeweled.board" class="FlameTile" method="equals" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/basic.html#OverrideBothEqualsAndHashcode" priority="3">
+Ensure you override both equals() and hashCode()
 </violation>
-<violation beginline="6" endline="6" begincolumn="1" endcolumn="24" rule="UnusedImports" ruleset="Import Statements" package="main.java.group37.bejeweled.Board" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
-Avoid unused imports such as 'java.util.Arrays'
-</violation>
-<violation beginline="203" endline="203" begincolumn="13" endcolumn="36" rule="UselessParentheses" ruleset="Unnecessary" package="main.java.group37.bejeweled.Board" class="Tile" method="equalsColor" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/unnecessary.html#UselessParentheses" priority="4">
-Useless parentheses.
-</violation>
-<violation beginline="219" endline="219" begincolumn="13" endcolumn="96" rule="UselessParentheses" ruleset="Unnecessary" package="main.java.group37.bejeweled.Board" class="Tile" method="equals" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/unnecessary.html#UselessParentheses" priority="4">
+<violation beginline="74" endline="74" begincolumn="13" endcolumn="96" rule="UselessParentheses" ruleset="Unnecessary" package="main.java.group37.bejeweled.board" class="FlameTile" method="equals" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/unnecessary.html#UselessParentheses" priority="4">
 Useless parentheses.
 </violation>
 </file>
-<file name="M:\Repositories\Bejeweled-Group-37\src\main\java\group37\bejeweled\model\CombinationFinder.java">
-<violation beginline="55" endline="57" begincolumn="11" endcolumn="11" rule="CollapsibleIfStatements" ruleset="Basic" package="main.java.group37.bejeweled.model" class="CombinationFinder" method="getAllCombinationsOnBoard" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/basic.html#CollapsibleIfStatements" priority="3">
+<file name="M:\Repositories\Bejeweled-Group-37\src\main\java\group37\bejeweled\board\HypercubeTile.java">
+<violation beginline="66" endline="66" begincolumn="18" endcolumn="35" rule="OverrideBothEqualsAndHashcode" ruleset="Basic" package="main.java.group37.bejeweled.board" class="HypercubeTile" method="equals" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/basic.html#OverrideBothEqualsAndHashcode" priority="3">
+Ensure you override both equals() and hashCode()
+</violation>
+<violation beginline="71" endline="71" begincolumn="13" endcolumn="96" rule="UselessParentheses" ruleset="Unnecessary" package="main.java.group37.bejeweled.board" class="HypercubeTile" method="equals" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/unnecessary.html#UselessParentheses" priority="4">
+Useless parentheses.
+</violation>
+</file>
+<file name="M:\Repositories\Bejeweled-Group-37\src\main\java\group37\bejeweled\board\IDrawable.java">
+<violation beginline="6" endline="6" begincolumn="10" endcolumn="78" rule="UnusedModifier" ruleset="Unused Code" package="main.java.group37.bejeweled.board" class="IDrawable" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/unusedcode.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+</file>
+<file name="M:\Repositories\Bejeweled-Group-37\src\main\java\group37\bejeweled\board\NormalTile.java">
+<violation beginline="54" endline="54" begincolumn="18" endcolumn="35" rule="OverrideBothEqualsAndHashcode" ruleset="Basic" package="main.java.group37.bejeweled.board" class="NormalTile" method="equals" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/basic.html#OverrideBothEqualsAndHashcode" priority="3">
+Ensure you override both equals() and hashCode()
+</violation>
+<violation beginline="59" endline="59" begincolumn="13" endcolumn="96" rule="UselessParentheses" ruleset="Unnecessary" package="main.java.group37.bejeweled.board" class="NormalTile" method="equals" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/unnecessary.html#UselessParentheses" priority="4">
+Useless parentheses.
+</violation>
+</file>
+<file name="M:\Repositories\Bejeweled-Group-37\src\main\java\group37\bejeweled\board\StarTile.java">
+<violation beginline="66" endline="66" begincolumn="18" endcolumn="35" rule="OverrideBothEqualsAndHashcode" ruleset="Basic" package="main.java.group37.bejeweled.board" class="StarTile" method="equals" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/basic.html#OverrideBothEqualsAndHashcode" priority="3">
+Ensure you override both equals() and hashCode()
+</violation>
+<violation beginline="71" endline="71" begincolumn="13" endcolumn="96" rule="UselessParentheses" ruleset="Unnecessary" package="main.java.group37.bejeweled.board" class="StarTile" method="equals" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/unnecessary.html#UselessParentheses" priority="4">
+Useless parentheses.
+</violation>
+</file>
+<file name="M:\Repositories\Bejeweled-Group-37\src\main\java\group37\bejeweled\board\Tile.java">
+<violation beginline="35" endline="35" begincolumn="17" endcolumn="21" rule="UnusedPrivateField" ruleset="Unused Code" package="main.java.group37.bejeweled.board" class="Tile" variable="focus" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'focus'.
+</violation>
+<violation beginline="211" endline="211" begincolumn="13" endcolumn="36" rule="UselessParentheses" ruleset="Unnecessary" package="main.java.group37.bejeweled.board" class="Tile" method="equalsColor" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/unnecessary.html#UselessParentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="226" endline="226" begincolumn="13" endcolumn="96" rule="UselessParentheses" ruleset="Unnecessary" package="main.java.group37.bejeweled.board" class="Tile" method="equals" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/unnecessary.html#UselessParentheses" priority="4">
+Useless parentheses.
+</violation>
+</file>
+<file name="M:\Repositories\Bejeweled-Group-37\src\main\java\group37\bejeweled\combination\CombinationFinder.java">
+<violation beginline="54" endline="56" begincolumn="11" endcolumn="11" rule="CollapsibleIfStatements" ruleset="Basic" package="main.java.group37.bejeweled.combination" class="CombinationFinder" method="getAllCombinationsOnBoard" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/basic.html#CollapsibleIfStatements" priority="3">
 These nested if statements could be combined
 </violation>
-<violation beginline="62" endline="64" begincolumn="11" endcolumn="11" rule="CollapsibleIfStatements" ruleset="Basic" package="main.java.group37.bejeweled.model" class="CombinationFinder" method="getAllCombinationsOnBoard" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/basic.html#CollapsibleIfStatements" priority="3">
+<violation beginline="61" endline="63" begincolumn="11" endcolumn="11" rule="CollapsibleIfStatements" ruleset="Basic" package="main.java.group37.bejeweled.combination" class="CombinationFinder" method="getAllCombinationsOnBoard" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/basic.html#CollapsibleIfStatements" priority="3">
 These nested if statements could be combined
 </violation>
 </file>
-<file name="M:\Repositories\Bejeweled-Group-37\src\main\java\group37\bejeweled\model\Game.java">
-<violation beginline="17" endline="17" begincolumn="1" endcolumn="50" rule="UnusedImports" ruleset="Import Statements" package="main.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
-Avoid unused imports such as 'main.java.group37.bejeweled.view.Animation'
+<file name="M:\Repositories\Bejeweled-Group-37\src\main\java\group37\bejeweled\combination\FlameCombination.java">
+<violation beginline="18" endline="18" begincolumn="18" endcolumn="35" rule="OverrideBothEqualsAndHashcode" ruleset="Basic" package="main.java.group37.bejeweled.combination" class="FlameCombination" method="equals" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/basic.html#OverrideBothEqualsAndHashcode" priority="3">
+Ensure you override both equals() and hashCode()
 </violation>
-<violation beginline="34" endline="34" begincolumn="18" endcolumn="29" rule="UnusedPrivateField" ruleset="Unused Code" package="main.java.group37.bejeweled.model" class="Game" variable="swappedTiles" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/unusedcode.html#UnusedPrivateField" priority="3">
-Avoid unused private fields such as 'swappedTiles'.
+</file>
+<file name="M:\Repositories\Bejeweled-Group-37\src\main\java\group37\bejeweled\combination\HypercubeCombination.java">
+<violation beginline="18" endline="18" begincolumn="18" endcolumn="35" rule="OverrideBothEqualsAndHashcode" ruleset="Basic" package="main.java.group37.bejeweled.combination" class="HypercubeCombination" method="equals" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/basic.html#OverrideBothEqualsAndHashcode" priority="3">
+Ensure you override both equals() and hashCode()
+</violation>
+</file>
+<file name="M:\Repositories\Bejeweled-Group-37\src\main\java\group37\bejeweled\combination\NormalCombination.java">
+<violation beginline="18" endline="18" begincolumn="18" endcolumn="35" rule="OverrideBothEqualsAndHashcode" ruleset="Basic" package="main.java.group37.bejeweled.combination" class="NormalCombination" method="equals" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/basic.html#OverrideBothEqualsAndHashcode" priority="3">
+Ensure you override both equals() and hashCode()
+</violation>
+</file>
+<file name="M:\Repositories\Bejeweled-Group-37\src\main\java\group37\bejeweled\combination\StarCombination.java">
+<violation beginline="18" endline="18" begincolumn="18" endcolumn="35" rule="OverrideBothEqualsAndHashcode" ruleset="Basic" package="main.java.group37.bejeweled.combination" class="StarCombination" method="equals" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/basic.html#OverrideBothEqualsAndHashcode" priority="3">
+Ensure you override both equals() and hashCode()
 </violation>
 </file>
 <file name="M:\Repositories\Bejeweled-Group-37\src\main\java\group37\bejeweled\model\GameLogic.java">
-<violation beginline="137" endline="137" begincolumn="62" endcolumn="66" rule="UnusedFormalParameter" ruleset="Unused Code" package="main.java.group37.bejeweled.model" class="GameLogic" method="generateSpecialGemFlameHypbercube" variable="combi" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/unusedcode.html#UnusedFormalParameter" priority="3">
-Avoid unused method parameters such as 'combi'.
-</violation>
-<violation beginline="141" endline="141" begincolumn="51" endcolumn="55" rule="UnusedFormalParameter" ruleset="Unused Code" package="main.java.group37.bejeweled.model" class="GameLogic" method="generateSpecialGemStar" variable="combi" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/unusedcode.html#UnusedFormalParameter" priority="3">
-Avoid unused method parameters such as 'combi'.
+<violation beginline="15" endline="15" begincolumn="1" endcolumn="52" rule="UnusedImports" ruleset="Import Statements" package="main.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'main.java.group37.bejeweled.view.StatusPanel'
 </violation>
 </file>
-<file name="M:\Repositories\Bejeweled-Group-37\src\main\java\group37\bejeweled\model\SavedGame.java">
-<violation beginline="80" endline="80" begincolumn="31" endcolumn="38" rule="UnusedLocalVariable" ruleset="Unused Code" package="main.java.group37.bejeweled.model" class="SavedGame$JsonReader" method="main" variable="listiter" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/unusedcode.html#UnusedLocalVariable" priority="3">
-Avoid unused local variables such as 'listiter'.
+<file name="M:\Repositories\Bejeweled-Group-37\src\main\java\group37\bejeweled\model\SwapHandler.java">
+<violation beginline="26" endline="26" begincolumn="25" endcolumn="36" rule="UnusedPrivateField" ruleset="Unused Code" package="main.java.group37.bejeweled.model" class="SwapHandler" variable="swappedTiles" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'swappedTiles'.
+</violation>
+<violation beginline="214" endline="214" begincolumn="25" endcolumn="25" rule="EmptyStatementNotInLoop" ruleset="Empty Code" package="main.java.group37.bejeweled.model" class="SwapHandler" method="createsCombination" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/empty.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
 </violation>
 </file>
-<file name="M:\Repositories\Bejeweled-Group-37\src\main\java\group37\bejeweled\view\Main.java">
-<violation beginline="3" endline="3" begincolumn="1" endcolumn="47" rule="UnusedImports" ruleset="Import Statements" package="main.java.group37.bejeweled.view" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
-Avoid unused imports such as 'main.java.group37.bejeweled.Board.Board'
-</violation>
-<violation beginline="4" endline="4" begincolumn="1" endcolumn="54" rule="UnusedImports" ruleset="Import Statements" package="main.java.group37.bejeweled.view" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
-Avoid unused imports such as 'main.java.group37.bejeweled.Board.BoardFactory'
-</violation>
-<violation beginline="18" endline="18" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statements" package="main.java.group37.bejeweled.view" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
-Avoid unused imports such as 'java.io.IOException'
-</violation>
-<violation beginline="48" endline="48" begincolumn="21" endcolumn="28" rule="UnusedPrivateField" ruleset="Unused Code" package="main.java.group37.bejeweled.view" class="Main" variable="saveGame" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/unusedcode.html#UnusedPrivateField" priority="3">
-Avoid unused private fields such as 'saveGame'.
-</violation>
-<violation beginline="52" endline="52" begincolumn="23" endcolumn="27" rule="UnusedPrivateField" ruleset="Unused Code" package="main.java.group37.bejeweled.view" class="Main" variable="panel" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/unusedcode.html#UnusedPrivateField" priority="3">
-Avoid unused private fields such as 'panel'.
-</violation>
-<violation beginline="99" endline="99" begincolumn="13" endcolumn="32" rule="UselessParentheses" ruleset="Unnecessary" package="main.java.group37.bejeweled.view" class="Main" method="withinBoundaries" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/unnecessary.html#UselessParentheses" priority="4">
-Useless parentheses.
+<file name="M:\Repositories\Bejeweled-Group-37\src\main\java\group37\bejeweled\view\HideComponentBehaviour.java">
+<violation beginline="7" endline="7" begincolumn="10" endcolumn="35" rule="UnusedModifier" ruleset="Unused Code" package="main.java.group37.bejeweled.view" class="HideComponentBehaviour" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/unusedcode.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
 </violation>
 </file>
-<file name="M:\Repositories\Bejeweled-Group-37\src\test\java\group37\bejeweled\board\TileTest.java">
-<violation beginline="9" endline="9" begincolumn="1" endcolumn="22" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.board" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
-Avoid unused imports such as 'java.awt.Image'
+<file name="M:\Repositories\Bejeweled-Group-37\src\test\java\group37\bejeweled\board\BoardTest.java">
+<violation beginline="1" endline="292" begincolumn="1" endcolumn="3" rule="TooManyStaticImports" ruleset="Import Statements" package="test.java.group37.bejeweled.board" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#TooManyStaticImports" priority="3">
+Too many static imports may lead to messy code
+</violation>
+<violation beginline="10" endline="10" begincolumn="1" endcolumn="55" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.board" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'main.java.group37.bejeweled.board.HypercubeTile'
+</violation>
+<violation beginline="15" endline="15" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.board" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.util.ArrayList'
+</violation>
+<violation beginline="16" endline="16" begincolumn="1" endcolumn="22" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.board" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.util.List'
+</violation>
+</file>
+<file name="M:\Repositories\Bejeweled-Group-37\src\test\java\group37\bejeweled\model\CombinationFinderTest.java">
+<violation beginline="11" endline="11" begincolumn="1" endcolumn="64" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'main.java.group37.bejeweled.combination.Combination.Type'
+</violation>
+</file>
+<file name="M:\Repositories\Bejeweled-Group-37\src\test\java\group37\bejeweled\model\GameLogicTest.java">
+<violation beginline="5" endline="5" begincolumn="1" endcolumn="26" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javax.swing.JFrame'
+</violation>
+<violation beginline="7" endline="7" begincolumn="1" endcolumn="22" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.junit.Test'
+</violation>
+<violation beginline="12" endline="12" begincolumn="1" endcolumn="46" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'main.java.group37.bejeweled.model.Game'
+</violation>
+<violation beginline="14" endline="14" begincolumn="1" endcolumn="45" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'main.java.group37.bejeweled.view.Main'
+</violation>
+<violation beginline="15" endline="15" begincolumn="1" endcolumn="52" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'main.java.group37.bejeweled.view.StatusPanel'
+</violation>
+</file>
+<file name="M:\Repositories\Bejeweled-Group-37\src\test\java\group37\bejeweled\model\GameTest.java">
+<violation beginline="5" endline="5" begincolumn="1" endcolumn="22" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.awt.Point'
+</violation>
+<violation beginline="7" endline="7" begincolumn="1" endcolumn="26" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javax.swing.JFrame'
+</violation>
+<violation beginline="9" endline="9" begincolumn="1" endcolumn="22" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.junit.Test'
+</violation>
+<violation beginline="11" endline="11" begincolumn="1" endcolumn="47" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'main.java.group37.bejeweled.board.Board'
+</violation>
+<violation beginline="12" endline="12" begincolumn="1" endcolumn="46" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'main.java.group37.bejeweled.board.Tile'
+</violation>
+<violation beginline="13" endline="13" begincolumn="1" endcolumn="65" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'main.java.group37.bejeweled.combination.CombinationFinder'
+</violation>
+<violation beginline="14" endline="14" begincolumn="1" endcolumn="64" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'main.java.group37.bejeweled.combination.Combination.Type'
+</violation>
+<violation beginline="15" endline="15" begincolumn="1" endcolumn="46" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'main.java.group37.bejeweled.model.Game'
+</violation>
+<violation beginline="16" endline="16" begincolumn="1" endcolumn="45" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'main.java.group37.bejeweled.view.Main'
+</violation>
+<violation beginline="17" endline="17" begincolumn="1" endcolumn="52" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'main.java.group37.bejeweled.view.StatusPanel'
+</violation>
+</file>
+<file name="M:\Repositories\Bejeweled-Group-37\src\test\java\group37\bejeweled\model\SavedGameTest.java">
+<violation beginline="5" endline="5" begincolumn="1" endcolumn="26" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javax.swing.JFrame'
+</violation>
+<violation beginline="7" endline="7" begincolumn="1" endcolumn="22" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.junit.Test'
+</violation>
+<violation beginline="9" endline="9" begincolumn="1" endcolumn="46" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'main.java.group37.bejeweled.model.Game'
+</violation>
+<violation beginline="10" endline="10" begincolumn="1" endcolumn="51" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'main.java.group37.bejeweled.model.SavedGame'
+</violation>
+<violation beginline="11" endline="11" begincolumn="1" endcolumn="45" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'main.java.group37.bejeweled.view.Main'
+</violation>
+<violation beginline="12" endline="12" begincolumn="1" endcolumn="52" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'main.java.group37.bejeweled.view.StatusPanel'
+</violation>
+</file>
+<file name="M:\Repositories\Bejeweled-Group-37\src\test\java\group37\bejeweled\model\StatusPanelTest.java">
+<violation beginline="7" endline="7" begincolumn="1" endcolumn="44" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'main.java.group37.bejeweled.Launcher'
+</violation>
+<violation beginline="8" endline="8" begincolumn="1" endcolumn="52" rule="UnusedImports" ruleset="Import Statements" package="test.java.group37.bejeweled.model" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.2/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'main.java.group37.bejeweled.view.StartScreen'
 </violation>
 </file>
 </pmd>

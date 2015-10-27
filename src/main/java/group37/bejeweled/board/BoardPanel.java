@@ -9,7 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class BoardFactory extends JPanel {
+public class BoardPanel extends JPanel {
   
   public static final int SIZE = 8; //Board size is 8x8
   public static final Point LOCATION = new Point(241,40);
@@ -18,7 +18,7 @@ public class BoardFactory extends JPanel {
   private Game game;
 
   
-  public BoardFactory(Game ga) {
+  public BoardPanel(Game ga) {
     game = ga;
   }
   
