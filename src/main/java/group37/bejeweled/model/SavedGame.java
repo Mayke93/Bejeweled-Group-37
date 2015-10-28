@@ -6,6 +6,8 @@ import main.java.group37.bejeweled.board.HypercubeTile;
 import main.java.group37.bejeweled.board.NormalTile;
 import main.java.group37.bejeweled.board.StarTile;
 import main.java.group37.bejeweled.board.Tile;
+import main.java.group37.bejeweled.board.TileFactory;
+import main.java.group37.bejeweled.combination.Combination.Type;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -146,13 +148,13 @@ public class SavedGame {
       for (int col = 0; col < SIZE; col++) {
         int newIndex = ((Long)rowJ.get(col)).intValue();
         if (newIndex < 10) {
-          bd[col][row] = new NormalTile(col,row);
+          bd[col][row] = TileFactory.generateTile(Type.NORMAL,col,row);
         } else if (newIndex >= 10 && newIndex < 20) {
-          bd[col][row] = new StarTile(col,row);
+          bd[col][row] = TileFactory.generateTile(Type.STAR,col,row);
         } else if (newIndex >= 20 && newIndex < 30) {
-          bd[col][row] = new FlameTile(col,row);
+          bd[col][row] = TileFactory.generateTile(Type.FLAME,col,row);
         } else if (newIndex >= 30) {
-          bd[col][row] = new HypercubeTile(col,row);
+          bd[col][row] = TileFactory.generateTile(Type.HYPERCUBE,col,row);
         }
         index = newIndex % 10;
         bd[col][row].setIndex(index);

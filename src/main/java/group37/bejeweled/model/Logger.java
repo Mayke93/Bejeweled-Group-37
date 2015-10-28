@@ -12,10 +12,9 @@ public class Logger {
   private static PrintWriter writer = null;
   public static boolean consoleLog = true;
 
-  private static Logger logger;
+  private static Logger logger = null;
   
-  private Logger() {
-  }
+  private Logger() {}
   
   public static Logger getInstance() {
     return logger;

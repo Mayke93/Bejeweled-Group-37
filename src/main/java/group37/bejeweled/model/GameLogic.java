@@ -125,6 +125,11 @@ public final class GameLogic {
         }
       }
     }
+
+    deleteTilesFromBoard();
+  }
+  
+  private static void deleteTilesFromBoard() {
     Tile tile = new NormalTile(0,0);
     for (int row = board.getWidth() - 1; row >= 0; row--) {
       for (int col = 0; col < board.getWidth(); col++) {

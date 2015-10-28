@@ -71,7 +71,6 @@ public class Animation implements ActionListener{
   public void startRemove(List<Tile> tiles) {
     this.tiles = tiles;
     this.frame = 0;
-    System.out.println(tiles.size());
     for (Tile t: this.tiles) {
       t.translation = new Point(0,0);
       t.size = 0;
@@ -97,55 +96,76 @@ public class Animation implements ActionListener{
    */
   public void actionPerformed(ActionEvent event) {
     if (this.type == Type.SWAP) {
-      frame++;
-      int speed = 4;
-      if (frame > 16) {
-        endSwap();
-      } else {
-        int direction = 1;
-        if (t0.getX() == t1.getX()) {
-          if (t0.getY() < t1.getY()) { 
-            direction = 1; 
-          } else { 
-            direction = -1;
-          }
-          t0.updateTranslation(0,speed * direction);
-          t1.updateTranslation(0,-speed * direction);
-        } else {                
-          if (t0.getX() < t1.getX()) { 
-            direction = 1;
-          } else {
-            direction = -1;
-          }
-          t0.updateTranslation(speed * direction, 0);
-          t1.updateTranslation(-speed * direction, 0);
-        }
-      }    
-      main.repaint();
+      performSwap();
     } else if (this.type == Type.REMOVE) {
-      frame++;
-      int speed = 1;
-      if (frame > 32) {
-        endRemove(); 
-      } else {
-        for (Tile t: this.tiles) {
-          t.translation.x += speed;
-          t.translation.y += speed;
-          t.size += 2 * speed;
-        }
-      }
-      main.repaint();
+      performRemove();
     } else if (this.type == Type.DROP) {
-      frame++;
-      if (frame > 20) {
-        endDrop();
-      }
-      int speed = 1;
-      for (Tile tile: this.tilesToDrop) {
-        tile.updateTranslation(0, speed * tile.getLevel());
-      }
-      main.repaint();
+      performDrop();
     }
+  }
+  
+  /**
+   * Perform a swap action for the animation.
+   */
+  private void performSwap() {
+    frame++;
+    int speed = 4;
+    if (frame > 16) {
+      endSwap();
+    } else {
+      int direction = 1;
+      if (t0.getX() == t1.getX()) {
+        if (t0.getY() < t1.getY()) { 
+          direction = 1; 
+        } else { 
+          direction = -1;
+        }
+        t0.updateTranslation(0,speed * direction);
+        t1.updateTranslation(0,-speed * direction);
+      } else {                
+        if (t0.getX() < t1.getX()) { 
+          direction = 1;
+        } else {
+          direction = -1;
+        }
+        t0.updateTranslation(speed * direction, 0);
+        t1.updateTranslation(-speed * direction, 0);
+      }
+    }    
+    main.repaint();   
+  }
+  
+  /**
+   * Perform a remove action for the animation.
+   */
+  private void performRemove() {
+    frame++;
+    int speed = 1;
+    if (frame > 32) {
+      endRemove(); 
+    } else {
+      for (Tile t: this.tiles) {
+        t.translation.x += speed;
+        t.translation.y += speed;
+        t.size += 2 * speed;
+      }
+    }
+    main.repaint();
+  }
+  
+  /**
+   * Perform a drop action for the animation.
+   */
+  private void performDrop() {
+    frame++;
+    if (frame > 20) {
+      endDrop();
+    }
+    int speed = 1;
+    for (Tile tile: this.tilesToDrop) {
+      tile.updateTranslation(0, speed * tile.getLevel());
+    }
+    main.repaint();
   }
   
   /**
