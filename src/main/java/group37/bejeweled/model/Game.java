@@ -2,7 +2,6 @@ package main.java.group37.bejeweled.model;
 
 import main.java.group37.bejeweled.board.Board;
 import main.java.group37.bejeweled.board.HypercubeTile;
-import main.java.group37.bejeweled.board.NormalTile;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.board.TileFactory;
 import main.java.group37.bejeweled.combination.Combination.Type;
@@ -58,7 +57,7 @@ public class Game {
    * @return a random tile as a Tile object
    */
   public Tile setRandomTile(int xi, int yi) { 
-    Tile tile = new NormalTile(xi, yi);
+    Tile tile = TileFactory.generateTile(Type.NORMAL,xi,yi);
     Random random = new Random();
     tile.setIndex(random.nextInt(7));
     tile.setImage(new ImageIcon(tile.paths[tile.getIndex()]));

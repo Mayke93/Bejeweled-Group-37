@@ -2,7 +2,6 @@ package main.java.group37.bejeweled.model;
 
 import main.java.group37.bejeweled.board.Board;
 import main.java.group37.bejeweled.board.FlameTile;
-import main.java.group37.bejeweled.board.NormalTile;
 import main.java.group37.bejeweled.board.StarTile;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.combination.Combination;
@@ -13,7 +12,6 @@ import main.java.group37.bejeweled.view.Main;
 import main.java.group37.bejeweled.view.Panel;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -100,7 +98,8 @@ public final class GameLogic {
     }
     boardPanel.animations.setDropTiles(tilesToDrop);
     boardPanel.animations.setType(Animation.Type.REMOVE);
-    boardPanel.animations.startRemove(tiles);
+    boardPanel.animations.setRemoveTiles(tiles);
+    boardPanel.animations.start();
   }
 
   /**
@@ -130,7 +129,7 @@ public final class GameLogic {
   }
   
   private static void deleteTilesFromBoard() {
-    Tile tile = new NormalTile(0,0);
+    Tile tile = null;
     for (int row = board.getWidth() - 1; row >= 0; row--) {
       for (int col = 0; col < board.getWidth(); col++) {
         tile = board.getTileAt(col, row);
