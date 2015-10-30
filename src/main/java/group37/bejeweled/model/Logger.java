@@ -11,12 +11,10 @@ public class Logger {
   private static FileWriter fileWriter = null;
   private static PrintWriter writer = null;
   public static boolean consoleLog = true;
-  private static DateFormat dateFormat = new SimpleDateFormat("dd-MM-yy HH:mm:ss.SSS");
 
-  private static Logger logger;
+  private static Logger logger = null;
   
-  private Logger() {
-  }
+  private Logger() {}
   
   public static Logger getInstance() {
     return logger;
@@ -51,6 +49,7 @@ public class Logger {
    * @param message to log.
    */
   private void writeToLog(String message) {
+    DateFormat dateFormat = new SimpleDateFormat("dd-MM-yy HH:mm:ss.SSS");
     if (message != null && fileWriter != null && writer != null) {
       Date date = new Date();
       message = dateFormat.format(date) + " - " + message;

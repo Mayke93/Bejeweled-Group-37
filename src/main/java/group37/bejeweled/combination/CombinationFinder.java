@@ -113,7 +113,9 @@ public class CombinationFinder {
       } else if (tiles.size() == 5) {
         combi = CombinationFactory.makeCombination(Type.HYPERCUBE);
       }
-      combi.setTiles(tiles);
+      if (!(combi == null)) {
+        combi.setTiles(tiles);
+      }
     }
     return combi;
   }
@@ -161,7 +163,9 @@ public class CombinationFinder {
       } else if (tiles.size() == 5) {
         combi = CombinationFactory.makeCombination(Type.HYPERCUBE);
       }
-      combi.setTiles(tiles);
+      if (!(combi == null)) {
+        combi.setTiles(tiles);
+      }
     }
     
     return combi;

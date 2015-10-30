@@ -2,8 +2,6 @@ package main.java.group37.bejeweled.model;
 
 import main.java.group37.bejeweled.board.Board;
 import main.java.group37.bejeweled.board.FlameTile;
-import main.java.group37.bejeweled.board.NormalTile;
-//import main.java.group37.bejeweled.board.HypercubeTile;
 import main.java.group37.bejeweled.board.StarTile;
 import main.java.group37.bejeweled.board.Tile;
 import main.java.group37.bejeweled.combination.Combination;
@@ -12,7 +10,6 @@ import main.java.group37.bejeweled.combination.CombinationFinder;
 import main.java.group37.bejeweled.view.Animation;
 import main.java.group37.bejeweled.view.Main;
 import main.java.group37.bejeweled.view.Panel;
-import main.java.group37.bejeweled.view.StatusPanel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,13 +45,13 @@ public final class GameLogic {
 
     for (Combination comb: chains) {
       addTiles(comb.getTiles(), tiles);
-      if (comb.containsSpecialGem() == null) {
+      if (!comb.containsSpecialGem()) {
         score.updateScore(comb);         //update normal score
       }
       Logger.log("Comb type: " + comb.getType());
       Logger.log("containsSpecialGem: " + comb.containsSpecialGem());
       
-      if (comb.containsSpecialGem() != null) {
+      if (comb.containsSpecialGem()) {
         Logger.log("Special gem in combination: " + comb.getType());
         List<Tile> gemTiles = getTilesToDeleteSpecialGem(comb);
         score.updateScoreSpecialGem(comb, gemTiles); //update score for detonating special gem
@@ -70,7 +67,12 @@ public final class GameLogic {
     deleteTiles(tiles);
   }
   
-  private static void addTiles(List<Tile> tilesToAdd, List<Tile> list) {
+  /**
+   * Merge two tiles list together without any duplicates.
+   * @param tilesToAdd list to add to another list.
+   * @param list list where the tiles will be added.
+   */
+  public static void addTiles(List<Tile> tilesToAdd, List<Tile> list) {
     for (Tile tile : tilesToAdd) {
       if (!list.contains(tile)) {
         list.add(tile);
@@ -83,17 +85,21 @@ public final class GameLogic {
    * @param tiles list of tiles to delete.
    */
   public static void deleteTiles(List<Tile> tiles) {
+    List<Tile> tilesToDrop = new ArrayList<Tile>();
     for (Tile tile: tiles) {
       board.getTileAt(tile.getX(), tile.getY()).delete = true;
       Logger.log("Delete Tile: " + tile);
       if (tile.getNextType() == Type.NORMAL) {
         for (int i = tile.getY() - 1; i >= 0; i--) {
           board.getTileAt(tile.getX(), i).increaseLevel();
+          tilesToDrop.add(board.getTileAt(tile.getX(), i));
         }
       }
     }
+    boardPanel.animations.dropAnimation.setDropTiles(tilesToDrop);
     boardPanel.animations.setType(Animation.Type.REMOVE);
-    boardPanel.animations.startRemove(tiles);
+    boardPanel.animations.removeAnimation.setRemoveTiles(tiles);
+    boardPanel.animations.start();
   }
 
   /**
@@ -118,7 +124,12 @@ public final class GameLogic {
         }
       }
     }
-    Tile tile = new NormalTile(0,0);
+
+    deleteTilesFromBoard();
+  }
+  
+  private static void deleteTilesFromBoard() {
+    Tile tile = null;
     for (int row = board.getWidth() - 1; row >= 0; row--) {
       for (int col = 0; col < board.getWidth(); col++) {
         tile = board.getTileAt(col, row);
@@ -161,12 +172,18 @@ public final class GameLogic {
    */
   public static List<Tile> getTilesToDeleteSpecialGem(Combination combi) {
     List<Tile> tiles = new ArrayList<Tile>();
-
-    if (combi.containsSpecialGem() instanceof FlameTile) {
-      tiles = SwapHandler.getTilesToDeleteFlame(combi.containsSpecialGem());
-    }
-    if (combi.containsSpecialGem() instanceof StarTile) {
-      tiles = SwapHandler.getTilesToDeleteStar(combi.containsSpecialGem());
+    List<Tile> tempTiles = null;
+    for (Tile tile: combi.getSpecialTiles()) {
+      tempTiles = null;
+      if (tile instanceof FlameTile) {
+        tempTiles = SwapHandler.getTilesToDeleteFlame(combi.getSpecialGem());
+      } else if (tile instanceof StarTile) {
+        tempTiles = SwapHandler.getTilesToDeleteStar(combi.getSpecialGem());
+      }
+      
+      if (tempTiles != null) {
+        addTiles(tempTiles,tiles);
+      }
     }
     return tiles;
   }
@@ -229,7 +246,10 @@ public final class GameLogic {
     }
     Random rd = new Random();
     double rand = rd.nextDouble();
-    return res.get((int) rand * (res.size() - 1));
+    if (!res.isEmpty()) {
+      return res.get((int) rand * (res.size() - 1));
+    } 
+    return null;
   }
   
 }

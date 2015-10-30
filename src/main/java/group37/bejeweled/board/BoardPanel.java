@@ -9,16 +9,18 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class BoardFactory extends JPanel {
+public class BoardPanel extends JPanel {
   
   public static final int SIZE = 8; //Board size is 8x8
   public static final Point LOCATION = new Point(241,40);
   private Point focus = null;
+  private static final String FOCUS_PNG = "src/img/focus.png";
+  private static final String BOARD_PNG = "src/img/board.png";
 
   private Game game;
 
   
-  public BoardFactory(Game ga) {
+  public BoardPanel(Game ga) {
     game = ga;
   }
   
@@ -32,7 +34,7 @@ public class BoardFactory extends JPanel {
     int spaceY = 65;
 
     Board board = game.getBoard();
-    ImageIcon boardImage  = new ImageIcon("src/img/board.png");
+    ImageIcon boardImage  = new ImageIcon(BOARD_PNG);
     graphics.drawImage(boardImage.getImage(), 0, 0, board.getWidth(), board.getHeight(), null);
     int ix = LOCATION.x;
     int iy = LOCATION.y;
@@ -47,9 +49,8 @@ public class BoardFactory extends JPanel {
     }
          
     if (focus != null) {
-      ImageIcon focusImage = new ImageIcon("src/img/focus.png");
+      ImageIcon focusImage = new ImageIcon(FOCUS_PNG);
       graphics.drawImage(focusImage.getImage(), focus.x, focus.y,spaceX,spaceY, null);
     }
   }
-
 }

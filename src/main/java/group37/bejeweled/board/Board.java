@@ -1,9 +1,6 @@
 package main.java.group37.bejeweled.board;
 
-import java.awt.Point;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * board object for the tiles.

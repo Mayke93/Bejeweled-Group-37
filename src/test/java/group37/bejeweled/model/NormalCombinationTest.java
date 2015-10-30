@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+
 import main.java.group37.bejeweled.board.FlameTile;
 import main.java.group37.bejeweled.board.NormalTile;
 import main.java.group37.bejeweled.board.Tile;
@@ -85,7 +86,7 @@ public class NormalCombinationTest {
     List<Tile> tiles = x1.getTiles();
     Tile a1 = new FlameTile(1, 4);
     tiles.add(a1);
-    assertEquals(x1.containsSpecialGem(), a1);  
+    assertEquals(x1.containsSpecialGem(), true);  
   }
   
   /**
@@ -94,7 +95,7 @@ public class NormalCombinationTest {
   @Test
   public void containsSpecialGemFalseTest() {
     Combination x1 = combinationMaker();
-    assertEquals(x1.containsSpecialGem(), null);  
+    assertEquals(x1.containsSpecialGem(), false);  
   }
   
   /**

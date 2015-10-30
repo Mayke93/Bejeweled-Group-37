@@ -82,5 +82,9 @@ public class StatusPanelTime extends Panel {
   public void hide() {
     hcb.hide(saveGame);   
   }
+  
+  public Timer getTimer() {
+    return timer;
+  }
 
 }
