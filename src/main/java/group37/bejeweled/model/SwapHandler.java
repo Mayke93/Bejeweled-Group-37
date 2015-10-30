@@ -325,7 +325,7 @@ public class SwapHandler {
    */
   public static void swapTiles(List<Tile> swapTiles) {
     main.animations.setType(Animation.Type.SWAP);
-    main.animations.setTiles(swapTiles.get(0),swapTiles.get(1));
+    main.animations.swapAnimation.setTiles(swapTiles.get(0),swapTiles.get(1));
     main.animations.start();
     Logger.log("Swap tiles: " + swapTiles.get(0).getLoc() + ", " + swapTiles.get(1).getLoc());
   }

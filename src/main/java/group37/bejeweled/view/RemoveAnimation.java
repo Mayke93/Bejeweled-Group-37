@@ -58,4 +58,13 @@ public class RemoveAnimation implements IAnimation{
     animation.setType(Type.DROP);
     animation.start();
   }
+
+  /**
+   * Start animation for removing tiles on the board.
+   * @param tiles list of tiles to remove.
+   */
+  public void setRemoveTiles(List<Tile> tiles) {
+    this.tiles = tiles;
+  }
+  
 }

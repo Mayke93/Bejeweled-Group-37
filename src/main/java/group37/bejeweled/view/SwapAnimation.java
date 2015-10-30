@@ -69,4 +69,15 @@ public class SwapAnimation implements IAnimation{
       GameLogic.deleteChains();
     }
   }
+  
+  /**
+   * Set tiles for the swap animation.
+   * @param t0 tile 1. 
+   * @param t1 tile 2.
+   */
+  public void setTiles(Tile t0, Tile t1) {
+    this.t0 = t0;
+    this.t1 = t1;
+  }
+
 }

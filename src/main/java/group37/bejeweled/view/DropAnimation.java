@@ -53,4 +53,12 @@ public class DropAnimation implements IAnimation{
       animation.main.getStatusPanel().endGame();
     }
   }
+  
+  /**
+   * Set tiles for the drop animation.
+   * @param tilesToDrop list with tiles.
+   */
+  public void setDropTiles(List<Tile> tilesToDrop) {
+    this.tilesToDrop = tilesToDrop;
+  }
 }

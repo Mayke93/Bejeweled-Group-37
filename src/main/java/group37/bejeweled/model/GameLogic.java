@@ -96,9 +96,9 @@ public final class GameLogic {
         }
       }
     }
-    boardPanel.animations.setDropTiles(tilesToDrop);
+    boardPanel.animations.dropAnimation.setDropTiles(tilesToDrop);
     boardPanel.animations.setType(Animation.Type.REMOVE);
-    boardPanel.animations.setRemoveTiles(tiles);
+    boardPanel.animations.removeAnimation.setRemoveTiles(tiles);
     boardPanel.animations.start();
   }
 
